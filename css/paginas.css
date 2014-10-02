@@ -1,0 +1,94 @@
+
+.color_noticias_0{
+	background:url(../img/home/exclamacion_0.png) right top no-repeat #DD2C8D;	   
+}
+
+.color_noticias_1{
+	background:url(../img/home/exclamacion_1.png) right top no-repeat #229800;	   
+}
+
+.color_noticias_2{
+	background:url(../img/home/exclamacion_2.png) right top no-repeat #FFA400;	   
+}
+
+.titulo_pagina{
+	font-family:"Times New Roman", Times, serif;
+	font-size:28px;
+	font-weight:bold;
+    margin-left:50px;
+	vertical-align:bottom;
+}
+
+.color_titulo_0{
+ color:#DD2C8D;
+ border-bottom: #DD2C8D solid 1px;
+}
+
+.color_titulo_1{
+ color:#229800;
+ border-bottom: #229800 solid 1px;
+}
+
+.color_titulo_2{
+ color:#FFA400;
+ border-bottom: #FFA400 solid 1px;
+}
+
+.titulo_categoria{
+	font-family:"Times New Roman", Times, serif;
+	font-size:17px;
+  /*  margin-left:50px;*/
+	margin-right:10px
+}
+
+.color_categoria{
+ color:#747474
+ 
+}
+
+.color_categoria_seleccionada_0{
+ color:#DD2C8D;
+ font-family:"Times New Roman", Times, serif;
+ font-size:17px;
+
+}
+
+.categoria_submenu{
+ color:#CBCBCB;
+ font-family:"Times New Roman", Times, serif;
+ font-size:17px;
+}
+
+.color_categoria_seleccionada_1{
+ color:#229800;
+ font-family:"Times New Roman", Times, serif;
+ font-size:17px;
+
+}
+
+.color_categoria_seleccionada_2{
+ color:#FFA400;
+ font-family:"Times New Roman", Times, serif;
+ font-size:17px;
+}
+
+.categoria_linea_0{
+ font-size:12px;
+ font-weight:bold;
+ color:#DD2C8D;
+ margin: 0px 7px 0 7px;
+ }
+
+.categoria_linea_1{
+ font-size:12px;
+ font-weight:bold;
+ color:#229800;
+ margin: 0px 7px 0 7px;
+ }
+
+.categoria_linea_2{
+ font-size:12px;
+ font-weight:bold;
+ color:#FFA400;
+ margin: 0px 7px 0 7px;
+ }

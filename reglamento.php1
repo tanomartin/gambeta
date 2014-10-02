@@ -1,0 +1,441 @@
+<?	include_once "include/config.inc.php";
+	include_once "model/torneos.categorias.php";
+	include_once "model/torneos.php";
+	
+	
+	$oObj = new Torneos();
+	$aTorneos = $oObj->getByCant(4); 
+	
+/*print_r($rosa); echo "avavav<br>";
+print_r($grises);*/
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>:: Gambeta Femenina ::</title>
+    <meta name="author" content="gambetafemenina.com">
+    <meta name="description" content="Somos una Organización dedicada exclusivamente a la difusión del Fútbol Femenino. Promovemos Torneos de fútbol femenino, entrenamientos para todas las edas, escuelitas, clínicas, etc. Gracias a este ideal, muchas chicas y mujeres participan activamente de este deporte, mejorando su calidad de vida, su salud y condición física">
+    <meta name="keywords" content="fútbol femenino - torneo fútbol femenino - torneo fútbol 5 - futbol para mujeres - entrenamientos fútbol femenino - torneo de chicas - futbol para chicas - competencia para mujeres">
+        
+	<link rel="stylesheet" href="css/home.css" type="text/css">
+	<link rel="stylesheet" href="css/menu_izq.css" type="text/css">
+	<link rel="stylesheet" href="css/equipos.css" type="text/css">
+	<link rel="stylesheet" href="css/reglamento.css" type="text/css">
+    
+ 
+<style type="text/css">
+	<!--
+
+	#wrap { margin:0 auto 0 auto; width:100%; height:100%  }
+	
+	#encabezado { margin:0 auto 0 auto; width:100%; height:242px;
+			background-image:url(img/home/costados1.jpg);
+			background-repeat:repeat-x;
+   }
+
+	#cabezal {
+		background-image:url(img/home/cabezal.jpg);
+		background-repeat:no-repeat;
+		width:999px;
+		height:242px;
+		margin:0 auto 0 auto;
+	}
+	
+	
+	#quienes_somos {
+		position: relative;
+		left: 790px;
+		top: 20px; /*442*/
+		width: 170px;
+		height: 25px;
+		/*background-color:#F00;*/
+	}	
+	
+	#reglamento { 
+		position: relative;
+		left: 790px;
+		top: 35px; /*442*/ 
+		width: 170px; 
+		height: 25px;
+		text-align:left;
+		/*background-color:#F00;*/
+	}	
+
+	#sedes { 
+		position: relative;
+		left: 790px;
+		top: 50px; /*442*/ 
+		width: 170px; 
+		height: 25px;
+		text-align:left;
+		/*background-color:#F00;*/
+	}	
+
+	#contacto { 
+		position: relative;
+		left: 790px;
+		top:  65px; /*442*/ 
+		width: 170px; 
+		height: 25px;
+		text-align:left;
+		/*background-color:#F00;*/
+	}		
+	
+	#menu { 
+		position: relative;
+		left: 50px; 
+		top: 90px; /*442*/ 
+		text-align:left;
+	/*	background-color:#F00*/
+	}	
+
+
+	#cabezal1 {
+		width:999px;
+		margin:0 auto 0 auto;
+	}
+
+	#menu_izq1 {
+		float:left;
+		width:166px;
+		margin-left: 55px;
+		clear: both;
+	}
+
+	#imagen {
+		float:left;		
+		width:570px;
+		margin-top:5px;
+		margin-left:-25px;
+	}
+
+	#categorias {
+		position:relative;		
+		width:570px;
+		height:34px;
+	}
+
+	#titulo_principal{
+		position:relative;
+		width:530px;
+		height:54px;
+		margin-left:50px
+	}
+		
+		
+	#faceytweet {
+		background-image:url(img/home/faceytweet.jpg);
+		background-repeat:no-repeat;
+		width:232px;
+/*		height:275px;*/
+		margin:0 auto 0 auto;
+	}
+
+
+	#campo_tiempo { 
+		position: relative;
+		left: 37px; 
+		top:  25px; /*442*/ 
+		width: 90px; 
+		height: 90px;
+		text-align:left;
+	}	
+	#facebook { 
+		position: relative;
+		left: 35px; 
+		top: 80px; /*442*/ 
+		width: 190px; 
+		height: 90px;
+		text-align:left;
+	}
+
+	#twitter { 
+		position: relative;
+		left: 110px; 
+		top: -10px; /*442*/ 
+		width: 190px; 
+		height: 90px;
+		text-align:left;
+	}
+
+	#fecha { 
+		position: relative;
+		left: 30px; 
+		top: -280px; /*442*/ 
+		width: 190px; 
+		height: 10px;
+		text-align:left;
+	}
+
+
+	#titulo_auspiciante {
+		width:190px;
+		height:45px;
+		position:relative;
+		text-align:left;		
+	}
+	
+	#auspiciantes {
+		clear:both;
+		position:relative;
+		width:210px;
+		margin:0 auto 0 auto;
+		border-left: 2px solid #CCC;
+		text-align:left;		
+	}
+
+	#gf{ 
+		position: relative;
+		left: -380px; 
+		top: -550px; /*442*/ 
+		width: 300px; 
+		height: 200px;
+		text-align:left;
+	/*	background-color:#F00*/
+	}
+
+
+	#pie_repetir { margin:0 auto 0 auto; width:100%; height:44px;
+			background-image:url(img/home/pie1.jpg);
+			background-repeat:repeat-x;
+   }
+
+	#pie{
+		background-image:url(img/home/pie.jpg);
+		background-repeat:no-repeat;
+		width:999px;
+		height:44px;
+		margin:0 auto 0 auto;
+	}
+	
+
+-->
+</style> 
+<script type="text/javascript" src="_js/funciones.js"></script>
+<script>
+	function pagina(id){
+		document.getElementById('id').value= id;		
+		document.form_alta.action = "noticias.php";
+		document.form_alta.submit();
+	}
+</script>
+  </head>
+   
+<body   align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
+<form id="form_alta" name="form_alta" action="" method="post">
+	<input name="id" id="id"  value="<?= $_POST['id'] ?>" type="hidden" />
+    <input name="color" id="color"  value="<?= $color ?>" type="hidden" />
+	<div id="wrap">
+		<div id="encabezado">
+			<div id="cabezal">
+		     <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
+       		 <div id="reglamento" style="cursor:pointer" onclick="window.location = 'reglamento.php';"></div>
+             <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.html';"></div>
+             <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
+            	<div id="menu">
+				  <? for ($i=0; $i<count( $aTorneos ); $i++) {   
+	  					$oObj = new TorneoCat();
+						$categoria = $oObj ->getByTorneo($aTorneos[$i][id]);
+
+				  ?>
+                       <img src="logos/<?= $aTorneos[$i]['logoMenu'] ?>"  border="0" width="43px" height="54px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
+                <? } ?>	
+            </div>
+             
+            </div>
+		 </div>
+         <div id="cabezal1">
+			<div id="imagen" style="float:left; vertical-align:top">
+	          	  <div style="float:left; margin-left:48px">
+                  <img src="img/reglamento/titulo.jpg" />
+                  <div class="tituloReglamento color"> REGLAMENTO FÚTBOL 5</div>
+                  <p class="tituloR1 color">Parte I: ORGANIZACION</p>
+                  <div class="tituloR2 color"> 1. Sistema de Pago</div>
+                  <div class="parrafoR">Los equipos deberán abonar el canon correspondiente al partido de cada fecha. La Organización, por su parte, entregará su recibo correspondiente. A su vez, junto con el pago de la inscripción, cada equipo deberá abonar un depósito, equivalente al valor de un partido, el cual se devolverá al equipo una vez finalizado el Torneo en caso de no haber sido utilizado en el transcurso del mismo o bien se le bonificará el último partido.</div><br />
+                  <div class="tituloR2 color"> 2. Inasistencia a partidos</div>         
+                  <div class="parrafoR color">Inasistencia a un partido: </div>
+                  <div class="parrafoR"><b>Martes 13 hs: </b>Si un equipo da aviso a la organización de que no puede asistir al encuentro del fin de semana inmediato siguiente, tendrá tiempo de hacerlo hasta el día martes antes de las 13 hs, teniendo en cuenta de que solo tendrán derecho a 1 (una) suspensión de partido. El mismo se reprogramará automáticamente para la “Fecha de Recuperaciones” estipulada por la organización antes del inicio del torneo.</div>    
+                  <div class="parrafoR"><b>Jueves 13 hs:</b>Pasado el martes luego de las 13 hs, si un equipo da aviso a la organización de que no va a poder asistir al encuentro, se consultará al otro equipo la posibilidad de reprogramación, apelando al fair-play de las jugadoras y manteniendo siempre el espíritu de hacer jugar a ambos. En caso de tener una respuesta positiva, se pasará automáticamente dicho partido a la “Fecha de recuperaciones”. Esta decisión no podrá ser modificada nuevamente una vez que se ha informado a la Organización, quedando el partido ya acordado y en firme. Si el otro equipo responde negativamente a la posibilidad de reprogramación del partido fuera de los términos estipulados por el reglamento (Martes antes de las 13 hs) se le dará el partido por perdido 5 – 0 al equipo que avisó su inasistencia.<br />
+El equipo al que se le consulta sobre la reprogramación o no de dicho partido, deberá responder a la organización antes del día Viernes a las 10 hs, en caso de no ser así, la organización considerará dicha actitud como una respuesta negativa, dando aviso al otro equipo de la respuesta final
+
+</div>   
+                  <div class="parrafoR"><b>Viernes 10 hs: </b>Pasado el viernes a las 10 hs, la organización deberá informar las decisiones finales con respecto a cualquier pedido. Por otro lado, cualquier aviso de inasistencia o pedido de horarios pasado este término, no será tenido en cuenta por la organización y el equipo perderá el partido por 5 a 0 y también su correspondiente depósito. En caso de que el depósito ya haya sido descontado o utilizado previamente, el equipo deberá reponerlo antes de jugar su próximo partido. En caso contrario, tampoco podrá jugar esa fecha, perdiendo los puntos de ese juego por 5 a 0.
+</div> 
+				  <br />
+                  <div class="parrafoR color">Cambios de Horario: </div>
+                  <div class="parrafoR"><b>Martes 13 hs: </b> Si un equipo da aviso a la organización de que necesita cambiar el horario del encuentro del fin de semana inmediato siguiente, tendrá tiempo de hacerlo hasta el día martes antes de las 13 hs. En caso de una respuesta negativa por parte del otro equipo, el partido se reprogramará para la “Fecha de recuperaciones”. Solo se podrá reprogramar por pedido de cambio de horario un solo partido por equipo (esta posibilidad de suspensión es adicional a la mencionada en el punto anterior).</span>
+                  <div class="parrafoR"><b>Jueves 13 hs:</b>Pasadas las 13 hs del día jueves, la organización deberá contar con la respuesta del equipo al que se le pidió un cambio de horario. De no tenerla, se tomará la misma como negativa y se le dará aviso al otro equipo.</div>   
+                  <div class="parrafoR">o	En caso que un equipo no asista a su partido sin previo aviso ni comunicación, se le dará por ganado el partido al equipo rival por un total de 5-0, pero los goles no se le computarán a ninguna de sus jugadoras. A su vez, se le descontará el depósito efectuado a inicio del Torneo.</div>
+                  <br />
+                  <div class="parrafoR color">IMPORTANTE: </div>
+                  <div class="parrafoR">Los avisos de ausencia a un encuentro se deben realizar pura y exclusivamente a través de e-mail a la dirección general de la Organización (info@gambetafemenina.com.ar), el cual debe ser debidamente respondido. En caso de no serlo o no recibir aviso de lectura, no se tomará el mismo como comunicación fehaciente hacia La Organización y, por tanto, se desconocerá. </div>
+				  <div class="parrafoR">En lo que se refiere a reprogramaciones, si un equipo pide algún cambio fuera de los términos ya explicados y el otro equipo acepta, quedará sujeto a lo acordado y no puede modificarse. Es decir, una vez que el equipo contrario acepta la reprogramación quedará confirmada la misma, la cual, no puede modificarse nuevamente.</div>
+				  <div class="parrafoR">Todas la reprogramaciones serán cargadas en la página del torneo. Luego de este acontecimiento no habrá posibilidades de hacer un nuevo cambio.</div><br />
+                  <div class="tituloR2 color"> 3. Retiro del torneo</div>                  
+                  <div class="parrafoR">La Organización podrá decidir el retiro o expulsión de  un equipo de una categoría o del Torneo directamente.<br />
+En los casos en que un equipo no continúe jugando en la categoría, aquellos equipos contra los que no haya jugado tendrán el partido ganado por 5 a 0 y los goles no se computaran a ninguna de sus jugadoras.
+En caso de que dicho equipo haya clasificado a los play off, este será reemplazado por el inmediato siguiente en cantidad de puntos, y así sucesivamente hasta ocupar los lugares designados para la clasificación.
+<br />
+De retirarse un equipo por voluntad propia, el mismo perderá el derecho a recuperar su depósito.
+</div><br />
+                  <div class="tituloR2 color">	4. Play-off: (instancias Eliminatorias)</div>
+                  <div class="parrafoR">Una vez finalizada la fase regular del torneo, los equipos que hayan clasificado para jugar las instancias eliminatorias, no podrán agregar jugadoras nuevas en la planilla de juego.<br />
+										 Si un encuentro llegara a la definición por tiros desde el punto del penal, cada equipo debe informarle a la organización el orden de las jugadoras que los ejecutarán.<br />
+										 Se ejecutaran 3 (tres) penales por cada equipo, en caso de seguir empatados, se realizaran rondas de un penal por equipo a muerte súbita.<br />
+                                         
+									     La lista de las primeras 3 jugadoras que efectuarán los penales deberá estar formada por jugadoras que hayan finalizado el encuentro jugando el mismo. Luego se le dará lugar a las suplentes hasta que todas las jugadoras hayan pateado. En caso de que todas hayan efectuado su penal y la definición siga en empate, se podrán repetir las mimas jugadoras, no necesariamente en el mismo orden.<br />
+                                         La arquera puede variar su posición, no siendo siempre la misma quien ataje durante toda la serie. Es condición que todas aquéllas que atajen hayan finalizado el partido como “titular”.<br /> 
+                   </div>
+                  <br />
+                  <div class="tituloR2 color"> 5.	Planilla</div>
+                  <div class="parrafoR"><span class="color">De inscripción:</span> en la misma, se deberán completar todos los datos requeridos pertenecientes a las jugadoras que integrarán el equipo, pudiendo inscribir a un máximo de 12 (doce). A su vez, deberán firmar la última hoja reconociendo que se aceptan todos los puntos citados en dicha inscripción. Solo se permitirán incluir nuevas jugadoras en la medida en que no se haya superado el límite citado precedentemente o bien cuando por justificada razón alguna de las mismas no continúe jugando. <br />
+ Aquellos equipos que no abonen la inscripción no se considerarán formalmente inscriptos, por lo que su lugar podrá ser ocupado por otro que la haya abonado. 
+                   </div>    		
+                  <div class="parrafoR"><span class="color">De juego:</span> previo a un encuentro, el equipo deberá dar el presente y completar su planilla con los datos correspondientes a cada jugadora: número de camiseta, nombre y apellido. Solamente se podrán agregar jugadoras a dicha planilla con previo aviso a La Organización y habiéndolas incluido en la Planilla de Inscripción. En ningún caso, se podrá exceder el máximo de 12 jugadoras.  <br />
+En caso de que un equipo, una vez comenzado el torneo, tenga la posibilidad de agregar nuevas jugadoras a la planilla de juego, solo lo podrá hacer con previo aviso a la organización y si el numero total de jugadoras no excede de 12 (doce). Esta posibilidad, solo será otorgada a los equipos que se encuentren jugando la fase regular del torneo, no pudiendo agregar jugadoras a la planilla de juego en instancias de eliminación directa.Dicho pedido deberá ser informado por e-mail a la organización hasta 24 hs antes de la fecha pautada para el encuentro. De no ser así no se permitirá el ingreso de jugadoras a ese partido.
+<br />
+Si una jugadora, por motivos indefinidos, llegara tarde a un encuentro, podrá participar del partido siempre y cuando se anuncie a La Organización y firme la planilla de Juego.
+<br />
+Es necesario firmar la planilla de juego 10 minutos antes del horario programado para el inicio del partido. Se permitirá comenzar el mismo siempre y cuando cada equipo cuente con un mínimo de 4 jugadoras.
+<br />
+Finalizado el encuentro, la capitana de cada equipo tendrá a su disposición la planilla de juego con los resultados obtenidos y los goles correspondientes a cada jugadora, ya sea para certificar dicha planilla o para efectuar un reclamo correspondiente a ese partido. En caso de  realizar algún reclamo respecto del resultado o los goles atribuidos a sus jugadoras, la capitana deberá elevarlo el mismo día del encuentro ante la presencia del árbitro en cuestión, de manera de aclarar el episodio y determinar los datos correctos. No se aceptarán reclamos de esa índole luego del día en que fue jugado el partido.
+<br />
+			</div>
+	       <br />	            
+ 			<div class="parrafoR color">IMPORTANTE: </div>
+                  <div class="parrafoR"><span class="color">Prestamos de Jugadoras:</span>	En el caso de que un equipo necesite pedir prestada a una jugadora que se encuentre jugando en el torneo, la misma solo podrá jugar en caso de que el equipo en el que figure como inscripta pertenezca a una categoría de menor nivel con respecto al equipo que la pide prestada. Si estas condiciones no están dadas, y la jugadora prestada pertenece a la misma categoría o a una superior, se deberá consultar al equipo rival sobre la autorización para que la misma pueda jugar, el cual esta en todo su derecho de dar una respuesta negativa.</div>
+                		
+                  <br />
+                  <div class="tituloR2 color"> 6.	Tolerancias para el inicio de los partidos</div>
+                  <div class="parrafoR">El tiempo de tolerancia para cada uno de los encuentros es de 15 minutos. Pasado ese tiempo, si uno de los equipos llega tarde, el que haya respetado el horario, podrá reclamar el beneficio de obtener el partido como ganado sin necesidad de jugar el encuentro (este presente o no su rival). En ese caso, se le dará la victoria por 5-0 sin que los goles se atribuyan a ninguna de sus jugadoras. 
+                  </div>    
+                  <br />		
+                  <div class="parrafoR color">IMPORTANTE:</div>
+                  <div class="parrafoR">Los equipos siempre serán citados 15 minutos antes del horario de su partido con el objetivo de no demorar el inicio del encuentro.<br />
+Ejemplo: Si el partido fue programado para las 15 Hs, ambos equipos serán citados 14:45 Hs. El “Tiempo de Tolerancia”  se toma en cuenta a partir del horario de citación. Se respetara siempre la cancha que figure en cartelera.<br />
+ Si el equipo decide jugar el encuentro y desea obtener el beneficio anteriormente nombrado, deberá informárselo a la organización previa al inicio del enfrentamiento. En este caso, el costo del partido deberá ser abonado por ambas partes, independientemente de que la victoria haya sido adjudicada a uno de los equipos.<br />
+En caso de que el equipo decida no jugar el encuentro, a aquél que haya llegado tarde se le descontará el depósito correspondiente o bien se le cobrará el partido como si hubiera sido jugado.
+Si el rival no se presenta al encuentro, el equipo presente se hará acreedor del beneficio sin necesidad de reclamarlo ante la organización.
+<br />
+Los partidos, en el caso de jugarse con un atraso superior a los 15 minutos, se podrán acortar en su tiempo, independientemente de que los puntos se encuentren o no en juego, con el espíritu de no demorar a los demás partidos y equipos (se dará previo aviso a las capitanas de cada equipo en caso de tomar esta medida).<br />
+
+Llegada la hora de inicio del encuentro, y teniendo la cancha a disposición, el equipo que cuente al menos con 4 de sus jugadoras  deberá comenzar a disputar su partido, no permitiendo el retraso del mismo.</div>
+				   <br />
+                  <div class="tituloR2 color"> 7.	Reclamos</div>
+                  <div class="parrafoR">En lo que se refiere a reclamos, se podrán realizar con un plazo de 7 días luego de haber acontecido el partido y deberá efectuarse en forma escrita; detrás de su planilla de juego. Pasado este tiempo, la organización podrá no hacerse responsable de los mismos. <br />
+En caso que correspondiere, La Organización responderá en forma escrita hacia la capitana del equipo, dando las debidas explicaciones del caso y responsabilizándose por lo ocurrido de ser necesario.                  </div> 
+                  <br />  
+                  <div class="tituloR2 color"> 8.	Otros acontecimientos</div>
+                  <div class="parrafoR">En caso de lluvia, los capitanes o DT de cada equipo deberán comunicarse con la organización vía telefónica a fin de conocer el estado de los partidos y saber si se suspende la fecha a causa del mal tiempo. Tal decisión queda pura y exclusivamente a cargo de La Organización. En caso de suspensión total de la fecha, la misma se jugará el domingo inmediato siguiente.  <br />
+En caso de que un equipo haya suspendido un partido fuera de los plazos otorgados por el reglamento y la jornada tuvo que suspenderse por lluvia, el mismo igualmente perderá el partido por 5 a 0 y su correspondiente depósito. Esto quiere decir que si un equipo suspende un partido fuera de los términos ya explicados, el mismo no podrá reprogramarse.<br />
+	En caso que se haya jugado la fecha en forma parcial, aquéllos partidos que debieron ser suspendidos se reprogramarán en fecha conveniente para ambos equipos y dichas reprogramaciones serán coordinadas por  la organización.<br />
+
+	La organización se reserva el derecho de modificar la programación de los partidos como así también la estructura del torneo para la correcta marcha del mismo.              <br />
+
+	La organización no se hace responsable de las posibles pérdidas materiales dentro o fuera del complejo.<br />
+
+	La organización no se hace responsable de los posibles accidentes ocasionados dentro y fuera del campo de juego. De todos modos el establecimiento dispone de dos servicios de ambulancia y un botiquín de primeros auxilios.<br />
+
+	La Organización no puede desautorizar ningún tipo de fallo arbitral durante el transcurso o luego de la finalización de un encuentro, ya sea de fase regular o Play-off. El árbitro es la máxima autoridad dentro de la cancha, por lo que ninguna persona desde fuera de la misma podrá revertir lo que determine. <br />
+
+	La organización se reserva el derecho de admisión tanto al torneo como al complejo.
+                  </div>                     
+				  <br />
+                  <p class="tituloR1 color">Parte II: JUEGO</p>
+                  <div class="tituloR2 color"> 1.	Duración de los partidos</div>
+                  <div class="parrafoR">El encuentro se divide en dos tiempos de 25 minutos, con un entretiempo de 3 minutos. </div><br />
+                  <div class="tituloR2 color"> 2.	Puntos</div>
+                  <div class="parrafoR">Por partido ganado se obtendrán 3 - tres - puntos, por partido empatado 1 - uno - punto y por partido perdido 0 - cero - puntos. </div><br />
+                  <div class="tituloR2 color"> 3.	Estructura del torneo</div>
+                  <div class="parrafoR">La modalidad de juego de cada torneo quedará a criterio de La Organización en función de la necesidad, cantidad de categorías y mejor esquema de juego para los equipos.</div><br />
+                  <div class="tituloR2 color"> 4.	Goles</div>
+                  <div class="parrafoR">Serán válidos pasando la mitad de la cancha. No están permitidos los goles directos de los saques del medio. En ambos casos serán validos con excepción de que la pelota se desvíe en alguna jugadora o la arquera antes de entrar al arco. Si el remate se efectúa sobre la línea del medio de la cancha el gol será valido.</div><br />
+                  <div class="tituloR2 color"> 5.	Cambios</div>
+                  <div class="parrafoR">Además de los 5 titulares se permite tener hasta 7 suplentes más. Los cambios son ilimitados, autorizados únicamente por el árbitro y en el momento en que él indique, con el espíritu de no interrumpir ninguna jugada ni avance de gol para ninguno de los dos equipos.</div><br />
+                  <div class="tituloR2 color"> 6.	Arquera</div>
+                  <div class="parrafoR">Tanto el saque de arco como así también cualquier inicio del juego por parte de la arquera, tendrá que realizarse con las manos, no pudiendo la pelota ir más allá de la mitad de la cancha, excepto que sea interceptada por cualquier jugadora de campo en su trayecto y con anterioridad a que supere dicha zona. En caso que esto suceda, el equipo contrario repondrá el juego con un lateral ejecutado desde la mitad de la cancha. Únicamente la arquera podrá sacar con el pie en caso que deje picar la pelota dentro de su área. Se considerará que la pelota “está en juego” una vez que la misma haya sido golpeada por la arquera con su pie y no antes, no pudiendo permitirse el ingreso al área de una jugadora rival. No será válido el gol convertido de forma directa por la arquera que saque del arco bajo esta modalidad. En tal caso, el equipo contrario repondrá el juego desde el medio de la cancha mediante un lateral. <br />
+										La arquera NO PUEDE pasar la mitad de la cancha con o sin pelota dominada. Tampoco podrá recibir la pelota con las manos si una jugadora de su propio equipo le hace un pase directo con el pie (esta permitido el pase desde un lateral, con la cabeza o con el pecho). En caso de cometerse dicha infracción, el rival tendrá a su favor un tiro libre indirecto fuera del área, lo más próximo al lugar en donde se cometió la misma. <br />
+										La arquera no puede darse juego a sí misma. En caso contrario, se cobrará lateral para el equipo contrario desde el lugar más próximo a la infracción.
+				 </div><br />
+                  <div class="tituloR2 color"> 7.	Saques laterales</div>
+                  <div class="parrafoR">Seefectúan con las manos sin permitirse envíos por el aire al área rival. Asimismo, la pelota deberá tomarse por detrás de la cabeza para hacer el lanzamiento. En caso que esto no suceda, se cobrará “lanzamiento incorrecto” y se dará posesión de la pelota al equipo oponente, quien repondrá con otro lateral desde el mismo lugar. La distancia que debe guardar el adversario son 3(tres) pasos (la distancia será cedida siempre y cuando la jugadora lo pida).</div><br />
+                  <div class="tituloR2 color"> 8.	Tiros libres</div>
+                  <div class="parrafoR">Serán directos e indirectos (a criterio del árbitro en función del tipo de infracción y su gravedad). En todos los casos, indicará tanto a la arquera como a la ejecutante qué clase de tiro libre ha sancionado. 4 (cuatro pasos) será la distancia de la barrera, la que será cedida siempre y cuando la jugadora ejecutante lo solicite.  </div><br />
+                  <div class="tituloR2 color"> 9.	Disputa en el piso</div>
+                  <div class="parrafoR">Se considera falta indirecta tirarse a los pies del rival para recuperar el balón o bien disputar el mismo. En ese caso, se sancionará tiro libre indirecto para el equipo oponente. No se considera infracción en el piso cuando no hay rival que esté disputando conjuntamente la pelota. La arquera, dentro de su propia área, podrá ir al piso siempre. Esto no implica que no pueda cometer infracción a la jugadora rival, la que si será cobrada por el arbitro. Si una  jugadora va al piso dentro de su propia área se cobrará tiro libre indirecto fuera de la misma, en el lugar más próximo a la infracción.  La sanción de este tipo de faltas, queda exclusivamente a criterio del árbitro.
+				</div><br />
+                  <div class="tituloR2 color"> 10.	Mano</div>
+                  <div class="parrafoR">Elárbitro sancionará la mano de acuerdo a la intención de la jugadora de usar la misma. Sin embargo, en caso que no sea intencional pero corte una acción clara de avance para el equipo rival, también podrá ser sancionada. La aplicación de una tarjeta quedará a entero criterio del árbitro.</div><br />
+                  <div class="tituloR2 color"> 11.	Tiros de esquina</div>
+                  <div class="parrafoR">El gol directo es válido. Se permiten envíos al área. La distancia reglamentaria al punto de ejecución será de 3 (tres) pasos, siempre y cuando la ejecutante así lo solicite. Necesariamente la pelota debe estar apoyada sobre la línea de fondo de la cancha.</div><br />
+                  <div class="tituloR2 color"> 12.	Tiros penales</div>
+                  <div class="parrafoR">Se ejecutarán sin carrera, a pie firme, teniendo el pie de apoyo al lado del balón. En caso que exista algún tipo de rebote luego de la ejecución, el juego continuará. Todas las jugadoras deberán permanecer por detrás de la línea de la pelota hasta que el penal se realice. Si así no ocurriere, el árbitro deberá hacer ejecutar nuevamente el penal. La arquera deberá permanecer con sus pies en la línea de gol. Si se adelantara, tratando de obtener ventaja de su posición para tapar el balón, el árbitro deberá hacer ejecutar nuevamente el penal. </div><br />
+                  <div class="tituloR2 color"> 13.	Corte del partido</div>
+                  <div class="parrafoR">En los casos en que el árbitro lo considere necesario, podrá cortar el desarrollo del partido, pudiendo ser algunas de las causas, tiempo para refresco de jugadoras en caso de excesivo calor, lesión de una jugadora a pesar que el juego continúe, etc. Esta medida queda determinada a entero criterio del árbitro.</div><br />
+                  <div class="tituloR2 color"> 14.	Suspensión del partido</div>
+                  <div class="parrafoR">El árbitro podrá suspender un partido en cualquier momento del mismo en caso que entienda que no existen garantías para el normal desarrollo del mismo. A su vez, deberá informar las causas a las Capitanas de cada equipo como a La Organización, quien determinará la designación de puntos y la reprogramación o no del partido.</div><br />
+                  <div class="tituloR2 color"> 15.	Comportamiento de los DT</div>
+                  <div class="parrafoR">Todos los equipos tienen permitida la presencia de un/a Director/a Técnica que ayude y dé indicaciones tácticas a sus jugadoras. Estos deberán encontrarse fuera del perímetro de la cancha y presentar buen comportamiento deportivo, animando al equipo en la competencia sana y leal. En caso que el árbitro y/o los veedores consideren y/o juzguen que su conducta o actitudes engendran violencia, competencia desleal, insultos a las autoridades o a las integrantes del otro equipo o incentivan a un juego excesivamente brusco en sus jugadoras, podrá expulsarlo del partido, debiendo abandonar la cancha, y no tendrá acceso a hablar con sus dirigidas hasta la finalización del encuentro o bien en el entretiempo tanto en ese partido como en el inmediato siguiente.</div><br />
+                  <div class="tituloR2 color"> 16.	Capitanas</div>
+                  <div class="parrafoR">En caso que se requiera información acerca del desarrollo del juego, tiempo transcurrido, resultado u otras cuestiones, la capitana podrá solicitárselo al árbitro así como también cualquier tipo de queja, protesta o pedido de aclaración sobre el criterio tomado en la sanción de una jugada. El árbitro no estará obligado a conversar con cualquier otra jugadora dentro del campo de juego ni fuera del mismo.</div><br />
+                  <div class="tituloR2 color"> 17.	Ley de Ventaja</div>
+                  <div class="parrafoR">Queda pura y exclusivamente a criterio del arbitro, con el objetivo de no cortar una jugada de gol para cualquiera de los dos equipos.</div><br />
+                  <div class="tituloR2 color"> 18.	Reemplazo de jugadora por lesión</div>
+                  <div class="parrafoR">Una jugadora lesionada podrá ser remplazada por otra en cualquier momento del torneo siempre que sea comunicado y autorizado por la organización. A tal efecto, la nueva ingresante deberá presentar un certificado médico que la habilite a jugar el Torneo y la califique como apta para realizar este tipo de actividad.</div><br />
+                  <div class="tituloR2 color"> 19.	Indumentaria</div>
+                  <div class="parrafoR">El equipo deberá presentar camisetas o pecheras de un mismo color y  se exige que las mismas estén numeradas. Se encuentra PROHIBIDO usar botines con tapones que puedan lastimar al rival y accesorios innecesarios para el juego que son riesgosos para la propia jugadora o el resto (pearcing, anteojos, relojes, pulseras, anillos, etc.). La responsabilidad de posibles accidentes asimismo como a las demás personas por el uso de  estos accesorios, recaerá sobre la jugadora que no respete dicho punto.</div><br />
+                  
+                  <p class="tituloR1 color">Parte III: SANCIONES</p>
+                  <div class="tituloR2 color"> 1.	Tarjeta amarilla</div>
+                  <div class="parrafoR">Aquella jugadora que acumule dos tarjetas amarillas en el mismo encuentro recibirá inmediatamente la tarjeta roja y será expulsada. La acumulación de 3 (tres) tarjetas amarillas, en diferentes encuentros, se sancionará con 1 (una) fecha de suspensión. La misma será la inmediata siguiente a la que se recibió la segunda tarjeta amarilla. No será necesaria la previa advertencia del arbitro a una jugadora para sacarle tarjeta amarilla.</div><br />
+                  <div class="tituloR2 color"> 2.	Tarjeta Azul</div>
+                  <div class="parrafoR">Aquella jugadora que reciba una tarjeta azul, quedará automáticamente fuera del encuentro por 10 minutos, sin recibir ninguna fecha de suspensión. La aplicación de esta tarjeta a una jugadora no requiere que la misma haya visto la tarjeta amarilla previamente. A partir de ese momento, el equipo quedará con 4 jugadoras en cancha, no pudiendo sustituir a la sancionada.</div><br />
+                  <div class="tituloR2 color"> 3.	Tarjeta roja</div>
+                  <div class="parrafoR">Puede ser directa o indirecta (dos tarjetas amarillas en el mismo encuentro). La jugadora deberá abandonar el partido y no podrá permanecer en el perímetro de juego. Caso contrario el encuentro será suspendido, perjudicando a su equipo. Dependiendo de la gravedad de la infracción, el árbitro y La Organización determinarán la cantidad de fechas de suspensión que serán asignadas a la jugadora en cuestión y será comunicada en el transcurso de la semana inmediata siguiente por medio fehaciente.</div><br />
+
+                  <div class="tituloR2 color"> 4.	Tipos de sanciones</div>
+                  <div class="parrafoR">
+                  		<span class="color">Agresión física a La Organización:</span> expulsión del torneo.<br />
+						<span class="color">Agresión física al árbitro:</span> expulsión del torneo.<br />
+						<span class="color">Agresión física a un adversario: Leve:</span> de 1 fecha; Media: de 2 a 3 fechas; Brusca: 4 fechas.<br />
+						<span class="color">Intento de agresión física / Agresión verbal a La Organización:</span> 3 fechas<br />
+						<span class="color">Intento de agresión física / Agresión verbal al árbitro:</span> 3 fechas<br />
+						<span class="color">Intento de agresión física / Agresión verbal a un adversario:</span> 2 fechas<br />
+						<span class="color">Intento de agresión física / Agresión Verbal a un compañero:</span> 1 fecha<br />
+						<span class="color">Juego brusco:</span> de 1 a 3 fechas dependiendo de la gravedad del hecho a criterio de La Organización.<br />
+						Los insultos al aire, luego de una advertencia, serán sancionados con una tarjeta amarilla con el espíritu de mantener un clima de respeto frente al resto de las jugadoras en el campo de juego y fuera del mismo.<br /><br />
+					 Las sanciones que determine la organización dependerán del informe de los señores árbitros, el veedor y de lo que observe La Organización. Las sanciones que no estén en este reglamento quedan bajo la exclusiva determinación de La Organización.
+                  </div>     
+                  <br />
+            </div></div>        
+		</div>
+       </div>
+       <div id="faceytweet" style="float:left; margin-left:240px">
+      		       <div id="campo_tiempo"><a href="http://www.findlocalweather.com/forecast.php?config=&forecast=zandh&pands=SABE" target="_blank"><img src="http://www.findlocalweather.net/forecast.php?forecast=hourly&pands=SABE&place=Aeroparque Bs. As.&state=Ar&config=png&alt=hwixzonemet&hwvbg=green&hwvtc=white" border="0" alt="Click for the latest Aeroparque Bs. As."></a>
+				  </div>            
+                   <div id="facebook">
+						<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fes-la.facebook.com%2Fpeople%2FGambeta-Femenina%2F100000148462698&amp;layout=box_count&amp;show_faces=false&amp;width=190&amp;action=like&amp;font&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:190px; height:65px;" allowTransparency="true"></iframe>
+                   </div>
+				   <div id="twitter">                        
+	                        <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    				</div>
+	    	       <div id="fecha" class="fecha">     
+                           <?php
+						   	setlocale(LC_ALL,"es_ES@euro","es_ES","esp");   echo utf8_encode(strftime("%A %d/%m/%Y"));
+    						?>				
+					</div>        
+            <div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
+              <div id="auspiciantes" style="float: right">
+       			   <? include('auspiciantes.php'); ?>
+               </div>     
+            <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
+         </div>    
+		<div id="pie_repetir" style="float:left">
+			<div id="pie"></div>
+        </div>    
+  
+    </div>
+    </form>
+</body>

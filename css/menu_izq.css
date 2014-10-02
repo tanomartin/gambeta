@@ -1,0 +1,149 @@
+	#menu_noticias_seleccionada{
+        background-image:url(../img/menu/submenu_NOTICIAS_selecc.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_noticias{
+        background-image:url(../img/menu/submenu_NOTICIAS.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_noticias:hover {
+        background-image:url(../img/menu/submenu_NOTICIAS_over.jpg);
+		width:164px;
+		height:43px
+	}
+
+
+	#menu_equipos_seleccionada{
+        background-image:url(../img/menu/submenu_EQUIPOS_selecc.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_equipos {
+        background-image:url(../img/menu/submenu_EQUIPOS.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_equipos:hover {
+        background-image:url(../img/menu/submenu_EQUIPOS_over.jpg);
+		width:164px;
+		height:43px
+	}
+	
+	
+	#menu_equipoideal_seleccionada{
+        background-image:url(../img/menu/submenu_EQUIPOIDEAL_selecc.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_equipoideal {
+        background-image:url(../img/menu/submenu_EQUIPOIDEAL.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_equipoideal:hover {
+        background-image:url(../img/menu/submenu_EQUIPOIDEAL_over.jpg);
+		width:164px;
+		height:43px
+	}
+	
+	#menu_fixture_seleccionada{
+        background-image:url(../img/menu/submenu_FIXTURE_selecc.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_fixture{
+        background-image:url(../img/menu/submenu_FIXTURE.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_fixture:hover {
+        background-image:url(../img/menu/submenu_FIXTURE_over.jpg);
+		width:164px;
+		height:43px
+	}
+
+
+	#menu_beneficios_seleccionada{
+        background-image:url(../img/menu/submenu_BENEFICIOS_selecc.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_beneficios{
+        background-image:url(../img/menu/submenu_BENEFICIOS.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_beneficios:hover {
+        background-image:url(../img/menu/submenu_BENEFICIOS_over.jpg);
+		width:164px;
+		height:43px
+	}
+
+	#menu_resultados_seleccionada{
+        background-image:url(../img/menu/submenu_RESULTADOS_selecc.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_resultados{
+        background-image:url(../img/menu/submenu_RESULTADOS.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_resultados:hover {
+        background-image:url(../img/menu/submenu_RESULTADOS_over.jpg);
+		width:164px;
+		height:43px
+	}
+
+
+	#menu_goleadoras_seleccionada{
+        background-image:url(../img/menu/submenu_GOLEADORAS_selecc.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_goleadoras{
+        background-image:url(../img/menu/submenu_GOLEADORAS.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_goleadoras:hover {
+        background-image:url(../img/menu/submenu_GOLEADORAS_over.jpg);
+		width:164px;
+		height:43px
+	}
+
+
+	#menu_posiciones_seleccionada{
+        background-image:url(../img/menu/submenu_POSICIONES_selecc.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_posiciones{
+        background-image:url(../img/menu/submenu_POSICIONES.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_posiciones:hover {
+        background-image:url(../img/menu/submenu_POSICIONES_over.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_tarjetas_seleccionada{
+        background-image:url(../img/menu/submenu_TARJETAS_selecc.jpg);
+		width:164px;
+		height:43px
+	}
+	
+	#menu_tarjetas{
+        background-image:url(../img/menu/submenu_TARJETAS.jpg);
+		width:164px;
+		height:43px
+	}
+	
+	#menu_tarjetas:hover {
+        background-image:url(../img/menu/submenu_TARJETAS_over.jpg);
+		width:164px;
+		height:43px
+	}

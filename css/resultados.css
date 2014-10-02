@@ -1,0 +1,68 @@
+.titulo_equipos{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:14pt;
+	font-weight:bold;
+	vertical-align:bottom;
+	margin-top: 20px;
+	width:330px;
+	border-bottom: 1px solid #CCC;
+}
+
+.resultado_0_0{
+	background-color:#DD2C8D;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+}
+
+.resultado_0_1{
+	background-color:#E575B2;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+}
+
+.resultado_1_0{
+	background-color:#229800;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;	
+}
+
+.resultado_1_1{
+	background-color:#64CC46;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+}
+
+.resultado_2_0{
+	background-color:#FFA400;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;	
+}
+
+.resultado_2_1{
+	background-color:#FAC360;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+}
+
+.resultado_color_0{
+ color:#DD2C8D!important;
+}
+.resultado_color_1{
+ color:#229800!important;
+}
+
+.resultado_color_2{
+ color:#FFA400!important;
+}
+
+.resultado_equipo {
+	color:#444242;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+}

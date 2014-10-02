@@ -1,0 +1,29 @@
+.tituloReglamento{
+	font-family:"Times New Roman", Times, serif;
+	font-size:20pt;
+	font-weight:bold;
+	text-align:left
+}
+
+.color{
+ color:#DD2C8D;
+}
+
+.tituloR1{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:14pt;
+	font-weight:bold;
+	text-align:justify;
+}
+
+.tituloR2{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12pt;
+	font-weight:bold;
+	text-align:justify	
+}
+.parrafoR{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12pt;
+	text-align:justify	
+}

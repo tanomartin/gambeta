@@ -1,0 +1,187 @@
+#posicion_0 {
+   background-image:url(../img/posiciones/posicion0.jpg);
+   background-repeat: no-repeat;
+   width:572px;
+   height:70px;
+   float:left; 
+   margin-left:45px;
+   margin-top:4px;	   
+}
+
+#posicion_1 {
+   background-image:url(../img/posiciones/posicion1.jpg);
+   background-repeat: no-repeat;
+   width:572px;
+   height:70px;
+   float:left; 
+   margin-left:45px;
+   margin-top:4px;	   
+}
+
+#posicion_2 {
+   background-image:url(../img/posiciones/posicion2.jpg);
+   background-repeat: no-repeat;
+   width:572px;
+   height:70px;
+   float:left; 
+   margin-left:45px;
+   margin-top:4px;	   
+}
+
+.pos_color_0 {
+	color: #DD2C8D;
+	margin-left:5px;
+}
+
+.pos_color_1 {
+	color: #229800;
+}
+
+.pos_color_2 {
+	color: #FFA400;
+}
+
+.pos_detalle {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	line-height:14px;
+}
+
+#pos_detalleEquipo {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	line-height:14px;
+	position:relative;
+	width:150px;
+	top:-14px;
+	left:30px;
+	text-align:left;	
+}
+.pos0 {
+	color: #898989;
+}
+
+.pos1 {
+	color: #B6B6B6;
+}
+
+.verde {
+	color: #02D302;
+}
+
+.rojo {
+	color: #FF0000;
+}
+
+.gris {
+	color: #A9A9A9;
+}
+
+#posicion_pj{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	margin: 0px 0 15px 60px;
+	width:80px;
+	left:100px;
+	top:-27px;
+	position:relative;
+	float:left;
+}
+
+#par_ganados{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:60px;
+	top:-27px;
+	position:relative;
+	float:left;
+}
+#par_perdidos{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:95px;
+	top:-27px;
+	position:relative;
+	float:left;
+}
+
+#par_empatados{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:130px;
+	top:-27px;
+	position:relative;
+	float:left;
+}
+
+#goles_favor{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:160px;
+	top:-27px;
+	position:relative;
+	float:left;
+	width:30px;
+}
+
+#goles_contra{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:170px;
+	top:-27px;
+	position:relative;
+	float:left;
+	width:30px;	
+	text-align:right;
+	
+}
+
+#goles_diferencia{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:190px;
+	top:-27px;
+	position:relative;
+	float:left;
+	width:30px;
+	text-align:right;
+}
+
+#posicion_puntaje{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	margin: 0px 0 15px 60px;
+	width:80px;
+	left:145px;
+	top:-27px;
+	position:relative;
+	float:left;
+	width:30px;
+	text-align:right;
+}
+
+#linea{
+    height: 30px;
+    margin-left: 50px;
+	margin-top:10px;
+    width: 530px;
+	border-bottom: 1px solid #CCC;
+	clear:both;
+	text-align:left;	
+}
