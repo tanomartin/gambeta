@@ -147,3 +147,20 @@
 		width:164px;
 		height:43px
 	}
+	
+	
+	#menu_reserva_seleccionada{
+        background-image:url(../img/menu/submenu_RESERVA_selecc.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_reserva{
+        background-image:url(../img/menu/submenu_RESERVA.jpg);
+		width:164px;
+		height:43px
+	}
+	#menu_reserva:hover {
+        background-image:url(../img/menu/submenu_RESERVA_over.jpg);
+		width:164px;
+		height:43px
+	}

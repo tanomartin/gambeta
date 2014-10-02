@@ -34,6 +34,26 @@
  border-bottom: #FFA400 solid 1px;
 }
 
+.color_titulo_reserva_0{
+ color:#DD2C8D;
+}
+
+.color_titulo_reserva_1{
+ color:#229800;
+}
+
+.color_titulo_reserva_2{
+ color:#FFA400;
+}
+
+.titulo_reserva{
+	font-family:"Times New Roman", Times, serif;
+	font-size:14px;
+	font-weight: bold;
+  /*  margin-left:50px;*/
+	margin-right:10px
+}
+
 .titulo_categoria{
 	font-family:"Times New Roman", Times, serif;
 	font-size:17px;
