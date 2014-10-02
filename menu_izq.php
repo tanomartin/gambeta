@@ -63,5 +63,12 @@
 		<div class="menu_borde" id="menu_tarjetas" onclick="cambiar_menu('tarjetas.php')">
         </div>    
 <? } ?>
+<? if ($modulo == 'reserva' ) { ?>
+		<div class="menu_borde_selec" id="menu_reserva_seleccionada">
+       </div> 
+<? } else { ?>
+		<div class="menu_borde" id="menu_reserva" onclick="cambiar_menu('reserva_horarios.php')">
+        </div>    
+<? } ?>
 
 <!-- indexer::continue -->
