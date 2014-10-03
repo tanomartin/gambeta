@@ -2,7 +2,6 @@
 	include_once "model/torneos.categorias.php";
 	include_once "model/equipos.php";
 	include_once "model/torneos.php";
-	include_once "model/noticias.php";
 	
 	$modulo = "reserva";
 	$oObj = new Torneos();
@@ -295,6 +294,21 @@ function cambiar_menu(url){
 	document.form_alta.submit();
 }
 
+function submitFormulario() {
+	equipo = document.form_alta.equipo.value;
+	contra = document.form_alta.pwd.value;
+	if (equipo == 0) {
+		alert("Debe seleccionar un equipo");
+	} else {
+		if (String(contra) == "" || String(contra).length < 6) {
+			alert("Debe ingresar una contraseña de mas de 6 caracteres");
+		} else {
+			document.form_alta.action = "reserva_control_ingreso.php";
+			document.form_alta.submit();
+		}
+	} 
+}
+
 </script>
  </head>
    
@@ -303,20 +317,17 @@ function cambiar_menu(url){
 	<input name="id" id="id"  value="<?= $id ?>" type="hidden" />
     <input name="color" id="color"  value="<?= $color ?>" type="hidden" />
 	<div id="wrap">
-		<div id="encabezado">
+		 <div id="encabezado">
 			<div id="cabezal">
-		     <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
-             <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
-             <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
-             <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
+				 <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
+				 <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
+				 <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
+				 <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
             </div>
 		 </div>
-         <div id="cabezal1">
-  			<div id="menu_izq1" style="float:left">
-    	            <img  src="logos/<?= $oTorneo->logoPagina?>" />
-                    	<? include("menu_izq.php") ?>
-			</div>
-
+         
+		 <div id="cabezal1">
+  			<div id="menu_izq1" style="float:left"><img  src="logos/<?= $oTorneo->logoPagina?>" /><? include("menu_izq.php") ?></div>
 			<div id="imagen" style="float:left; vertical-align:top">
             	<div id="titulo_principal" class="titulo_pagina color_titulo_<?= $color ?>">
                     <div  style="float:left; bottom:0px; position:absolute;" ><?=  strtoupper($oTorneo->nombre_pagina) ?></div>
@@ -329,7 +340,7 @@ function cambiar_menu(url){
                              <img  src="logos/<?= $aTorneos[$i][logoMenu]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
                         <? } 
                         } ?>
-                      </div>  
+                    </div>  
                 </div>
                 <div id="categorias">
                 	<div class="titulo_categoria color_categoria" style="float:left;">CATEGORIA</div>
@@ -349,56 +360,47 @@ function cambiar_menu(url){
 					}?>	
                 </div>
                 <br><br><br>
-					<div id="reserva">	
-						<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;">RESERVA DE HORARIO DE PARTIDO</div><br />
-						<div align="center">
-							<p>
-							<select name="equipo" id="equipo">
+				<div id="reserva">	
+					<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;">RESERVA DE HORARIO DE PARTIDO</div>			
+					<br />
+					<div align="center">
+						<p><select name="equipo" id="equipo">
 							  <option value="0" selected="selected">Seleccione Su Equipo</option>	
 							  <? if($aEquipos != NULL) {
 									 foreach ($aEquipos as $equipo) { ?>
 							  <option value=<? echo $equipo['id']?>><? echo $equipo['nombre']?> </option>
 							  <?	}	
 							  }?>
-							</select>
-							</p>
-							<p>
-								<input type="password" id="pwd" name="pwd" placeholder="Contraseña" style="text-align:center">
-							</p>
-							<p>
-								<input name="ingresar" type="button" value="Ingresar" />
-							</p>
-						</div>
-					</div>	
+							</select></p>
+						<p><input type="password" id="pwd" name="pwd" placeholder="Contraseña" style="text-align:center"></p>
+						<p><input name="ingresar" type="button" value="Ingresar" onclick="submitFormulario()"/></p>
+					</div>
+				</div>	
 			</div>
         </div>
-        <div id="faceytweet" style="float:left">
-      		       <div id="campo_tiempo"><!-- www.TuTiempo.net - Ancho:120px - Alto:73px -->
+        
+		<div id="faceytweet" style="float:left">
+      		<div id="campo_tiempo"><!-- www.TuTiempo.net - Ancho:120px - Alto:73px -->
 <!-- www.TuTiempo.net - Ancho:118px - Alto:71px -->
-<div id="TT_tBawbxtBddjcAQIA7fVzzDzzj6lAMdjlrtkd1sCoK1j"><h2><a href="http://www.tutiempo.net">Tutiempo.net</a></h2></div>
-<script type="text/javascript" src="http://www.tutiempo.net/widget/eltiempo_tBawbxtBddjcAQIA7fVzzDzzj6lAMdjlrtkd1sCoK1j"></script>
-				  </div>                 
-                   <div id="facebook">
-						<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fes-la.facebook.com%2Fpeople%2FGambeta-Femenina%2F100000148462698&amp;layout=box_count&amp;show_faces=false&amp;width=190&amp;action=like&amp;font&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:190px; height:65px;" allowTransparency="true"></iframe>
-                   </div>
-				   <div id="twitter">                        
-	                        <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    				</div>
-	    	       <div id="fecha" class="fecha">     
-                           <?php
-						   	setlocale(LC_ALL,"es_ES@euro","es_ES","esp");   echo utf8_encode(strftime("%A %d/%m/%Y"));
-    						?>				
-					</div>        
-	    <div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
-          <div id="auspiciantes" style="float: right">
-          <? include('auspiciantes.php'); ?>
-           </div>     
-        <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
-     </div>           
+			<div id="TT_tBawbxtBddjcAQIA7fVzzDzzj6lAMdjlrtkd1sCoK1j"><h2><a href="http://www.tutiempo.net">Tutiempo.net</a></h2></div>
+				<script type="text/javascript" src="http://www.tutiempo.net/widget/eltiempo_tBawbxtBddjcAQIA7fVzzDzzj6lAMdjlrtkd1sCoK1j"></script>
+			</div>                 
+            <div id="facebook">
+				<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fes-la.facebook.com%2Fpeople%2FGambeta-Femenina%2F100000148462698&amp;layout=box_count&amp;show_faces=false&amp;width=190&amp;action=like&amp;font&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:190px; height:65px;" allowTransparency="true"></iframe>
+            </div>
+			<div id="twitter">                        
+	       		<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    		</div>
+	    	<div id="fecha" class="fecha">     
+         		<?php setlocale(LC_ALL,"es_ES@euro","es_ES","esp");   echo utf8_encode(strftime("%A %d/%m/%Y")); ?>				
+			</div>        
+	    	<div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
+          	<div id="auspiciantes" style="float: right"><? include('auspiciantes.php'); ?></div>     
+        	<div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
+     	</div>           
 		<div id="pie_repetir" style="float:left">
 			<div id="pie"></div>
         </div>    
-  
     </div>
     </form>
 </body>

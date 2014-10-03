@@ -299,6 +299,23 @@ class Equipos {
 		return $res;
 	
 	}
+	
+	function accesoCorrecto($id="",$pass="") {
+		$db = new Db();
+		
+		$query = "Select count(*) as cantidad from ga_equipos_pass_reserva e where id = '$id' and password = '".md5($pass)."'";
+		print($query);
+		
+		$res = $db->getRow($query); 
+	
+		$db->close();
+		
+		if($res->cantidad == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
 }
 
