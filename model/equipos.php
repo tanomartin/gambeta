@@ -304,7 +304,6 @@ class Equipos {
 		$db = new Db();
 		
 		$query = "Select count(*) as cantidad from ga_equipos_pass_reserva e where id = '$id' and password = '".md5($pass)."'";
-		print($query);
 		
 		$res = $db->getRow($query); 
 	

@@ -283,7 +283,9 @@
 -->
 </style> 
 <script type="text/javascript" src="_js/funciones.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script>
+
 function cambiar(id){
 	document.getElementById('id').value=id;
 	document.form_alta.submit();
@@ -294,20 +296,31 @@ function cambiar_menu(url){
 	document.form_alta.submit();
 }
 
-function submitFormulario() {
-	equipo = document.form_alta.equipo.value;
-	contra = document.form_alta.pwd.value;
-	if (equipo == 0) {
-		alert("Debe seleccionar un equipo");
-	} else {
-		if (String(contra) == "" || String(contra).length < 6) {
-			alert("Debe ingresar una contraseña de mas de 6 caracteres");
-		} else {
-			document.form_alta.action = "reserva_control_ingreso.php";
-			document.form_alta.submit();
-		}
-	} 
-}
+jQuery(function($){	
+	$("#ingresar").click(function() {
+  		$("#error").html("");
+		var pwd = $("#pwd").val();
+		var equipo = $("#equipo").val();
+		$.ajax({
+			type: "POST",
+			dataType: 'html',
+			url: "reserva_control_ingreso.php",
+			data: {pwd:pwd, equipo:equipo},
+		}).done(function(respuesta){
+			if (respuesta == 0) {
+				document.form_alta.action = "reserva_menu.php";
+				document.form_alta.submit();
+			} else {
+				$("#error").html(respuesta);
+			}
+		});
+	});
+});
+
+function pulsar(e) { 
+  tecla = (document.all) ? e.keyCode :e.which; 
+  return (tecla!=13); 
+} 
 
 </script>
  </head>
@@ -364,6 +377,7 @@ function submitFormulario() {
 					<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;">RESERVA DE HORARIO DE PARTIDO</div>			
 					<br />
 					<div align="center">
+				 		<p><div id="error" style="color:#FF0000; font-weight:bold"></div></p>
 						<p><select name="equipo" id="equipo">
 							  <option value="0" selected="selected">Seleccione Su Equipo</option>	
 							  <? if($aEquipos != NULL) {
@@ -372,8 +386,8 @@ function submitFormulario() {
 							  <?	}	
 							  }?>
 							</select></p>
-						<p><input type="password" id="pwd" name="pwd" placeholder="Contraseña" style="text-align:center"></p>
-						<p><input name="ingresar" type="button" value="Ingresar" onclick="submitFormulario()"/></p>
+						<p><input type="password" id="pwd" name="pwd" placeholder="Contraseña" style="text-align:center" onkeypress="return pulsar(event)"></p>
+						<p><input type="button" name="ingresar" id="ingresar" value="Ingresar"/></p>
 					</div>
 				</div>	
 			</div>
