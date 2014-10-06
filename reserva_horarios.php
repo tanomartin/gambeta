@@ -301,11 +301,12 @@ jQuery(function($){
   		$("#error").html("");
 		var pwd = $("#pwd").val();
 		var equipo = $("#equipo").val();
+		var id = $("#id").val();
 		$.ajax({
 			type: "POST",
 			dataType: 'html',
 			url: "reserva_control_ingreso.php",
-			data: {pwd:pwd, equipo:equipo},
+			data: {pwd:pwd, equipo:equipo, id:id},
 		}).done(function(respuesta){
 			if (respuesta == 0) {
 				document.form_alta.action = "reserva_menu.php";
