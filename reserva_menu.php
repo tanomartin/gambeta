@@ -1,31 +1,55 @@
 <?  include_once "include/config.inc.php";
+	include_once "include/fechas.php";
 	include_once "model/torneos.categorias.php";
 	include_once "model/equipos.php";
 	include_once "model/torneos.php";
 	include_once "model/categorias.php";
 	include_once "model/fechas.php";
+	include_once "model/reservas.php";
+	include_once "model/fixture.php";
+	include_once "model/sedes.php";
 	
+	//OBTENGO EL TORENO CON SU ZONA Y CATETEGORIA
 	$oObj = new Torneos();
 	$oTorneo = $oObj->getByTorneoCat($_SESSION['id']);
-	
 	$idTorneo = $oTorneo->id_torneo;
 	$idZona = $oTorneo->id_categoria;
 	$idCategoria = $oTorneo->id_padre;
-
-	$oEquipo = new Equipos();
-	$equipo = $oEquipo->getById($_SESSION['equipo']);
-
 	$torneo = $oObj->get($idTorneo);
 	$oCategoria = new Categorias();
 	$zona = $oCategoria->get($idCategoria);
 	$categoria = $oCategoria->get($idZona);
+
+	//OBTENGO EL EQUIPO
+	$oEquipo = new Equipos();
+	$equipo = $oEquipo->getById($_SESSION['equipo']);
 	
+	//OBTENGO LA FECHA ACTIVA
 	$oFechas = new Fechas();
 	$fecha_activa = $oFechas->getFechaActiva($_SESSION['id']);
+	
+	//CONTROLO QUE EXISTA UNA FECHA ACITVA
 	if ($fecha_activa!=NULL) {
-		$horas_fecha = $oFechas->getHorasCancha( $fecha_activa["id"]);
-	} else {
-
+		//VEO SI YA EXISTE PARTIDO
+		$oFixture = new Fixture();
+		$partido = $oFixture->getByEquipo($_SESSION['id'],$_SESSION['equipo']);
+		//VEO SI EXISTE UNA RESERVA PARA ESTE EQUIPO
+		if ($partido == NULL) {	
+			$idReserva = $oEquipo->tieneReserva($fecha_activa["id"],$_SESSION['equipo']);
+			if ($idReserva == 0) {
+				//OBETENGO HORAS Y SI EL EQUIPO YA PIDIO FECHA LIBRE PARA ESTE TORNEO
+				$horas_fecha = $oFechas->getHorasCancha($fecha_activa["id"]);
+				$fechaLibre = $oEquipo->tieneFechaLibre($_SESSION['id'],$_SESSION['equipo']);
+			} else {
+				//OBTENGO LA RESERVA
+				$oReserva = new Reservas();
+				$reserva = $oReserva->getReservaById($idReserva);
+				if ($reserva->fecha_libre == 0) {
+					//OBTENGO EL DETALLE DE LA RESERVA
+					$detalleReserva = $oReserva->getDetalleReservaById($idReserva);
+				}
+			}
+		}
 	}
 	$color = $oTorneo->color;
 ?>
@@ -42,7 +66,8 @@
 	<link rel="stylesheet" href="css/menu_izq.css" type="text/css">
 	<link rel="stylesheet" href="css/paginas.css" type="text/css">
 	<link rel="stylesheet" href="css/equipos.css" type="text/css">
-    
+	<link rel="stylesheet" href="css/fixture.css" type="text/css">
+	
 <style type="text/css">
 	<!--
 
@@ -296,13 +321,92 @@
 <script type="text/javascript" src="_js/funciones.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script>
+
+function controlLibre() {
+ 	var grupo = document.getElementById("carga_reserva").horas;
+	var controlCheck = 0;
+	for (i = 0; lcheck = grupo[i]; i++) {
+        if (lcheck.checked) {
+            controlCheck = 1;
+        }
+    }
+	if (controlCheck == 1) {
+		document.getElementById("libre").disabled = true;
+	} else {
+		document.getElementById("libre").disabled = false;
+	}
+}
+
+function controlHoras() {
+	var libre = document.getElementById("libre");
+	var grupo = document.getElementById("carga_reserva").horas;
+	var total = grupo.length;
+	if (libre.checked) { 	
+		if (total == null) {
+			grupo.disabled = true;
+		} else {
+			for (i = 0; lcheck = grupo[i]; i++) {
+				lcheck.disabled = true;
+			}
+		}
+	 } else {
+	 	if (total == null) {
+			grupo.disabled = false;
+		} else {
+			for (i = 0; lcheck = grupo[i]; i++) {
+				lcheck.disabled = false;
+			}
+		}
+	 }
+}
+
+function validar(formulario) {
+	var libre = document.getElementById("libre");
+	var grupo = document.getElementById("carga_reserva").horas;
+	if (libre != null) {
+		if (libre.checked) { 	
+			return true;
+		} else {
+			var controlCheck = 0;
+			for (i = 0; lcheck = grupo[i]; i++) {
+				if (lcheck.checked) {
+					controlCheck++;
+				}
+			}
+			if (controlCheck < 4) {
+				alert("Debe seleccionar como mínimo 4 horas");
+				return false;
+			} else {
+				return true;
+			}
+		}	
+	} else {
+		var controlCheck = 0;
+		for (i = 0; lcheck = grupo[i]; i++) {
+			if (lcheck.checked) {
+				controlCheck++;
+			}
+		}
+		if (controlCheck < 4) {
+			alert("Debe seleccionar como mínimo 4 horas");
+			return false;
+		} else {
+			return true;
+		}
+	}
+}
+
+function confirmarPartido(idPartido) {
+	var direccion = "reserva_confirma_partido.php?idPartido="+idPartido;
+	location.href=direccion;
+}
+
+
 </script>
 </head>
    
 <body align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
-<form id="carga_reserva" name="carga_reserva" action="" method="post">
-	<input name="id" id="id"  value="<?= $id ?>" type="hidden" />
-    <input name="color" id="color"  value="<?= $color ?>" type="hidden" />
+<form id="carga_reserva" name="carga_reserva" onsubmit="return validar(this)" action="reserva_guardar.php" method="post">
 	<div id="wrap">
 		 <div id="encabezado">
 			<div id="cabezal">
@@ -321,24 +425,76 @@
                 </div>
 				<br>
 			   <div id="reserva">	
-					<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;"><font color="#000000"><?= strtoupper ($equipo->nombre) ?></font> | <? echo $fecha_activa["nombre"] ?></div>
-					<br /><br />
-					<div class="titulo_reserva" style="float:left;">Horarios Disponibles</div>
-					<br /><br />
-					<div style="text-align:left; width:500px">
-						<?  
-							foreach ($horas_fecha as $hora) {
-								print("<input type='checkbox' value='".$hora["id"]."'> ".$hora["descripcion"]." | </input>");
-						} ?>
-					</div>
-					<br />
-					<div class="titulo_reserva" style="float:left;">Fecha Libre <input type='checkbox' value='libre'></input></div>
-					<br /><br />
-					<div style="float:left;">
-						<textarea name="observacion" id="observacion" placeholder="Observacion" cols="50" rows="4" style="float:left;"></textarea>
-					</div>
-					<input type="button" name="reservar" value="Reservar" />
-					
+					<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;"><font color="#000000"><?= strtoupper ($equipo->nombre) ?></font> | <? echo $fecha_activa["nombre"] ?></div><br /><br />
+					<? if ($fecha_activa != NULL && $idReserva == 0 && $partido == NULL) {	?>
+						<input type="text" id="id_fecha" name="id_fecha" value="<?= $fecha_activa["id"] ?>" style="visibility:hidden"/>
+						<div class="titulo_reserva" style="float:left;">Horarios Disponibles</div>
+						<br /><br />
+						<div style="text-align:left; width:500px">
+							<?  
+								foreach ($horas_fecha as $hora) {
+									print("<input type='checkbox' id='horas' name='hora".$hora["id_horas_cancha"]."' value='".$hora["id_horas_cancha"]."' onclick='controlLibre()'> ".$hora["descripcion"]." | </input>");
+								} 
+							?>
+						</div>
+						<br />
+							<? if (!$fechaLibre) { ?>
+								<div class="titulo_reserva" style="float:left;">Fecha Libre <input type='checkbox' name='libre' id='libre' value='libre' onclick='controlHoras()'></input></div>
+							<? } else { ?>
+								<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;">El equipo ya pidio fecha libre</div>
+							<? } ?> 
+						<br /><br />
+						<div style="float:left;">
+							<textarea name="observacion" id="observacion" placeholder="Observacion" cols="62" rows="4" style="float:left;"></textarea>
+						</div>
+						<br /><br /><br /><br />
+						<div style="float:left;">
+							<input type="submit" name="reservar" value="Reservar" />
+						</div>
+					<? } else { 
+							if ($fecha_activa == NULL) {?>
+								<div class="titulo_reserva" style="float:center;">No hay fecha activa para el torneo en el cual estan inscriptas</div>
+						 <? } else { 
+						 		if($partido == NULL) {  ?>	
+									<div style="text-align:left; width:500px">
+									<? if ($reserva->fecha_libre == 1) { ?>
+											<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;">El equipo pidio Fecha Libre</div><br />
+									<? } else {?>
+											<div class="titulo_reserva" style="float:left;">Horarios Pedidos</div><br /><br />
+										<?	foreach ($detalleReserva as $horas) {
+												print("<li>".$horas["descripcion"]."</li>");
+											} 
+										} ?>
+										</div>
+										<br />
+										<div class="titulo_reserva" style="float:left;">
+											Observación: <?= $reserva->observacion ?>
+										</div>
+							 <? } else { ?>
+							 		<div class="titulo_reserva" style="float:left;">Confirmarción de Partido</div>
+							 	<? for ($p=0; $p<count($partido); $p++) {?>	
+									<div id="partido_<?= $color ?>" style="margin-left:-25px">
+										<div id="fixture_nro_partido"><?="X" ?></div>
+										<div id="fixture_sede"><? $oSedes = new Sedes(); $sede = $oSedes->getById($partido[$p]['idSede']); echo strtoupper($sede->nombre) ?></div>
+										<div id="fixture_cancha"><?= strtoupper ($partido[$p]['cancha']); ?></div>
+										<div id="fixture_equipo1"><?= strtoupper ($partido[$p]['equipo1']); ?></div>
+										
+										<? 	
+											$confirmado = $oFixture->partidoConfirmado($partido[$p]['id'],$_SESSION['equipo']);
+											if(!$confirmado) { ?>
+											<div id="fixture_resultado1" style="margin-left:-55px"> <input type="button" name="confirmar" id="confirmar" value="Confirmar" onclick="confirmarPartido(<?= $partido[$p]['id'] ?>)" /></div>
+										<? } else { ?>
+											<div id="fixture_resultado1" style="margin-left:-55px; font-size:12px; color:#009900">Confirmado</div>
+										<? } ?> 		
+										<div id="fixture_horaPartido" style="margin-left:15px"><?= strtoupper ($partido[$p]['horaPartido']); ?></div>
+										<div id="fixture_fechaPartido" class="fixture_color_<?= $color ?>"><?= cambiaf_a_normal($partido[$p]['fechaPartido']); ?></div>
+										<div id="fixture_equipo2"><?= strtoupper ($partido[$p]['equipo2']); ?></div>
+									</div>
+									
+							 	<?  }
+							 	}
+							 }  ?>				
+					<? } ?> 
 			    </div>
 			</div>
         </div>   

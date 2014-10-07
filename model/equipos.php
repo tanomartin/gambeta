@@ -316,6 +316,38 @@ class Equipos {
 		}
 	}
 
+	function tieneFechaLibre($idTorneo="", $idEquipo= "") {
+		$db = new Db();
+		
+		$query = "Select count(*) as cantidad from ga_reservas e, ga_fechas f where f.idTorneoCat = '$idTorneo' and f.id = e.id_fecha and e.id_equipo = '$idEquipo' and e.fecha_libre = 1";
+
+		$res = $db->getRow($query); 
+	
+		$db->close();
+		
+		if($res->cantidad == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	function tieneReserva($idFecha="", $idEquipo= "") {
+		$db = new Db();
+		
+		$query = "Select e.id as id from ga_reservas e where id_Fecha = '$idFecha' and id_equipo = '$idEquipo'";
+		
+		$res = $db->getRow($query); 
+	
+		$db->close();
+		
+		if($res->id == 0) {
+			return 0;
+		} else {
+			return $res->id;
+		}
+	}
+
 }
 
 ?>
