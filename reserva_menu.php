@@ -325,26 +325,27 @@
 					<br /><br />
 					<div class="titulo_reserva" style="float:left;">Horarios Disponibles</div>
 					<br /><br />
-					<div style="text-align:left">
+					<div style="text-align:left; width:500px">
 						<?  
 							foreach ($horas_fecha as $hora) {
-								print("<input type='checkbox' value='".$hora["id"]."'> ".$hora["descripcion"]."</input>");
-								print("<br>");
+								print("<input type='checkbox' value='".$hora["id"]."'> ".$hora["descripcion"]." | </input>");
 						} ?>
 					</div>
+					<br />
+					<div class="titulo_reserva" style="float:left;">Fecha Libre <input type='checkbox' value='libre'></input></div>
 					<br /><br />
-					<div style="text-align:left"><input type='checkbox' value='libre'>Fecha Libre </input></div>
-					<br /><br />
-					<div class="titulo_reserva" style="float:left;">Observacion</div>
-					<textarea name="observacion" id="observacion"  cols="50" rows="4" style="float:left"></textarea>
+					<div style="float:left;">
+						<textarea name="observacion" id="observacion" placeholder="Observacion" cols="50" rows="4" style="float:left;"></textarea>
+					</div>
+					<input type="button" name="reservar" value="Reservar" />
+					
 			    </div>
 			</div>
-        </div>    
-		   
+        </div>   
         <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>      
+		<div id="pie_repetir" style="float:left">
+			<div id="pie"></div>
+    	</div> 
     </div>   
     </form>
-	<div id="pie_repetir" style="float:left">
-		<div id="pie"></div>
-    </div> 
 </body>
