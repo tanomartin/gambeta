@@ -313,6 +313,8 @@ jQuery(function($){
 				document.form_alta.submit();
 			} else {
 				$("#error").html(respuesta);
+				$("#equipo").val(0);
+				$("#pwd").val("");
 			}
 		});
 	});
