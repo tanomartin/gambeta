@@ -12,13 +12,14 @@
 	$idZona = $oTorneo->id_categoria;
 	$idCategoria = $oTorneo->id_padre;
 
+	$oEquipo = new Equipos();
+	$equipo = $oEquipo->getById($_SESSION['equipo']);
+
 	$torneo = $oObj->get($idTorneo);
 	$oCategoria = new Categorias();
 	$zona = $oCategoria->get($idCategoria);
-	var_dump($zona);
-	print("<br>");
 	$categoria = $oCategoria->get($idZona);
-	var_dump($categoria);
+	
 	$oFechas = new Fechas();
 	$fecha_activa = $oFechas->getFechaActiva($_SESSION['id']);
 	if ($fecha_activa!=NULL) {
@@ -40,6 +41,7 @@
 	<link rel="stylesheet" href="css/home.css" type="text/css">
 	<link rel="stylesheet" href="css/menu_izq.css" type="text/css">
 	<link rel="stylesheet" href="css/paginas.css" type="text/css">
+	<link rel="stylesheet" href="css/equipos.css" type="text/css">
     
 <style type="text/css">
 	<!--
@@ -212,14 +214,14 @@
 		text-align:left;		
 	}
 
-	#gf{ 
+	#gf{
 		position: relative;
-		left: -380px; 
-		top: -550px; /*442*/ 
-		width: 300px; 
+		left: 480px;
+		top: -230px;
+		width: 300px;
 		height: 200px;
 		text-align:left;
-	/*	background-color:#F00*/
+		/*background-color: #000000;*/
 	}
 
 
@@ -297,8 +299,8 @@
 </script>
 </head>
    
-<body   align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
-<form id="form_alta" name="form_alta" action="" method="post">
+<body align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
+<form id="carga_reserva" name="carga_reserva" action="" method="post">
 	<input name="id" id="id"  value="<?= $id ?>" type="hidden" />
     <input name="color" id="color"  value="<?= $color ?>" type="hidden" />
 	<div id="wrap">
@@ -317,15 +319,32 @@
             	<div id="titulo_principal" class="titulo_pagina color_titulo_<?= $color ?>">
                     <div  style="float:left; bottom:0px; position:absolute;" ><?=  strtoupper($oTorneo->nombre_pagina)." - ".$zona[0]["nombreLargo"]." - ".$categoria[0]["nombreLargo"] ?></div>
                 </div>
-                <br>
-				<div id="reserva">	
-					<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;">RESERVA DE HORARIO DE PARTIDO - <? echo $fecha_activa["nombre"] ?></div>
-				</div>	
+				<br>
+			   <div id="reserva">	
+					<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;"><font color="#000000"><?= strtoupper ($equipo->nombre) ?></font> | <? echo $fecha_activa["nombre"] ?></div>
+					<br /><br />
+					<div class="titulo_reserva" style="float:left;">Horarios Disponibles</div>
+					<br /><br />
+					<div style="text-align:left">
+						<?  
+							foreach ($horas_fecha as $hora) {
+								print("<input type='checkbox' value='".$hora["id"]."'> ".$hora["descripcion"]."</input>");
+								print("<br>");
+						} ?>
+					</div>
+					<br /><br />
+					<div style="text-align:left"><input type='checkbox' value='libre'>Fecha Libre </input></div>
+					<br /><br />
+					<div class="titulo_reserva" style="float:left;">Observacion</div>
+					<textarea name="observacion" id="observacion"  cols="50" rows="4" style="float:left"></textarea>
+			    </div>
 			</div>
-        </div>
-     	<div id="pie_repetir" style="float:left">
-			<div id="pie"></div>
         </div>    
-    </div>
+		   
+        <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>      
+    </div>   
     </form>
+	<div id="pie_repetir" style="float:left">
+		<div id="pie"></div>
+    </div> 
 </body>
