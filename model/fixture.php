@@ -115,6 +115,10 @@ class Fixture {
 		$query = "delete from ga_resultados where idFixture = ".$this->id ;
 	  
 		$db->query($query); 
+		
+		$query = "delete from ga_partidos_confirmados where id_partido = ".$this->id ;
+	  
+		$db->query($query); 
 
 		$db->close();
 	

@@ -401,6 +401,12 @@ function validar(formulario) {
 	}
 }
 
+function logout() {
+	var direccion = "logout.php";
+	location.href = direccion;
+}
+
+
 function confirmarPartido(idPartido) {
 	var direccion = "reserva_confirma_partido.php?idPartido="+idPartido;
 	location.href=direccion;
@@ -430,7 +436,10 @@ function confirmarPartido(idPartido) {
                 </div>
 				<br>
 			   <div id="reserva">	
-					<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;"><font color="#000000"><?= strtoupper ($equipo->nombre) ?></font> | <? echo $fecha_activa["nombre"] ?></div><br /><br />
+					<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;"><font color="#000000"><?= strtoupper ($equipo->nombre) ?></font> | <? echo $fecha_activa["nombre"] ?>
+					</div>
+					<input type="button" name="salir" id="salir" value="SALIR" onclick="logout()" style="float:right" />
+					<br /><br />
 					<? if ($fecha_activa != NULL && $idReserva == 0 && $partido == NULL) {	?>
 						<input type="text" id="id_fecha" name="id_fecha" value="<?= $fecha_activa["id"] ?>" style="visibility:hidden"/>
 						<div class="titulo_reserva" style="float:left;">Horarios Disponibles</div>
@@ -487,7 +496,9 @@ function confirmarPartido(idPartido) {
 										<? 	
 											$confirmado = $oFixture->partidoConfirmado($partido[$p]['id'],$_SESSION['equipo']);
 											if(!$confirmado) { ?>
-											<div id="fixture_resultado1" style="margin-left:-55px"> <input type="button" name="confirmar" id="confirmar" value="Confirmar" onclick="confirmarPartido(<?= $partido[$p]['id'] ?>)" /></div>
+											<div id="fixture_resultado1" style="margin-left:-55px"> 
+									<input type="button" name="confirmar" id="confirmar" value="Confirmar" onclick="confirmarPartido(<?= $partido[$p]['id'] ?>)" />
+											</div>
 										<? } else { ?>
 											<div id="fixture_resultado1" style="margin-left:-55px; font-size:12px; color:#009900">Confirmado</div>
 										<? } ?> 		

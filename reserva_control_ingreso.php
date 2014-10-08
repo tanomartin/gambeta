@@ -1,12 +1,6 @@
 <?  include_once "include/config.inc.php";
 	include_once "model/equipos.php";
 	
-	if(!session_is_registered("equipo")){
-		header("Location: index.php");
-		exit;
-	}
-
-	
 	if ($_POST['equipo'] != 0 && $_POST['pwd'] != "") {
 		$oObj = new Equipos();
 		$ingresa = $oObj->accesoCorrecto($_POST['equipo'],$_POST['pwd']);
