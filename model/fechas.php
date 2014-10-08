@@ -66,6 +66,11 @@ class Fechas {
 		$query = "delete from ga_fechas where id = ".$this->id ;
 	  
 		$db->query($query); 
+		
+		$query = "delete from ga_fechas_horas where id_fecha = ".$this->id ;
+		
+		$db->query($query); 
+		
 		$db->close();
 	
 	}
@@ -221,6 +226,31 @@ class Fechas {
 		
 		return $datos[0];
 	}
+	
+	function setHorasCancha($id_fecha="",$id_horas_cancha="") {
+		
+		$db = new Db();
+		
+		$query = "Insert into ga_fechas_horas(id_fecha, id_horas_cancha) values($id_fecha,$id_horas_cancha)";
+
+		$db->query($query); 
+		
+		$db->close();
+		
+	}
+	
+	function deleteHorasCancha($id_fecha="") {
+		
+		$db = new Db();
+		
+		$query = "delete from ga_fechas_horas where id_fecha = id_fecha";
+		
+		$db->query($query); 
+		
+		$db->close();
+		
+	}
+	
 }
 
 ?>

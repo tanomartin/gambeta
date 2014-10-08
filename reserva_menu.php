@@ -9,6 +9,11 @@
 	include_once "model/fixture.php";
 	include_once "model/sedes.php";
 	
+	if(!session_is_registered("equipo")){
+		header("Location: index.php");
+		exit;
+	}
+	
 	//OBTENGO EL TORENO CON SU ZONA Y CATETEGORIA
 	$oObj = new Torneos();
 	$oTorneo = $oObj->getByTorneoCat($_SESSION['id']);

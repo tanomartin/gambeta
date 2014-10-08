@@ -2,23 +2,22 @@
 	include_once "../model/torneos.php";
 	include_once "../model/torneos.categorias.php";	
 	include_once "../model/fechas.php";	
-	
+	include_once "../model/categorias.php";	
+	include_once "../model/horas_cancha.php";	
 	
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
 		exit;
 	}
 
-	$operacion = "Alta";
-
-	if ($_POST["id"] != -1) {
+	$operacion = "Carga Horas de Cancha Disponibles";
+	$oFecha= new Fechas();
+	$datos = $oFecha->get($_POST["id"]);
+//	$datos = decodeUTF8($datos);	
 	
-		$operacion = "Modificaci&oacute;n";
-
-		$oFecha= new Fechas();
-		$datos = $oFecha->get($_POST["id"]);
-
-//		$datos = decodeUTF8($datos);	
+	$horasCargadas = $oFecha->getHorasCancha($_POST["id"]);
+	if ($horasCargadas != NULL) {
+		$operacion = "Modificacion Horas de Cancha Disponibles";
 	}
 	
 	$disabled = "";
@@ -27,7 +26,10 @@
 		$disabled = "disabled";
 
 	$oTorneo= new Torneos();
-	$aTorneos = $oTorneo->get();
+	$aTorneos = $oTorneo->getByTorneoCat($datos[0]["idTorneoCat"]);
+
+	$oHoras = new HorasCancha();
+	$horas = $oHoras->getHorasDisponibles();
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -48,8 +50,24 @@
 
 	function volver(){
 	
-		document.form_alta.accion.value = "volver";		
-		document.form_alta.submit();
+		document.form_horas.accion.value = "volver";		
+		document.form_horas.submit();
+	}
+	
+	function validar() {
+		var grupo = document.getElementById("form_horas").horas;
+		var controlCheck = 0;
+		for (i = 0; lcheck = grupo[i]; i++) {
+			if (lcheck.checked) {
+				controlCheck++;
+			}
+		}
+		if (controlCheck < 4) {
+			alert("Debe seleccionar como mínimo 4 horas");
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 </script>
@@ -110,14 +128,13 @@
 <div class="mod_article block" id="register">
 
 <div class="ce_text block">
-	<h1><?=$operacion?>
-	   del Equipo</h1>
+	<h1><?=$operacion?> de Fechas</h1>
 </div>
 
 <!-- indexer::stop -->
 <div class="mod_registration g8 tableform block">
 
-<form name="form_alta" id="form_alta" action="<?=$_SERVER['PHP_SELF']?>" method="post"  enctype="multipart/form-data"> 
+<form name="form_horas" id="form_horas" action="guardar_horas_cancha.php" onsubmit="return validar(this)" method="post"  enctype="multipart/form-data"> 
 
 
 <input name="id" id="id"  value="<?=$_POST["id"]?>" type="hidden" />
@@ -140,85 +157,38 @@
 	<div class="ce_table">
 	
 	<fieldset>
-	<legend>Datos del Equipo
-
-	</legend><table summary="Personal data" cellpadding="0" cellspacing="0">
-  	<tbody>
-      <tr class="even">
-        <td class="col_0 col_first"><label for="nombre">Nombre</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"><input name="nombre" id="nombre" class="required text" maxlength="50" type="text" value="<?=$datos[0]["nombre"]?>" size="50"  <?= $disabled ?>></td>
-      </tr>  
-    
-      <tr class="odd">
-        <td class="col_0 col_first"><label for="nombre">Torneo</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last">
-         <select name="idTorneo" id='idTorneo' <?= $disabled ?> class="validate-selection" onChange="clearCategoria('idTorneoCat');
-         	return listOnChange('idTorneo', '','categoriaList','categoria_data2.php','advice1','idTorneoCat','idTorneoCat');" >
-            <option value="-1">Seleccione un Torneo...</option>
-		 	<?php for($i=0;$i<count($aTorneos);$i++) { ?>	
-				<option value="<?php echo $aTorneos[$i]['id'] ?>" <?php if ($datos[0]["id_torneo"] ==   $aTorneos[$i]['id'] ) echo "selected"; ?>><?php echo $aTorneos[$i]['nombre'] ?>
-                </option>
-             <?php } ?>	   
-         	</select>
-         </td>   
-      </tr>  
-
-      <tr class="even">
-        <td class="col_0 col_first"><label for="nombre">Categoría</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"> 
-		<span id="categoriaList">
-				<select name="idTorneoCat" id="idTorneoCat" <?= $disabled ?> class="validate-selection" >
-					<option value="-1">Seleccione antes un Torneo...</option>
-						<?
-						 if($datos[0]["id_torneo"]) {
-							$oTorneoCat = new TorneoCat();
-							$aTorneoCat = $oTorneoCat->getByTorneoFechas($datos[0]["id_torneo"]);
-
-							for ($i=0;$i<count($aTorneoCat);$i++) 
-							{
-						?>	
-							 <option <? if($aTorneoCat[$i]["id"] == $datos[0]["idTorneoCat"]) echo "selected"; ?> value="<?=$aTorneoCat[$i]["id"]?>"><?=$aTorneoCat[$i]["nombreLargo"]?> <? if ( $aTorneoCat[$i]["nombreCat"] != "" ){ echo "- ". $aTorneoCat[$i]["nombreCat"]; } ?></option>
-							
-						<?							
-							}
-						 }
-						?>
-						</select> 
-            <span id="advice1"> </span>
-			</span>	
-        </td>    
-      </tr>  
-      <tr class="odd">
-        <td class="col_0 col_first"><label for="nombre">Fecha Inicio<span class="mandatory">*</span></label></td>
-        <td class="col_1 col_last"> 
-	            <input name="fechaIni" type="text" id="fechaIni" value="<?php echo cambiaf_a_normal($datos[0]['fechaIni']);?>" size="10" readonly="readonly" />
-                <a href="javascript:show_calendar('document.form_alta.fechaIni', document.form_alta.fechaIni.value);">
-                        <img src="../_js/calendario2/cal.gif" width="16" height="16" border="0" />
-				</a>  
-         </td>
-       </tr>    
-      <tr class="even">
-        <td class="col_0 col_first"><label for="nombre">Fecha Fin</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"> 
-	            <input name="fechaFin" type="text" id="fechaFin" value="<?php echo cambiaf_a_normal($datos[0]['fechaFin'])?>" size="10" readonly="readonly" />
-                <a href="javascript:show_calendar('document.form_alta.fechaFin', document.form_alta.fechaFin.value);">
-                        <img src="../_js/calendario2/cal.gif" width="16" height="16" border="0" />
-				</a>  
-         </td>
-      </tr>  
-	</tbody>
-	</table>
+	<legend>Horas de Canchas Disponibles</legend>
+	<legend><?=$datos[0]["nombre"]." - ".$datos[0]["torneo"]. " - ".$datos[0]["categoria"] ?></legend>
+		<p><div style="width:490px">
+		<?  
+			if ($horasCargadas != NULL) {
+				foreach ($horas as $hora) {
+					$checked = 0;
+					foreach ($horasCargadas as $hc) {
+						if ($hora['id'] == $hc['id_horas_cancha'] && $checked == 0) {
+							print("<input type='checkbox' id='horas' name='hora".$hora["id"]."' value='".$hora["id"]."' checked> ".$hora["descripcion"]." | </input>"); 
+							$checked = 1;
+						}
+					}
+					if ($checked == 0) {
+						print("<input type='checkbox' id='horas' name='hora".$hora["id"]."' value='".$hora["id"]."'> ".$hora["descripcion"]." | </input>"); 
+					}
+				}
+			} else {
+				foreach ($horas as $hora) {
+					print("<input type='checkbox' id='horas' name='hora".$hora["id"]."' value='".$hora["id"]."'> ".$hora["descripcion"]." | </input>"); 
+				}
+			} 
+		?>
+		</div>
+		</p>
 	</fieldset>
 
     <div class="submit_container">
-   <? if ( $disabled  == "" ) { ?>
-   	 <input class="submit" onclick="valirdarForm_submit('form_alta')" type="button" value="Guardar" /> 
-    <? } ?>
-<!--    <input class="submit" type="button" value="Limpiar" onclick="javascript:limpiar('form_alta');" />-->
-    <input class="submit" type="button" value="Volver" onclick="javascript:volver();" />
-    
-    
-    
+	   <? if ( $disabled  == "" ) { ?>
+		 <input class="submit" type="submit" value="Guardar" /> 
+		<? } ?>
+		<input class="submit" type="button" value="Volver" onclick="javascript:volver();" />
     </div>
     </div>
 </div>
@@ -229,28 +199,16 @@
 
 
 <div class="ce_text g4 xpln block">
-
-	<p><strong>Datos del Equipo</strong><br>
-	Ingrese los datos del Equipo.</p>
-	<p>Los campos marcados con <span class="mandatory">*</span> son de ingreso obligatorio.</p>
-
+	<p><strong>Carga de Horas disponibles</strong></p>
+	<p>Debe Elegir como mínimo 4 horas para la fecha</p>
 </div>
-
 <div class="clear"></div>
-
 </div>
-
 </div>
-
 	<div id="clear"></div>
-
 </div>
-
 </div>
-
 <? include("pie.php")?>
-
-
 </body>
 
 </html>

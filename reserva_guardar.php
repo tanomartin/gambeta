@@ -1,6 +1,11 @@
 <?  include_once "include/config.inc.php";
 include_once "model/reservas.php";
 
+if(!session_is_registered("equipo")){
+	header("Location: index.php");
+	exit;
+}
+
 $reserva = new Reservas();
 $valores["id_fecha"] = $_POST['id_fecha'];
 $valores["id_equipo"] = $_SESSION['equipo'];
