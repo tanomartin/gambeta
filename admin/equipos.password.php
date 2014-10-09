@@ -1,4 +1,6 @@
-<?	include_once "include/fechas.php";
+<?	
+	include_once "include/config.inc.php";
+	include_once "include/fechas.php";
 	include_once "../model/torneos.php";
 	include_once "../model/torneos.categorias.php";	
 	include_once "../model/equipos.php";	
@@ -37,7 +39,7 @@
 
 <? include("encabezado.php"); ?>
 
-
+<script type="text/javascript" src="../js/jquery.js"></script>
 <script language="javascript">
 		
 	function volver(){
@@ -46,9 +48,10 @@
 	}
 	
 	function validar() {
+		$('#error').html("");
 		var pass = document.getElementById("form_alta").pass.value;
 		if (pass  == "") {
-			alert("Debe ingresar una contraseña");
+			$('#error').html("* Debe ingresar una contraseña");
 			return false;
 		}
 		document.forms.form_alta.action = "guardar_pass_reserva.php";
@@ -161,7 +164,7 @@
       </tr>  
 	   <tr class="odd">
         <td class="col_0 col_first"><label for="nombre">Contraseña</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"><input type="text" name="pass" id="pass"/></td>    
+		<td class="col_1 col_last"><div id="error" style="color:#CC3300; font-weight:bold"></div><input type="text" name="pass" id="pass"/></td>    
       </tr>  
 	</tbody>
 	</table>

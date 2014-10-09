@@ -4,6 +4,7 @@
 	include_once "../model/fechas.php";	
 	include_once "../model/categorias.php";	
 	include_once "../model/horas_cancha.php";
+	include_once "include/config.inc.php";
 	
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
@@ -45,7 +46,7 @@
 
 <? include("encabezado.php"); ?>
 
-
+<script type="text/javascript" src="../js/jquery.js"></script>
 <script language="javascript">
 	
 	function volver(){
@@ -55,6 +56,7 @@
 
 
 	function validar() {
+		$('#error').html("");
 		var grupo = document.getElementById("form_alta").horas;
 		var controlCheck = 0;
 		for (i = 0; lcheck = grupo[i]; i++) {
@@ -63,7 +65,7 @@
 			}
 		}
 		if (controlCheck < 4) {
-			alert("Debe seleccionar como mínimo 4 horas");
+			$('#error').html("* Debe seleccionar como mínimo 4 horas");
 			return false;
 		} else {
 			document.forms.form_alta.action = "guardar_horas_cancha.php";
@@ -160,6 +162,7 @@
 	<fieldset>
 	<legend>Horas de Canchas Disponibles</legend>
 	<legend><?=$datos[0]["nombre"]." - ".$datos[0]["torneo"]. " - ".$datos[0]["categoria"] ?></legend>
+		<p><div id="error" style="color:#CC3300; font-weight:bold"></div></p>
 		<p><div style="width:490px">
 		<?  
 			$i = 1;

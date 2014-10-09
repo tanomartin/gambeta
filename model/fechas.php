@@ -243,7 +243,7 @@ class Fechas {
 		
 		$db = new Db();
 		
-		$query = "delete from ga_fechas_horas where id_fecha = id_fecha";
+		$query = "delete from ga_fechas_horas where id_fecha = $id_fecha";
 		
 		$db->query($query); 
 		

@@ -61,7 +61,7 @@
     
 	<? if (strpos($_SERVER['PHP_SELF'], "index.php") == 0 ) {?>
 
-	<li class="<? if( $_POST["menu"]== "General") echo "active"; ?>  submenu "><span class="submenu">General</span>
+	<li class="<? if( $menu == "General") echo "active"; ?>  submenu "><span class="submenu">General</span>
 	  <ul style="visibility: visible; opacity: 1;" class="level_2">
 	    <li class="first"> 
 	      <a href="#" title="Mailing"  class="first"  onclick="this.blur(); ir('Mailing', '', 'mailing.php', 'mailing.php')">Mailing</a>
@@ -70,7 +70,7 @@
     </li> 
 
 
-	<li class="<? if( $_POST["menu"]== "Reservas") echo "active"; ?>  submenu "><span class="submenu">Gesti&oacute;n de Reservas</span>
+	<li class="<? if( $menu == "Reservas") echo "active"; ?>  submenu "><span class="submenu">Gesti&oacute;n de Reservas</span>
 	  <ul style="visibility: visible; opacity: 1;" class="level_2">
 	    <li class="first"> 
 	      <a href="#" title="Reservas"  class="first"  onclick="this.blur(); ir('Reservas', '', 'reservas.php', 'reservas.php')">Reservas</a>
