@@ -39,6 +39,11 @@
 
 
 <script language="javascript">
+		
+	function volver(){
+		document.form_alta.accion.value = "volver";
+		document.form_alta.submit();
+	}
 	
 	function validar() {
 		var pass = document.getElementById("form_alta").pass.value;
@@ -46,6 +51,8 @@
 			alert("Debe ingresar una contraseña");
 			return false;
 		}
+		document.forms.form_alta.action = "guardar_pass_reserva.php";
+		document.forms.form_alta.submit();
 		return true;
 	}
 
@@ -113,7 +120,7 @@
 <!-- indexer::stop -->
 <div class="mod_registration g8 tableform block">
 
-<form name="form_alta" id="form_alta" action="guardar_pass_reserva.php" onsubmit="return validar()" method="post"  enctype="multipart/form-data"> 
+<form name="form_alta" id="form_alta" action="<?=$_SERVER['PHP_SELF']?>" onsubmit="return validar()" method="post"  enctype="multipart/form-data"> 
 
 
 <input name="id" id="id"  value="<?=$_POST["id"]?>" type="hidden" />
@@ -162,9 +169,9 @@
 
     <div class="submit_container">
    <? if ( $disabled  == "" ) { ?>
-   	 <input class="submit" type="submit" value="Guardar" /> 
+   	 <input class="submit" onclick="validar()" type="button" value="Guardar" /> 
     <? } ?>
-<!--    <input class="submit" type="button" value="Limpiar" onclick="javascript:limpiar('form_alta');" />-->
+   <input class="submit" type="button" value="Volver" onclick="javascript:volver();" />
 
     </div>
     </div>

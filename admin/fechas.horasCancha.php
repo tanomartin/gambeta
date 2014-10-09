@@ -3,7 +3,7 @@
 	include_once "../model/torneos.categorias.php";	
 	include_once "../model/fechas.php";	
 	include_once "../model/categorias.php";	
-	include_once "../model/horas_cancha.php";	
+	include_once "../model/horas_cancha.php";
 	
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
@@ -48,8 +48,14 @@
 
 <script language="javascript">
 	
+	function volver(){
+		document.form_alta.accion.value = "volver";
+		document.form_alta.submit();
+	}
+
+
 	function validar() {
-		var grupo = document.getElementById("form_horas").horas;
+		var grupo = document.getElementById("form_alta").horas;
 		var controlCheck = 0;
 		for (i = 0; lcheck = grupo[i]; i++) {
 			if (lcheck.checked) {
@@ -60,7 +66,8 @@
 			alert("Debe seleccionar como mínimo 4 horas");
 			return false;
 		} else {
-			return true;
+			document.forms.form_alta.action = "guardar_horas_cancha.php";
+			document.forms.form_alta.submit();
 		}
 	}
 
@@ -128,7 +135,7 @@
 <!-- indexer::stop -->
 <div class="mod_registration g8 tableform block">
 
-<form name="form_horas" id="form_horas" action="guardar_horas_cancha.php" onsubmit="return validar()" method="post"  enctype="multipart/form-data"> 
+<form name="form_alta" id="form_alta" action="<?=$_SERVER['PHP_SELF']?>" method="post"  enctype="multipart/form-data"> 
 
 
 <input name="id" id="id"  value="<?=$_POST["id"]?>" type="hidden" />
@@ -196,8 +203,10 @@
 
     <div class="submit_container">
 	   <? if ( $disabled  == "" ) { ?>
-		 <input class="submit" type="submit" value="Guardar" /> 
+		 <input class="submit" onclick="validar()" type="button" value="Guardar" /> 
 		<? } ?>
+		 <input class="submit" type="button" value="Volver" onclick="javascript:volver();" />
+		
     </div>
     </div>
 </div>
