@@ -1,35 +1,27 @@
-<?
+<?	include_once "include/fechas.php";
 	include_once "../model/torneos.php";
 	include_once "../model/torneos.categorias.php";	
-	include_once "../model/fechas.php";	
-	include_once "../model/categorias.php";	
-	include_once "../model/horas_cancha.php";	
+	include_once "../model/equipos.php";	
+    include_once "../model/fckeditor.class.php" ;
 	
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
 		exit;
 	}
 
-	$operacion = "Carga Horas de Cancha Disponibles";
-	$oFecha= new Fechas();
-	$datos = $oFecha->get($_POST["id"]);
-//	$datos = decodeUTF8($datos);	
+	$operacion = "Alta";	
+
+	$oEquipo= new Equipos();
+	$datos = $oEquipo->get($_POST["id"]);
 	
-	$horasCargadas = $oFecha->getHorasCancha($_POST["id"]);
-	if ($horasCargadas != NULL) {
-		$operacion = "Modificacion Horas de Cancha Disponibles";
+    $password = $oEquipo->getPassword($_POST["id"]);	
+	if ($password != NULL) {
+		 $operacion = "Modificaci&oacute;n";
 	}
 	
 	$disabled = "";
-	
-	if( $_POST['accion'] == 'ver')
-		$disabled = "disabled";
-
 	$oTorneo= new Torneos();
-	$aTorneos = $oTorneo->getByTorneoCat($datos[0]["idTorneoCat"]);
-
-	$oHoras = new HorasCancha();
-	$horas = $oHoras->getHorasDisponibles();
+	$aTorneos = $oTorneo->get();
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -49,19 +41,12 @@
 <script language="javascript">
 	
 	function validar() {
-		var grupo = document.getElementById("form_horas").horas;
-		var controlCheck = 0;
-		for (i = 0; lcheck = grupo[i]; i++) {
-			if (lcheck.checked) {
-				controlCheck++;
-			}
-		}
-		if (controlCheck < 4) {
-			alert("Debe seleccionar como mínimo 4 horas");
+		var pass = document.getElementById("form_alta").pass.value;
+		if (pass  == "") {
+			alert("Debe ingresar una contraseña");
 			return false;
-		} else {
-			return true;
 		}
+		return true;
 	}
 
 </script>
@@ -122,13 +107,13 @@
 <div class="mod_article block" id="register">
 
 <div class="ce_text block">
-	<h1><?=$operacion?> de Fechas</h1>
+	<h1><?=$operacion?> de contraseña para ingreso sistema de reserva</h1>
 </div>
 
 <!-- indexer::stop -->
 <div class="mod_registration g8 tableform block">
 
-<form name="form_horas" id="form_horas" action="guardar_horas_cancha.php" onsubmit="return validar()" method="post"  enctype="multipart/form-data"> 
+<form name="form_alta" id="form_alta" action="guardar_pass_reserva.php" onsubmit="return validar()" method="post"  enctype="multipart/form-data"> 
 
 
 <input name="id" id="id"  value="<?=$_POST["id"]?>" type="hidden" />
@@ -151,53 +136,36 @@
 	<div class="ce_table">
 	
 	<fieldset>
-	<legend>Horas de Canchas Disponibles</legend>
-	<legend><?=$datos[0]["nombre"]." - ".$datos[0]["torneo"]. " - ".$datos[0]["categoria"] ?></legend>
-		<p><div style="width:490px">
-		<?  
-			$i = 1;
-			if ($horasCargadas != NULL) {
-				foreach ($horas as $hora) {
-					$checked = 0;
-					foreach ($horasCargadas as $hc) {
-						if ($hora['id'] == $hc['id_horas_cancha'] && $checked == 0) {
-							print("<input type='checkbox' id='horas' name='hora".$hora["id"]."' value='".$hora["id"]."' checked> ".$hora["descripcion"]." | </input>"); 
-							$checked = 1;
-							$resto = $i % 4;
-							if ($resto == 0) {
-								print("<br>");
-							}
-							$i++;
-						}
-					}
-					if ($checked == 0) {
-						print("<input type='checkbox' id='horas' name='hora".$hora["id"]."' value='".$hora["id"]."'> ".$hora["descripcion"]." | </input>"); 
-						$resto = $i % 4;
-						if ($resto == 0) {
-							print("<br>");
-						}
-						$i++;
-					}
-				}
-			} else {
-				foreach ($horas as $hora) {
-					print("<input type='checkbox' id='horas' name='hora".$hora["id"]."' value='".$hora["id"]."'> ".$hora["descripcion"]." | </input>"); 
-					$resto = $i % 4;
-					if ($resto == 0) {
-						print("<br>");
-					}
-					$i++;
-				}
-			} 
-		?>
-		</div>
-		</p>
+	<legend>Contraseña ingreso Reservas</legend>
+	<table summary="Personal data" cellpadding="0" cellspacing="0">
+  	<tbody>
+      <tr class="even">
+        <td class="col_0 col_first"><label for="nombre">Nombre</label></td>
+        <td class="col_1 col_last"><?=$datos[0]['nombre']?></td>
+      </tr>  
+    
+      <tr class="even">
+        <td class="col_0 col_first"><label for="nombre">Torneo</label></td>
+        <td class="col_1 col_last"><?=$datos[0]['torneo']?></td>   
+      </tr>  
+      <tr class="even">
+        <td class="col_0 col_first"><label for="nombre">Categoría</label></td>
+        <td class="col_1 col_last"><?=$datos[0]['categoria']?></td>    
+      </tr>  
+	   <tr class="odd">
+        <td class="col_0 col_first"><label for="nombre">Contraseña</label><span class="mandatory">*</span></td>
+        <td class="col_1 col_last"><input type="text" name="pass" id="pass"/></td>    
+      </tr>  
+	</tbody>
+	</table>
 	</fieldset>
 
     <div class="submit_container">
-	   <? if ( $disabled  == "" ) { ?>
-		 <input class="submit" type="submit" value="Guardar" /> 
-		<? } ?>
+   <? if ( $disabled  == "" ) { ?>
+   	 <input class="submit" type="submit" value="Guardar" /> 
+    <? } ?>
+<!--    <input class="submit" type="button" value="Limpiar" onclick="javascript:limpiar('form_alta');" />-->
+
     </div>
     </div>
 </div>
@@ -208,16 +176,28 @@
 
 
 <div class="ce_text g4 xpln block">
-	<p><strong>Carga de Horas disponibles</strong></p>
-	<p>Debe Elegir como mínimo 4 horas para la fecha</p>
+
+	<p><strong>Datos Ingreso Sistema Reserva</strong><br>
+	Ingrese la contraseña.</p>
+	<p>Los campos marcados con <span class="mandatory">*</span> son de ingreso obligatorio.</p>
+
 </div>
+
 <div class="clear"></div>
+
 </div>
+
 </div>
+
 	<div id="clear"></div>
+
 </div>
+
 </div>
+
 <? include("pie.php")?>
+
+
 </body>
 
 </html>
