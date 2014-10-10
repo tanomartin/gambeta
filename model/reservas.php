@@ -38,7 +38,7 @@ class Reservas {
 	function getReservaByIdFecha($id_fecha="") {
 		$db = new Db();
 		
-		$query = "Select r.id as id_reserva, e.id as id_equipo, e.nombre, r.fecha_libre from ga_reservas r, ga_equipos e where r.id_fecha = '$id_fecha' and r.id_equipo = e.id";
+		$query = "Select r.id as id_reserva, e.id as id_equipo, e.nombre, r.fecha_libre, r.observacion from ga_reservas r, ga_equipos e where r.id_fecha = '$id_fecha' and r.id_equipo = e.id";
 
 		$datos = $db->getResults($query, ARRAY_A); 
 	

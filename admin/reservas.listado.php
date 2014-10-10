@@ -29,7 +29,7 @@
 			foreach($reservas as $reserva) {
 				if ($reserva['id_equipo'] == $equipo['id']) {
 					$detalle = $oReserva -> getDetalleReservaById($reserva['id_reserva']);
-					$equiposConReserva[$r] = array('id_reserva' => $reserva['id_reserva'],'id_equipo' => $reserva['id_equipo'], 'nombre' => $reserva['nombre'], 'fecha_libre' => $reserva['fecha_libre'], 'tuvo_libre' => $tuvo_libre, 'detalle' => $detalle);
+					$equiposConReserva[$r] = array('id_reserva' => $reserva['id_reserva'],'id_equipo' => $reserva['id_equipo'], 'nombre' => $reserva['nombre'], 'fecha_libre' => $reserva['fecha_libre'], 'observacion' =>  $reserva['observacion'] ,'tuvo_libre' => $tuvo_libre, 'detalle' => $detalle);
 					$r++;
 					$tiene = 1;
 				} 
@@ -61,7 +61,7 @@
 
 <? include("encabezado.php"); ?>
 
-
+<script type="text/javascript" src="../js/jquery.js"></script>
 <script language="javascript">
 
 	function eliminarReserva(reserva) {
@@ -79,6 +79,10 @@
 	function volver(){
 		document.form_alta.accion.value = "volver";		
 		document.form_alta.submit();
+	}
+	
+	function mostrarObservacion(obs) {
+		alert(obs);
 	}
 
 </script>
@@ -188,7 +192,10 @@
 														?>
 												</td>	
 												<td nowrap>
-													<a href="javascript:eliminarReserva(<?=$equipo['id_reserva']?>);"> <img border="0" src="images/icono-eliminar.gif" alt="ver" title="Editar Reserva" width="20px" height="20px" /></a>
+													<a href="javascript:eliminarReserva(<?=$equipo['id_reserva']?>);"> <img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="Eliminiar Reserva" width="20px" height="20px" /></a>
+												 <? if ($equipo['observacion'] != "") { ?>
+													<img border="0" src="images/info-icon.png" id="info" style="cursor:pointer" onclick="javascript:mostrarObservacion('<?=$equipo['observacion'] ?>');"  alt="info" width="20px" height="20px" />
+												 <? } ?>
 												</td>
 								  </tr>	
 										<?	} 
