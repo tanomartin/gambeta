@@ -32,6 +32,17 @@
 			exit;
 			break;
 			
+		case "guardarHorasCancha":
+			$oFecha = new Fechas();
+			$oFecha->deleteHorasCancha($_POST['id']);
+			foreach($_POST as $key => $value) {
+				$resultado = strpos($key, "hora");
+				if($resultado !== FALSE){
+					$oFecha->setHorasCancha($_POST['id'],$value);
+				}
+			}
+			break;
+			
 		case "guardar":	
 		
 //			$data =   decodeUTF8($_POST);

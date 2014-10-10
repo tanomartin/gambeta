@@ -1,6 +1,7 @@
 <?	include_once "include/config.inc.php";
 	include_once "include/fechas.php";
 	include_once "../model/fechas.php";
+	include_once "../model/reservas.php";
 	include_once "../model/torneos.categorias.php";
 
 	if(!session_is_registered("usuario")){
@@ -14,8 +15,60 @@
 
 	switch ($_POST["accion"]) {
 	
+		case "eliminar":
+			$reserva = new Reservas();
+			$id_reserva = $_POST['id_reserva'];
+			$reserva->eliminar($id_reserva);
+			include("reservas.listado.php");
+			exit;
+			break;
+	
+		case "guardarNueva":
+			$reserva = new Reservas();
+			$valores["id_fecha"] = $_POST['id'];
+			$valores["id_equipo"] = $_POST['id_equipo'];
+			$valores["observacion"] = $_POST['observacion'];
+			if (isset($_POST['libre'])) {
+				$valores["fecha_libre"] = 1;
+				$reserva->set($valores);
+				$reserva->insertar();
+			} else {
+				if (isset($_POST['libregambeta'])) {
+					$valores["fecha_libre"] = 2;
+					$reserva->set($valores);
+					$reserva->insertar();
+				} else {
+					$valores["fecha_libre"] = 0;
+					$reserva->set($valores);
+					$reserva->insertar();
+					if ($reserva->id != 0) {
+						foreach($_POST as $key => $value) {
+							$resultado = strpos($key, "hora");
+							if($resultado !== FALSE){
+								$valoresDetalle['id_reserva'] = $reserva->id;
+								$valoresDetalle['id_horas_cancha'] = $value;
+								$reserva->insertarDetalleReserva($valoresDetalle);
+							}
+						}
+					}
+				}
+			}
+			include("reservas.listado.php");
+			exit;
+			break;
+			
+		case "cargaredicion":
+			include("reservas.editar.php");
+			exit;
+			break;
+		
+		case "cargarnueva":
+			include("reservas.nueva.php");
+			exit;
+			break;
+	
 		case "reservas":
-			include("reservas.detalle.php");
+			include("reservas.listado.php");
 			exit;
 			break;
 	}
@@ -219,13 +272,12 @@
 			<table width="928">
 				
 				<tr>
-					<th >Id</th>
 					<th >Nombre</th>
 					<th >Fecha I.</th>
 					<th >Fecha F.</th>                                        
 					<th width="15%">Torneo</th>                                        
 					<th width="15%">Categor&iacute;a</th>                    
-					<th width="10%">Opciones</th>
+					<th width="3%"></th>
 				</tr>
 
 				<? if (count($datos) == 0) { ?>
@@ -245,13 +297,12 @@
 
 
 					<tr>
-						<td align="left"><?=$datos[$i]["id"]?></td>
 						 <td align="left"><?=$datos[$i]["nombre"]?></td>
 						 <td align="left"><?=cambiaf_a_normal($datos[$i]["fechaIni"])?></td>
 						 <td align="left"><?=cambiaf_a_normal($datos[$i]["fechaFin"])?></td>
 						 <td align="left"><?=$datos[$i]["torneo"]?></td>
 						 <td align="left"><?=$datos[$i]["categoria"]?></td>
-						 <td nowrap><a href="javascript:verReservas(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/find-icon.png" alt="ver" title="ver" width="20px" height="20px" /></a></td>
+						 <td nowrap><a href="javascript:verReservas(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/reserva-icon.png" alt="Reservas" title="Reservas" width="20px" height="20px" /></a></td>
 					</tr>
 
 				<? } }?>

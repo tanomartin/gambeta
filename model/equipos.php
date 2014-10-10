@@ -369,8 +369,6 @@ class Equipos {
 		
 		$query = "Insert into ga_equipos_pass_reserva(id,password) value ($idEquipo,'".md5($pass)."')";
 		
-		print($query);
-		
 		$db->query($query);
 	
 		$db->close();

@@ -39,7 +39,6 @@ class Reservas {
 		$db = new Db();
 		
 		$query = "Select r.id as id_reserva, e.id as id_equipo, e.nombre, r.fecha_libre from ga_reservas r, ga_equipos e where r.id_fecha = '$id_fecha' and r.id_equipo = e.id";
-		print($query);
 
 		$datos = $db->getResults($query, ARRAY_A); 
 	
@@ -87,13 +86,27 @@ class Reservas {
 				"'".$this->id_equipo."',".				
 				"'".$this->fecha_libre."',".
 				"'".$this->observacion."')";
-		print($query);
 	
 		$id = $db->query($query);
 		
 		$this->id = $id;
 		
 		$db->close(); 
+	}
+	
+	function eliminar($id_reserva) {
+		$db = new Db();
+		
+		$query = "delete from ga_detalle_reservas where id_reserva = $id_reserva";
+		
+		$db->query($query);
+		
+		$query = "delete from ga_reservas where id = $id_reserva";
+
+		$db->query($query);
+		
+		$db->close(); 
+	
 	}
 	
 }

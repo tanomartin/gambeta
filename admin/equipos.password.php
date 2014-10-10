@@ -54,8 +54,8 @@
 			$('#error').html("* Debe ingresar una contraseña");
 			return false;
 		}
-		document.forms.form_alta.action = "guardar_pass_reserva.php";
-		document.forms.form_alta.submit();
+		document.form_alta.accion.value = "guardarPassword";
+		document.form_alta.submit();
 		return true;
 	}
 

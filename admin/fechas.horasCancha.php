@@ -68,8 +68,8 @@
 			$('#error').html("* Debe seleccionar como mínimo 4 horas");
 			return false;
 		} else {
-			document.forms.form_alta.action = "guardar_horas_cancha.php";
-			document.forms.form_alta.submit();
+			document.form_alta.accion.value = "guardarHorasCancha";
+			document.form_alta.submit();
 		}
 	}
 

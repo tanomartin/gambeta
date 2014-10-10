@@ -31,6 +31,12 @@
 			exit;
 			break;
 			
+		case "guardarPassword":
+		
+			$oEquipo = new Equipos();
+			$oEquipo->setPassword($_POST['id'],$_POST['pass']);	
+			break;
+			
 		case "guardar":	
 		
 //			$data =   decodeUTF8($_POST);
