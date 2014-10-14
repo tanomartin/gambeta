@@ -47,6 +47,19 @@ class Reservas {
 		return $datos;
 	}
 	
+	function getReservaLibresByIdFecha($id_fecha="") {
+		$db = new Db();
+		
+		$query = "Select r.id as id_reserva, e.id as id_equipo, e.nombre, r.fecha_libre, r.observacion from ga_reservas r, ga_equipos e where r.id_fecha = '$id_fecha' and r.fecha_libre != 0 and r.id_equipo = e.id";
+
+		$datos = $db->getResults($query, ARRAY_A); 
+	
+		$db->close();
+		
+		return $datos;
+	}
+
+	
 	function getDetalleReservaById($id="") {
 		$db = new Db();
 		
