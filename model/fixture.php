@@ -331,6 +331,42 @@ function get($id="") {
 		$db->close();
 		
 	}
+	
+	function jugaronEnContra( $id_equipo1="", $id_equipo2="" , $idTorneoCat = "", $idFecha = "") {
+	
+		$db = new Db();
+	
+		$query = "SELECT count(*) as cantidad FROM ga_fixture p,  ga_fechas f where (p.idEquipo1 = $id_equipo1 and p.idEquipo2 = $id_equipo2 || p.idEquipo1 = $id_equipo2 and p.idEquipo2 = $id_equipo1) and p.idFecha = f.id and golesEquipo1>-1 and golesEquipo2>-1 and p.idFecha != $idFecha and f.idTorneoCat = $idTorneoCat;";
+		
+		$res = $db->getRow($query); 
+	
+		$db->close();
+		
+		if($res->cantidad == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	
+	}
+	
+	function juegaEstaFecha( $id_equipo1="", $id_equipo2="" , $idTorneoCat = "", $idFecha = "") {
+		
+		$db = new Db();
+	
+		$query = "SELECT count(*) as cantidad FROM ga_fixture p,  ga_fechas f where (p.idEquipo1 = $id_equipo1 and p.idEquipo2 = $id_equipo2 || p.idEquipo1 = $id_equipo2 and p.idEquipo2 = $id_equipo1) and p.idFecha = f.id  and p.idFecha = $idFecha and f.idTorneoCat = $idTorneoCat;";
+		
+		$res = $db->getRow($query); 
+	
+		$db->close();
+		
+		if($res->cantidad == 0) {
+			return false;
+		} else {
+			return true;
+		}
+		
+	}
 
 }
 
