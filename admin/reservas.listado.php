@@ -194,7 +194,7 @@
 												</td>
 												 <? if ($equipo['observacion'] != "") { ?>
 												 		<tr>
-															<td colspan="3">Obs: <b><?=$equipo['observacion'] ?></b></td>
+															<td colspan="3" style="text-align:justify">Obs: <b><?=$equipo['observacion'] ?></b></td>
 														</tr>
 												 <? } ?>
 								  </tr>	
