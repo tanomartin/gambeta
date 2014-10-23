@@ -257,6 +257,28 @@ function get($id="") {
 		return $datos;	
 
 	}
+	
+	function getByFechaEquipo($fecha, $equipo){
+
+		$db = new Db();
+
+       $query = "Select  x.*, e1.nombre as equipo1,e2.nombre as equipo2, s.nombre as sede, f.nombre as nombreFecha
+		          from ga_fixture x, ga_fechas f,ga_sedes s, ga_equipos e1, ga_equipos e2 
+				  where x.idFecha = f.id and
+				  x.idSede = s.id and
+				  x.idEquipo1 = e1.id and
+				  x.idEquipo2 = e2.id
+				  and f.id=".$fecha." and (x.idEquipo1 =".$equipo." || x.idEquipo2=".$equipo.")";
+	
+		$query.= " order by  horaPartido DESC";
+
+		$datos = $db->getResults($query, ARRAY_A); 
+		
+		$db->close();
+
+		return $datos;	
+
+	}
 
 
 	function getByidTorneoCat($idTorneoCat){
