@@ -57,7 +57,7 @@
 			$juegaEstaFecha = $oFixture -> juegaEstaFecha($equipo1['id'], $equipo2['id'], $fecha[0]['idTorneoCat'], $_POST['id']);
 			$id = $equipo1['id'].$equipo2['id'];
 			if ($jugaron) {
-				$cruce[$id] = "#009900";
+				$cruce[$id] = "#CCCCCC";
 			}
 			if ($juegaEstaFecha) {
 				$cruce[$id] = "#0000CC";
@@ -178,7 +178,7 @@ function volver(){
 												<? } else {?>
 													<td><img width="25" border="0" alt="reserva" title="Con Reserva" src="../img/forbidden.ico"/></td>
 												<? } ?>
-													<td style="text-align:center; font-size:16px"><?=$partido['equipo1'] ?><font color="#FF0000"> VS </font> <?=$partido['equipo2']?></td>
+													<td style="text-align:center; font-size:16px"><?=$partido['equipo1'] ?><font color="#FF0000"> VS </font> <?=$partido['equipo2']?> <br>(<?=$partido['horaPartido'] ?>)</td>
 												<? if ($oFixture -> partidoConfirmado($partido['id'],$partido['idEquipo2'])) {?>
 													<td><img width="25" border="0" alt="reserva" title="Con Reserva" src="../img/check.ico"/></td>
 												<? } else {?>
@@ -230,7 +230,8 @@ function volver(){
 					</div>
 				</div>	
 				<div class="mod_listing ce_table listing block" id="partnerlist">
-					<div align="center" style="float:rigth">
+					<div align="center">
+						<h1 align="left">Cruce de Equipos</h1>
 						<table id="cruces" name="cruces" style="font-size:8.5px">
 							  <tr><td style="background-color:#CE6C2B; color:#FFFFFF"><b>EQUIPOS</b></td>
 						<? foreach ($equiposTorneo as $equipo) { ?>

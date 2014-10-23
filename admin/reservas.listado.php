@@ -21,8 +21,6 @@
 
 	$equiposConReserva = array();
 	$equiposSinReserva = array();
-	$r = 0;
-	$s = 0;
 	foreach($equiposTorneo as $equipo) {
 		$tiene = 0;
 		$tuvo_libre = $oEquipo-> tieneFechaLibre($fecha[0]['idTorneoCat'], $equipo['id']);
@@ -30,15 +28,15 @@
 			foreach($reservas as $reserva) {
 				if ($reserva['id_equipo'] == $equipo['id']) {
 					$detalle = $oReserva -> getDetalleReservaById($reserva['id_reserva']);
+					$r = $reserva['id_equipo'];
 					$equiposConReserva[$r] = array('id_reserva' => $reserva['id_reserva'],'id_equipo' => $reserva['id_equipo'], 'nombre' => $reserva['nombre'], 'fecha_libre' => $reserva['fecha_libre'], 'observacion' =>  $reserva['observacion'] ,'tuvo_libre' => $tuvo_libre, 'detalle' => $detalle);
-					$r++;
 					$tiene = 1;
 				} 
 			}
 		}
 		if ($tiene == 0) {
+			$s = $equipo['id'];
 			$equiposSinReserva[$s] = array('id_equipo' => $equipo['id'], 'nombre' => $equipo['nombre'], 'tuvo_libre' => $tuvo_libre);
-			$s++;
 		}
 	}
 	
@@ -80,10 +78,6 @@
 	function volver(){
 		document.form_alta.accion.value = "volver";		
 		document.form_alta.submit();
-	}
-	
-	function mostrarObservacion(obs) {
-		alert(obs);
 	}
 
 </script>
@@ -161,7 +155,7 @@
 							<input type="hidden" name="submenu" value="<?=$_POST["submenu"]?>" />
 							<input type="hidden" name="pag_submenu" value="<?=$_POST["pag_submenu"]?>" />
 							<!--     -->
-		
+						</form>
 							<div align="center" style="float:left">
 								<table id="conReserva" width="450">
 										<tr>
@@ -195,9 +189,14 @@
 												<td nowrap>
 													<a href="javascript:eliminarReserva(<?=$equipo['id_reserva']?>);"> <img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="Eliminiar Reserva" width="20px" height="20px" /></a>
 												 <? if ($equipo['observacion'] != "") { ?>
-													<img border="0" src="images/info-icon.png" id="info" style="cursor:pointer" onclick="javascript:mostrarObservacion('<?=$equipo['observacion'] ?>');"  alt="info" width="20px" height="20px" />
+													<img border="0" src="images/info-icon.png" id="info" alt="info" width="20px" height="20px" />
 												 <? } ?>
 												</td>
+												 <? if ($equipo['observacion'] != "") { ?>
+												 		<tr>
+															<td colspan="3">Obs: <b><?=$equipo['observacion'] ?></b></td>
+														</tr>
+												 <? } ?>
 								  </tr>	
 										<?	} 
 										}?>
@@ -225,8 +224,54 @@
 										}?>
 								</table>	
 							</div>
-						</form>
 					</div>
+					<? if ($horasFecha != NULL) {?>
+					<div class="mod_listing ce_table listing block" id="partnerlist">
+						<div align="center">
+							<h1 align="left">Informe de Reservas </h1>
+								<table id="reservas" name="reservas" style="font-size:8.5px">
+								  <tr><td style="background-color:#CE6C2B; color:#FFFFFF"><b>HORAS | EQUIPOS</b></td>
+							<? foreach ($horasFecha as $horas) { ?>
+								  <td style="background-color:#CE6C2B; color:#FFFFFF"><?=$horas['descripcion'] ?></td>
+							<? } ?>
+								</tr>
+								<? foreach ($equiposTorneo as $equipo) { 
+									$id = $equipo['id'];	?>
+								   <tr>
+										<td style="background-color:#CE6C2B; color:#FFFFFF"><?=$equipo['nombre'] ?></td> 
+										<? if (array_key_exists($id,$equiposConReserva)) { 
+												$reserva = $equiposConReserva[$id];
+												if ($reserva['fecha_libre'] == 1) { ?>
+													<td colspan="<?=sizeof($horasFecha)?>" style="text-align:center; font-size:16px; color:#000099">FECHA LIBRE EQUIPO</td>
+											 <? }
+												if ($reserva['fecha_libre'] == 2) { ?>
+													<td colspan="<?=sizeof($horasFecha)?>" style="text-align:center; font-size:16px; color:#FF6699">FECHA LIBRE GAMBETA</td>
+											<?	}
+												if ($reserva['fecha_libre'] == 0) { 
+													foreach ($horasFecha as $horas) {
+														$detalle = $reserva['detalle'];
+														$marca = false;
+														foreach($detalle as $horasreservada) {
+															if ($horasreservada['id_horas_cancha'] == $horas['id_horas_cancha']) {
+																$marca = true;
+															}
+														}
+														if ($marca) {?>
+															<td style="text-align:center; font-size:16px">X</td>
+													<?  } else { ?>
+															<td></td>
+													<?  } ?>
+											<?		}
+												} 
+											} else { ?>
+													<td colspan="<?=sizeof($horasFecha)?>" style="text-align:center; font-size:16px; color:#FF0000">SIN RESERVA</td>
+										  <? }?>
+								   </tr>
+							<? } ?>
+							</table>
+						</div>
+					</div>
+					<? } ?>
 				</div>
 			</div> 
 		</div>
