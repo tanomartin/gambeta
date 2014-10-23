@@ -37,7 +37,7 @@
 	if ($fecha_activa!=NULL) {
 		//VEO SI YA EXISTE PARTIDO
 		$oFixture = new Fixture();
-		$partido = $oFixture->getByEquipo($_SESSION['id'],$_SESSION['equipo']);
+		$partido = $oFixture->getByFechaEquipo($fecha_activa["id"],$_SESSION['equipo']);
 		//VEO SI EXISTE UNA RESERVA PARA ESTE EQUIPO
 		if ($partido == NULL) {	
 			$idReserva = $oEquipo->tieneReserva($fecha_activa["id"],$_SESSION['equipo']);
