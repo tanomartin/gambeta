@@ -218,7 +218,7 @@ class Fechas {
 		
 		$today = date("Y-m-d");
 		
-		$query = "Select * from ga_fechas f where idTorneoCat = $id and fechaIni < '$today' and fechaFin > '$today' limit 1";
+		$query = "Select * from ga_fechas f where idTorneoCat = $id and fechaIni <= '$today' and fechaFin >= '$today' limit 1";
 
 		$datos = $db->getResults($query, ARRAY_A); 
 		

@@ -529,7 +529,7 @@ function confirmarPartido(idPartido) {
 							 	<div class="titulo_reserva" style="float:left;">Confirmarción de Partido</div>
 							 <? for ($p=0; $p<count($partido); $p++) { ?>	
 									<div id="partido_<?= $color ?>" style="margin-left:-25px">
-									<div id="fixture_nro_partido"><?="X" ?></div>
+									<div id="fixture_nro_partido" style="margin-left:-3px"><?="X" ?></div>
 									<div id="fixture_sede"><? $oSedes = new Sedes(); $sede = $oSedes->getById($partido[$p]['idSede']); echo strtoupper($sede->nombre) ?></div>
 									<div id="fixture_cancha"><?= strtoupper ($partido[$p]['cancha']); ?></div>
 									<div id="fixture_equipo1"><?= strtoupper ($partido[$p]['equipo1']); ?></div>
@@ -544,7 +544,7 @@ function confirmarPartido(idPartido) {
 											<div id="fixture_resultado1" style="margin-left:-55px; font-size:12px; color:#009900">Confirmado</div>
 									 <? } 
 									}?> 		
-									<div id="fixture_horaPartido" style="margin-left:15px"><?= strtoupper ($partido[$p]['horaPartido']); ?></div>
+									<div id="fixture_horaPartido" style="margin-left:20px"><?= strtoupper ($partido[$p]['horaPartido']); ?></div>
 									<div id="fixture_fechaPartido" class="fixture_color_<?= $color ?>"><?= cambiaf_a_normal($partido[$p]['fechaPartido']); ?></div>
 									<div id="fixture_equipo2"><?= strtoupper ($partido[$p]['equipo2']); ?></div>
 									<? 
