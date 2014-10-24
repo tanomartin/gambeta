@@ -322,6 +322,7 @@
 				
 				<tr>
 					<th >Nombre</th>
+					<th >Email</th>    
 					<th width="15%">Torneo</th>                                        
 					<th width="15%">Categor&iacute;a</th>                    
 					<th width="10%">Opciones</th>
@@ -345,6 +346,7 @@
 
 					<tr>
                      <td align="left"><?=$datos[$i]["nombre"]?></td>
+					 <td align="left"><?=$datos[$i]["email"]?></td>
                      <td align="left"><?=$datos[$i]["torneo"]?></td>
                      <td align="left"><?=$datos[$i]["categoria"]?></td>
                       <td nowrap>

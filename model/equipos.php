@@ -12,6 +12,7 @@ class Equipos {
 	var $descripcion;
 	var $fotoPreview;
 	var $fotoGrande;
+	var $email;
 		
 	function Equipos($id="") {
 
@@ -24,6 +25,8 @@ class Equipos {
 			$this->descripcion = $valores[0]["descripcion"];
 			$this->fotoPreview = $valores[0]["fotoPreview"]; 
 			$this->fotoGrande = $valores[0]["fotoGrande"];
+			$this->email = $valores[0]["email"];
+			
 		}
 	}
 
@@ -37,6 +40,8 @@ class Equipos {
 		$this->descripcion = $valores["descripcion"];
 		$this->fotoPreview = $valores["fotoPreview"]; 
 		$this->fotoGrande = $valores["fotoGrande"];
+		$this->email = $valores["email"];
+		
 	}
 	
 	function _setById($id) {
@@ -51,11 +56,12 @@ class Equipos {
 		$db = new Db();
 
 		$query = "insert into ga_equipos(
-				idTorneoCat,nombre,descuento_puntos,descripcion
+				idTorneoCat,nombre,descuento_puntos,email,descripcion
 				) values (".
 				"'".$this->idTorneoCat."',".
 				"'".$this->nombre."',".				
 				"'".$this->descuento_puntos."',".
+				"'".$this->email."',".				
 				"'".$this->descripcion."')";
 	
 		$this->id = $db->query($query); 
@@ -119,6 +125,7 @@ class Equipos {
 		          nombre = '". $this->nombre."',		
 		          idTorneoCat = '". $this->idTorneoCat."',
 		          descuento_puntos = '". $this->descuento_puntos."',
+				  email = '". $this->email."',
 		          descripcion = '". $this->descripcion."'
 				  where id = ".$this->id ;
 				  
