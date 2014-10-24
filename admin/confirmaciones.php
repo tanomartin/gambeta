@@ -15,6 +15,12 @@
 
 	switch ($_POST["accion"]) {
 	
+		case "migrar":
+			include("confirmaciones.migracion.php");
+			include("confirmaciones.listado.php");
+			exit;
+			break;
+	
 		case "confirmaciones":
 			include("confirmaciones.listado.php");
 			exit;

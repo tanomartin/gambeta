@@ -79,6 +79,11 @@
 		document.form_alta.accion.value = "volver";		
 		document.form_alta.submit();
 	}
+	
+	function migrar(){
+		document.form_alta.accion.value = "migrar";		
+		document.form_alta.submit();
+	}
 
 </script>
 
@@ -132,8 +137,8 @@
 		  <div class="ce_text block">
 				<h1>Reservas: <?= $fecha[0]['nombre']." - ".$fecha[0]['torneo']." - ".$fecha[0]['categoria']?>
 				  <div style="float:right"> 
-				  	<? if ($horasFecha != NULL)  { ?><img width="75" border="0" alt="reserva" title="Exportar Excel" style="cursor:pointer" src="images/xls-icon.png"/><? } ?>
-				  	<img width="75" border="0" alt="reserva" title="Enviar Correo Recordatorio" style="cursor:pointer" src="images/eml-icon.png"/>	
+				  	<? if ($horasFecha != NULL)  { ?><img width="75" border="0" alt="reserva" title="Exportar Excel" onclick="javascript:migrar();" style="cursor:pointer" src="images/xls-icon.png"/><? } ?>
+				  	<img width="75" border="0" alt="reserva" title="Enviar Correo Recordatorio"  style="cursor:pointer" src="images/eml-icon.png"/>	
 					<img width="75" border="0" alt="reserva" title="volver" onclick="javascript:volver();" style="cursor:pointer" src="images/back-icon.png"/>	
 				  </div>
 				</h1>

@@ -15,6 +15,12 @@
 
 	switch ($_POST["accion"]) {
 	
+		case "migrar":
+			include("reservas.migracion.php");
+			include("reservas.listado.php");
+			exit;
+			break;
+		
 		case "eliminar":
 			$reserva = new Reservas();
 			$id_reserva = $_POST['id_reserva'];
