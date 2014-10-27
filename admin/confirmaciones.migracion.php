@@ -4,6 +4,7 @@
 	include_once "../model/reservas.php";
 	include_once "../model/fixture.php";
 	include_once "../model/equipos.php";
+	require_once "include/PHPExcel/PHPExcel.php";
 
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
@@ -57,50 +58,92 @@
 			$juegaEstaFecha = $oFixture -> juegaEstaFecha($equipo1['id'], $equipo2['id'], $fecha[0]['idTorneoCat'], $_POST['id']);
 			$id = $equipo1['id'].$equipo2['id'];
 			if ($jugaron) {
-				$cruce[$id] = "#CCCCCC";
+				$cruce[$id] = "CCCCCC";
 			}
 			if ($juegaEstaFecha) {
-				$cruce[$id] = "#0000CC";
+				$cruce[$id] = "0000CC";
 			}
 			if ($jugaron && $juegaEstaFecha) {
-				$cruce[$id] = "#FF0000";
+				$cruce[$id] = "FF0000";
 			}
 		}
 	}
 	
 	$excelName ="Cruces-".$fecha[0]['nombre']."-".$fecha[0]['torneo']."-".$fecha[0]['categoria'].".xls";
+	$objPHPExcel = new PHPExcel();
+   	$objPHPExcel->getProperties()->setCreator("Codedrinks") // Nombre del autor
+    			->setLastModifiedBy("Codedrinks") //Ultimo usuario que lo modificó
+    			->setTitle("Reporte Excel con PHP y MySQL") // Titulo
+    			->setSubject("Reporte Excel con PHP y MySQL") //Asunto
+    			->setDescription("Reporte de alumnos") //Descripción
+    			->setKeywords("reporte alumnos carreras") //Etiquetas
+    			->setCategory("Reporte excel"); //Categorias
 	
-	header("Content-type: application/vnd.ms-excel");
-	header("Content-Disposition: attachment; filename=$excelName");
+	//CELDA DE EQUIPOS
+	$celda = 'A1';
+	$phpColor = new PHPExcel_Style_Color();
+	$phpColor->setRGB('FFFFFF');
+	$objPHPExcel->getActiveSheet()->setCellValue($celda,  'EQUIPOS');
+	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB('CE6C2B');
+	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColor);
+	
+	//EQUIPOS EN PRIMERA LINEA
+	$i = 66;
+	foreach($equiposTorneo as $equipo) {
+		$columna = chr($i); 
+		$objPHPExcel->getActiveSheet()->getColumnDimension($columna)->setWidth(20);
+		$celda = $columna.'1';
+		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $equipo['nombre']);
+		$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+		$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB('CE6C2B');
+		$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColor);
+		$i++;
+	}
+	$objPHPExcel->getActiveSheet()->getStyle("B1:$celda")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+	//**********************************//
+	
+	//CRUCES
+	$i = 2;
+	foreach ($equiposTorneo as $equipo1) { 
+		$c = 65;
+		$columna = chr($c); 
+		$objPHPExcel->getActiveSheet()->getColumnDimension($columna)->setWidth(20);
+		$celda = $columna.$i;
+		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $equipo1['nombre']);
+		$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+		$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB('CE6C2B');
+		$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColor);
+		foreach ($equiposTorneo as $equipo2) { 
+			$c++;
+			$columna = chr($c); 
+			$celda = $columna.$i;
+			if ($equipo1['id'] == $equipo2['id']) {
+				$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+				$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB('CE6C2B');
+			} else { 
+				$id = $equipo1['id'].$equipo2['id']; 
+				if (array_key_exists($id,$cruce)) { 
+					$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+					$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB($cruce[$id]);
+				} 
+			} 
+			
+		}
+		$i++;
+	}
+	//*********************************//
+	
+	$objPHPExcel->getActiveSheet()->getStyle("A1:$celda")->getBorders()->getAllBorders()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);
+	
+	// Se manda el archivo al navegador web, con el nombre que se indica (Excel2007)
+	header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+	header("Content-Disposition: attachment;filename=$excelName");
+	header("Cache-Control: max-age=0");
+
+	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+	$objWriter->save('php://output');
+	exit;	 
 	
 	?>
 
-	<html>
-	<div style="visibility:hidden">
-	<h1>CRUSES: <?= $fecha[0]['nombre']." - ".$fecha[0]['torneo']." - ".$fecha[0]['categoria']?></h1>
-	<table id="cruces" name="cruces" border="1">
-		<tr><td style="background-color:#CE6C2B; color:#FFFFFF"><b>EQUIPOS</b></td>
-		<? foreach ($equiposTorneo as $equipo) { ?>
-				<td style="background-color:#CE6C2B; color:#FFFFFF"><?=$equipo['nombre'] ?></td>
-		<? } ?>
-		</tr>
-	  <? foreach ($equiposTorneo as $equipo1) { ?>
-			<tr>
-				<td style="background-color:#CE6C2B; color:#FFFFFF"><?=$equipo1['nombre'] ?></td>
-			    <? foreach ($equiposTorneo as $equipo2) { 
-						if ($equipo1['id'] == $equipo2['id']) {  ?>
-							<td style="background-color:#CE6C2B"></td>
-					<? } else { 
-							$id = $equipo1['id'].$equipo2['id']; 
-								if (array_key_exists($id,$cruce)) { ?>
-									<td style="background-color:<?=$cruce[$id] ?>"></td>
-							 <? } else { ?>
-									<td></td>
-							 <? } ?>
-					<? } 
-					} ?>
-			</tr>
-		<? } ?>
-	</table>
-	</div>
-	</html>

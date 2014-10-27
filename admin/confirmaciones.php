@@ -17,7 +17,6 @@
 	
 		case "migrar":
 			include("confirmaciones.migracion.php");
-			include("confirmaciones.listado.php");
 			exit;
 			break;
 	

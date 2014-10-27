@@ -17,7 +17,6 @@
 	
 		case "migrar":
 			include("reservas.migracion.php");
-			include("reservas.listado.php");
 			exit;
 			break;
 		
