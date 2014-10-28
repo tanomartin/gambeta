@@ -380,6 +380,86 @@ class Equipos {
 	
 		$db->close();
 	}
+	
+	function seEnvioCorreoReserva($idEquipo= "", $idFecha="") {
+		$db = new Db();
+		
+		$query = "Select count(*) as cantidad from ga_correo_reservas where id_equipo = '$idEquipo' and id_fecha = '$idFecha'";
+
+		$res = $db->getRow($query); 
+	
+		$db->close();
+		
+		if($res->cantidad == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	function cargarCorreoReserva($idEquipo= "", $idFecha="") {
+		$db = new Db();
+
+		$today = date('Y-m-d');
+		
+		$query = "Insert into ga_correo_reservas(id_equipo,id_fecha,fecha_envio) value ($idEquipo,$idFecha,'$today')";
+		
+		$db->query($query);
+	
+		$db->close();
+	}
+	
+	function eliminarCorreoReserva($idEquipo= "", $idFecha="") {
+		$db = new Db();
+
+		$today = date('Y-m-d');
+		
+		$query = "delete from ga_correo_reservas where id_equipo = $idEquipo and id_fecha = $idFecha";
+		
+		$db->query($query);
+	
+		$db->close();
+	}
+	
+	function seEnvioCorreoConfirmacion($idEquipo= "", $idFecha="") {
+		$db = new Db();
+		
+		$query = "Select count(*) as cantidad from ga_correo_confirmacion where id_equipo = '$idEquipo' and id_fecha = '$idFecha'";
+
+		$res = $db->getRow($query); 
+	
+		$db->close();
+		
+		if($res->cantidad == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	function cargarCorreoConfirmacion($idEquipo= "", $idFecha="") {
+		$db = new Db();
+
+		$today = date('Y-m-d');
+		
+		$query = "Insert into ga_correo_confirmacion(id_equipo,id_fecha,fecha_envio) value ($idEquipo,$idFecha,'$today')";
+		
+		$db->query($query);
+	
+		$db->close();
+	}
+	
+	function eliminarCorreoConfirmacion($idEquipo= "", $idFecha="") {
+		$db = new Db();
+
+		$today = date('Y-m-d');
+		
+		$query = "delete from ga_correo_confirmacion where id_equipo = $idEquipo and id_fecha = $idFecha";
+		
+		$db->query($query);
+	
+		$db->close();
+	}
 
 }
 

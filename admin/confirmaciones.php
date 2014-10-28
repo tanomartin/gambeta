@@ -2,6 +2,7 @@
 	include_once "include/fechas.php";
 	include_once "../model/fechas.php";
 	include_once "../model/reservas.php";
+	include_once "../model/equipos.php";
 	include_once "../model/torneos.categorias.php";
 
 	if(!session_is_registered("usuario")){
@@ -15,6 +16,26 @@
 
 	switch ($_POST["accion"]) {
 	
+		case "eliminarEnvio":
+			$idFecha = $_POST['id'];
+			$idEquipo = $_POST['id_equipo'];
+			$equipoOb = new Equipos();
+			$equipoOb -> eliminarCorreoConfirmacion($idEquipo, $idFecha);
+			include("confirmaciones.mail.php");
+			exit;
+			break;
+			
+		case "enviarcorreo":
+			include("confirmaciones.enviarcorreo.php");
+			include("confirmaciones.mail.php");
+			exit;
+			break;
+	
+		case "mail":
+			include("confirmaciones.mail.php");
+			exit;
+			break;
+		
 		case "migrar":
 			include("confirmaciones.migracion.php");
 			exit;
