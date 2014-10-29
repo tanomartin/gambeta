@@ -136,7 +136,7 @@
 								<tr>
 									<th>Equipos</th>
 									<th>Email</th>
-									<th width="8%"></th>
+									<th width="8%">Sacar</th>
 								</tr>
 								<? if (sizeof($equipos) == 0) {
 										print("<tr><td colspan='3'>No hay equipos</td></tr>");
@@ -145,7 +145,7 @@
 											<tr>
 												<td style="font-family:Geneva, Arial, Helvetica, sans-serif; font-size:17px"><?=$equipo['nombre'] ?></td>
 												<td><?=$equipo['email'] ?></td>	
-												<td></td>	
+												<td><input type="checkbox" id="<?=$equipo['id_equipo'] ?>" name="<?=$equipo['id_equipo'] ?>" value="<?=$equipo['id_equipo'] ?>"</td>	
 											</tr>	
 									 <?	} 
 									}?>
