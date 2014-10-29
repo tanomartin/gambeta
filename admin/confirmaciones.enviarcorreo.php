@@ -31,14 +31,14 @@
 			foreach ($partidos as $partido) {
 				if ($id == $partido['idEquipo1'] || $id == $partido['idEquipo2']) {
 					$equipoOb = new Equipos($id);
-					$seEnvio = $equipoOb->seEnvioCorreoConfirmacion($id, $_POST['id']);
+					$seEnvio = $equipoOb->seEnvioCorreo($id, $_POST['id'], 'r');
 					$confirmado = $oFixture -> partidoConfirmado($partido['id'],$id);
 					if (($equipoOb->email != "" ) && (!$seEnvio) && (!$confirmado)) {
 						$valores = array('correo' => $equipoOb->email, 'cuerpo' => $_POST['cuerpocorreo'], 'equipoId' => $id, 'equipoNombre' => $equipoOb->nombre, 'asunto' => $asunto);
 						$emailOb = new Correos($valores);
 						$seEnvio = $emailOb->enviar();
 						if ($seEnvio) {
-							$equipoOb -> cargarCorreoConfirmacion($id, $_POST['id']);
+							$equipoOb -> cargarCorreo($id, $_POST['id'], 'c');
 						}
 					}
 				}

@@ -1,50 +1,51 @@
 <?	include_once "include/config.inc.php";
-	include_once "include/fechas.php";
-	include_once "../model/fechas.php";
-	include_once "../model/reservas.php";
-	include_once "../model/equipos.php";
-	include_once "../model/torneos.categorias.php";
+	include_once "../model/sedes.php";
 
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
 		exit;
 	}
-
 	$menu = "Secciones";
-
 	//print_r($_POST);
 
 	switch ($_POST["accion"]) {
-	
-		case "eliminarEnvio":
-			$idFecha = $_POST['id'];
-			$idEquipo = $_POST['id_equipo'];
-			$equipoOb = new Equipos();
-			$equipoOb -> eliminarCorreo($idEquipo, $idFecha, 'c');
-			include("confirmaciones.mail.php");
+
+		case "editar":
+		
+			include("sede.edit.php");
 			exit;
 			break;
 			
-		case "enviarcorreo":
-			include("confirmaciones.enviarcorreo.php");
-			include("confirmaciones.mail.php");
-			exit;
-			break;
-	
-		case "mail":
-			include("confirmaciones.mail.php");
-			exit;
-			break;
+		case "guardar":	
 		
-		case "migrar":
-			include("confirmaciones.migracion.php");
-			exit;
-			break;
+//			$data =   decodeUTF8($_POST);
+			$data =   $_POST;
+			$oObj = new Sedes();
+
+			$oObj->set($data);
 	
-		case "confirmaciones":
-			include("confirmaciones.listado.php");
-			exit;
+			if($_POST["id"] == "-1") { // Tiene el valor de session_id()
+				$oObj->agregar();
+			} else {
+				$oObj->modificar();
+			}
+		
 			break;
+
+		case "borrar":
+		
+			//$data =   decodeUTF8($_POST);
+			$data =   $_POST;
+			$oObj = new Sedes();
+
+			$oObj->set($data);
+	
+			$oObj->eliminar();
+	
+			$_POST["_pag"] = ($_POST["ult"] == "S") ? $_POST["_pag"] - 1 : $_POST["_pag"];
+
+			break;
+
 	}
 	
 	
@@ -57,13 +58,15 @@
 	// fin Paginacion
 
 	$total = 0;
-	$oObj = new Fechas();
+	$oObj = new Sedes();
 	$datos = $oObj->getPaginado($_REQUEST, $inicio, $cant, $total);
 
-
-	$esultimo = (count($datos) == 1)? "S" : "N" ;
+	if(count($datos) == 0) {
+		$pag --;
+		$inicio = ($pag - 1) * $cant;
+		$datos = $oObj->getPaginado($_REQUEST, $inicio, $cant, $total);
+	}
 	
-
 	?>
     
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -82,26 +85,46 @@
 
 <script language="javascript">
 
-	function verConfirmaciones(id){
-		document.frm_listado.accion.value = "confirmaciones";
+	function nuevo(){
+
+		document.frm_listado.accion.value = "editar";
+		document.frm_listado.id.value = "-1";
+		document.frm_listado.submit();
+		
+	}
+
+	function editar(id){
+		
+		document.frm_listado.accion.value = "editar";
 		document.frm_listado.id.value = id;
 		document.frm_listado.submit();
 		
 	}
 
-	function cambiarActivo(id,activo) {
-		document.frm_listado.activo.value=activo;
+	function borrar(id){
+		
+		document.frm_listado.accion.value = "borrar";
 		document.frm_listado.id.value = id;
-		document.frm_listado.accion.value = "cambiarActivo";
 		document.frm_listado.submit();
-	   
+		
 	}
-	function cambiarOrden(pos,orden) {
-		document.frm_listado.pos.value=pos;
-		document.frm_listado.orden.value =orden;
-		document.frm_listado.accion.value = "cambiarOrden";
+	
+	function subsedes(id){
+		
+		document.frm_listado.accion.value = "subsedes";
+		document.frm_listado.submenu.value = "Subcategor&iacute;as";
+		document.frm_listado.id.value = id;
 		document.frm_listado.submit();
-	   
+		
+	}	
+
+	function idioma(id){
+		
+		document.frm_listado.accion.value = "idioma";
+		document.frm_listado.submenu.value = "Idiomas";
+		document.frm_listado.id.value = id;
+		document.frm_listado.submit();
+		
 	}
 
 </script>
@@ -165,17 +188,20 @@
 
    
                     <div >
-                    <form name="frm_busqueda" id="frm_busqueda" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-        			<!-- Parametros menu -->
-        			<input type="hidden" name="menu" value="<?=$_POST["menu"]?>" />
-                    <input type="hidden" name="submenu" value="<?=$_POST["submenu"]?>" />
-                    <input type="hidden" name="pag_submenu" value="<?=$_POST["pag_submenu"]?>" />
-                    <!--     -->
-                        
+                        <form name="frm_busqueda" id="frm_busqueda" action="<?=$_SERVER['PHP_SELF']?>" method="post">
                         <div class="formbody">
-                          Nombre: <input name="fnombre" type="text" style="width:100px" value="<?=$_POST["fnombre"]?>"  />
-                          Torneo: <input name="ftorneo" type="text" style="width:100px" value="<?=$_POST["ftorneo"]?>"  />
-                          Categor&iacute;a: <input name="fcategoria" type="text" style="width:100px" value="<?=$_POST["fcategoria"]?>"  />                          
+                          Nombre: 
+                            <input name="fnombreCorto" type="text" style="width:50px" value="<?=$_POST["fnombre"]?>"  />
+                            
+                            <!-- Parametros menu -->
+                            <input type="hidden" name="menu" value="<?=$_POST["menu"]?>" />
+                            <input type="hidden" name="submenu" value="<?=$_POST["submenu"]?>" />
+                            <input type="hidden" name="pag_submenu" value="<?=$_POST["pag_submenu"]?>" />
+                            <!--     -->
+                    <input type="hidden" name="_pag" value="<?=$pag?>" />
+                    <input type="hidden" name="id" value="<?=$_POST["id"]?>" />
+                    <input type="hidden" name="accion" value="" />
+
                           <input class="submit" value="Buscar" type="submit" style="font-size:11px" />
                           <input class="submit" value="Limpiar" type="button" style="font-size:11px" onclick="javascript:limpiar('frm_busqueda'); document.frm_busqueda.submit();" />
                         </div>
@@ -186,10 +212,6 @@
                     <form name="frm_listado" id="frm_listado" action="<?=$_SERVER['PHP_SELF']?>" method="post">
                     <input type="hidden" name="_pag" value="<?=$pag?>" />
                     <input type="hidden" name="id" value="<?=$_POST["id"]?>" />
-                    <input type="hidden" name="activo" value="" />
-                    <input type="hidden" name="pos" value="" />
-                    <input type="hidden" name="orden" value="" />
-                    
                     <input type="hidden" name="accion" value="" />
         
         			<!-- Parametros menu -->
@@ -202,9 +224,6 @@
         
                     <!-- Filtros -->
                     <input type="hidden" name="fnombre" value="<?=$_POST["fnombre"]?>" />
-                    <input name="ftorneo" type="hidden" style="width:100px" value="<?=$_POST["ftorneo"]?>"  />
-                    <input name="fcategoria" type="hidden" style="width:100px" value="<?=$_POST["fcategoria"]?>"  />                          
-                    
                     <!-- Fin filtros -->
                     
                  
@@ -236,46 +255,45 @@
 				 <? } ?>
 				 </select>
                      
-                  </span>
+                     </span>
 				<? } ?>							  
 			</div>
 			
-			<div align="right" style="margin-right:10px; margin-bottom:10px" ></div>
+			<div align="right" style="margin-right:10px; margin-bottom:10px" >
+			  <input class="button" onclick="javascript:nuevo()" type="button" value="Nueva Sede" />
+			</div>
 
 			<table width="928">
 				
 				<tr>
-					<th >Nombre</th>
-					<th >Fecha I.</th>
-					<th >Fecha F.</th>                                        
-					<th width="15%">Torneo</th>                                        
-					<th width="15%">Categor&iacute;a</th>                    
-					<th width="3%"></th>
+					<th width="5%">#</th>
+					<th >Nombre</th>                    
+					<th width="10%">Opciones</th>
 				</tr>
 
 				<? if (count($datos) == 0) { ?>
 				
 				
 				<tr>
-						<td colspan="6" align="center">No existen fechas</td>
+						<td colspan="3" align="center">No existen Sedes</td>
 			  </tr>
 				
                
 				<? } else { 
-				 	$total = count($datos);	
-					$tt = $total - 1;
-					for ( $i = 0; $i < $total; $i++ ) {
+				 
+					for ( $i = 0; $i < count($datos); $i++ ) {
         			
 				?>
 
 
-					<tr>
-						 <td align="left"><?=$datos[$i]["nombre"]?></td>
-						 <td align="left"><?=cambiaf_a_normal($datos[$i]["fechaIni"])?></td>
-						 <td align="left"><?=cambiaf_a_normal($datos[$i]["fechaFin"])?></td>
-						 <td align="left"><?=$datos[$i]["torneo"]?></td>
-						 <td align="left"><?=$datos[$i]["categoria"]?></td>
-						 <td nowrap><a href="javascript:verConfirmaciones(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/confirmacion-icon.png" alt="Confirmaciones" title="Confirmaciones" width="20px" height="20px" /></a></td>
+					<tr style="vertical-align:middle" >
+						<td align="left"><?=$datos[$i]["id"]?></td>
+						<td align="left"><?=$datos[$i]["nombre"]?></td>                        
+                     <td nowrap>
+
+                        <a href="javascript:editar(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>
+						<a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
+					</td>	
 					</tr>
 
 				<? } }?>

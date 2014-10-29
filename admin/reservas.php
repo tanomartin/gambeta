@@ -20,7 +20,7 @@
 			$idFecha = $_POST['id'];
 			$idEquipo = $_POST['id_equipo'];
 			$equipoOb = new Equipos();
-			$equipoOb -> eliminarCorreoReserva($idEquipo, $idFecha);
+			$equipoOb -> eliminarCorreo($idEquipo, $idFecha, 'r');
 			include("reservas.mail.php");
 			exit;
 			break;

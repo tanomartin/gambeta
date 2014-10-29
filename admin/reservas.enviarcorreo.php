@@ -34,13 +34,13 @@
 		if ($tiene == 0) {
 			$s = $equipo['id'];
 			$equipoOb = new Equipos($equipo['id']);
-			$seEnvio = $equipoOb->seEnvioCorreoReserva($equipo['id'], $_POST['id']);
+			$seEnvio = $equipoOb->seEnvioCorreo($equipo['id'], $_POST['id'], 'r');
 			if (($equipoOb->email != "" ) && (!$seEnvio)) {
 				$valores = array('correo' => $equipoOb->email, 'cuerpo' => $_POST['cuerpocorreo'], 'equipoId' => $equipo['id'], 'equipoNombre' => $equipo['nombre'], 'asunto' => $asunto);
 				$emailOb = new Correos($valores);
 				$seEnvio = $emailOb->enviar();
 				if ($seEnvio) {
-					$equipoOb -> cargarCorreoReserva($equipo['id'], $_POST['id']);
+					$equipoOb -> cargarCorreo($equipo['id'], $_POST['id'], 'r');
 				}
 			}
 		}

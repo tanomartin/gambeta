@@ -32,7 +32,7 @@
 		if ($tiene == 0) {
 			$s = $equipo['id'];
 			$equipoOb = new Equipos($equipo['id']);
-			$seEnvio = $equipoOb->seEnvioCorreoReserva($equipo['id'], $_POST['id']);
+			$seEnvio = $equipoOb->seEnvioCorreo($equipo['id'], $_POST['id'], 'r');
 			$equiposSinReserva[$s] = array('id_equipo' => $equipo['id'], 'nombre' => $equipo['nombre'], 'email' => $equipoOb->email, 'seenvio' => $seEnvio);
 		}
 	}
@@ -77,7 +77,7 @@ function enviar() {
 		$('#error').html("* Debe ingresar un cuerpo de mensaje");
 		return false;
 	} else {
-		$.blockUI({ message: "<h1>Enviando Correos. Aguarde por favor...</h1>" });
+		$.blockUI({ message: "<h1>Enviando Correos.<br> Aguarde por favor</h1>" });
 		document.form_alta.accion.value = "enviarcorreo";		
 		document.form_alta.submit();
 	}

@@ -29,7 +29,7 @@
 			foreach ($partidos as $partido) {
 				if ($id == $partido['idEquipo1'] || $id == $partido['idEquipo2']) {
 					$equipoOb = new Equipos($id);
-					$seEnvio = $equipoOb->seEnvioCorreoConfirmacion($id, $_POST['id']);
+					$seEnvio = $equipoOb->seEnvioCorreo($id, $_POST['id'], 'c');
 					$confirmado = $oFixture -> partidoConfirmado($partido['id'],$id);
 					if (!$confirmado) {
 						$equiposMail[$i] = array('id_equipo' => $id, 'nombre' => $equipoOb->nombre, 'email' => $equipoOb->email, 'seenvio' => $seEnvio);
@@ -76,7 +76,7 @@ function enviar() {
 		$('#error').html("* Debe ingresar un cuerpo de mensaje");
 		return false;
 	} else {
-		$.blockUI({ message: "<h1>Enviando Correos. Aguarde por favor...</h1>" });
+		$.blockUI({ message: "<h1>Enviando Correos.<br> Aguarde por favor</h1>" });
 		document.form_alta.accion.value = "enviarcorreo";		
 		document.form_alta.submit();
 	}
