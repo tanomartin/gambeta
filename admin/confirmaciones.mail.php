@@ -20,10 +20,7 @@
 	$oEquipo = new Equipos();
 	$equiposTorneo = $oEquipo -> getTorneoCat($fecha[0]['idTorneoCat']);
 	
-	$i = 0;
 	foreach ($equiposTorneo as $equipo) {
-		$tienePartido = false;
-		$tieneLibre = false;
 		$id = $equipo['id'];
 		if ($partidos!= NULL){
 			foreach ($partidos as $partido) {
@@ -32,8 +29,7 @@
 					$seEnvio = $equipoOb->seEnvioCorreo($id, $_POST['id'], 'c');
 					$confirmado = $oFixture -> partidoConfirmado($partido['id'],$id);
 					if (!$confirmado) {
-						$equiposMail[$i] = array('id_equipo' => $id, 'nombre' => $equipoOb->nombre, 'email' => $equipoOb->email, 'seenvio' => $seEnvio);
-						$i++;
+						$equiposMail[$id] = array('id_equipo' => $id, 'nombre' => $equipoOb->nombre, 'email' => $equipoOb->email, 'seenvio' => $seEnvio);
 					}
 				}
 			}
