@@ -162,6 +162,7 @@ function enviar() {
 							<input type="hidden" name="menu" value="<?=$_POST["menu"]?>" />
 							<input type="hidden" name="submenu" value="<?=$_POST["submenu"]?>" />
 							<input type="hidden" name="pag_submenu" value="<?=$_POST["pag_submenu"]?>" />
+							<input type="hidden" name="equiposMail" value="<?=urlencode(serialize($equiposSinReserva)) ?>" />
 							<!--     -->
 						
 						<div align="center" style="float:left">

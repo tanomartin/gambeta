@@ -1,8 +1,5 @@
 <?	include_once "include/config.inc.php";
 	include_once "../model/fechas.php";
-	include_once "../model/torneos.categorias.php";
-	include_once "../model/fixture.php";
-	include_once "../model/equipos.php";
 	include_once "../model/correos.php";
 
 	if(!session_is_registered("usuario")){
@@ -11,39 +8,26 @@
 	}
 	
 	$menu = "Secciones";
-	
+	$idFecha = $_POST['id'];
 	$oFecha = new Fechas();
-	$fecha = $oFecha -> get($_POST['id']);
+	$fecha = $oFecha -> get($idFecha);
 	$asunto = "Recordatorio Confirmacion Partido: ".$fecha[0]['nombre']." - ".$fecha[0]['torneo']." - ".$fecha[0]['categoria'];
+	$cuerpo = $_POST['cuerpo'];
+	$equiposMail = unserialize(urldecode($_POST['equiposMail']));
 	
-	$oFixture = new Fixture();
-	$partidos = $oFixture -> getByFecha($_POST['id']);
-	
-	$oEquipo = new Equipos();
-	$equiposTorneo = $oEquipo -> getTorneoCat($fecha[0]['idTorneoCat']);
-	
-	$i = 0;
-	foreach ($equiposTorneo as $equipo) {
-		$tienePartido = false;
-		$tieneLibre = false;
-		$id = $equipo['id'];
-		if ($partidos!= NULL){
-			foreach ($partidos as $partido) {
-				if ($id == $partido['idEquipo1'] || $id == $partido['idEquipo2']) {
-					$equipoOb = new Equipos($id);
-					$seEnvio = $equipoOb->seEnvioCorreo($id, $_POST['id'], 'c');
-					$confirmado = $oFixture -> partidoConfirmado($partido['id'],$id);
-					if (($equipoOb->email != "" ) && (!$seEnvio) && (!$confirmado)) {
-						$valores = array('correo' => $equipoOb->email, 'cuerpo' => $_POST['cuerpocorreo'], 'equipoId' => $id, 'equipoNombre' => $equipoOb->nombre, 'asunto' => $asunto);
-						$emailOb = new Correos($valores);
-						$seEnvio = $emailOb->enviar();
-						if ($seEnvio) {
-							$equipoOb -> cargarCorreo($id, $_POST['id'], 'c');
-						}
-					}
-				}
+	foreach($equiposMail as $equipo) {
+		$idEquipo = $equipo['id_equipo'];
+		$email = $equipo['email'];
+		$seenvioanterior = $equipo['seenvio'];
+		$nombre = $equipo['nombre'];
+		if (($email != "") && (!$seenvioanterior)) {
+			$valores = array('correo' => $email, 'cuerpo' => $cuerpo, 'equipoId' => $idEquipo, 'equipoNombre' => $nombre, 'asunto' => $asunto);
+			$emailOb = new Correos($valores);
+			$seEnvio = $emailOb->enviar();
+			if ($seEnvio) {
+				$emailOb -> cargarCorreo($idEquipo, $idFecha, 'c');
 			}
 		}
 	}
 	
-	?>
+?>

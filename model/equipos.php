@@ -402,23 +402,6 @@ class Equipos {
 		}
 	}
 	
-	function cargarCorreo($idEquipo= "", $idFecha="", $tabla="") {
-		$db = new Db();
-
-		$today = date('Y-m-d');
-		
-		if ($tabla == "r") {
-			$query = "Insert into ga_correo_reservas(id_equipo,id_fecha,fecha_envio) value ($idEquipo,$idFecha,'$today')";
-		}
-		if ($tabla == "c") {
-			$query = "Insert into ga_correo_confirmacion(id_equipo,id_fecha,fecha_envio) value ($idEquipo,$idFecha,'$today')";
-		}
-		
-		$db->query($query);
-	
-		$db->close();
-	}
-	
 	function eliminarCorreo($idEquipo= "", $idFecha="", $tabla="") {
 		$db = new Db();
 
