@@ -72,8 +72,14 @@ function eliminarEnvio(equipo){
 
 function enviar() {
 	var cuerpo = document.form_alta.cuerpocorreo.value.length;
+	var asunto = document.form_alta.asuntocorreo.value;
 	if (cuerpo == 0) {
-		$('#error').html("* Debe ingresar un cuerpo de mensaje");
+		$('#errorcuerpo').html("* Debe ingresar un cuerpo del mensaje");
+	}
+	if (asunto == "") {
+		$('#errorasunto').html("* Debe ingresar el asunto del mensaje");
+	}
+	if (cuerpo == 0 || asunto == "") {
 		return false;
 	} else {
 		$.blockUI({ message: "<h1>Enviando Correos.<br> Aguarde por favor</h1>" });
@@ -184,10 +190,22 @@ function enviar() {
 							</table>
 						</div>
 						<div align="center" style="float:right">
-							<h2 align="left">Cuerpo del Correo</h2>
-							<p><div id="error" style="color:#CC3300; font-weight:bold" align="left"></div></p>
-							<textarea id="cuerpocorreo" name="cuerpocorreo" rows="10" cols="50"></textarea>
-						</div>	
+							<table id="cuerpo" width="450">
+								<th>Correo</th>
+								<tr><td>
+									<div align="center" style="float:right">
+										<div align="left">
+											<h2>Asunto</h2>
+											<p><div id="errorasunto" style="color:#CC3300; font-weight:bold" align="left"></div></p>
+											<input type="text" id="asuntocorreo" name="asuntocorreo" size="63"/>
+											<h2>Cuerpo</h2>
+											<p><div id="errorcuerpo" style="color:#CC3300; font-weight:bold" align="left"></div></p>
+											<textarea id="cuerpocorreo" name="cuerpocorreo" cols="50"></textarea>
+										</div>
+									</div>
+								</td></tr>
+							</table>
+						</div>
 						</form>
 					</div>
 				</div>

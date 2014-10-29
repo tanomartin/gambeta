@@ -80,10 +80,12 @@
         		
 					</form>
 				</div>
-
 			</div>
 		</div>
-	<div id="clear"></div>
+	</div>
+	 
+		<div id="clear"></div>
+	
 	</div>
 </div>
 <? include("pie.php")?>
