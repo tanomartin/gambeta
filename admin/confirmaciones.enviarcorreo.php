@@ -12,7 +12,7 @@
 	$oFecha = new Fechas();
 	$fecha = $oFecha -> get($idFecha);
 	$asunto = "Recordatorio Confirmacion Partido: ".$fecha[0]['nombre']." - ".$fecha[0]['torneo']." - ".$fecha[0]['categoria'];
-	$cuerpo = $_POST['cuerpo'];
+	$cuerpo = $_POST['cuerpocorreo'];
 	$equiposMail = unserialize(urldecode($_POST['equiposMail']));
 	
 	foreach($equiposMail as $equipo) {
