@@ -121,7 +121,7 @@
 							foreach ( $torneosCategoria as $torneo) { 
 								$oTorneo = new Torneos();
 								$verficAct = $oTorneo->get($torneo["id_torneo"]);
-								if ($verficAct[0]['activo'] == '1') {?>
+								//if ($verficAct[0]['activo'] == '1') {?>
 								<tr>
 									 <td align="left"><?=$torneo["nombreTorneo"]?></td>
 									 <td align="left"><?=$torneo["nombreLargo"]?> <? if ($torneo["nombreCat"] != "" ) { echo " - ". $torneo["nombreCat"];} ?></td>
@@ -129,7 +129,7 @@
 										 <a href="javascript:listado(<?=$torneo["id"]?>);"> <img border="0" src="images/eml-icon.png" alt="Crear Correo" title="Crear Correo" width="40px" height="40px" /></a>
 							 		</td>   
   								</tr>
-							<?  }
+							<? // }
 							} 
 						}?>
 					</table>
