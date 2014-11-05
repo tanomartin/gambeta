@@ -145,7 +145,7 @@
 											<tr>
 												<td style="font-family:Geneva, Arial, Helvetica, sans-serif; font-size:17px"><?=$equipo['nombre'] ?></td>
 												<td><?=$equipo['email'] ?></td>	
-												<td><input type="checkbox" id="<?=$equipo['id_equipo'] ?>" name="<?=$equipo['id_equipo'] ?>" value="<?=$equipo['id_equipo'] ?>"</td>	
+												<td><? if ($equipo['email'] != "") { ?> <input type="checkbox" id="<?=$equipo['id_equipo'] ?>" name="<?=$equipo['id_equipo'] ?>" value="<?=$equipo['id_equipo'] ?>" /> <? } ?></td>
 											</tr>	
 									 <?	} 
 									}?>
