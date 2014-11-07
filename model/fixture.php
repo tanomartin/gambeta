@@ -354,6 +354,20 @@ function get($id="") {
 		
 	}
 	
+	function eliminarcConfirmacionPartido($id_partido="",$id_equipo="") {
+		
+		$db = new Db();
+		
+		$today = date("Y-m-d");
+	
+		$query = "DELETE FROM ga_partidos_confirmados WHERE id_partido = $id_partido and id_equipo = $id_equipo";
+		
+		$res = $db->getRow($query); 
+	
+		$db->close();
+		
+	}
+	
 	function jugaronEnContra( $id_equipo1="", $id_equipo2="" , $idTorneoCat = "", $idFecha = "") {
 	
 		$db = new Db();
