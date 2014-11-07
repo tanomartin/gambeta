@@ -100,6 +100,13 @@ function mail(){
 	document.form_alta.submit();
 }
 
+function confirmacion(idpartido, idequipo, accion) {
+	document.form_alta.accion.value = accion;
+	document.form_alta.id_partido.value = idpartido;
+	document.form_alta.id_equipo.value = idequipo;
+	document.form_alta.submit();
+}
+
 </script>
 
 
@@ -164,6 +171,7 @@ function mail(){
         				<input type="hidden" name="id" id="id"  value="<?=$_POST["id"]?>"/>
 						<input type="hidden" name="id_equipo" id="id_equipo" />
 						<input type="hidden" name="id_reserva" id="id_reserva" />
+						<input type="hidden" name="id_partido" id="id_partido" />
 						<input name="_pag" id="_pag"  value="<?=$_POST["_pag"]?>" type="hidden" />
 						<input type="hidden" name="accion" value="" />
 						<!-- Filtros -->
@@ -185,15 +193,27 @@ function mail(){
 											foreach($partidos as $partido) { ?>
 												<tr>
 												<? if ($oFixture -> partidoConfirmado($partido['id'],$partido['idEquipo1'])) {?>
-													<td><img width="25" border="0" alt="reserva" title="Con Reserva" src="../img/check.ico"/></td>
+													<td nowrap>
+														<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo1']?>','eliminar');"> <img width="25" border="0" alt="reserva" title="Eliminar Confirmacion" src="images/reenvio.png"/></a>
+														<img width="25" border="0" alt="reserva" title="Confirmado" src="../img/check.ico"/>	
+													</td>
 												<? } else {?>
-													<td><img width="25" border="0" alt="reserva" title="Con Reserva" src="../img/forbidden.ico"/></td>
+													<td nowrap>
+														<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo1']?>','confirmar');"><img width="25" border="0" alt="reserva" title="Confirmar" src="images/icono-up.gif"/></a>
+														<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="../img/forbidden.ico"/>
+													</td>
 												<? } ?>
 													<td style="text-align:center; font-size:16px"><?=$partido['equipo1'] ?><font color="#FF0000"> VS </font> <?=$partido['equipo2']?> <br>(<?=$partido['horaPartido'] ?>)</td>
 												<? if ($oFixture -> partidoConfirmado($partido['id'],$partido['idEquipo2'])) {?>
-													<td><img width="25" border="0" alt="reserva" title="Con Reserva" src="../img/check.ico"/></td>
+													<td nowrap>
+														<img width="25" border="0" alt="reserva" title="Confirmado" src="../img/check.ico"/>
+														<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo2']?>','eliminar');"><img width="25" border="0" alt="reserva" title="Eliminar Confirmacion" src="images/reenvio.png"/></a>
+													</td>
 												<? } else {?>
-													<td><img width="25" border="0" alt="reserva" title="Con Reserva" src="../img/forbidden.ico"/></td>
+													<td nowrap>
+														<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="../img/forbidden.ico"/>
+														<a href="javascript:confirmacion('<?= $partido['id'] ?>','<?=$partido['idEquipo2']?>','confirmar');"><img width="25" border="0" alt="reserva" title="Confirmar" src="images/icono-up.gif"/></a>
+													</td>
 												<? } ?>
 												</tr>
 									 <?  	}

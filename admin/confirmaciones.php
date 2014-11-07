@@ -2,6 +2,7 @@
 	include_once "include/fechas.php";
 	include_once "../model/fechas.php";
 	include_once "../model/reservas.php";
+	include_once "../model/fixture.php";
 	include_once "../model/equipos.php";
 	include_once "../model/torneos.categorias.php";
 
@@ -42,6 +43,24 @@
 			break;
 	
 		case "confirmaciones":
+			include("confirmaciones.listado.php");
+			exit;
+			break;
+			
+		case "confirmar":
+			$idPartido = $_POST['id_partido'];
+			$idEquipo = $_POST['id_equipo'];
+			$oFixture = new Fixture();
+			$oFixture -> confirmarPartido($idPartido,$idEquipo);
+			include("confirmaciones.listado.php");
+			exit;
+			break;
+			
+		case "eliminar":
+			$idPartido = $_POST['id_partido'];
+			$idEquipo = $_POST['id_equipo'];
+			$oFixture = new Fixture();
+			$oFixture -> eliminarcConfirmacionPartido($idPartido,$idEquipo);
 			include("confirmaciones.listado.php");
 			exit;
 			break;
