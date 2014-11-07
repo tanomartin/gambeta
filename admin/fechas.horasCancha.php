@@ -72,6 +72,18 @@
 			document.form_alta.submit();
 		}
 	}
+	
+	function seleccionarTodo() {
+		var selectall = document.getElementById("form_alta").selectall;
+		var checkall = false;
+		if (selectall.checked) {
+			checkall = true;
+		} 
+		var grupo = document.getElementById("form_alta").horas;
+		for (i = 0; lcheck = grupo[i]; i++) {
+			lcheck.checked = checkall;
+		}	
+	}
 
 </script>
 
@@ -200,6 +212,7 @@
 				}
 			} 
 		?>
+		<br><b>Seleccionar todo: </b><input type="checkbox" id="selectall" name="selectall" onclick="seleccionarTodo()" />
 		</div>
 		</p>
 	</fieldset>

@@ -47,6 +47,19 @@
 		document.form_alta.submit();
 	}
 	
+	function seleccionarTodo() {
+		var selectall = document.getElementById("form_alta").selectall;
+		var checkall = false;
+		if (selectall.checked) {
+			checkall = true;
+		} 
+		var grupo = document.getElementById("form_alta").horas;
+		for (i = 0; lcheck = grupo[i]; i++) {
+			lcheck.checked = checkall;
+		}	
+		controlLibre();
+	}
+	
 	function controlLibre() {
 		$('#error').html("");
 		var grupo = document.getElementById("form_alta").horas;
@@ -77,6 +90,7 @@
 		var libre = document.getElementById("libre");
 		var libregambeta = document.getElementById("libregambeta");
 		var grupo = document.getElementById("form_alta").horas;
+		var selectall = document.getElementById("form_alta").selectall;
 		var total = grupo.length;
 		
 		var libreChecked = 0;
@@ -91,6 +105,7 @@
 		}
 		
 		if(libreChecked != 0) {
+			selectall.disabled = true;
 			if (total == null) {
 				grupo.disabled = true;
 			} else {
@@ -111,6 +126,7 @@
 				libre.disabled = false;
 			}
 			libregambeta.disabled = false;
+			selectall.disabled = false;
 			if (total == null) {
 				grupo.disabled = false;
 			} else {
@@ -245,7 +261,9 @@
 		
 							<div align="center" style="float:left">
 						<?	if ($horas_fecha != NULL) { ?>
-								<div style="float:left;"><b>Horarios Disponibles</b></div><br /><br />
+								<div style="float:left;"><b>Horarios Disponibles</b>
+								<b> [ CheckALL: <input type="checkbox" id="selectall" name="selectall" onclick="seleccionarTodo()" /> ]</b>
+								</div><br /><br />
 								<div id="error" style="color:#CC3300; font-weight:bold; margin-bottom:10px" align="left"></div>
 								<div style="text-align:left; width:500px">	
 								<?	
@@ -260,6 +278,7 @@
 									}  ?>							
 								</div>
 					  <?	} ?>
+							
 								<br />
 							<? if (!$fechaLibre) { ?>
 								<div style="float:left;">

@@ -133,17 +133,7 @@
 					} 
 				}
 			}
-			if ($reserva['observacion'] != "") {
-				$i++;
-				$c = 65;
-				$columna = chr($c);
-				$celda = $columna.$i;
-				$cfinal = $c + sizeof($horasFecha);
-				$columnaFinal = chr($cfinal);
-				$celdaFinal =  $columnaFinal.$i;
-				$objPHPExcel->getActiveSheet()->mergeCells("$celda:$celdaFinal");	
-				$objPHPExcel->getActiveSheet()->setCellValue($celda,  $reserva['observacion']);
-			}
+	
 		} else {
 			$c++;
 			$columna = chr($c); 
@@ -159,6 +149,20 @@
 			$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColorSR);
 		}
 		$i++;
+	}
+	
+	foreach ($equiposConReserva as $reserva) { 
+		if ($reserva['observacion'] != "") {
+				$c = 65;
+				$columna = chr($c);
+				$celda = $columna.$i;
+				$cfinal = $c + sizeof($horasFecha);
+				$columnaFinal = chr($cfinal);
+				$celdaFinal =  $columnaFinal.$i;
+				$objPHPExcel->getActiveSheet()->mergeCells("$celda:$celdaFinal");	
+				$objPHPExcel->getActiveSheet()->setCellValue($celda, $reserva['nombre'].": ".$reserva['observacion']);
+				$i++;
+		}
 	}
 	
 	$c = 65;
