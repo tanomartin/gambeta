@@ -70,7 +70,7 @@
     </li> 
 
 
-	<li class="<? if( $menu == "Reservas") echo "active"; ?>  submenu "><span class="submenu">Gesti&oacute;n de Reservas</span>
+	<li class="<? if( $menu == "Reservas") echo "active"; ?>  submenu "><span class="submenu">Gesti&oacute;n de Fecha</span>
 	  <ul style="visibility: visible; opacity: 1;" class="level_2">
 	    <li class="first"> 
 	      <a href="#" title="Reservas"  class="first"  onclick="this.blur(); ir('Reservas', '', 'reservas.php', 'reservas.php')">Reservas</a>
@@ -78,7 +78,9 @@
 	    <li >
 	      <a href="#" title="Confirmaciones"  class="first"  onclick="this.blur(); ir('Confirmaciones', '', 'confirmaciones.php', 'confirmaciones.php')">Confirmaciones</a>
         </li>        
-		       
+		<li >
+	      <a href="#" title="Listado Fecha"  class="first"  onclick="this.blur(); ir('Listado Fecha', '', 'listadopartidos.php', 'listadopartidos.php')">Listado de Partidos</a>
+        </li>        
       </ul>
     </li> 
 
