@@ -403,6 +403,52 @@ function get($id="") {
 		}
 		
 	}
+	
+	function getByFechaPartidoSede($fechaPartido, $idSede){
+
+	   $db = new Db();
+
+       $query = "Select  
+	   				x.id as idPartido,
+	   				x.horaPartido, 
+					f.nombre as nombreFecha, 
+					e1.nombre as equipo1,
+					e1.id as id1,
+					e2.nombre as equipo2,
+					e2.id as id2,
+					x.cancha as cancha,
+					t.nombre as torneo, 
+					c.nombrePagina as categoria, 
+					z.nombrePagina as zona
+		          from 
+				    ga_fixture x, 
+					ga_fechas f, 
+					ga_torneos_categorias tc, 
+					ga_torneos t, 
+					ga_equipos e1, 
+					ga_equipos e2, 
+					ga_categorias c, 
+					ga_categorias z
+				  where 
+				    x.fechaPartido = '$fechaPartido' and 
+				    x.idSede = $idSede and
+				    x.idFecha = f.id and
+  				    x.idEquipo1 = e1.id and
+				    x.idEquipo2 = e2.id and 
+				    f.idTorneoCat = tc.id and
+				    tc.id_torneo = t.id and
+				    tc.id_padre = c.id and
+					tc.id_categoria = z.id
+				  order 
+				    by x.horaPartido ASC";
+
+		$datos = $db->getResults($query, ARRAY_A); 
+
+		$db->close();
+
+		return $datos;	
+
+	}
 
 }
 
