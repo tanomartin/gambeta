@@ -64,6 +64,11 @@
 		document.frm_busqueda.submit();
 	}
 
+	function limpiarAction() {
+		document.frm_busqueda.accion.value = "";	
+		document.frm_busqueda.submit();	
+	}
+	
 </script>
 
 
@@ -134,8 +139,8 @@
 										</option>
 									<?php } ?>	   
 								  </select>
-							<input class="submit" value="Listar" type="submit" style="font-size:11px" />
-                            <input class="submit" value="Limpiar" type="button" style="font-size:11px" onclick="javascript:limpiar('frm_busqueda'); document.frm_busqueda.submit();" />
+							<input class="submit" value="Listar" type="submit" style="font-size:11px" onclick="javascript:limpiarAction();"/>
+                            <input class="submit" value="Limpiar" type="button" style="font-size:11px" onclick="javascript:limpiar('frm_busqueda'); javascript:limpiarAction();document.frm_busqueda.submit();" />
 						</div>
                     </form>
                     </div>
