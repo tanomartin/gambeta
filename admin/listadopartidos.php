@@ -2,6 +2,7 @@
 	include_once "include/fechas.php";
 	include_once "../model/sedes.php";	
 	include_once "../model/fixture.php";
+	include_once "../model/categorias.php";
 	
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
@@ -22,6 +23,7 @@
 	
 	$oSede= new Sedes();
 	$aSedes = $oSede->get();
+	$oCetegoria = new Categorias();
 	
 	$oFixture = new Fixture();
 	$listadoPartidos = 	$oFixture->getByFechaPartidoSede($fechaPartidosSql,$id_sede);
@@ -40,6 +42,12 @@
 			}
 		}
 		$listadoPartidos[$i]['confirmacion'] = $confirmacion;
+		if ($listadoPartidos[$i]['idzona'] != -1 && $listadoPartidos[$i]['idzona'] != 0) {
+			$categoria = $oCetegoria->get($listadoPartidos[$i]['idzona']);
+			$listadoPartidos[$i]['zona'] = "-".$categoria[0]['nombrePagina'];
+		} else {
+			$listadoPartidos[$i]['zona'] = "";
+		}
 	}
 	?>
     
@@ -167,7 +175,7 @@
 								<? foreach ($listadoPartidos as $partido) {?>
 									<tr>
 									 <td><?=$partido["horaPartido"]?></td>
-									 <td><?=$partido["torneo"]."-".$partido["categoria"]."-".$partido["zona"]?></td>
+									 <td><?=$partido["torneo"]."-".$partido["categoria"].$partido["zona"]?></td>
 									 <td><?=$partido["equipo1"]?></td>
 									 <td><?=$partido["equipo2"]?></td>
 									 <td style="text-align:center"><?=$partido["cancha"]?></td>

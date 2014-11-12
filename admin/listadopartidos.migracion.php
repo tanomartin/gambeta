@@ -86,7 +86,7 @@
 		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $partido["horaPartido"]);
 		$columna = "B";
 		$celda = $columna.$i;
-		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $partido["torneo"]."-".$partido["categoria"]."-".$partido["zona"]);
+		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $partido["torneo"]."-".$partido["categoria"].$partido["zona"]);
 		$columna = "C";
 		$celda = $columna.$i;
 		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $partido["equipo1"]);
