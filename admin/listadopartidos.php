@@ -152,14 +152,16 @@
 						</div>
                     </form>
                     </div>
-					<div class="ce_text block">
+					
                     <? if ($listadoPartidos != NULL) { 
 					   	 $sede = $oSede->get($id_sede); ?>
+						 <div class="ce_text block">
 							<h1>Listado de Partidos del <?=$fechaPartidos?> - Sede <?=$sede[0]['nombre'] ?>
 							  <div style="float:right"> 
 									<img width="75" border="0" alt="reserva" title="Exportar Excel" onclick="javascript:migrar();" style="cursor:pointer" src="images/xls-icon.png"/>
 							  </div>
 							</h1>
+						</div>
 						<form name="frm_listado" id="frm_listado" action="<?=$_SERVER['PHP_SELF']?>" method="post">
 					  		<table width="900">
 								<tr>
@@ -198,7 +200,6 @@
 							 	$sede = $oSede->get($id_sede);?>
 								<h1>No hay de Partidos Cargado para la Fecha <?=$fechaPartidos?> - Sede <?=$sede[0]['nombre'] ?>
 					<?  } ?>
-					</div>
 
 		</div>
 
