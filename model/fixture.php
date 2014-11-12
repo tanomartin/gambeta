@@ -418,8 +418,8 @@ function get($id="") {
 					e2.id as id2,
 					x.cancha as cancha,
 					t.nombre as torneo, 
-					c.nombrePagina as categoria, 
-					z.nombrePagina as zona
+					c.nombrePagina as categoria,
+					tc.id_padre as idzona
 		          from 
 				    ga_fixture x, 
 					ga_fechas f, 
@@ -427,8 +427,7 @@ function get($id="") {
 					ga_torneos t, 
 					ga_equipos e1, 
 					ga_equipos e2, 
-					ga_categorias c, 
-					ga_categorias z
+					ga_categorias c
 				  where 
 				    x.fechaPartido = '$fechaPartido' and 
 				    x.idSede = $idSede and
@@ -437,8 +436,7 @@ function get($id="") {
 				    x.idEquipo2 = e2.id and 
 				    f.idTorneoCat = tc.id and
 				    tc.id_torneo = t.id and
-				    tc.id_padre = c.id and
-					tc.id_categoria = z.id
+				    tc.id_categoria = c.id
 				  order 
 				    by x.horaPartido ASC";
 
