@@ -288,7 +288,7 @@
 				<? } ?>							  
 			</div>
 			
-			<div align="right" style="margin-right:10px; margin-bottom:10px" ></div>
+			<div align="right" style="margin-right:10px; margin-bottom:10px" >&nbsp;</div>
 
 			<table width="928">
 				
