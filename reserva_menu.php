@@ -514,8 +514,12 @@ function confirmarPartido(idPartido) {
 										<br />
 								  <? } else { ?>
 										<div class="titulo_reserva" style="float:left;">Horarios Pedidos</div><br /><br />
-									 <?	foreach ($detalleReserva as $horas) {
-											print("<li>".$horas["descripcion"]."</li>");
+									 <?	if (sizeof($detalleReserva) != 0) {
+									 		foreach ($detalleReserva as $horas) {
+												print("<li>".$horas["descripcion"]."</li>");
+											}
+										} else {
+											print("<font color=red> ERROR AL GRABAR LA RESERVA.<BR>POR FAVOR COMUNIQUESE CON LA ORGANIZACION.</font>");
 										} 
 									} 
 								} 
