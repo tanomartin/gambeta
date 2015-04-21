@@ -116,21 +116,36 @@
 				$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColorFLGambeta);
 			}
 			if ($reserva['fecha_libre'] == 0) { 
-				foreach ($horasFecha as $horas) {
+				if (sizeof($reserva['detalle']) != 0) {
+					foreach ($horasFecha as $horas) {
+						$c++;
+						$columna = chr($c); 
+						$celda = $columna.$i;
+						$detalle = $reserva['detalle'];
+						$marca = false;
+						foreach($detalle as $horasreservada) {
+							if ($horasreservada['id_horas_cancha'] == $horas['id_horas_cancha']) {
+								$marca = true;
+							}
+						}
+						if ($marca) {
+							$objPHPExcel->getActiveSheet()->setCellValue($celda,  "X");
+							$objPHPExcel->getActiveSheet()->getStyle("$celda")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+						} 
+					}
+				} else {
 					$c++;
 					$columna = chr($c); 
 					$celda = $columna.$i;
-					$detalle = $reserva['detalle'];
-					$marca = false;
-					foreach($detalle as $horasreservada) {
-						if ($horasreservada['id_horas_cancha'] == $horas['id_horas_cancha']) {
-							$marca = true;
-						}
-					}
-					if ($marca) {
-						$objPHPExcel->getActiveSheet()->setCellValue($celda,  "X");
-						$objPHPExcel->getActiveSheet()->getStyle("$celda")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-					} 
+					$cfinal = $c + sizeof($horasFecha) - 1;
+					$columnaFinal = chr($cfinal);
+					$celdaFinal =  $columnaFinal.$i;
+					$objPHPExcel->getActiveSheet()->mergeCells("$celda:$celdaFinal");	
+					$objPHPExcel->getActiveSheet()->setCellValue($celda,  "ERROR AL GRABAR DETALLE");
+					$objPHPExcel->getActiveSheet()->getStyle("$celda")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+					$phpColorFLGambeta = new PHPExcel_Style_Color();
+					$phpColorFLGambeta->setRGB('FF0000');
+					$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColorFLGambeta);
 				}
 			}
 	

@@ -182,10 +182,14 @@
 												<td>
 													<? 
 														if ($equipo['fecha_libre'] == 0) {
-															$detalleArray = $equipo['detalle'];
-															foreach($detalleArray as $detalle) { ?>
-																<li><?= $detalle['descripcion']	?></li>
-														<?	} 
+															if (sizeof($equipo['detalle']) != 0 ) { 
+																$detalleArray = $equipo['detalle'];
+																foreach($detalleArray as $detalle) { ?>
+																	<li><?= $detalle['descripcion']	?></li>
+															<?	} 
+															} else {
+																print("ERROR AL GRABAR EL DETALLE");
+															}
 														} 
 														if ($equipo['fecha_libre'] == 1) {
 															print("F.L. EQUIPO");
@@ -258,20 +262,24 @@
 													<td colspan="<?=sizeof($horasFecha)?>" style="text-align:center; font-size:16px; color:#FF6699">FECHA LIBRE GAMBETA</td>
 											<?	}
 												if ($reserva['fecha_libre'] == 0) { 
-													foreach ($horasFecha as $horas) {
-														$detalle = $reserva['detalle'];
-														$marca = false;
-														foreach($detalle as $horasreservada) {
-															if ($horasreservada['id_horas_cancha'] == $horas['id_horas_cancha']) {
-																$marca = true;
+													if (sizeof($reserva['detalle']) != 0) {
+														foreach ($horasFecha as $horas) {
+															$detalle = $reserva['detalle'];
+															$marca = false;
+															foreach($detalle as $horasreservada) {
+																if ($horasreservada['id_horas_cancha'] == $horas['id_horas_cancha']) {
+																	$marca = true;
+																}
 															}
-														}
-														if ($marca) {?>
-															<td style="text-align:center; font-size:16px">X</td>
-													<?  } else { ?>
-															<td></td>
-													<?  } ?>
-											<?		}
+															if ($marca) {?>
+																<td style="text-align:center; font-size:16px">X</td>
+														<?  } else { ?>
+																<td></td>
+														<?  } ?>
+													<?	}
+													} else { ?>
+														<td colspan="<?=sizeof($horasFecha)?>" style="text-align:center; font-size:16px; color:#FF0000">ERROR AL GRABAR EL DETALLE</td>
+												<?	}
 												} 
 											} else { ?>
 													<td colspan="<?=sizeof($horasFecha)?>" style="text-align:center; font-size:16px; color:#FF0000">SIN RESERVA</td>
