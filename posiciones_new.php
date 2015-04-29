@@ -256,8 +256,9 @@ function paginar(id){
 </script>
   </head>
    
-<body   align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
-<form id="form_alta" name="form_alta" action="" method="post">
+<body align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
+	<?php include_once "include/analyticstracking.php"; ?>
+	<form id="form_alta" name="form_alta" action="" method="post">
 	<input name="id" id="id"  value="<?= $_POST['id'] ?>" type="hidden" />
     <input name="fecha" id="fecha"  value="<?= $fecha ?>" type="hidden" />
 	<div id="wrap">

@@ -237,8 +237,9 @@ function cambiar_menu(url){
 </script>
   </head>
    
-<body   align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
-<form id="form_alta" name="form_alta" action="" method="post">
+<body align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
+	<?php include_once "include/analyticstracking.php"; ?>
+	<form id="form_alta" name="form_alta" action="" method="post">
 	<input name="id" id="id"  value="<?= $_POST['id'] ?>" type="hidden" />
     <input name="color" id="color"  value="<?= $color ?>" type="hidden" />
 	<div id="wrap">
@@ -293,7 +294,7 @@ function cambiar_menu(url){
 	          	  <div style="float:left; margin-left:50px; width:90%">
 		                 <? if($aBeneficios[$i]['fotoLogo']) { ?>
 						   <div  style=" float:left; margin-left:-18px">
-                            <IMG SRC="thumb/phpThumb.php?src=../fotos_beneficios/<?= $aBeneficios[$i]['fotoLogo']?>&w=145&h=70" WIDTH="145" HEIGHT="70" BORDER="0" HSPACE="8" VSPACE="8"  bgcolor="#FFFFFF"></div>
+                            <IMG SRC="thumb/phpThumb.php?src=../fotos_beneficios/<?= $aBeneficios[$i]['fotoLogo']?>" WIDTH="145" HEIGHT="70" BORDER="0" HSPACE="8" VSPACE="8"  bgcolor="#FFFFFF"></div>
                   		  <? } ?>                          
                            <div style="float:right;width:70%">
                            		<div class="beneficios_titulo"><?= strtoupper ($aBeneficios[$i]['titulo']) ?></div>
