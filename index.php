@@ -2,7 +2,7 @@
 	include_once "model/noticias.php";
 	include_once "model/torneos.categorias.php";
 	include_once "model/torneos.php";
-	
+	include_once "include/analyticstracking.php";
 	
 	$oObj = new Noticias();
 	$noti = $oObj->getByCant(5);
