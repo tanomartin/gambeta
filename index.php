@@ -2,7 +2,6 @@
 	include_once "model/noticias.php";
 	include_once "model/torneos.categorias.php";
 	include_once "model/torneos.php";
-	include_once "include/analyticstracking.php";
 	
 	$oObj = new Noticias();
 	$noti = $oObj->getByCant(5);
@@ -277,7 +276,8 @@ $(document).ready(function() {
 </script>
 </head>
    
-<body   align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
+<body align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
+	<?php include_once "include/analyticstracking.php"; ?>
 	<div id="wrap">
 		<div id="encabezado">
 			<div id="cabezal">
