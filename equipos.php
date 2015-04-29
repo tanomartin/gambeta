@@ -291,10 +291,9 @@ function cambiar_menu(url){
 			   <? for ($i=0; $i<count($aEquipos); $i++ ) {?>
 	          	  <div style="float:left; margin-left:50px">
 		                 <? if($aEquipos[$i]['fotoPreview']) { ?>
-						   <div  style=" float:left; margin-left:-18px">
-                            <IMG SRC="thumb/phpThumb.php?src=../fotos_equipos/<?= $aEquipos[$i]['fotoPreview']?>&w=165&h=129" WIDTH="165" HEIGHT="129" BORDER="0" HSPACE="8" VSPACE="8"  bgcolor="#FFFFFF"></div>
-	                          <? } else  {?>
-								   <div  style=" float:left; margin-left:-18px"><img src="thumb/phpThumb.php?src=.../fotos_equipos/default_<?= $color ?>.jpg&w=165" WIDTH="165" HEIGHT="129" BORDER="0" HSPACE="8" VSPACE="8"  bgcolor="#FFFFFF"></div>                          
+						  		 <div  style=" float:left; margin-left:-18px"><IMG SRC="thumb/phpThumb.php?src=../fotos_equipos/<?= $aEquipos[$i]['fotoPreview']?>" WIDTH="165" HEIGHT="129" BORDER="0" HSPACE="8" VSPACE="8"  bgcolor="#FFFFFF"></div>
+	                    <? } else  {?>
+								 <div  style=" float:left; margin-left:-18px"><img src="thumb/phpThumb.php?src=../fotos_equipos/default_<?= $color ?>.jpg" WIDTH="165" HEIGHT="129" BORDER="0" HSPACE="8" VSPACE="8"  bgcolor="#FFFFFF"></div>                          
                           <? } ?>                          
                            <div style="float:right">
                            		<div class="titulo_equipos color_<?= $color ?>"><?= strtoupper ($aEquipos[$i]['nombre']) ?></div>
