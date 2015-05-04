@@ -268,7 +268,7 @@ function get($id="") {
 				  x.idSede = s.id and
 				  x.idEquipo1 = e1.id and
 				  x.idEquipo2 = e2.id
-				  and f.id=".$fecha." and (x.idEquipo1 =".$equipo." || x.idEquipo2=".$equipo.")";
+				  and f.id=".$fecha." and x.horaPartido != '__:__' and (x.idEquipo1 =".$equipo." || x.idEquipo2=".$equipo.")";
 	
 		$query.= " order by  horaPartido DESC";
 
