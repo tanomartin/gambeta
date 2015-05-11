@@ -241,7 +241,6 @@ print_r($grises);*/
 	/*	background-color:#F00*/
 	}
 
-
 	#pie_repetir { margin:0 auto 0 auto; width:100%; height:44px;
 			background-image:url(img/home/pie1.jpg);
 			background-repeat:repeat-x;
@@ -273,6 +272,16 @@ $(document).ready(function() {
 		document.frm1.submit();
 	}
 </script>
+
+<link href='css/shadowbox.css' rel='stylesheet' type='text/css'/> 
+<script src='js/shadowbox-1b8e4a9.js' type='text/javascript'/> </script> 
+<script type='text/javascript'> 
+	Shadowbox.init({ 
+		overlayColor: "#000", 
+		overlayOpacity: "0.6", 
+	}); 
+</script> 
+
 </head>
    
 <body align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
