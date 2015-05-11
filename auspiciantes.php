@@ -17,12 +17,15 @@
 			  	$auspiciantes[5][url]="http://www.facebook.com/aqui.africa";
 			  	$auspiciantes[5][img]="img/auspiciantes/africa_logo.jpg";
 
-			  	$auspiciantes[6][url]="http://www.solofutbolfemenino.com ";
+			  	$auspiciantes[6][url]="http://www.solofutbolfemenino.com";
 			  	$auspiciantes[6][img]="img/auspiciantes/solo_futbol.jpg";
+				
+				//$auspiciantes[7][url]="http://www.sushiboom.com.ar";
+			  	//$auspiciantes[7][img]="img/auspiciantes/sushi_boom.jpg";
 
-				shuffle ($auspiciantes);
-
-				for ($i=0;$i<count($auspiciantes);$i++) {
-?>
-				<a href="<?= $auspiciantes[$i]['url']?>" target="_blank"><img src="<?= $auspiciantes[$i]['img']?>" class="imagen"/>     </a>
-<? } ?>
+				shuffle ($auspiciantes);?>
+				
+				<a href="http://www.sushiboom.com.ar" target="_blank"><img src="img/auspiciantes/sushi_boom.jpg" class="imagen"/>     </a>
+			<?	for ($i=0;$i<count($auspiciantes);$i++) { ?>
+					<a href="<?= $auspiciantes[$i]['url']?>" target="_blank"><img src="<?= $auspiciantes[$i]['img']?>" class="imagen"/>     </a>
+			<? } ?>
