@@ -175,7 +175,7 @@ print_r($grises);*/
 	}
 
 	#cabezal3 {
-		width:1050px;
+		width:999px;
 		margin:0 auto 0 auto;
 	}
 
@@ -196,7 +196,7 @@ print_r($grises);*/
 	}
 
 	#auspiciantes {
-		width:260px;
+		width:210px;
 		margin:0 auto 0 auto;
 		border-left: 2px solid #CCC;
 		text-align:left;		
