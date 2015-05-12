@@ -36,7 +36,7 @@ print_r($grises);*/
    }
 
 	#cabezal {
-		background-image:url(img/home/cabezal2.jpg);
+		background-image:url(img/home/cabezal.jpg);
 		background-repeat:no-repeat;
 		width:999px;
 		height:242px;

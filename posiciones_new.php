@@ -277,7 +277,7 @@ function paginar(id){
 			</div>
 			<div id="imagen" style="float:left; vertical-align:top">
             	<div id="titulo_principal" class="titulo_pagina color_titulo_<?= $color ?>">
-                    <div  style="float:right;height:43px">
+                    <div  style="float:center;height:43px">
                         <? for ($i = 0; $i <count( $aTorneos ); $i++) { 
                             if ( $oTorneo->id_torneo != $aTorneos[$i][id] ) {
 									$aCategoriasMenu = $oObj->getByTorneo( $aTorneos[$i][id],"id_categoria");
