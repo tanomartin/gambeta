@@ -135,11 +135,11 @@
 		
 		
 	#faceytweet {
-		background-image:url(img/home/faceytweet.jpg);
+		/*background-image:url(img/home/faceytweet.jpg);*/
 		background-repeat:no-repeat;
 		width:232px;
 /*		height:275px;*/
-		margin:0 auto 0 auto;
+		margin:62px auto 0 -2px;
 	}
 
 
@@ -183,6 +183,7 @@
 		width:190px;
 		height:45px;
 		position:relative;
+		margin:0px 0px 0px 12px;
 		text-align:left;		
 	}
 	
@@ -191,20 +192,18 @@
 		position:relative;
 		width:210px;
 		margin:0 auto 0 auto;
-		border-left: 2px solid #CCC;
 		text-align:left;		
 	}
 
 	#gf{ 
-		position: relative;
-		left: -380px; 
-		top: -550px; /*442*/ 
+		position: absolute;
+		left:520px; 
+		top: 0px; /*442*/ 
 		width: 300px; 
 		height: 200px;
 		text-align:left;
 	/*	background-color:#F00*/
 	}
-
 
 	#pie_repetir { margin:0 auto 0 auto; width:100%; height:44px;
 			background-image:url(img/home/pie1.jpg);
@@ -286,6 +285,15 @@ function cambiar_menu(url){
 	document.form_alta.submit();
 }
 
+</script>
+
+<link href='css/shadowbox.css' rel='stylesheet' type='text/css'/> 
+<script src='js/shadowbox-1b8e4a9.js' type='text/javascript'/> </script> 
+<script type='text/javascript'> 
+	Shadowbox.init({ 
+		overlayColor: "#000", 
+		overlayOpacity: "0.6", 
+	});    
 </script>
  </head>
    
@@ -383,22 +391,7 @@ function cambiar_menu(url){
 			</div>
         </div>
         <div id="faceytweet" style="float:left">
-      		       <div id="campo_tiempo"><!-- www.TuTiempo.net - Ancho:120px - Alto:73px -->
-<!-- www.TuTiempo.net - Ancho:118px - Alto:71px -->
-<div id="TT_tBawbxtBddjcAQIA7fVzzDzzj6lAMdjlrtkd1sCoK1j"><h2><a href="http://www.tutiempo.net">Tutiempo.net</a></h2></div>
-<script type="text/javascript" src="http://www.tutiempo.net/widget/eltiempo_tBawbxtBddjcAQIA7fVzzDzzj6lAMdjlrtkd1sCoK1j"></script>
-				  </div>                 
-                   <div id="facebook">
-						<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fes-la.facebook.com%2Fpeople%2FGambeta-Femenina%2F100000148462698&amp;layout=box_count&amp;show_faces=false&amp;width=190&amp;action=like&amp;font&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:190px; height:65px;" allowTransparency="true"></iframe>
-                   </div>
-				   <div id="twitter">                        
-	                        <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    				</div>
-	    	       <div id="fecha" class="fecha">     
-                           <?php
-						   	setlocale(LC_ALL,"es_ES@euro","es_ES","esp");   echo utf8_encode(strftime("%A %d/%m/%Y"));
-    						?>				
-					</div>        
+      		          
 	    <div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
           <div id="auspiciantes" style="float: right">
           <? include('auspiciantes.php'); ?>
