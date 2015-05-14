@@ -166,8 +166,8 @@ class Fechas {
 
 	function getPaginado($filtros, $inicio, $cant, &$total) {
 
-		$orden = ($filtros["filter_order"])?$filtros["filter_order"]:"e.id";
-		$dir = ($filtros["filter_order_Dir"])?$filtros["filter_order_Dir"]:"asc"; 
+		//$orden = ($filtros["filter_order"])?$filtros["filter_order"]:"e.id";
+		//$dir = ($filtros["filter_order_Dir"])?$filtros["filter_order_Dir"]:"asc"; 
 
 
 		$db = new Db();
@@ -185,7 +185,8 @@ class Fechas {
 		if (trim($filtros["fcategoria"]) != "")		 
 			$query.= " and  c.nombreLargo like '%".strtoupper($filtros["fcategoria"])."%'";		  
 
-		$query.= " order by  $orden $dir LIMIT $inicio,$cant";
+		//$query.= " order by  $orden $dir LIMIT $inicio,$cant";
+		$query.= " order by e.fechaIni DESC, e.fechaFin DESC LIMIT $inicio,$cant";
 
 
 		$datos = $db->getResults($query, ARRAY_A); 
