@@ -231,39 +231,48 @@ print_r($grises);*/
 	});    
 </script>
 </head> 
-<body   align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
+<body align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
 <form id="form_alta" name="form_alta" action="" method="post">
 	<input name="id" id="id"  value="<?= $_POST['id'] ?>" type="hidden" />
     <input name="color" id="color"  value="<?= $color ?>" type="hidden" />
 	<div id="wrap">
 		<div id="encabezado">
 			<div id="cabezal">
-				 <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
-				 <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
-				 <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
-				 <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
-			</div>     
-	 	 </div>
-		<div id="cabezal1" style="margin-top:5px">
+		     <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
+             <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
+             <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
+             <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
+			</div>
+		 </div>
+        <div id="cabezal1" style="margin-top:5px">
 		 <? for ($i=0; $i<count( $aTorneos ); $i++) {   
-				$oObj = new TorneoCat();
+	  			$oObj = new TorneoCat();
 				$categoria = $oObj ->getByTorneo($aTorneos[$i][id]); ?>
-				<img src="logos/<?= $aTorneos[$i]['logoMenu'] ?>"  border="0" width="43px" height="54px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
-	     <? } ?>
-			<div id="menu"></div>  
+                <img src="logos/<?= $aTorneos[$i]['logoMenu'] ?>"  border="0" width="43px" height="54px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
+         <? } ?>	
+         	<div id="menu"></div>    
 			<div id="imagen" style="float:left; vertical-align:top">
-				<div style="float:left; margin-left:48px">
-					<img src="img/quienes_somos/quienes_somos.jpg" />
-				</div> 
-			</div>	  
-        </div>       
-		<div id="auspiciantes" style="float:left">
-			<div id="titulo_auspiciante" style="float:left"></div>
+	          	  <div style="float:left; margin-left:48px; height:750px">
+					  <img src="img/sedes/sedes.jpg" />
+					  <div style="position:relative; top:-195px; left:230px; border: 3px solid #DD2C8D; border-radius:4px; width:530px">
+							<iframe width="530" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;q=Acceso+A+Rafael+Obligado,+Recoleta,+Buenos+Aires,+Ciudad+Aut%C3%B3noma+de+Buenos+Aires,+Argentina&amp;aq=&amp;sll=-34.572592,-58.314056&amp;sspn=0.114067,0.264187&amp;ie=UTF8&amp;geocode=FVCA8P0dNueE_A&amp;split=0&amp;hq=&amp;hnear=Acceso+A+Rafael+Obligado,+Recoleta,+Buenos+Aires,+Argentina&amp;t=m&amp;ll=-34.568634,-58.394995&amp;spn=0.012722,0.04549&amp;z=14&amp;iwloc=&amp;output=embed"></iframe>
+					</div>
+		        </div> 
+	          	  <div style="float:left; top:-100px; margin-left:48px">
+					  <img src="img/sedes/sedes1.jpg" />
+					  <div style="position:relative; top:-195px; left:230px; border: 3px solid #DD2C8D; border-radius:4px; width:530px">
+							<iframe width="530" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;q=Tte.+General+Juan+Domingo+Perón+3355,+Almagro,+Buenos+Aires,+Argentina&amp;aq=&amp;sll=-34.6073239,-58.4139393&amp;sspn=0.114067,0.264187&amp;ie=UTF8&amp;geocode=FVCA8P0dNueE_A&amp;split=0&amp;hq=&amp;hnear=Tte.+General+Juan+Domingo+Perón+3355,+Almagro,+Buenos+Aires,+Argentina&amp;t=m&amp;ll=-34.6073239,-58.4139393&amp;spn=0.012722,0.04549&amp;z=14&amp;iwloc=&amp;output=embed"></iframe>
+					  </div>
+		        </div>                 
+			</div>
+        </div>	            
+        <div id="auspiciantes" style="float:left">     
+			<div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
 			<? include('auspiciantes.php'); ?>
-	 	</div>     
-	    <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
-	  	<div id="pie_repetir" style="float:left">
-	   		<div id="pie"></div>
+        </div>     
+        <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>  
+		<div id="pie_repetir" style="float:left">
+			<div id="pie"></div>
         </div>    
     </div>
 </form>

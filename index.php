@@ -232,14 +232,15 @@ print_r($grises);*/
 	}
 
 	#gf{ 
-		position: relative;
-		left: 370px; 
-		top: -530px; /*442*/ 
+		position: absolute;
+		left:522px; 
+		top: 7px; /*442*/ 
 		width: 300px; 
 		height: 200px;
 		text-align:left;
 	/*	background-color:#F00*/
 	}
+
 
 	#pie_repetir { margin:0 auto 0 auto; width:100%; height:44px;
 			background-image:url(img/home/pie1.jpg);

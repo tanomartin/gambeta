@@ -32,19 +32,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>:: Gambeta Femenina ::</title>
-    <meta name="author" content="gambetafemenina.com">
-    <meta name="description" content="Somos una Organización dedicada exclusivamente a la difusión del Fútbol Femenino. Promovemos Torneos de fútbol femenino, entrenamientos para todas las edas, escuelitas, clínicas, etc. Gracias a este ideal, muchas chicas y mujeres participan activamente de este deporte, mejorando su calidad de vida, su salud y condición física">
-    <meta name="keywords" content="fútbol femenino - torneo fútbol femenino - torneo fútbol 5 - futbol para mujeres - entrenamientos fútbol femenino - torneo de chicas - futbol para chicas - competencia para mujeres">
-        
-	<link rel="stylesheet" href="css/home.css" type="text/css">
-	<link rel="stylesheet" href="css/menu_izq.css" type="text/css">
-	<link rel="stylesheet" href="css/fixture.css" type="text/css">
-	<link rel="stylesheet" href="css/paginas.css" type="text/css">
-    	<link rel="stylesheet" href="js/thickbox.css" type="text/css">
-	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/thickbox.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>:: Gambeta Femenina ::</title>
+<meta name="author" content="gambetafemenina.com">
+<meta name="description" content="Somos una Organización dedicada exclusivamente a la difusión del Fútbol Femenino. Promovemos Torneos de fútbol femenino, entrenamientos para todas las edas, escuelitas, clínicas, etc. Gracias a este ideal, muchas chicas y mujeres participan activamente de este deporte, mejorando su calidad de vida, su salud y condición física">
+<meta name="keywords" content="fútbol femenino - torneo fútbol femenino - torneo fútbol 5 - futbol para mujeres - entrenamientos fútbol femenino - torneo de chicas - futbol para chicas - competencia para mujeres">
+<link rel="stylesheet" href="css/home.css" type="text/css">
+<link rel="stylesheet" href="css/menu_izq.css" type="text/css">
+<link rel="stylesheet" href="css/fixture.css" type="text/css">
+<link rel="stylesheet" href="css/paginas.css" type="text/css">
+<link rel="stylesheet" href="js/thickbox.css" type="text/css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/thickbox.js"></script>
 <style type="text/css">
 	<!--
 
@@ -148,7 +147,7 @@
 		
 		
 	#faceytweet {
-		background-image:url(img/home/faceytweet.jpg);
+		/*background-image:url(img/home/faceytweet.jpg);*/
 		background-repeat:no-repeat;
 		width:232px;
 /*		height:275px;*/
@@ -195,9 +194,10 @@
 
 
 	#titulo_auspiciante {
-		width:210px;
+		width:190px;
 		height:45px;
 		position:relative;
+		margin:60px 0px 0px 12px;
 		text-align:left;		
 	}
 	
@@ -206,14 +206,13 @@
 		position:relative;
 		width:210px;
 		margin:0 auto 0 auto;
-		border-left: 2px solid #CCC;
 		text-align:left;		
 	}
 
 	#gf{ 
-		position: relative;
-		left: -380px; 
-		top: -550px; /*442*/ 
+		position: absolute;
+		left:522px; 
+		top: 7px; /*442*/ 
 		width: 300px; 
 		height: 200px;
 		text-align:left;
@@ -241,7 +240,7 @@
 	a#link_fixture:focus { color: inherit; }			
 
 -->
-</style> 
+</style>
 <script type="text/javascript" src="_js/funciones.js"></script>
 <script>
 function cambiar(id){
@@ -258,137 +257,139 @@ function paginar(id){
 	document.getElementById('fecha').value=id;
 	document.form_alta.submit();
 }
-
 </script>
-  </head>
-   
+<link href='css/shadowbox.css' rel='stylesheet' type='text/css'/>
+<script src='js/shadowbox-1b8e4a9.js' type='text/javascript'/>
+</script>
+<script type='text/javascript'> 
+	Shadowbox.init({ 
+		overlayColor: "#000", 
+		overlayOpacity: "0.6", 
+	});    
+</script>
+</head>
 <body align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
-	<?php include_once "include/analyticstracking.php"; ?>
-	<form id="form_alta" name="form_alta" action="" method="post">
-	<input name="id" id="id"  value="<?= $_POST['id'] ?>" type="hidden" />
-    <input name="fecha" id="fecha"  value="<?= $fecha ?>" type="hidden" />
-	<input name="idActual" id="idActual"  value="<?= $_POST['id'] ?>" type="hidden" />    
-	<div id="wrap">
-		<div id="encabezado">
-			<div id="cabezal">
-		     <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
-             <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
-             <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
-             <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
-            </div>
-		 </div>
-         <div id="cabezal1">
-  			<div id="menu_izq1" style="float:left">
-    	            <img  src="logos/<?= $oTorneo->logoPagina?>" />
-                    	<? include("menu_izq.php") ?>
-			</div>
-			<div id="imagen" style="float:left; vertical-align:top">
-            	<div id="titulo_principal" class="titulo_pagina color_titulo_<?= $color ?>">
-                    <div  style="float:center; height:43px">
-                        <? for ($i = 0; $i <count( $aTorneos ); $i++) { 
+<?php include_once "include/analyticstracking.php"; ?>
+<form id="form_alta" name="form_alta" action="" method="post">
+  <input name="id" id="id"  value="<?= $_POST['id'] ?>" type="hidden" />
+  <input name="fecha" id="fecha"  value="<?= $fecha ?>" type="hidden" />
+  <input name="idActual" id="idActual"  value="<?= $_POST['id'] ?>" type="hidden" />
+  <div id="wrap">
+    <div id="encabezado">
+      <div id="cabezal">
+        <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
+        <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
+        <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
+        <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
+      </div>
+    </div>
+    <div id="cabezal1">
+      <div id="menu_izq1" style="float:left"> <img  src="logos/<?= $oTorneo->logoPagina?>" />
+        <? include("menu_izq.php") ?>
+      </div>
+      <div id="imagen" style="float:left; vertical-align:top">
+        <div id="titulo_principal">
+          <div  style="float:center; height:43px">
+            <? for ($i = 0; $i <count( $aTorneos ); $i++) { 
                             if ( $oTorneo->id_torneo != $aTorneos[$i][id] ) {
 									$aCategoriasMenu = $oObj->getByTorneo( $aTorneos[$i][id],"id_categoria");
 									
 								?>
-                             <img  src="logos/<?= $aTorneos[$i][logoMenu]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
-                        <? } 
+            <img  src="logos/<?= $aTorneos[$i][logoMenu]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
+            <? } 
                         } ?>
-                      </div>  
-                </div>
-				<div class="titulo_pagina color_titulo_<?= $color ?>" >
-				  <?=  strtoupper($oTorneo->nombre_pagina) ?>
-			    </div>
-                <div id="categorias">
-                	<div class="titulo_categoria color_categoria" style="float:left;">CATEGORIA</div>
-                    <? for ($i=0; $i<count($aCategorias);$i++) {
+          </div>
+        </div>
+        <div class="titulo_pagina color_titulo_<?= $color ?>" >
+          <?=  strtoupper($oTorneo->nombre_pagina) ?>
+        </div>
+        <div id="categorias">
+          <div class="titulo_categoria color_categoria" style="float:left;">CATEGORIA</div>
+          <? for ($i=0; $i<count($aCategorias);$i++) {
 						 if($aCategorias[$i][id] == $_POST['id']) { 
 						?>
-                        	<div style="float:left" class="color_categoria_seleccionada_<?= $color ?>"><? if ( $aCategorias[$i][nombreCatPagina] != "" ) { echo strtoupper($aCategorias[$i][nombreCatPagina]). "-";} ?><?= strtoupper($aCategorias[$i][nombrePagina]) ?></div> 
-                        <? } else { ?>
-		                       <div style="float:left; cursor:pointer" class="categoria_submenu" onclick="cambiar(<?= $aCategorias[$i][id]?>)">
-								   <? if ( $aCategorias[$i][nombreCatPagina] != "" ) { echo strtoupper($aCategorias[$i][nombreCatPagina]). "-";} ?><?= strtoupper($aCategorias[$i][nombrePagina]) ?>
-							   </div>						
-						
-						<? }
+          <div style="float:left" class="color_categoria_seleccionada_<?= $color ?>">
+            <? if ( $aCategorias[$i][nombreCatPagina] != "" ) { echo strtoupper($aCategorias[$i][nombreCatPagina]). "-";} ?>
+            <?= strtoupper($aCategorias[$i][nombrePagina]) ?>
+          </div>
+          <? } else { ?>
+          <div style="float:left; cursor:pointer" class="categoria_submenu" onclick="cambiar(<?= $aCategorias[$i][id]?>)">
+            <? if ( $aCategorias[$i][nombreCatPagina] != "" ) { echo strtoupper($aCategorias[$i][nombreCatPagina]). "-";} ?>
+            <?= strtoupper($aCategorias[$i][nombrePagina]) ?>
+          </div>
+          <? }
 						
 							if ($i+1 < count($aCategorias)) { ?>
-	                         <div style="float:left" class="categoria_linea_<?= $color ?>">|</div>
-                        <? } 
-					}?>	
-                </div>
-	            <div id="fixture_<?= $color ?>">
-            		<div  id="fixture_titulo" class="fixture_titulo1 fixture_color_<?= $color ?>"><?= strtoupper ($aFixture[0]['nombreFecha']) ?></div>
-				    <div   id="fixture_paginas"  class="fixture_paginado fixture_color_<?= $color ?>">
-            	           <?  $total =count($aFechas);
-						   	for ($i=1; $i<= $total; $i++ ) { if ($i != $fecha) echo '<a style="cursor:pointer" onclick="paginar('.$i.')">'.$i.'</a>';  if (($i != $total && $i != $fecha && $fecha != $total) || ($fecha == $total && $i+1<$fecha)) echo " - " ;}?>
-                    </div>
-    	        </div> 
-	           <? for ($p=0; $p<count($aFixture); $p++) {?>
-               
-				<a id="link_fixture" href="detalleFixture.php?color=<?= $color ?>&idEquipo1=<?= $aFixture[$p][idEquipo1]?>&idEquipo2=<?= $aFixture[$p][idEquipo2]?>&id=<?= $aFixture[$p][id]?>&keepThis=true&TB_iframe=true&height=600&width=600" title="" class="thickbox">
-                    <div id="partido_<?= $color ?>">
-                    <div id="fixture_nro_partido"><? echo $p+1; ?></div>
-                    <div id="fixture_sede"><? echo strtoupper ($aFixture[$p]['sede']); ?></div>
-                    <div id="fixture_cancha"><? echo strtoupper ($aFixture[$p]['cancha']); ?></div>
-                    <div id="fixture_equipo1"><? echo strtoupper ($aFixture[$p]['equipo1']); ?></div>
-                    <? $class = "fixture_color_".$color;
+          <div style="float:left" class="categoria_linea_<?= $color ?>">|</div>
+          <? } 
+					}?>
+        </div>
+        <div id="fixture_<?= $color ?>">
+          <div  id="fixture_titulo" class="fixture_titulo1 fixture_color_<?= $color ?>">
+		  		<?= strtoupper ($aFixture[0]['nombreFecha']) ?>
+		  </div>
+		</div>
+		<div id="fixture_<?= $color ?>" style="margin-top:-17px">
+          <div id="fixture_paginas"  class="fixture_paginado fixture_color_<?= $color ?>">
+            <?  $total =count($aFechas);
+				for ($i=1; $i<= $total; $i++ ) { if ($i != $fecha) echo '<a style="cursor:pointer" onclick="paginar('.$i.')">'.$i.'</a>';  if (($i != $total && $i != $fecha && $fecha != $total) || ($fecha == $total && $i+1<$fecha)) echo " - " ;}?>
+          </div>
+        </div>
+        <? for ($p=0; $p<count($aFixture); $p++) {?>
+        <a id="link_fixture" href="detalleFixture.php?color=<?= $color ?>&idEquipo1=<?= $aFixture[$p][idEquipo1]?>&idEquipo2=<?= $aFixture[$p][idEquipo2]?>&id=<?= $aFixture[$p][id]?>&keepThis=true&TB_iframe=true&height=600&width=600" title="" class="thickbox">
+        <div id="partido_<?= $color ?>">
+          <div id="fixture_nro_partido"><? echo $p+1; ?></div>
+          <div id="fixture_sede"><? echo strtoupper ($aFixture[$p]['sede']); ?></div>
+          <div id="fixture_cancha"><? echo strtoupper ($aFixture[$p]['cancha']); ?></div>
+          <div id="fixture_equipo1"><? echo strtoupper ($aFixture[$p]['equipo1']); ?></div>
+          <? $class = "fixture_color_".$color;
 						if ($aFixture[$p]['golesEquipo1']<$aFixture[$p]['golesEquipo2']) { $class = "fixture_color_gris"; }
                    	if ($aFixture[$p]['golesEquipo1'] >9) { ?>
-                 	   <div id="fixture_resultado10" class="<?= $class ?>"><?= ($aFixture[$p]['golesEquipo1']>-1)?$aFixture[$p]['golesEquipo1']:""; ?></div>					
-					<? } else {?>
-                   	  <div id="fixture_resultado1" class="<?= $class ?>"><?= ($aFixture[$p]['golesEquipo1']>-1)?$aFixture[$p]['golesEquipo1']:""; ?></div>
-					<? } ?>
-                    <div id="fixture_horaPartido"><? echo strtoupper ($aFixture[$p]['horaPartido']); ?></div>
-                    <div id="fixture_fechaPartido" class="fixture_color_<?= $color ?>"><? echo cambiaf_a_normal($aFixture[$p]['fechaPartido']); ?></div>
-                    <div id="fixture_equipo2"><? echo strtoupper ($aFixture[$p]['equipo2']); ?></div>
-                    <? $class = "fixture_color_".$color;
+          <div id="fixture_resultado10" class="<?= $class ?>">
+            <?= ($aFixture[$p]['golesEquipo1']>-1)?$aFixture[$p]['golesEquipo1']:""; ?>
+          </div>
+          <? } else {?>
+          <div id="fixture_resultado1" class="<?= $class ?>">
+            <?= ($aFixture[$p]['golesEquipo1']>-1)?$aFixture[$p]['golesEquipo1']:""; ?>
+          </div>
+          <? } ?>
+          <div id="fixture_horaPartido"><? echo strtoupper ($aFixture[$p]['horaPartido']); ?></div>
+          <div id="fixture_fechaPartido" class="fixture_color_<?= $color ?>"><? echo cambiaf_a_normal($aFixture[$p]['fechaPartido']); ?></div>
+          <div id="fixture_equipo2"><? echo strtoupper ($aFixture[$p]['equipo2']); ?></div>
+          <? $class = "fixture_color_".$color;
 						if ($aFixture[$p]['golesEquipo2']<$aFixture[$p]['golesEquipo1']) { $class = "fixture_color_gris"; }
                    	if ($aFixture[$p]['golesEquipo2'] >9) { ?>
-                 	   <div id="fixture_resultado20" class="<?= $class ?>"><?= ($aFixture[$p]['golesEquipo2']>-1)?$aFixture[$p]['golesEquipo2']:""; ?></div>					
-					<? } else {?>
-	                    <div id="fixture_resultado2" class="<?= $class ?>"><?= ($aFixture[$p]['golesEquipo2']>-1)?$aFixture[$p]['golesEquipo2']:""; ?></div>
-				<? } ?>
-					
-                    </div>
-                 </a>
-				<? } ?>
-	            <div>
-                	<? if ($fecha != 1){?>
-	            		<div  id="fixture_ant_<?= $color?>" onclick="paginar(<?= $fecha - 1 ?>)" style="cursor:pointer"></div>
-                    <? } ?>
-                	<? if ($fecha != $total){?>                    
-    	        		<div  id="fixture_sig_<?= $color?>" onclick="paginar(<?= $fecha + 1 ?>)" style="cursor:pointer"></div>
-                    <? } ?>                        
-               </div>                                 
-			</div>
+          <div id="fixture_resultado20" class="<?= $class ?>">
+            <?= ($aFixture[$p]['golesEquipo2']>-1)?$aFixture[$p]['golesEquipo2']:""; ?>
+          </div>
+          <? } else {?>
+          <div id="fixture_resultado2" class="<?= $class ?>">
+            <?= ($aFixture[$p]['golesEquipo2']>-1)?$aFixture[$p]['golesEquipo2']:""; ?>
+          </div>
+          <? } ?>
         </div>
-        <div id="faceytweet" style="float:left; margin-left:12px">
-      		       <div id="campo_tiempo"><!-- www.TuTiempo.net - Ancho:120px - Alto:73px -->
-<!-- www.TuTiempo.net - Ancho:118px - Alto:71px -->
-<div id="TT_tBawbxtBddjcAQIA7fVzzDzzj6lAMdjlrtkd1sCoK1j"><h2><a href="http://www.tutiempo.net">Tutiempo.net</a></h2></div>
-<script type="text/javascript" src="http://www.tutiempo.net/widget/eltiempo_tBawbxtBddjcAQIA7fVzzDzzj6lAMdjlrtkd1sCoK1j"></script>
-				  </div>              
-                   <div id="facebook">
-						<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fes-la.facebook.com%2Fpeople%2FGambeta-Femenina%2F100000148462698&amp;layout=box_count&amp;show_faces=false&amp;width=190&amp;action=like&amp;font&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:190px; height:65px;" allowTransparency="true"></iframe>
-                   </div>
-				   <div id="twitter">                        
-	                        <a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-    				</div>
-	    	       <div id="fecha" class="fecha">     
-                           <?php
-						   	setlocale(LC_ALL,"es_ES@euro","es_ES","esp");   echo utf8_encode(strftime("%A %d/%m/%Y"));
-    						?>				
-					</div>        
-            <div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
-              <div id="auspiciantes" style="float: right">
-      			    <? include('auspiciantes.php'); ?>
-               </div>     
-            <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
-         </div>          
-		<div id="pie_repetir" style="float:left">
-			<div id="pie"></div>
-        </div>    
-  
+        </a>
+        <? } ?>
+        <div>
+          <? if ($fecha != 1){?>
+          <div  id="fixture_ant_<?= $color?>" onclick="paginar(<?= $fecha - 1 ?>)" style="cursor:pointer"></div>
+          <? } ?>
+          <? if ($fecha != $total){?>
+          <div  id="fixture_sig_<?= $color?>" onclick="paginar(<?= $fecha + 1 ?>)" style="cursor:pointer"></div>
+          <? } ?>
+        </div>
+      </div>
     </div>
-    </form>
+    <div id="faceytweet" style="float:left; margin-left:12px">
+      <div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
+      <div id="auspiciantes" style="float: right">
+        <? include('auspiciantes.php'); ?>
+      </div>
+    </div>
+    <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
+    <div id="pie_repetir" style="float:left">
+      <div id="pie"></div>
+    </div>
+  </div>
+</form>
 </body>

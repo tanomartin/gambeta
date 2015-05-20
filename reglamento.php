@@ -1,11 +1,15 @@
 <?	include_once "include/config.inc.php";
 	include_once "model/torneos.categorias.php";
 	include_once "model/torneos.php";
+	include_once "model/reglamento.php";
 	
 	
 	$oObj = new Torneos();
 	$aTorneos = $oObj->getByCant(CANT_TORNEOS); 
-	
+
+	$oObj = new Reglamento();
+	$oReg = $oObj->getById(1); 
+
 /*print_r($rosa); echo "avavav<br>";
 print_r($grises);*/
 ?>
@@ -15,7 +19,6 @@ print_r($grises);*/
 <head>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>:: Gambeta Femenina ::</title>
-    
     <meta name="author" content="gambetafemenina.com">
     <meta name="description" content="Somos una Organización dedicada exclusivamente a la difusión del Fútbol Femenino. Promovemos Torneos de fútbol femenino, entrenamientos para todas las edas, escuelitas, clínicas, etc. Gracias a este ideal, muchas chicas y mujeres participan activamente de este deporte, mejorando su calidad de vida, su salud y condición física">
     <meta name="keywords" content="fútbol femenino - torneo fútbol femenino - torneo fútbol 5 - futbol para mujeres - entrenamientos fútbol femenino - torneo de chicas - futbol para chicas - competencia para mujeres">
@@ -23,7 +26,7 @@ print_r($grises);*/
 	<link rel="stylesheet" href="css/home.css" type="text/css">
 	<link rel="stylesheet" href="css/menu_izq.css" type="text/css">
 	<link rel="stylesheet" href="css/equipos.css" type="text/css">
-	<link rel="stylesheet" href="css/paginas.css" type="text/css">
+	<link rel="stylesheet" href="css/reglamento.css" type="text/css">
     
  
 <style type="text/css">
@@ -230,7 +233,7 @@ print_r($grises);*/
 		overlayOpacity: "0.6", 
 	});    
 </script>
-</head> 
+</head>   
 <body   align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
 <form id="form_alta" name="form_alta" action="" method="post">
 	<input name="id" id="id"  value="<?= $_POST['id'] ?>" type="hidden" />
@@ -238,32 +241,32 @@ print_r($grises);*/
 	<div id="wrap">
 		<div id="encabezado">
 			<div id="cabezal">
-				 <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
-				 <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
-				 <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
-				 <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
+		     <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
+       		 <div id="reglamento" style="cursor:pointer" onclick="window.location = 'reglamento.php';"></div>
+             <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
+             <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
 			</div>     
-	 	 </div>
-		<div id="cabezal1" style="margin-top:5px">
-		 <? for ($i=0; $i<count( $aTorneos ); $i++) {   
-				$oObj = new TorneoCat();
-				$categoria = $oObj ->getByTorneo($aTorneos[$i][id]); ?>
-				<img src="logos/<?= $aTorneos[$i]['logoMenu'] ?>"  border="0" width="43px" height="54px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
-	     <? } ?>
-			<div id="menu"></div>  
+	    </div>
+	  	<div id="cabezal1" style="margin-top:5px">
+			<? for ($i=0; $i<count( $aTorneos ); $i++) {   
+					$oObj = new TorneoCat();
+					$categoria = $oObj ->getByTorneo($aTorneos[$i][id]);?>
+                    <img src="logos/<?= $aTorneos[$i]['logoMenu'] ?>"  border="0" width="43px" height="54px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
+            <? } ?>	
+        	<div id="menu"></div>
 			<div id="imagen" style="float:left; vertical-align:top">
-				<div style="float:left; margin-left:48px">
-					<img src="img/quienes_somos/quienes_somos.jpg" />
-				</div> 
-			</div>	  
-        </div>       
-		<div id="auspiciantes" style="float:left">
-			<div id="titulo_auspiciante" style="float:left"></div>
-			<? include('auspiciantes.php'); ?>
-	 	</div>     
-	    <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
-	  	<div id="pie_repetir" style="float:left">
-	   		<div id="pie"></div>
+				<div style="float:left; margin-left:100px">
+					<img src="img/reglamento/titulo.jpg" /><?= html_entity_decode($oReg ->descripcion) ?>
+				</div>
+			</div>   
+		</div>     
+      	<div id="auspiciantes" style="float:left">     
+            <div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
+       		<? include('auspiciantes.php'); ?>
+        </div>     
+        <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>   
+		<div id="pie_repetir" style="float:left">
+			<div id="pie"></div>
         </div>    
     </div>
 </form>
