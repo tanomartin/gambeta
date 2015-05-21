@@ -208,7 +208,7 @@
 		margin:60px 0px 0px 12px;
 		text-align:left;		
 	}
-	
+
 	#auspiciantes {
 		clear:both;
 		position:relative;
@@ -395,16 +395,17 @@ function cambiarResultado(idEquipo){
           </div>
         </div>
       </div>
+	   <div id="faceytweet" style="float:left">
+		  <div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
+		  <div id="auspiciantes" style="float: right">
+			<? include('auspiciantes.php'); ?>
+		  </div> 
+       </div>
     </div>
-    <div id="faceytweet" style="float:left; margin-left:14px">
-      <div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
-      <div id="auspiciantes" style="float: right">
-        <? include('auspiciantes.php'); ?>
-      </div>
-      <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
-    </div>
+   
+	<div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
     <div id="pie_repetir" style="float:left">
-      <div id="pie"></div>
+	  <div id="pie"></div>
     </div>
   </div>
 </form>

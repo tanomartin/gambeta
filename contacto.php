@@ -222,7 +222,7 @@ print_r($grises);*/
 	
 	#auspiciantes {
 		width:210px;
-		margin:-217px 0px 0px 18px;
+		margin:0px 0px 0px 18px;
 		text-align:left;		
 	}
 
@@ -345,31 +345,31 @@ function unFocus(input){
 			$categoria = $oObj ->getByTorneo($aTorneos[$i][id]);?>
           	<img src="logos/<?= $aTorneos[$i]['logoMenu'] ?>"  border="0" width="43px" height="54px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
     <? } ?>
-      <div id="menu"></div>    
-      <div id="imagen" style="float:left">
-        <div id="descripcion" class="descripcion">
-			  <p><b>Realiz&aacute; ac&aacute; tu consulta</b></p>
-			  Record&aacute; que si ya est&aacute;s inscripta en alguno de los Torneos, pod&eacute;s dejarnos tu consulta directamente en nuestro Facebook o Twitter </div>
-			<div id="campo_nombre">
-			  <input name="nombre" id="nombre" class="registro" maxlength="50" type="text" value="NOMBRE Y APELLIDO" size="45"  onfocus="clickFocus(this)" onblur="unFocus(this)" >
+		  <div id="menu"></div>    
+		  <div id="imagen" style="float:left; vertical-align:top">
+			<div id="descripcion" class="descripcion">
+				  <p><b>Realiz&aacute; ac&aacute; tu consulta</b></p>
+				  Record&aacute; que si ya est&aacute;s inscripta en alguno de los Torneos, pod&eacute;s dejarnos tu consulta directamente en nuestro Facebook o Twitter </div>
+				<div id="campo_nombre">
+				  <input name="nombre" id="nombre" class="registro" maxlength="50" type="text" value="NOMBRE Y APELLIDO" size="45"  onfocus="clickFocus(this)" onblur="unFocus(this)" >
+				</div>
+				<div id="campo_email">
+				  <input name="email" id="email" class="registro" maxlength="100" size="45" type="text" value="EMAIL"  onfocus="clickFocus(this)" onblur="unFocus(this)" >
+				</div>
+				<div id="campo_telefono">
+				  <input name="telefono" id="telefono" class="registro" maxlength="50" size="45" type="text" value="TELEFONO"  onfocus="clickFocus(this)" onblur="unFocus(this)" >
+				</div>
+				<div id="campo_mensaje">
+				  <textarea name="mensaje" id="mensaje" style="height:137px; width:322px" class="registro"  onfocus="clickFocus(this)" onblur="unFocus(this)" >Mensaje</textarea>
+				</div>
+				<div id="boton" onclick="validar()"></div>
 			</div>
-			<div id="campo_email">
-			  <input name="email" id="email" class="registro" maxlength="100" size="45" type="text" value="EMAIL"  onfocus="clickFocus(this)" onblur="unFocus(this)" >
-			</div>
-			<div id="campo_telefono">
-			  <input name="telefono" id="telefono" class="registro" maxlength="50" size="45" type="text" value="TELEFONO"  onfocus="clickFocus(this)" onblur="unFocus(this)" >
-			</div>
-			<div id="campo_mensaje">
-			  <textarea name="mensaje" id="mensaje" style="height:137px; width:322px" class="registro"  onfocus="clickFocus(this)" onblur="unFocus(this)" >Mensaje</textarea>
-			</div>
-			<div id="boton" onclick="validar()"></div>
-        </div>
-      </div>
+			<div id="auspiciantes" style="float:left">     
+				<div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
+				<? include('auspiciantes.php'); ?>
+			</div> 
+		  </div>	
 	</div>
-    <div id="auspiciantes" style="float:left">     
-		<div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
-		<? include('auspiciantes.php'); ?>
-    </div> 
     <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
     <div id="pie_repetir" style="float:left">
       <div id="pie"></div>

@@ -256,11 +256,12 @@ print_r($grises);*/
 					<img src="img/quienes_somos/quienes_somos.jpg" />
 				</div> 
 			</div>	  
-        </div>       
-		<div id="auspiciantes" style="float:left">
-			<div id="titulo_auspiciante" style="float:left"></div>
-			<? include('auspiciantes.php'); ?>
-	 	</div>     
+            
+			<div id="auspiciantes" style="float:left;">
+				<div id="titulo_auspiciante" style="float:left"></div>
+				<? include('auspiciantes.php'); ?>
+			</div>
+		</div>    
 	    <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
 	  	<div id="pie_repetir" style="float:left">
 	   		<div id="pie"></div>

@@ -258,12 +258,12 @@ print_r($grises);*/
 				<div style="float:left; margin-left:100px">
 					<img src="img/reglamento/titulo.jpg" /><?= html_entity_decode($oReg ->descripcion) ?>
 				</div>
-			</div>   
+			</div>    
+			<div id="auspiciantes" style="float:left">     
+				<div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
+				<? include('auspiciantes.php'); ?>
+			</div> 
 		</div>     
-      	<div id="auspiciantes" style="float:left">     
-            <div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
-       		<? include('auspiciantes.php'); ?>
-        </div>     
         <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>   
 		<div id="pie_repetir" style="float:left">
 			<div id="pie"></div>

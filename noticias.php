@@ -181,7 +181,7 @@
 		width:190px;
 		height:45px;
 		position:relative;
-		margin:0px 0px 0px 12px;
+		margin:0px 0px 0px -10px;
 		text-align:left;		
 	}
 	
@@ -398,14 +398,15 @@ function cambiar_menu(url){
           <? } ?>
         </div>
       </div>
-    </div>
-    <div id="faceytweet" style="float:left">
-      <div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
-      <div id="auspiciantes" style="float: right">
+	  <div id="faceytweet" style="float:left">
+     <div id="auspiciantes" style="float: right">
+		 <div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
         <? include('auspiciantes.php'); ?>
       </div>
     </div>
-	<div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
+    </div>
+    
+    <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
     <div id="pie_repetir" style="float:left">
       <div id="pie"></div>
     </div>
