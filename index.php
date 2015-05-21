@@ -30,9 +30,10 @@ print_r($grises);*/
 
 	#wrap { margin:0 auto 0 auto; width:100%; height:100%  }
 	
-	#encabezado { margin:0 auto 0 auto; width:100%; height:242px;
-			background-image:url(img/home/costados1.jpg);
-			background-repeat:repeat-x;
+	#encabezado { 
+		margin:-8px 0 0 -8px; width:100%; height:242px;
+		background-image:url(img/home/costados1.jpg);
+		background-repeat:repeat-x;
    }
 
 	#cabezal {
