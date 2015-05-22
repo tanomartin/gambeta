@@ -310,7 +310,7 @@ function cambiarResultado(idEquipo){
       </div>
       <div id="imagen" style="float:left; vertical-align:top">
         <div id="titulo_principal">
-          <div  style="float:center;height:43px">
+          <div  style="float:center;height:43px" align="center">
             <? for ($i = 0; $i <count( $aTorneos ); $i++) { 
                             if ( $oTorneo->id_torneo != $aTorneos[$i][id] ) {
 									$aCategoriasMenu = $oObj->getByTorneo( $aTorneos[$i][id],"id_categoria");

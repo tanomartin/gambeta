@@ -30,10 +30,9 @@ print_r($grises);*/
 
 	#wrap { margin:0 auto 0 auto; width:100%; height:100%  }
 	
-	#encabezado { 
-		margin:-8px 0 0 -8px; width:100%; height:242px;
-		background-image:url(img/home/costados1.jpg);
-		background-repeat:repeat-x;
+	#encabezado { margin:0 auto 0 auto; width:100%; height:242px;
+			background-image:url(img/home/costados1.jpg);
+			background-repeat:repeat-x;
    }
 
 	#cabezal {
@@ -308,8 +307,7 @@ $(document).ready(function() {
            	 <img src="imgRotar/foto3.jpg" alt="" title="" width="768" height="275"/>	
            	 <img src="imgRotar/foto4.jpg" alt="" title="" width="768" height="275"/>		-->
             </div>
-           </div>
-      </div>  
+           </div> 
 	    <div id="cabezal2">
              <div id="titulo_cartelera" style="float:left"></div>
              <div id="titulo_torneo" style="float:left"></div>
@@ -400,4 +398,5 @@ $(document).ready(function() {
     <form name="frm1" id="frm1" method="post" action="noticias.php">
     	<input name="id"  id="id" type="hidden" />        
     </form>
+	</div> 
 </body>

@@ -339,14 +339,14 @@ function unFocus(input){
         <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
        </div>
     </div>
-    <div id="cabezal1" style="margin-top:5px">
+    <div id="cabezal1" style="margin-top:5px" align="center">
     <? for ($i=0; $i<count( $aTorneos ); $i++) {   
 	   		$oObj = new TorneoCat();
 			$categoria = $oObj ->getByTorneo($aTorneos[$i][id]);?>
           	<img src="logos/<?= $aTorneos[$i]['logoMenu'] ?>"  border="0" width="43px" height="54px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
     <? } ?>
 		  <div id="menu"></div>    
-		  <div id="imagen" style="float:left; vertical-align:top">
+		  <div id="imagen" style="float:left; vertical-align:top" align="left">
 			<div id="descripcion" class="descripcion">
 				  <p><b>Realiz&aacute; ac&aacute; tu consulta</b></p>
 				  Record&aacute; que si ya est&aacute;s inscripta en alguno de los Torneos, pod&eacute;s dejarnos tu consulta directamente en nuestro Facebook o Twitter </div>

@@ -259,21 +259,22 @@
         <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
 	  </div>
 	</div>
-    <div id="cabezal1" style="margin-top:5px">
-     <? for ($i=0; $i<count( $aTorneos ); $i++) {  
-	  		$oObj = new TorneoCat();
-			$categoria = $oObj ->getByTorneo($aTorneos[$i][id]);?>
-          	<img src="logos/<?= $aTorneos[$i]['logoMenu'] ?>"  border="0" width="43px" height="54px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
-     <? } ?>
-	 <div id="menu"></div> 
-     <div id="imagen" style="float:left"> </div>
-	<div id="auspiciantes" style="float:left">     
-		<div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
-		<? include('auspiciantes.php'); ?>
-    </div> 
-	<div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
-    <div id="pie_repetir" style="float:left">
-      <div id="pie"></div>
+    <div id="cabezal1" style="margin-top:5px" align="center">
+		 <? for ($i=0; $i<count( $aTorneos ); $i++) {  
+				$oObj = new TorneoCat();
+				$categoria = $oObj ->getByTorneo($aTorneos[$i][id]);?>
+				<img src="logos/<?= $aTorneos[$i]['logoMenu'] ?>"  border="0" width="43px" height="54px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
+		 <? } ?>
+		 <div id="menu"></div> 
+		 <div id="imagen" style="float:left"> </div>
+		<div id="auspiciantes" style="float:left">     
+			<div id="titulo_auspiciante"><img src="img/home/titulo_auspiciante.jpg" /></div>
+			<? include('auspiciantes.php'); ?>
+		</div> 
+		<div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
+		<div id="pie_repetir" style="float:left">
+		  <div id="pie"></div>
+		</div>
     </div>
   </div>
 </form>

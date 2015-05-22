@@ -244,7 +244,7 @@ print_r($grises);*/
              <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
 			</div>
 		 </div>
-        <div id="cabezal1" style="margin-top:5px">
+        <div id="cabezal1" style="margin-top:5px" align="center">
 		 <? for ($i=0; $i<count( $aTorneos ); $i++) {   
 	  			$oObj = new TorneoCat();
 				$categoria = $oObj ->getByTorneo($aTorneos[$i][id]); ?>
