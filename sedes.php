@@ -254,13 +254,13 @@ print_r($grises);*/
 			<div id="imagen" style="float:left; vertical-align:top">
 	          	  <div style="float:left; margin-left:48px; height:750px">
 					  <img src="img/sedes/sedes.jpg" />
-					  <div style="position:relative; top:-195px; left:230px; border: 3px solid #DD2C8D; border-radius:4px; width:530px">
+					  <div style="position:relative; top:-195px; left:115px; border: 3px solid #DD2C8D; border-radius:4px; width:530px">
 							<iframe width="530" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;q=Acceso+A+Rafael+Obligado,+Recoleta,+Buenos+Aires,+Ciudad+Aut%C3%B3noma+de+Buenos+Aires,+Argentina&amp;aq=&amp;sll=-34.572592,-58.314056&amp;sspn=0.114067,0.264187&amp;ie=UTF8&amp;geocode=FVCA8P0dNueE_A&amp;split=0&amp;hq=&amp;hnear=Acceso+A+Rafael+Obligado,+Recoleta,+Buenos+Aires,+Argentina&amp;t=m&amp;ll=-34.568634,-58.394995&amp;spn=0.012722,0.04549&amp;z=14&amp;iwloc=&amp;output=embed"></iframe>
 					</div>
 		        </div> 
 	          	  <div style="float:left; top:-100px; margin-left:48px">
 					  <img src="img/sedes/sedes1.jpg" />
-					  <div style="position:relative; top:-195px; left:230px; border: 3px solid #DD2C8D; border-radius:4px; width:530px">
+					  <div style="position:relative; top:-195px; left:115px; border: 3px solid #DD2C8D; border-radius:4px; width:530px">
 							<iframe width="530" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;q=Tte.+General+Juan+Domingo+Perón+3355,+Almagro,+Buenos+Aires,+Argentina&amp;aq=&amp;sll=-34.6073239,-58.4139393&amp;sspn=0.114067,0.264187&amp;ie=UTF8&amp;geocode=FVCA8P0dNueE_A&amp;split=0&amp;hq=&amp;hnear=Tte.+General+Juan+Domingo+Perón+3355,+Almagro,+Buenos+Aires,+Argentina&amp;t=m&amp;ll=-34.6073239,-58.4139393&amp;spn=0.012722,0.04549&amp;z=14&amp;iwloc=&amp;output=embed"></iframe>
 					  </div>
 		        </div>                 
