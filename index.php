@@ -298,7 +298,7 @@ $(document).ready(function() {
 		 </div>
         <div id="cabezal1">
 		<div id="imagen" style="float:left; margin-bottom:15px">
-             <img src="imgRotar/foto6.jpg" alt="" title="" width="920" height="275" />	
+             <img src="imgRotar/foto.jpg" alt="" title="" width="920" height="275" />	
 	       
 <!--    <div id="slideH" class="slideHeader"  style="float:left; margin-bottom:15px">	
            	 <img src="imgRotar/foto6.jpg" alt="" title="" width="920" height="275"/>	
@@ -345,7 +345,7 @@ $(document).ready(function() {
                   <br />
                 <? } ?>
 			  <div align="center" >             
-				<a width="520px" height="500" class="twitter-timeline"  href="https://twitter.com/GambetaFemenina"  data-widget-id="446705375895494656">Tweets por @GambetaFemenina</a>
+				<a width="520px" height="600" class="twitter-timeline"  href="https://twitter.com/GambetaFemenina"  data-widget-id="446705375895494656">Tweets por @GambetaFemenina</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
 		      </div> 
