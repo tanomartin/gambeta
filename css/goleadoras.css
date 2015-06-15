@@ -1,0 +1,320 @@
+#goleadoras_0 {
+   background-image:url(../img/goleadoras/goleadoras0.jpg);
+   background-repeat: no-repeat;
+   width:572px;
+   height:40px;
+   float:left; 
+   margin-left:37px;
+   margin-top:15px;	   
+}
+
+#goleadoras_1 {
+   background-image:url(../img/goleadoras/goleadoras1.jpg);
+   background-repeat: no-repeat;
+   width:572px;
+   height:40px;
+   float:left; 
+   margin-left:45px;
+   margin-top:4px;	   
+}
+
+#goleadoras_2 {
+   background-image:url(../img/goleadoras/goleadoras2.jpg);
+   background-repeat: no-repeat;
+   width:572px;
+   height:40px;
+   float:left; 
+   margin-left:45px;
+   margin-top:4px;	   
+}
+
+.goleadora_0_0 {
+   background-image:url(../img/goleadoras/goleadora_0_0.jpg);
+   background-repeat: no-repeat;
+   width:545px;
+   height:59px;
+   float:left; 
+   margin-left:45px;
+   margin-top:4px;	   
+}
+
+.goleadora_0_1 {
+   background-image:url(../img/goleadoras/goleadora_0_1.jpg);
+   background-repeat: no-repeat;
+   width:545px;
+   height:59px;
+   float:left; 
+   margin-left:45px;
+   margin-top:4px;	   
+}
+
+.goleadora_1_0 {
+   background-image:url(../img/goleadoras/goleadora_1_0.jpg);
+   background-repeat: no-repeat;
+   width:545px;
+   height:59px;
+   float:left; 
+   margin-left:45px;
+   margin-top:4px;	   
+}
+
+.goleadora_1_1 {
+   background-image:url(../img/goleadoras/goleadora_1_1.jpg);
+   background-repeat: no-repeat;
+   width:545px;
+   height:59px;
+   float:left; 
+   margin-left:45px;
+   margin-top:4px;	   
+}
+
+.goleadora_2_0 {
+   background-image:url(../img/goleadoras/goleadora_2_0.jpg);
+   background-repeat: no-repeat;
+   width:545px;
+   height:59px;
+   float:left; 
+   margin-left:45px;
+   margin-top:4px;	   
+}
+
+.goleadora_2_1 {
+   background-image:url(../img/goleadoras/goleadora_2_1.jpg);
+   background-repeat: no-repeat;
+   width:545px;
+   height:59px;
+   float:left; 
+   margin-left:45px;
+   margin-top:4px;	   
+}
+
+.posicion_color_0 {
+	color: #FFF;
+}
+
+.posicion_color_1 {
+	color: #5D5D5D;
+}
+
+.posicion {
+	font-family: "Times New Roman", Times, serif;
+	font-size:27pt;
+	font-weight:bold;
+	width:50px;
+	left:14px;
+	top:7px;
+	text-align:left;
+	position:relative;
+}	
+
+.nombreJugadora {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size:15pt;
+	width:300px;
+	height:30px;
+	left:80px;
+	top:-40px;
+	text-align:left;
+	position:relative;
+}	
+.nombreEquipo {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:10pt;
+	width:300px;
+	height:30px;
+	left:80px;
+	top:-38px;	
+	text-align:left;
+	position:relative;
+}	
+
+.goles {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size:25pt;
+	width:50px;
+	left:480px;
+	top:-104px;	
+	position:relative;
+	text-align:center;
+}	
+
+.partidos{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size:25pt;
+	font-weight:bold;
+	width:50px;
+	left:430px;
+	top:-144px;	
+	position:relative;
+	text-align:center;
+}	
+
+.color_0{
+	color: #DD2C8D;
+	
+}
+
+.color_1{
+	color: #229800;
+}
+
+.color_2{
+	color: #FFA400;	
+}
+
+/*
+.pos_color_0 {
+	color: #DD2C8D;
+	margin-left:5px;
+}
+
+.pos_color_1 {
+	color: #229800;
+}
+
+.pos_color_2 {
+	color: #FFA400;
+}
+
+.pos_detalle {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	line-height:14px;
+}
+
+#pos_detalleEquipo {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	line-height:14px;
+	position:relative;
+	width:150px;
+	top:-14px;
+	left:30px;
+}
+.pos0 {
+	color: #898989;
+}
+
+.pos1 {
+	color: #B6B6B6;
+}
+
+.verde {
+	color: #02D302;
+}
+
+.rojo {
+	color: #FF0000;
+}
+
+.gris {
+	color: #A9A9A9;
+}
+
+#posicion_pj{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	margin: 0px 0 15px 60px;
+	width:80px;
+	left:100px;
+	top:-27px;
+	position:relative;
+	float:left;
+}
+
+#par_ganados{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:60px;
+	top:-27px;
+	position:relative;
+	float:left;
+}
+#par_perdidos{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:95px;
+	top:-27px;
+	position:relative;
+	float:left;
+}
+
+#par_empatados{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:130px;
+	top:-27px;
+	position:relative;
+	float:left;
+}
+
+#goles_favor{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:160px;
+	top:-27px;
+	position:relative;
+	float:left;
+	width:30px;
+}
+
+#goles_contra{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:170px;
+	top:-27px;
+	position:relative;
+	float:left;
+	width:30px;	
+	text-align:right;
+	
+}
+
+#goles_diferencia{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	left:190px;
+	top:-27px;
+	position:relative;
+	float:left;
+	width:30px;
+	text-align:right;
+}
+
+#posicion_puntaje{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11pt;
+	font-weight:bold;
+	line-height:14px;
+	margin: 0px 0 15px 60px;
+	width:80px;
+	left:145px;
+	top:-27px;
+	position:relative;
+	float:left;
+	width:30px;
+	text-align:right;
+}
+
+#linea{
+    height: 30px;
+    margin-left: 50px;
+	margin-top:10px;
+    width: 530px;
+	border-bottom: 1px solid #CCC;
+	clear:both;
+}*/

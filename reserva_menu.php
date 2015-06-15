@@ -455,7 +455,7 @@ function confirmarPartido(idPartido) {
 					<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;">
 						<font color="#000000"><?= strtoupper ($equipo->nombre) ?></font> | <? echo $fecha_activa["nombre"] ?>
 					</div>
-					<a class="enlace" href="#" onclick="logout()"><img src="images/icon-logout.png" title="salir" width="40" height="40" border="0" alt="enviar" style="float:right"></a><br />
+					<a class="enlace" href="#" onclick="logout()"><img src="img/icon-logout.png" title="salir" width="40" height="40" border="0" alt="enviar" style="float:right"></a><br />
 					<br />
 			     <? if ($fecha_activa != NULL && $idReserva == 0 && $partido == NULL) {	?>
 						<input type="text" id="id_fecha" name="id_fecha" value="<?= $fecha_activa["id"] ?>" style="visibility:hidden"/>
