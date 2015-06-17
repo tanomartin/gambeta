@@ -122,7 +122,7 @@ $db->close();
 	function getPaginado($filtros, $inicio, $cant, &$total) {
 
 		$db = new Db();
-		$query = "Select SQL_CALC_FOUND_ROWS  c.*n 
+		$query = "Select SQL_CALC_FOUND_ROWS  c.* 
 				   from ga_categorias c 
 				  where 1=1 ";
 	
