@@ -158,11 +158,14 @@
 
 	</legend><table summary="Personal data" cellpadding="0" cellspacing="0">
   	<tbody>
-      <tr class="even">
+      <tr class="odd">
         <td class="col_0 col_first"><label for="nombre">Nombre</label><span class="mandatory">*</span></td>
         <td class="col_1 col_last"><input name="nombre" id="nombre" class="required text" maxlength="50" type="text" value="<?=$datos[0]["nombre"]?>" size="50"  <?= $disabled ?>></td>
       </tr>  
-    
+      <tr class="even">
+        <td class="col_0 col_first"><label for="email">Email</label></td>
+        <td class="col_1 col_last"><input name="email" id="email" class="text" maxlength="200" type="text" value="<?=$datos[0]["email"]?>" size="70"  <?= $disabled ?>></td>
+      </tr>      
       <tr class="odd">
         <td class="col_0 col_first"><label for="nombre">Torneo</label><span class="mandatory">*</span></td>
         <td class="col_1 col_last">
