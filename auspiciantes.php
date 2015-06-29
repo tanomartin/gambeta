@@ -1,43 +1,57 @@
 <?
-	$auspiciantes[0][url]="http://www.privilegeba.com";
-	$auspiciantes[0][img]="img/auspiciantes/privilege.jpg";
-	$auspiciantes[0][tit]="Privileg BA";
 
-	$auspiciantes[1][url]="http://www.fitnesas.com.ar";
-	$auspiciantes[1][img]="img/auspiciantes/fitnesas.png";
-	$auspiciantes[1][tit]="Fitnesas";
+$auspiciantes1[0][url]="http://www.camisetadefutbol.com";
+$auspiciantes1[0][img]="img/auspiciantes/camisetadefutbol.jpg";
+$auspiciantes1[0][tit]="Camiseta de Futbol";		
+		
+$auspiciantes1[1][url]="http://www.sushiboom.com.ar";
+$auspiciantes1[1][img]="img/auspiciantes/sushi_boom.jpg";
+$auspiciantes1[1][tit]="Sushi Boom";
 
-	$auspiciantes[2][url]="https://www.facebook.com/lenceria.adomicilio";
-	$auspiciantes[2][img]="img/auspiciantes/lenceria.jpg";
-	$auspiciantes[2][tit]="Lenceria a Domicilio";
+$auspiciantes1[2][url]="http://www.frerebsas.com.ar/";
+$auspiciantes1[2][img]="img/auspiciantes/frere.jpg";
+$auspiciantes1[2][tit]="Frere";
 
-	$auspiciantes[3][url]="http://www.camisetadefutbol.com";
-	$auspiciantes[3][img]="img/auspiciantes/camisetadefutbol.jpg";
-	$auspiciantes[3][tit]="Camiseta de Futbol";
+shuffle ($auspiciantes1);
 
-	$auspiciantes[4][url]="http://www.aershop.com.ar";
-	$auspiciantes[4][img]="img/auspiciantes/aer_logo.jpg";
-	$auspiciantes[4][tit]="Aer Shop";
+for ($i=0;$i<count($auspiciantes1);$i++) { 
+	if (strpos($auspiciantes1[$i]['url'], "facebook") === false ) { ?>
+		<a href="<?= $auspiciantes1[$i]['url']?>" rel="shadowbox" title="<?= $auspiciantes1[$i]['tit']?>"><img src="<?= $auspiciantes1[$i]['img']?>" class="imagen"/></a>
+ <? } else { ?>1
+		<a href="<?= $auspiciantes1[$i]['url']?>" title="<?= $auspiciantes1[$i]['tit']?>" target="_blank"><img src="<?= $auspiciantes1[$i]['img']?>" class="imagen"/></a>
+ <? } 
+}
 
-	$auspiciantes[5][url]="https://www.facebook.com/aqui.africa";
-	$auspiciantes[5][img]="img/auspiciantes/africa_logo.jpg";
-	$auspiciantes[5][tit]="Africa";
+$auspiciantes[0][url]="http://www.privilegeba.com";
+$auspiciantes[0][img]="img/auspiciantes/privilege.jpg";
+$auspiciantes[0][tit]="Privileg BA";
 
-// 	$auspiciantes[6][url]="http://www.solofutbolfemenino.com";
-	$auspiciantes[6][url]="#";
-	$auspiciantes[6][img]="img/auspiciantes/solo_futbol.jpg";
-	$auspiciantes[6][tit]="Solo Futbol Femenino";
-				
-	//$auspiciantes[7][url]="http://www.sushiboom.com.ar";
-	//$auspiciantes[7][img]="img/auspiciantes/sushi_boom.jpg";
-	//$auspiciantes[7][tit]="Sushi Boom";
-	shuffle ($auspiciantes);
-?>				
-	<a href="http://www.sushiboom.com.ar" rel="shadowbox" title="Sushi Boom"><img src="img/auspiciantes/sushi_boom.jpg" class="imagen"/></a>
-	<?	for ($i=0;$i<count($auspiciantes);$i++) { 
-			if (strpos($auspiciantes[$i]['url'], "facebook") === false ) { ?>
-				<a href="<?= $auspiciantes[$i]['url']?>" rel="shadowbox" title="<?= $auspiciantes[$i]['tit']?>"><img src="<?= $auspiciantes[$i]['img']?>" class="imagen"/></a>
-		<? } else { ?>
-				<a href="<?= $auspiciantes[$i]['url']?>" title="<?= $auspiciantes[$i]['tit']?>" target="_blank"><img src="<?= $auspiciantes[$i]['img']?>" class="imagen"/></a>
-		<? } ?>
-	<? } ?>
+$auspiciantes[1][url]="http://www.fitnesas.com.ar";
+$auspiciantes[1][img]="img/auspiciantes/fitnesas.png";
+$auspiciantes[1][tit]="Fitnesas";
+
+$auspiciantes[2][url]="https://www.facebook.com/lenceria.adomicilio";
+$auspiciantes[2][img]="img/auspiciantes/lenceria.jpg";
+$auspiciantes[2][tit]="Lenceria a Domicilio";
+
+$auspiciantes[3][url]="http://www.aershop.com.ar";
+$auspiciantes[3][img]="img/auspiciantes/aer_logo.jpg";
+$auspiciantes[3][tit]="Aer Shop";
+
+$auspiciantes[4][url]="https://www.facebook.com/aqui.africa";
+$auspiciantes[4][img]="img/auspiciantes/africa_logo.jpg";
+$auspiciantes[4][tit]="Africa";
+
+$auspiciantes[5][url]="#";
+$auspiciantes[5][img]="img/auspiciantes/solo_futbol.jpg";
+$auspiciantes[5][tit]="Solo Futbol Femenino";	
+
+shuffle ($auspiciantes);
+
+for ($i=0;$i<count($auspiciantes);$i++) { 
+	if (strpos($auspiciantes[$i]['url'], "facebook") === false ) { ?>
+		<a href="<?= $auspiciantes[$i]['url']?>" rel="shadowbox" title="<?= $auspiciantes[$i]['tit']?>"><img src="<?= $auspiciantes[$i]['img']?>" class="imagen"/></a>
+ <? } else { ?>
+		<a href="<?= $auspiciantes[$i]['url']?>" title="<?= $auspiciantes[$i]['tit']?>" target="_blank"><img src="<?= $auspiciantes[$i]['img']?>" class="imagen"/></a>
+ <? } 
+} ?>
