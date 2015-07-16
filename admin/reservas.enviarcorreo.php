@@ -19,8 +19,8 @@
 		$idEquipo = $equipo['id_equipo'];
 		$email = $equipo['email'];
 		$seenvioanterior = $equipo['seenvio'];
-		$nombre = $equipo['nombre'];
-		if (($email != "") && (!$seenvioanterior)) {
+		$nombre = $equipo['nombre']; 
+		if (($email != "") && (!$seenvioanterior) && !array_key_exists($idEquipo,$_POST) ) {
 			$valores = array('correo' => $email, 'cuerpo' => $cuerpo, 'equipoId' => $idEquipo, 'equipoNombre' => $nombre, 'asunto' => $asunto);
 			$emailOb = new Correos($valores);
 			$seEnvio = $emailOb->enviar();

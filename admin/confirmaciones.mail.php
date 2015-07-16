@@ -165,7 +165,8 @@ function enviar() {
 								<tr>
 									<th><img width="15" border="0" alt="reserva" title="Con Reserva" src="../img/forbidden.ico"/> Equipos</th>
 									<th>Email</th>
-									<th width="8%">Enviado</th>
+									<th>Sacar</th>
+									<th width="8%"></th>
 								</tr>
 										<? if (sizeof($equiposMail) == 0) {
 												print("<tr><td colspan='3'>No hay equipos</td></tr>");
@@ -174,6 +175,8 @@ function enviar() {
 												<tr>
 													<td style="font-family:Geneva, Arial, Helvetica, sans-serif; font-size:17px"><?=$equipo['nombre'] ?></td>
 													<td><?=$equipo['email'] ?></td>	
+													<td style="text-align:center"><? if ($equipo['email'] != "" && !$equipo['seenvio']) { ?> 
+											<input type="checkbox" id="<?=$equipo['id_equipo'] ?>" name="<?=$equipo['id_equipo'] ?>" value="<?=$equipo['id_equipo'] ?>" /> <? } ?></td>
 													<td nowrap>
 														<? if ($equipo['seenvio']) { ?>
 																<img border="0" src="../img/check.ico" id="info" alt="info" width="20px" height="20px" />
