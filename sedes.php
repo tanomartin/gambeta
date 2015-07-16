@@ -259,9 +259,9 @@ print_r($grises);*/
 					</div>
 		        </div> 
 	          	  <div style="float:left; top:-100px; margin-left:48px">
-					  <img src="img/sedes/sedes1.jpg" />
+					  <img src="img/sedes/sedes2.jpg" />
 					  <div style="position:relative; top:-195px; left:115px; border: 3px solid #DD2C8D; border-radius:4px; width:530px">
-							<iframe width="530" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=es&amp;q=Tte.+General+Juan+Domingo+Perón+3355,+Almagro,+Buenos+Aires,+Argentina&amp;aq=&amp;sll=-34.6073239,-58.4139393&amp;sspn=0.114067,0.264187&amp;ie=UTF8&amp;geocode=FVCA8P0dNueE_A&amp;split=0&amp;hq=&amp;hnear=Tte.+General+Juan+Domingo+Perón+3355,+Almagro,+Buenos+Aires,+Argentina&amp;t=m&amp;ll=-34.6073239,-58.4139393&amp;spn=0.012722,0.04549&amp;z=14&amp;iwloc=&amp;output=embed"></iframe>
+							<iframe width="530" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.08547560721!2d-58.525181099999976!3d-34.57670369999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb709859f3abf%3A0xfa738d5bdc53a50c!2sGral.+N.+Manuel+Savio+2930%2C+Villa+Maip%C3%BA%2C+Buenos+Aires!5e0!3m2!1ses-419!2sar!4v1437065848740"></iframe>
 					  </div>
 		        </div>                 
 			</div>
