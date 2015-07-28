@@ -26,25 +26,25 @@ $auspiciantes[0][url]="http://www.privilegeba.com";
 $auspiciantes[0][img]="img/auspiciantes/privilege.jpg";
 $auspiciantes[0][tit]="Privileg BA";
 
-$auspiciantes[1][url]="http://www.fitnesas.com.ar";
+/*$auspiciantes[1][url]="http://www.fitnesas.com.ar";
 $auspiciantes[1][img]="img/auspiciantes/fitnesas.png";
 $auspiciantes[1][tit]="Fitnesas";
 
 $auspiciantes[2][url]="https://www.facebook.com/lenceria.adomicilio";
 $auspiciantes[2][img]="img/auspiciantes/lenceria.jpg";
-$auspiciantes[2][tit]="Lenceria a Domicilio";
+$auspiciantes[2][tit]="Lenceria a Domicilio";*/
 
-$auspiciantes[3][url]="http://www.aershop.com.ar";
-$auspiciantes[3][img]="img/auspiciantes/aer_logo.jpg";
-$auspiciantes[3][tit]="Aer Shop";
+$auspiciantes[1][url]="http://www.aershop.com.ar";
+$auspiciantes[1][img]="img/auspiciantes/aer_logo.jpg";
+$auspiciantes[1][tit]="Aer Shop";
 
-$auspiciantes[4][url]="https://www.facebook.com/aqui.africa";
-$auspiciantes[4][img]="img/auspiciantes/africa_logo.jpg";
-$auspiciantes[4][tit]="Africa";
+$auspiciantes[2][url]="https://www.facebook.com/aqui.africa";
+$auspiciantes[2][img]="img/auspiciantes/africa_logo.jpg";
+$auspiciantes[2][tit]="Africa";
 
-$auspiciantes[5][url]="#";
-$auspiciantes[5][img]="img/auspiciantes/solo_futbol.jpg";
-$auspiciantes[5][tit]="Solo Futbol Femenino";	
+$auspiciantes[3][url]="#";
+$auspiciantes[3][img]="img/auspiciantes/solo_futbol.jpg";
+$auspiciantes[3][tit]="Solo Futbol Femenino";	
 
 shuffle ($auspiciantes);
 
