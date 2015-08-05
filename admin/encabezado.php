@@ -15,7 +15,7 @@
 <script src="js/scriptaculous/lib/prototype.js" type="text/javascript"></script> 
 <script type="text/javascript" src="js/validation.js"></script>
 <script type="text/javascript" src="js/funciones_comunes.js"></script>
-<script language="JavaScript" src="../_js/calendario2/ts_picker.js" type="text/javascript"></script>
+<script src="../_js/calendario2/ts_picker.js" type="text/javascript"></script>
 
 <!--
 <script type="text/javascript" src="index_archivos/mootools.js"></script>

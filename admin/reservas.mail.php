@@ -43,22 +43,22 @@
 */
 	?>
     
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Panel de Control.">
-<meta name="keywords" content="">
-<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="Panel de Control."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="index,follow"/>
 
 <? include("encabezado.php"); ?>
 
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery.blockUI.js"></script>
-<script language="javascript">
+<script>
 
 function volver(){
 	document.form_alta.accion.value = "reservas";		
@@ -120,7 +120,7 @@ function enviar() {
 
 <!-- indexer::stop -->
 <div id="logo">
-	<a href="index.php" title="Volver al incio"><h1> Panel de Control</h1></a>
+	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -140,10 +140,8 @@ function enviar() {
 			<? include("path.php"); ?>
 		  <div class="ce_text block">
 				<h1>Correo Reserva: <?= $fecha[0]['nombre']." - ".$fecha[0]['torneo']." - ".$fecha[0]['categoria']?>
-				  <div style="float:right"> 
-				  	<img width="75" border="0" alt="enviar" title="Enviar" onclick="javascript:enviar();" style="cursor:pointer" src="images/send_mail.png"/>	
-					<img width="75" border="0" alt="volver" title="Volver" onclick="javascript:volver();" style="cursor:pointer" src="images/back-icon.png"/>					
-				  </div>
+				  	<img width="75" border="0" alt="volver" title="Volver" onclick="javascript:volver();" style="cursor:pointer;float: right;" src="images/back-icon.png"/>	
+				  	<img width="75" border="0" alt="enviar" title="Enviar" onclick="javascript:enviar();" style="cursor:pointer;float: right;" src="images/send_mail.png"/>	
 				</h1>
 			</div>
 			<div class="mod_article block" id="home">
@@ -166,7 +164,7 @@ function enviar() {
 							<!--     -->
 						
 						<div align="center" style="float:left">
-							<table id="mail" width="450">
+							<table id="mail" style="width: 450px">
 								<tr>
 									<th><img width="15" border="0" alt="reserva" title="Con Reserva" src="../img/forbidden.ico"/> Equipos</th>
 									<th>Email</th>
@@ -195,16 +193,16 @@ function enviar() {
 							</table>
 						</div>	
 						<div align="center" style="float:right">
-							<table id="cuerpo" width="450">
-								<th>Correo</th>
+							<table id="cuerpo" style="width: 450px">
+								<tr><th>Correo</th></tr>
 								<tr><td>
 									<div align="center" style="float:right">
 										<div align="left">
 											<h2>Asunto</h2>
-											<p><div id="errorasunto" style="color:#CC3300; font-weight:bold" align="left"></div></p>
+											<div id="errorasunto" style="color:#CC3300; font-weight:bold" align="left"></div>
 											<input type="text" id="asuntocorreo" name="asuntocorreo" size="63"/>
 											<h2>Cuerpo</h2>
-											<p><div id="errorcuerpo" style="color:#CC3300; font-weight:bold" align="left"></div></p>
+											<div id="errorcuerpo" style="color:#CC3300; font-weight:bold" align="left"></div>
 											<textarea id="cuerpocorreo" name="cuerpocorreo" cols="50"></textarea>
 										</div>
 									</div>
@@ -219,6 +217,7 @@ function enviar() {
 	</div>
 </div>
 <? include("pie.php")?>
+</div>
 </body>
 
 </html>

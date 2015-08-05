@@ -1,4 +1,4 @@
-<!-- #include "java.lang.Integer" -->
+//<!-- #include "java.lang.Integer" -->
 
 calDateFormat    = "DD/MM/YYYY";
 topBackground    = "white";
@@ -35,7 +35,7 @@ function setDateField(dateField) {
 	var totos;
 	toto=dateField.value;
 	totos=toto.split("/");
-	inDate = 'dd/mm/yyyy'
+	inDate = 'dd/mm/yyyy';
 	anio = getYear4Digitos(totos[2]);
 	if (anio != -1){
 		//inDate=totos[0] + '/' + totos[1] + '/' + anio;
@@ -357,7 +357,7 @@ function getYearSelect() {
 }
 
 function createWeekdayList() {
-	weekdayList  = new Array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado')
+	weekdayList  = new Array('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado');
 	weekdayArray = new Array('Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa');
 
 	var weekdays = "<TR BGCOLOR='" + headingCellColor + "'>";
@@ -521,7 +521,7 @@ function returnDate(inDay){
 	  calDateField2.value = outDate;
 	}
 	calDateField.focus();
-	top.newWin.close()
+	top.newWin.close();
 }
 
 //Funcion de llamada al Calendario.
@@ -538,7 +538,7 @@ function llamarCalendario(inputFechaRetorno, posicionTop, posicionLeft){
 		   "onMouseOut=\"window.status=' '; return true;\">" +
 		   "<img src='calendario.gif' width='26' height='22' border='0' alt='Abrir calendario'>" +
 		   "</a>";
-	document.write(link)
+	document.write(link);
 }
 
 //Funcion de windowing para los años de 2 digitos (1930-2029).

@@ -13,16 +13,16 @@
 /*print_r($rosa); echo "avavav<br>";
 print_r($grises);*/
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>:: Gambeta Femenina ::</title>
-    <meta name="author" content="gambetafemenina.com">
-    <meta name="description" content="Somos una Organización dedicada exclusivamente a la difusión del Fútbol Femenino. Promovemos Torneos de fútbol femenino, entrenamientos para todas las edas, escuelitas, clínicas, etc. Gracias a este ideal, muchas chicas y mujeres participan activamente de este deporte, mejorando su calidad de vida, su salud y condición física">
-    <meta name="keywords" content="fútbol femenino - torneo fútbol femenino - torneo fútbol 5 - futbol para mujeres - entrenamientos fútbol femenino - torneo de chicas - futbol para chicas - competencia para mujeres">
+    <meta name="author" content="gambetafemenina.com"/>
+    <meta name="description" content="Somos una Organización dedicada exclusivamente a la difusión del Fútbol Femenino. Promovemos Torneos de fútbol femenino, entrenamientos para todas las edas, escuelitas, clínicas, etc. Gracias a este ideal, muchas chicas y mujeres participan activamente de este deporte, mejorando su calidad de vida, su salud y condición física"/>
+    <meta name="keywords" content="fútbol femenino - torneo fútbol femenino - torneo fútbol 5 - futbol para mujeres - entrenamientos fútbol femenino - torneo de chicas - futbol para chicas - competencia para mujeres"/>
     
-	<link rel="stylesheet" href="css/home.css" type="text/css">
+	<link rel="stylesheet" href="css/home.css" type="text/css"/>
     
   
 <style type="text/css">
@@ -259,7 +259,7 @@ print_r($grises);*/
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jrumble.1.1.min.js"></script>
 <script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
-<script language="javascript">
+<script>
 //Efecto slide de fotos Jquery	
 $(document).ready(function() {
 	$('#slideH').cycle({ 
@@ -275,7 +275,7 @@ $(document).ready(function() {
 </script>
 
 <link href='css/shadowbox.css' rel='stylesheet' type='text/css'/> 
-<script src='js/shadowbox-1b8e4a9.js' type='text/javascript'/> </script> 
+<script src='js/shadowbox-1b8e4a9.js' type='text/javascript'></script>
 <script type='text/javascript'> 
 	Shadowbox.init({ 
 		overlayColor: "#000", 
@@ -285,7 +285,7 @@ $(document).ready(function() {
 
 </head>
    
-<body align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
+<body bgcolor="#FFFFFF" style=" width:100%; height:100%" >
 	<?php include_once "include/analyticstracking.php"; ?>
 	<div id="wrap">
 		<div id="encabezado">
@@ -345,7 +345,7 @@ $(document).ready(function() {
                   <br />
                 <? } ?>
 			  <div align="center" >             
-				<a width="520px" height="600" class="twitter-timeline"  href="https://twitter.com/GambetaFemenina"  data-widget-id="446705375895494656">Tweets por @GambetaFemenina</a>
+				<a style="width: 520px; height: 600" class="twitter-timeline"  href="https://twitter.com/GambetaFemenina"  data-widget-id="446705375895494656">Tweets por @GambetaFemenina</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
 		      </div> 
@@ -355,7 +355,7 @@ $(document).ready(function() {
 					$oObj = new TorneoCat();
 					$categoria = $oObj ->getByTorneo($aTorneos[$i][id]);
 			   ?>
-               <div id="categoria" style="clear:both"><span class="tituloHome<?= $aTorneos[$i]['color'] ?>"><?= strtoupper ($aTorneos[$i]['nombre'] ) ?></span></div>
+               <div id="categoria" style="clear:both; text-align: center;"><span class="tituloHome<?= $aTorneos[$i]['color'] ?>"><?= strtoupper ($aTorneos[$i]['nombre'] ) ?></span></div>
                <div style="float:left; margin: 10px 10px 10px 20px"><img src="logos/<?= $aTorneos[$i]['logoPrincipal'] ?>"  width="90px" height="95px" /></div>  
 			   <div style="float:left;margin: 15px 10px 10px 0px" >
                    <div class="categoria" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"><?= strtoupper ($categoria[0][nombreCorto]); ?></div>
@@ -374,7 +374,7 @@ $(document).ready(function() {
 						<script type="text/javascript" src="http://www.tutiempo.net/widget/eltiempo_tBawbxtBddjcAQIA7fVzzDzzj6lAMdjlrtkd1sCoK1j"></script>
 					</div>            
 					<div id="facebook">
-						<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fes-la.facebook.com%2Fpeople%2FGambeta-Femenina%2F100000148462698&amp;layout=box_count&amp;show_faces=false&amp;width=190&amp;action=like&amp;font&amp;colorscheme=light&amp;height=65" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:65px;" allowTransparency="true"></iframe>
+						<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fes-la.facebook.com%2Fpeople%2FGambeta-Femenina%2F100000148462698&amp;layout=box_count&amp;show_faces=false&amp;width=190&amp;action=like&amp;font&amp;colorscheme=light&amp;height=65" style="border:none; overflow:hidden; width:75px; height:65px;"></iframe>
 					</div>
 					<div id="twitter">                        
 						<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
@@ -394,5 +394,5 @@ $(document).ready(function() {
     <form name="frm1" id="frm1" method="post" action="noticias.php">
     	<input name="id"  id="id" type="hidden" />        
     </form>
-	</div> 
 </body>
+</html>

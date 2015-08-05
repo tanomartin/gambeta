@@ -28,12 +28,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>:: Gambeta Femenina ::</title>
-<meta name="author" content="gambetafemenina.com">
-<meta name="description" content="Somos una Organización dedicada exclusivamente a la difusión del Fútbol Femenino. Promovemos Torneos de fútbol femenino, entrenamientos para todas las edas, escuelitas, clínicas, etc. Gracias a este ideal, muchas chicas y mujeres participan activamente de este deporte, mejorando su calidad de vida, su salud y condición física">
-<meta name="keywords" content="fútbol femenino - torneo fútbol femenino - torneo fútbol 5 - futbol para mujeres - entrenamientos fútbol femenino - torneo de chicas - futbol para chicas - competencia para mujeres">
-<link rel="stylesheet" href="css/home.css" type="text/css">
+<meta name="author" content="gambetafemenina.com"/>
+<meta name="description" content="Somos una Organización dedicada exclusivamente a la difusión del Fútbol Femenino. Promovemos Torneos de fútbol femenino, entrenamientos para todas las edas, escuelitas, clínicas, etc. Gracias a este ideal, muchas chicas y mujeres participan activamente de este deporte, mejorando su calidad de vida, su salud y condición física"/>
+<meta name="keywords" content="fútbol femenino - torneo fútbol femenino - torneo fútbol 5 - futbol para mujeres - entrenamientos fútbol femenino - torneo de chicas - futbol para chicas - competencia para mujeres"/>
+<link rel="stylesheet" href="css/home.css" type="text/css"/>
 <style type="text/css">
 	<!--
 
@@ -238,7 +238,6 @@
 </script>
 <link href='css/shadowbox.css' rel='stylesheet' type='text/css'/>
 <script src='js/shadowbox-1b8e4a9.js' type='text/javascript'/>
-</script>
 <script type='text/javascript'> 
 	Shadowbox.init({ 
 		overlayColor: "#000", 
@@ -246,7 +245,7 @@
 	});    
 </script>
 </head>
-<body align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
+<body bgcolor="#FFFFFF" style=" width:100%; height:100%" >
 <form id="form_alta" name="form_alta" action="enviar_mail.php" method="post">
   <input name="id" id="id"  value="-1" type="hidden" />
   <input name="accion" id="accion"  value="registro" type="hidden" />
@@ -279,3 +278,4 @@
   </div>
 </form>
 </body>
+</html>

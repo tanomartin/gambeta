@@ -1,13 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<meta name="description" content="Login de Ingreso al Panel de Control">
-<meta name="keywords" content="">
-<meta name="robots" content="noindex,follow">
+<meta name="description" content="Login de Ingreso al Panel de Control"/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="noindex,follow"/>
 
 <? include("encabezado.php"); ?>
 
@@ -33,7 +33,7 @@ function validarClave()
 		}
 		
 	},     
-	onFailure: function(){ 	alert('Error...') } 
+	onFailure: function(){ 	alert('Error...'); } 
 	});
 
 }	
@@ -46,10 +46,8 @@ function validarClave()
 
 
 </head>
-<div FirebugVersion="1.4.5" style="display: none;" id="_firebugConsole"></div>
 
 <body id="top">
-
 <div id="wrapper">
 
 <div id="header">
@@ -63,7 +61,7 @@ include("top_menu.php"); ?>
 
 <!-- indexer::stop -->
 <div id="logo">
-<a href="index.php" title="Volver al incio"><h1>Panel de Control</h1></a>
+<h1><a href="index.php" title="Volver al incio">Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -96,12 +94,12 @@ include("top_menu.php"); ?>
 <input name="pag_menu" value="paneldecontrol.php" type="hidden" />
     
 <div class="formbody">
-	<input name="FORM_SUBMIT" value="tl_login" type="hidden">
+	<input name="FORM_SUBMIT" value="tl_login" type="hidden"/>
 	<label for="usuario">Usuario</label>
-	<input name="usuario" id="usuario" class="text" maxlength="64" type="text"><br>
+	<input name="usuario" id="usuario" class="text" maxlength="64" type="text"><br/>
 	<label for="clave">Contrase&ntilde;a</label>
 	<input name="clave" id="clave" class="text password" maxlength="64" value="" type="password">
-    <br>
+    <br/>
 	
     <div class="submit_container">
 

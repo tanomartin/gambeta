@@ -30,21 +30,21 @@
 	$aTorneos = $oTorneo->get();
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Panel de Control.">
-<meta name="keywords" content="">
-<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="Panel de Control."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="index,follow"/>
 
 <? include("encabezado.php"); ?>
 
 
-<script language="javascript">
+<script>
 
 	function volver(){
 	
@@ -82,7 +82,7 @@
 
 <!-- indexer::stop -->
 <div id="logo">
-	<a href="index.php" title="Volver al incio"><h1> Panel de Control</h1></a>
+	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -142,7 +142,7 @@
 	<fieldset>
 	<legend>Datos del Equipo
 
-	</legend><table summary="Personal data" cellpadding="0" cellspacing="0">
+	</legend><table summary="Personal data">
   	<tbody>
       <tr class="even">
         <td class="col_0 col_first"><label for="nombre">Nombre</label><span class="mandatory">*</span></td>
@@ -230,8 +230,7 @@
 
 <div class="ce_text g4 xpln block">
 
-	<p><strong>Datos del Equipo</strong><br>
-	Ingrese los datos del Equipo.</p>
+	<p><strong>Datos del Equipo</strong><br/>Ingrese los datos del Equipo.</p>
 	<p>Los campos marcados con <span class="mandatory">*</span> son de ingreso obligatorio.</p>
 
 </div>
@@ -250,7 +249,7 @@
 
 <? include("pie.php")?>
 
-
+</div>
 </body>
 
 </html>

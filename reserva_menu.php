@@ -58,20 +58,20 @@
 	}
 	$color = $oTorneo->color;
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>:: Gambeta Femenina ::</title>
-    <meta name="author" content="gambetafemenina.com">
-    <meta name="description" content="Somos una Organización dedicada exclusivamente a la difusión del Fútbol Femenino. Promovemos Torneos de fútbol femenino, entrenamientos para todas las edas, escuelitas, clínicas, etc. Gracias a este ideal, muchas chicas y mujeres participan activamente de este deporte, mejorando su calidad de vida, su salud y condición física">
-    <meta name="keywords" content="fútbol femenino - torneo fútbol femenino - torneo fútbol 5 - futbol para mujeres - entrenamientos fútbol femenino - torneo de chicas - futbol para chicas - competencia para mujeres">
+    <meta name="author" content="gambetafemenina.com"/>
+    <meta name="description" content="Somos una Organización dedicada exclusivamente a la difusión del Fútbol Femenino. Promovemos Torneos de fútbol femenino, entrenamientos para todas las edas, escuelitas, clínicas, etc. Gracias a este ideal, muchas chicas y mujeres participan activamente de este deporte, mejorando su calidad de vida, su salud y condición física"/>
+    <meta name="keywords" content="fútbol femenino - torneo fútbol femenino - torneo fútbol 5 - futbol para mujeres - entrenamientos fútbol femenino - torneo de chicas - futbol para chicas - competencia para mujeres"/>
     
-	<link rel="stylesheet" href="css/home.css" type="text/css">
-	<link rel="stylesheet" href="css/menu_izq.css" type="text/css">
-	<link rel="stylesheet" href="css/paginas.css" type="text/css">
-	<link rel="stylesheet" href="css/equipos.css" type="text/css">
-	<link rel="stylesheet" href="css/fixture.css" type="text/css">
+	<link rel="stylesheet" href="css/home.css" type="text/css"/>
+	<link rel="stylesheet" href="css/menu_izq.css" type="text/css"/>
+	<link rel="stylesheet" href="css/paginas.css" type="text/css"/>
+	<link rel="stylesheet" href="css/equipos.css" type="text/css"/>
+	<link rel="stylesheet" href="css/fixture.css" type="text/css"/>
 	
 <style type="text/css">
 	<!--
@@ -342,7 +342,7 @@ function controlLibre() {
  	$('#error').html("");
 	var grupo = document.getElementById("carga_reserva").horas;
 	var controlCheck = 0;
-	for (i = 0; lcheck = grupo[i]; i++) {
+	for (var i = 0; lcheck = grupo[i]; i++) {
         if (lcheck.checked) {
             controlCheck = 1;
         }
@@ -363,7 +363,7 @@ function controlHoras() {
 		if (total == null) {
 			grupo.disabled = true;
 		} else {
-			for (i = 0; lcheck = grupo[i]; i++) {
+			for (var i = 0; lcheck = grupo[i]; i++) {
 				lcheck.disabled = true;
 			}
 		}
@@ -387,7 +387,7 @@ function validar(formulario) {
 			return true;
 		} else {
 			var controlCheck = 0;
-			for (i = 0; lcheck = grupo[i]; i++) {
+			for (var i = 0; lcheck = grupo[i]; i++) {
 				if (lcheck.checked) {
 					controlCheck++;
 				}
@@ -401,7 +401,7 @@ function validar(formulario) {
 		}	
 	} else {
 		var controlCheck = 0;
-		for (i = 0; lcheck = grupo[i]; i++) {
+		for (var i = 0; lcheck = grupo[i]; i++) {
 			if (lcheck.checked) {
 				controlCheck++;
 			}
@@ -430,7 +430,7 @@ function confirmarPartido(idPartido) {
 </script>
 </head>
    
-<body align="center" bgcolor="#FFFFFF" border=0 style=" width:100%; height:100%" >
+<body bgcolor="#FFFFFF" style=" width:100%; height:100%" >
 <form id="carga_reserva" name="carga_reserva" onsubmit="return validar(this)" action="reserva_guardar.php" method="post">
 	<div id="wrap">
 		 <div id="encabezado">
@@ -450,12 +450,12 @@ function confirmarPartido(idPartido) {
 						<?=  strtoupper($oTorneo->nombre_pagina)." - ".$zona[0]["nombreLargo"]." - ".$categoria[0]["nombreLargo"] ?>
 					</div>
                 </div>
-				<br>
+				<br/>
 			   	<div id="reserva">	
 					<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;">
 						<font color="#000000"><?= strtoupper ($equipo->nombre) ?></font> | <? echo $fecha_activa["nombre"] ?>
 					</div>
-					<a class="enlace" href="#" onclick="logout()"><img src="img/icon-logout.png" title="salir" width="40" height="40" border="0" alt="enviar" style="float:right"></a><br />
+					<a class="enlace" href="#" onclick="logout()"><img src="img/icon-logout.png" title="salir" width="40" height="40" border="0" alt="enviar" style="float:right" /></a><br />
 					<br />
 			     <? if ($fecha_activa != NULL && $idReserva == 0 && $partido == NULL) {	?>
 						<input type="text" id="id_fecha" name="id_fecha" value="<?= $fecha_activa["id"] ?>" style="visibility:hidden"/>
@@ -577,3 +577,4 @@ function confirmarPartido(idPartido) {
     </div>   
     </form>
 </body>
+</html>

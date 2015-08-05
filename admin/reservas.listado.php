@@ -47,21 +47,21 @@
 */
 	?>
     
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Panel de Control.">
-<meta name="keywords" content="">
-<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="Panel de Control."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="index,follow"/>
 
 <? include("encabezado.php"); ?>
 
 <script type="text/javascript" src="../js/jquery.js"></script>
-<script language="javascript">
+<script>
 
 	function eliminarReserva(reserva) {
 		document.form_alta.accion.value = "eliminar";
@@ -121,7 +121,7 @@
 
 <!-- indexer::stop -->
 <div id="logo">
-	<a href="index.php" title="Volver al incio"><h1> Panel de Control</h1></a>
+	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -141,11 +141,9 @@
 			<? include("path.php"); ?>
 		  <div class="ce_text block">
 				<h1>Reservas: <?= $fecha[0]['nombre']." - ".$fecha[0]['torneo']." - ".$fecha[0]['categoria']?>
-				  <div style="float:right"> 
-				  	<? if ($horasFecha != NULL)  { ?><img width="75" border="0" alt="reserva" title="Exportar Excel" onclick="javascript:migrar();" style="cursor:pointer" src="images/xls-icon.png"/><? } ?>
-				  	<? if (sizeof($equiposSinReserva) > 0)  { ?><img width="75" border="0" alt="reserva" title="Enviar Correo Recordatorio"  onclick="javascript:mail();" style="cursor:pointer" src="images/eml-icon.png"/>	<? } ?>
-					<img width="75" border="0" alt="reserva" title="volver" onclick="javascript:volver();" style="cursor:pointer" src="images/back-icon.png"/>	
-				  </div>
+				  	<img width="75" border="0" alt="reserva" title="volver" onclick="javascript:volver();" style="cursor:pointer;float: right;" src="images/back-icon.png"/>
+				  	<? if (sizeof($equiposSinReserva) > 0)  { ?><img width="75" border="0" alt="reserva" title="Enviar Correo Recordatorio"  onclick="javascript:mail();" style="cursor:pointer; float: right;" src="images/eml-icon.png"/>	<? } ?>
+				  	<? if ($horasFecha != NULL)  { ?><img width="75" border="0" alt="reserva" title="Exportar Excel" onclick="javascript:migrar();" style="cursor:pointer; float: right;" src="images/xls-icon.png"/><? } ?>					
 				</h1>
 			</div>
 			<div class="mod_article block" id="home">
@@ -167,7 +165,7 @@
 							<!--     -->
 						</form>
 							<div align="center" style="float:left">
-								<table id="conReserva" width="450">
+								<table id="conReserva" style="width: 450px">
 										<tr>
 											<th><img width="15" border="0" alt="reserva" title="Con Reserva" src="../img/check.ico"/> Con Reserva</th>
 											<th>Detalle</th>
@@ -185,7 +183,7 @@
 															if (sizeof($equipo['detalle']) != 0 ) { 
 																$detalleArray = $equipo['detalle'];
 																foreach($detalleArray as $detalle) { ?>
-																	<li><?= $detalle['descripcion']	?></li>
+																	<?= $detalle['descripcion']	?><br/>
 															<?	} 
 															} else {
 																print("ERROR AL GRABAR EL DETALLE");
@@ -206,18 +204,17 @@
 													<img border="0" src="images/info-icon.png" id="info" alt="info" width="20px" height="20px" />
 												 <? } ?>
 												</td>
+											  </tr>	
 												 <? if ($equipo['observacion'] != "") { ?>
-												 		<tr>
-															<td colspan="3" style="text-align:justify">Obs: <b><?=$equipo['observacion'] ?></b></td>
-														</tr>
+														<tr><td colspan="3" style="text-align:justify">Obs: <b><?=$equipo['observacion'] ?></b></td></tr>
 												 <? } ?>
-								  </tr>	
+								
 										<?	} 
 										}?>
 								</table>
 							</div>	
 							<div align="center" style="float:right">
-								<table id="sinReserva" width="450">
+								<table id="sinReserva" style="width: 450px">
 									
 										<tr>
 											<th><img width="15" border="0" alt="reserva" title="Sin Reserva" src="../img/forbidden.ico"/> Sin Reserva</th>
@@ -243,7 +240,7 @@
 					<div class="mod_listing ce_table listing block" id="partnerlist">
 						<div align="center">
 							<h1 align="left">Informe de Reservas </h1>
-								<table id="reservas" name="reservas" style="font-size:8.5px">
+								<table id="reservas" style="font-size:8.5px">
 								  <tr><td style="background-color:#CE6C2B; color:#FFFFFF"><b>HORAS | EQUIPOS</b></td>
 							<? foreach ($horasFecha as $horas) { ?>
 								  <td style="background-color:#CE6C2B; color:#FFFFFF"><?=$horas['descripcion'] ?></td>
@@ -296,6 +293,6 @@
 	</div>
 </div>
 <? include("pie.php")?>
+</div>
 </body>
-
 </html>

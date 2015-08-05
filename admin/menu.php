@@ -84,7 +84,7 @@
       </ul>
     </li> 
 
-	<li class=<? if( $menu == "Parametros") echo "active"; ?> "submenu"><span class="submenu">Par&aacute;metros</span>
+	<li class=<? if( $menu == "Parametros") echo "active"; ?>><span class="submenu">Par&aacute;metros</span>
 	  <ul style="visibility: visible; opacity: 1;" class="level_2">
 
 	    <li class="first">
@@ -150,7 +150,7 @@
  
 
  
-<a name="skipNavigation1" id="skipNavigation1" class="invisible">&nbsp;</a>
+<a id="skipNavigation1" class="invisible">&nbsp;</a>
 
 </div>
 <!-- indexer::continue -->

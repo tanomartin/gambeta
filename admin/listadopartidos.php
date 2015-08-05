@@ -51,21 +51,21 @@
 	}
 	?>
     
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Panel de Control.">
-<meta name="keywords" content="">
-<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="Panel de Control."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="index,follow"/>
 
 <? include("encabezado.php"); ?>
 
 
-<script language="javascript">
+<script>
 
 	function migrar(){
 		document.frm_busqueda.accion.value = "migrar";		
@@ -108,7 +108,7 @@
 
 <!-- indexer::stop -->
 <div id="logo">
-	<a href="index.php" title="Volver al incio"><h1> Panel de Control</h1></a>
+	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -157,13 +157,11 @@
 					   	 $sede = $oSede->get($id_sede); ?>
 						 <div class="ce_text block">
 							<h1>Listado de Partidos del <?=$fechaPartidos?> - Sede <?=$sede[0]['nombre'] ?>
-							  <div style="float:right"> 
-									<img width="75" border="0" alt="reserva" title="Exportar Excel" onclick="javascript:migrar();" style="cursor:pointer" src="images/xls-icon.png"/>
-							  </div>
+								<img width="75" border="0" alt="reserva" title="Exportar Excel" onclick="javascript:migrar();" style="cursor:pointer; float: right;" src="images/xls-icon.png"/>
 							</h1>
 						</div>
 						<form name="frm_listado" id="frm_listado" action="<?=$_SERVER['PHP_SELF']?>" method="post">
-					  		<table width="900">
+					  		<table style="width: 900px">
 								<tr>
 									<th>Hora</th>
 									<th>Torneo</th>                                      
@@ -198,7 +196,7 @@
 						</form>
 					<? } elseif ($fechaPartidos != NULL && $id_sede != -1) {
 							 	$sede = $oSede->get($id_sede);?>
-								<h1>No hay de Partidos Cargado para la Fecha <?=$fechaPartidos?> - Sede <?=$sede[0]['nombre'] ?>
+								<h1>No hay de Partidos Cargado para la Fecha <?=$fechaPartidos?> - Sede <?=$sede[0]['nombre'] ?></h1>
 					<?  } ?>
 
 		</div>
@@ -217,7 +215,7 @@
 
 <? include("pie.php")?>
 
-
+</div>
 </body>
 
 </html>

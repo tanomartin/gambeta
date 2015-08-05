@@ -5,7 +5,7 @@ var eldia = parseInt(dia);
 var elanio = parseInt(anio);
 
 if (isNaN(elMes) || isNaN(eldia) || isNaN(elanio))
-	return 1
+	return 1;
 
 if(elMes>12)
 return 1;

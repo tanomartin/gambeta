@@ -41,21 +41,21 @@
   }
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Panel de Control.">
-<meta name="keywords" content="">
-<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="Panel de Control."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="index,follow"/>
 
 <? include("encabezado.php"); ?>
 
 
-<script language="javascript">
+<script>
 
 	function volver(){
 	
@@ -93,7 +93,7 @@
 
 <!-- indexer::stop -->
 <div id="logo">
-	<a href="index.php" title="Volver al incio"><h1> Panel de Control</h1></a>
+	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -158,7 +158,7 @@
 
 	</legend>
     </fieldset>
-<table summary="Personal data" cellpadding="0" cellspacing="0">
+<table summary="Personal data">
   	<tbody>      
       <tr class="odd">
         <td class="col_0 col_first"><label for="nombre">Torneo</label></td>
@@ -175,6 +175,7 @@
         <td class="col_0 col_first"><label for="nombre">Fecha</label></td>
         <td class="col_1 col_last"> <?= $aFechas[0]['nombre'] ?>
         </td>
+      </tr>
       <tr class="even">
 		 <td class="col_0 col_first"><label for="nombre">Equipo #1 </label></td>
          <td class="col_1 col_last"><?= $aEquipos1[0]["nombre"] ?></td>
@@ -182,7 +183,7 @@
       <tr class="odd">
           <td class="col_0 col_first"><label for="nombre">Detalle Por Jugadoras</label></td>
           <td class="col_1 col_last">
-                <table  width="100%">
+                <table style="width: 100%">
                 	<tr>
                     	<td>Jugadora</td>
                 		<td>Goles</td>
@@ -210,7 +211,7 @@
       <tr class="odd">
           <td class="col_0 col_first"><label for="nombre">Detalle Por Jugadoras</label></td>
           <td class="col_1 col_last">
-                <table  width="100%">
+                <table style="width: 100%">
                 	<tr>
                     	<td>Jugadora</td>
                 		<td>Goles</td>
@@ -232,7 +233,6 @@
           </tr>
 	</tbody>
 	</table>
-	</fieldset>
 
     <div class="submit_container">
    	 <input class="submit" onclick="valirdarForm_submit('form_alta')" type="button" value="Guardar" /> 
@@ -272,7 +272,7 @@
 
 <? include("pie.php")?>
 
-
+</div>
 </body>
 
 </html>

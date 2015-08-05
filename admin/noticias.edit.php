@@ -30,22 +30,22 @@
 	$aTorneos = $oTorneo->get();
 ?>
 	
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Panel de Control.">
-<meta name="keywords" content="">
-<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="Panel de Control."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="index,follow"/>
 
 <? include("encabezado.php"); ?>
 
 <title>Panel de Control</title>
 
-<script language="javascript">
+<script>
 
 	function volver(){
 	
@@ -83,7 +83,7 @@
 
 <!-- indexer::stop -->
 <div id="logo">
-	<a href="index.php" title="Volver al incio"><h1> Panel de Control</h1></a>
+	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -132,7 +132,7 @@
 	<div class="ce_table">
 	
 	<fieldset>
-   <table width="108%" cellpadding="0" cellspacing="0" summary="Personal data">
+   <table style="width: 100%" summary="Personal data">
   	<tbody>
           <tr class="even">
         <td class="col_0 col_first"><label for="nombre">Fecha</label></td>
@@ -142,14 +142,13 @@
                         <img src="../_js/calendario2/cal.gif" width="16" height="16" border="0" />
 				</a>                        
             </td>
-
-		</td>
       </tr>
       <tr class="odd">
         <td class="col_0 col_first"><label for="nombre">Importante</label></td>
         <td class="col_1 col_last"> 
 	        <input type="radio"  name="posicion" value="1" <? if( $datos[0]['posicion'] == 1 ) {?> checked="checked" <? } ?> /> Importante 	<input name="posicion"  type="radio" value="0" <? if( $datos[0]['posicion'] == 0 ) {?> checked="checked" <? } ?> /> Normal
 		</td>
+	</tr>
         <tr class="even">
         <td class="col_0 col_first"><label for="nombre">T&iacute;tulo</label><span class="mandatory">*</span></td>
         <td class="col_1 col_last"> 
@@ -226,7 +225,7 @@
 
 <div class="ce_text g4 xpln block">
 
-	<p><strong>Novedades</strong><br>
+	<p><strong>Novedades</strong><br/>
 	Ingrese las novedades.</p>
 	<p>Los campos marcados con <span class="mandatory">*</span> son de ingreso obligatorio.</p>
 
@@ -246,7 +245,7 @@
 
 <? include("pie.php")?>
 
-
+</div>
 </body>
 
 </html>

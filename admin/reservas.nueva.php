@@ -20,21 +20,21 @@
 
 ?>
     
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Panel de Control.">
-<meta name="keywords" content="">
-<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="Panel de Control."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="index,follow"/>
 
 <? include("encabezado.php"); ?>
 
 <script type="text/javascript" src="../js/jquery.js"></script>
-<script language="javascript">
+<script>
 
 	function cargarReserva(equipo,fecha) {
 		document.form_alta.accion.value = "cargar";
@@ -54,7 +54,7 @@
 			checkall = true;
 		} 
 		var grupo = document.getElementById("form_alta").horas;
-		for (i = 0; lcheck = grupo[i]; i++) {
+		for (var i = 0; lcheck = grupo[i]; i++) {
 			lcheck.checked = checkall;
 		}	
 		controlLibre();
@@ -67,7 +67,7 @@
 		var libre = document.getElementById("libre");
 		var libregambeta = document.getElementById("libregambeta");
 		
-		for (i = 0; lcheck = grupo[i]; i++) {
+		for (var i = 0; lcheck = grupo[i]; i++) {
 			if (lcheck.checked) {
 				controlCheck = 1;
 			}
@@ -109,7 +109,7 @@
 			if (total == null) {
 				grupo.disabled = true;
 			} else {
-				for (i = 0; lcheck = grupo[i]; i++) {
+				for (var i = 0; lcheck = grupo[i]; i++) {
 					lcheck.disabled = true;
 				}
 			}
@@ -154,7 +154,7 @@
 				return true;
 			} else {
 				var controlCheck = 0;
-				for (i = 0; lcheck = grupo[i]; i++) {
+				for (var i = 0; lcheck = grupo[i]; i++) {
 					if (lcheck.checked) {
 						controlCheck++;
 					}
@@ -217,7 +217,7 @@
 
 <!-- indexer::stop -->
 <div id="logo">
-	<a href="index.php" title="Volver al incio"><h1> Panel de Control</h1></a>
+	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -237,9 +237,7 @@
 			<? include("path.php"); ?>
 		  <div class="ce_text block">
 				<h1>Nueva Reserva: <?= $fecha[0]['nombre']." - ".$fecha[0]['torneo']." - ".$fecha[0]['categoria']?> (<?= $equipo[0]['nombre'] ?>)
-				   <div style="float:right"> 
-					<img width="75" border="0" alt="reserva" title="volver" onclick="javascript:volver();" style="cursor:pointer" src="images/back-icon.png"/>	
-				  </div>
+					<img width="75" border="0" alt="reserva" title="volver" onclick="javascript:volver();" style="cursor:pointer;float: right;" src="images/back-icon.png"/>	
 				</h1>
 			</div>
 			<div class="mod_article block" id="home">
@@ -307,6 +305,7 @@
 	</div>
 </div>
 <? include("pie.php")?>
+</div>
 </body>
 
 </html>

@@ -69,21 +69,21 @@
 	}
 ?>
     
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Panel de Control.">
-<meta name="keywords" content="">
-<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="Panel de Control."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="index,follow"/>
 
 <? include("encabezado.php"); ?>
 
 
-<script language="javascript">
+<script>
 
 function volver(){
 	document.form_alta.accion.value = "volver";		
@@ -138,7 +138,7 @@ function confirmacion(idpartido, idequipo, accion) {
 
 <!-- indexer::stop -->
 <div id="logo">
-	<a href="index.php" title="Volver al incio"><h1> Panel de Control</h1></a>
+	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -159,11 +159,9 @@ function confirmacion(idpartido, idequipo, accion) {
 		<div class="mod_article block" id="home">
 			<div class="ce_text block">
 				<h1>Confirmacion de Partidos: <?= $fecha[0]['nombre']." - ".$fecha[0]['torneo']." - ".$fecha[0]['categoria']?>
-				<div style="float:right"> 
-					<img width="75" border="0" alt="reserva" title="Exportar Excel" onclick="javascript:migrar();" style="cursor:pointer" src="images/xls-icon.png"/>
-				  	<? if ($partidos != NULL) { ?><img width="75" border="0" alt="reserva" title="Enviar Correo Recordatorio" onclick="javascript:mail();" style="cursor:pointer" src="images/eml-icon.png"/><? } ?>	
-					<img width="75" border="0" alt="reserva" title="volver" onclick="javascript:volver();" style="cursor:pointer" src="images/back-icon.png"/>	
-				</div>
+					<img width="75" border="0" alt="reserva" title="volver" onclick="javascript:volver();" style="cursor:pointer; float: right;" src="images/back-icon.png"/>
+				  	<? if ($partidos != NULL) { ?><img width="75" border="0" alt="reserva" title="Enviar Correo Recordatorio" onclick="javascript:mail();" style="cursor:pointer; float: right;" src="images/eml-icon.png"/><? } ?>	
+					<img width="75" border="0" alt="reserva" title="Exportar Excel" onclick="javascript:migrar();" style="cursor:pointer; float: right;" src="images/xls-icon.png"/>	
 				</h1>
 				<br /><br />
 				<div class="mod_listing ce_table listing block" id="partnerlist">
@@ -182,8 +180,8 @@ function confirmacion(idpartido, idequipo, accion) {
 						<input type="hidden" name="submenu" value="<?=$_POST["submenu"]?>" />
 						<input type="hidden" name="pag_submenu" value="<?=$_POST["pag_submenu"]?>" />
 					</form>
-					<div align="center" style="float:left">
-						<table id="partidos" width="400">
+						<div align="center" style="float:left">
+							<table id="partidos" style="width: 400px">
 								<tr>
 									<th width="8%"></th>
 									<th style="text-align:center">Partidos</th>
@@ -203,7 +201,7 @@ function confirmacion(idpartido, idequipo, accion) {
 														<img width="25" border="0" alt="reserva" title="Sin Confirmacion" src="../img/forbidden.ico"/>
 													</td>
 												<? } ?>
-													<td style="text-align:center; font-size:16px"><?=$partido['equipo1'] ?><font color="#FF0000"> VS </font> <?=$partido['equipo2']?> <br>(<?=$partido['horaPartido'] ?>)</td>
+													<td style="text-align:center; font-size:16px"><?=$partido['equipo1'] ?><font color="#FF0000"> VS </font> <?=$partido['equipo2']?> <br/>(<?=$partido['horaPartido'] ?>)</td>
 												<? if ($oFixture -> partidoConfirmado($partido['id'],$partido['idEquipo2'])) {?>
 													<td nowrap>
 														<img width="25" border="0" alt="reserva" title="Confirmado" src="../img/check.ico"/>
@@ -223,7 +221,7 @@ function confirmacion(idpartido, idequipo, accion) {
 								</table>
 					</div>
 					<div align="center" style="float:rigth">
-						<table id="libres" width="400">
+						<table id="libres" style="width: 400px">
 							<tr>
 								<th colspan="2" style="text-align:center">Libres</th>
 							</tr>
@@ -263,7 +261,7 @@ function confirmacion(idpartido, idequipo, accion) {
 				<div class="mod_listing ce_table listing block" id="partnerlist">
 					<div align="center">
 						<h1 align="left">Cruce de Equipos</h1>
-						<table id="cruces" name="cruces" style="font-size:8.5px">
+						<table id="cruces" style="font-size:8.5px">
 							  <tr><td style="background-color:#CE6C2B; color:#FFFFFF"><b>EQUIPOS</b></td>
 						<? foreach ($equiposTorneo as $equipo) { ?>
 							  <td style="background-color:#CE6C2B; color:#FFFFFF"><?=$equipo['nombre'] ?></td>
@@ -297,5 +295,6 @@ function confirmacion(idpartido, idequipo, accion) {
 </div>
 </div>
 <? include("pie.php")?>
+</div>
 </body>
 </html>

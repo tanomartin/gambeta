@@ -36,22 +36,22 @@
 
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Panel de Control.">
-<meta name="keywords" content="">
-<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="Panel de Control."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="index,follow"/>
 
 <? include("encabezado.php"); ?>
 
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/jquery.blockUI.js"></script>
-<script language="javascript">
+<script>
 	
 	function volver(){
 		document.frm_listado.accion.value = "volver";
@@ -89,7 +89,7 @@
 
 <!-- indexer::stop -->
 <div id="logo">
-	<a href="index.php" title="Volver al incio"><h1> Panel de Control</h1></a>
+	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -110,9 +110,7 @@
 		<? include("path.php"); ?>
 			<div class="ce_text block">
 				<h1>Resultado Envio: <?=$torneo->torneo." - ".$torneo->nombreLargo ?> <? if ($torneo->nombreCat != "" ) { echo " - ".$torneo->nombreCat;}?>
-					<div style="float:right"> 
-						<img width="75" border="0" alt="volver" title="volver" onclick="javascript:volver();" style="cursor:pointer" src="images/back-icon.png"/>	
-					</div>
+					<img width="75" border="0" alt="volver" title="volver" onclick="javascript:volver();" style="cursor:pointer;float: right;" src="images/back-icon.png"/>	
 				</h1>
 			</div>
 			<div class="mod_article block" id="home">
@@ -125,7 +123,7 @@
 						<input type="hidden" name="pag_submenu" value="<?=$_POST["pag_submenu"]?>" />
 					</form>
 						<div align="center" style="float:left">
-						<table id="mail" width="450">
+						<table id="mail" style="width: 450px">
 								<tr>
 									<th>Equipos</th>
 									<th>Email</th>
@@ -149,8 +147,8 @@
 							</table>
 						</div>
 						<div align="center" style="float:right">
-							<table id="cuerpo" width="450">
-								<th>Correo</th>
+							<table id="cuerpo" style="width: 450px">
+								<tr><th>Correo</th></tr>
 								<tr><td>
 									<h2>Asunto</h2>
 									<div style="border-style:groove"><?=$_POST['asuntocorreo']?></div>

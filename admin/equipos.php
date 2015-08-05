@@ -90,21 +90,21 @@
 
 	?>
     
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Panel de Control.">
-<meta name="keywords" content="">
-<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="Panel de Control."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="index,follow"/>
 
 <? include("encabezado.php"); ?>
 
 
-<script language="javascript">
+<script>
 
 	function nuevo(){
 
@@ -209,7 +209,7 @@
 
 <!-- indexer::stop -->
 <div id="logo">
-	<a href="index.php" title="Volver al incio"><h1> Panel de Control</h1></a>
+	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -318,7 +318,7 @@
             	<input class="button" onclick="javascript:nuevo()" type="button" value="Nuevo Equipo" />
             </div>
 
-			<table width="928">
+			<table style="width: 928px">
 				
 				<tr>
 					<th >Nombre</th>
@@ -378,7 +378,7 @@
 
 <? include("pie.php")?>
 
-
+</div>
 </body>
 
 </html>

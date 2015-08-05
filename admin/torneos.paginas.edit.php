@@ -21,21 +21,21 @@
 
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
 
 <!-- base href="http://www.typolight.org/" -->
 <title>Panel de Control</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="description" content="Panel de Control.">
-<meta name="keywords" content="">
-<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="description" content="Panel de Control."/>
+<meta name="keywords" content=""/>
+<meta name="robots" content="index,follow"/>
 
 <? include("encabezado.php"); ?>
 
 
-<script language="javascript">
+<script>
 
 	function volver(){
 	
@@ -73,7 +73,7 @@
 
 <!-- indexer::stop -->
 <div id="logo">
-	<a href="index.php" title="Volver al incio"><h1> Panel de Control</h1></a>
+	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
 <!-- indexer::continue -->
 
@@ -134,21 +134,19 @@
 	<fieldset>
 	<legend>Im&aacute;genes
 
-	</legend><table summary="Personal data" cellpadding="0" cellspacing="0">
+	</legend><table summary="Personal data">
   	<tbody>
       <tr class="odd">
         <td class="col_0 col_first"><label for="nombre">Imagen Posiciones</label></td>
-        <td class="col_1 col_last"><input name="posiciones" id="posiciones" class="" type="file"  <?= $disabled ?> ><? if ($datos[0]["posiciones"] != "" ) { ?><a href="../pantallas_fijas/<?= $datos[0]["posiciones"] ?>" target="_blank"> Imagen</a> <? } ?> </td>
-
-         </td>
+        <td class="col_1 col_last"><input name="posiciones" id="posiciones" class="" type="file"  <?= $disabled ?> /><? if ($datos[0]["posiciones"] != "" ) { ?><a href="../pantallas_fijas/<?= $datos[0]["posiciones"] ?>" target="_blank"> Imagen</a> <? } ?> </td>
        </tr>    
       <tr class="even">
         <td class="col_0 col_first"><label for="nombre">Imagen Resultados</label></td>
-        <td class="col_1 col_last"><input name="resultados" id="resultados" class="" type="file"  <?= $disabled ?> ><? if ($datos[0]["resultados"] != "" ) { ?><a href="../pantallas_fijas/<?= $datos[0]["resultados"] ?>" target="_blank"> Imagen</a> <? } ?> </td>
+        <td class="col_1 col_last"><input name="resultados" id="resultados" class="" type="file"  <?= $disabled ?> /><? if ($datos[0]["resultados"] != "" ) { ?><a href="../pantallas_fijas/<?= $datos[0]["resultados"] ?>" target="_blank"> Imagen</a> <? } ?> </td>
       </tr>  
       <tr class="odd">
         <td class="col_0 col_first"><label for="nombre">Imagen Goleadoras</label></td>
-        <td class="col_1 col_last"><input name="goleadoras" id="goleadoras" class="" maxlength="50" type="file"  <?= $disabled ?>><? if ($datos[0]["goleadoras"] != "" ) { ?><a href="../pantallas_fijas/<?= $datos[0]["goleadoras"] ?>" target="_blank"> Imagen</a> <? } ?> </td>
+        <td class="col_1 col_last"><input name="goleadoras" id="goleadoras" class="" maxlength="50" type="file"  <?= $disabled ?> /><? if ($datos[0]["goleadoras"] != "" ) { ?><a href="../pantallas_fijas/<?= $datos[0]["goleadoras"] ?>" target="_blank"> Imagen</a> <? } ?> </td>
       </tr>  
 	</tbody>
 	</table>
@@ -194,7 +192,7 @@
 
 <? include("pie.php")?>
 
-
+</div>
 </body>
 
 </html>
