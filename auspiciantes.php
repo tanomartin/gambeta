@@ -1,6 +1,6 @@
 <?
 
-$auspiciantes1[0][url]="http://www.camisetadefutbol.com";
+$auspiciantes1[0][url]="http://www.futbolfemenino.com.ar";
 $auspiciantes1[0][img]="img/auspiciantes/camisetadefutbol.jpg";
 $auspiciantes1[0][tit]="Camiseta de Futbol";		
 		
