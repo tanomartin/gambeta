@@ -343,7 +343,7 @@ function unFocus(input){
     <? for ($i=0; $i<count( $aTorneos ); $i++) {   
 	   		$oObj = new TorneoCat();
 			$categoria = $oObj ->getByTorneo($aTorneos[$i][id]);?>
-          	<img src="logos/<?= $aTorneos[$i]['logoMenu'] ?>"  border="0" width="43px" height="54px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
+          	<img src="logos/<?= $aTorneos[$i]['logoPrincipal'] ?>"  border="0" width="50px" height="50px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
     <? } ?>
 		  <div id="menu"></div>    
 		  <div id="imagen" style="float:left; vertical-align:top" align="left">

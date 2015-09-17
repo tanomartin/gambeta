@@ -356,7 +356,7 @@ $(document).ready(function() {
 					$categoria = $oObj ->getByTorneo($aTorneos[$i][id]);
 			   ?>
                <div id="categoria" style="clear:both; text-align: center;"><span class="tituloHome<?= $aTorneos[$i]['color'] ?>"><?= strtoupper ($aTorneos[$i]['nombre'] ) ?></span></div>
-               <div style="float:left; margin: 10px 10px 10px 20px"><img src="logos/<?= $aTorneos[$i]['logoPrincipal'] ?>"  width="90px" height="95px" /></div>  
+               <div style="float:left; margin: 10px 10px 10px 20px"><img src="logos/<?= $aTorneos[$i]['logoPrincipal'] ?>"  width="85px" height="85px" /></div>  
 			   <div style="float:left;margin: 15px 10px 10px 0px" >
                    <div class="categoria" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"><?= strtoupper ($categoria[0][nombreCorto]); ?></div>
                    <hr class="linea" ></hr>

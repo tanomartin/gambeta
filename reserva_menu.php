@@ -443,7 +443,7 @@ function confirmarPartido(idPartido) {
 		 </div>
          
 		 <div id="cabezal1">
-  			<div id="menu_izq1" style="float:left"><img  src="logos/<?= $oTorneo->logoPagina?>" /></div>
+  			<div id="menu_izq1" style="float:left"><img width="120px" height="120px" src="logos/<?= $oTorneo->logoPrincipal?>" /></div>
 			<div id="imagen" style="float:left; vertical-align:top">
             	<div id="titulo_principal" class="titulo_pagina color_titulo_<?= $color ?>">
                     <div  style="float:left; bottom:0px; position:absolute;" >

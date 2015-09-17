@@ -266,7 +266,8 @@ function cambiar_menu(url){
       </div>
     </div>
     <div id="cabezal1">
-      <div id="menu_izq1" style="float:left"> <img  src="logos/<?= $oTorneo->logoPagina?>" />
+      <div id="menu_izq1" style="float:left"> 
+      <div align="center"><img width="120px" height="120px"  src="logos/<?= $oTorneo->logoPrincipal?>" /></div>
         <? include("menu_izq.php") ?>
       </div>
       <div id="imagen" style="float:left; vertical-align:top">
@@ -277,7 +278,7 @@ function cambiar_menu(url){
 									$aCategoriasMenu = $oObj->getByTorneo( $aTorneos[$i][id],"id_categoria");
 									
 								?>
-            <img  src="logos/<?= $aTorneos[$i][logoMenu]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
+            <img width="50px" height="50px" src="logos/<?= $aTorneos[$i][logoPrincipal]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
             <? } 
                         } ?>
           </div>
