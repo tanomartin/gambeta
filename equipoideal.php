@@ -274,7 +274,7 @@ function cambiar_menu(url){
 									$aCategoriasMenu = $oObj->getByTorneo( $aTorneos[$i][id],"id_categoria");
 
 								?>
-            <img width="50px" height="50px" src="logos/<?= $aTorneos[$i][logoPrincipal]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
+            <img title="<?= $aTorneos[$i][nombre_pagina]?>" width="50px" height="50px" src="logos/<?= $aTorneos[$i][logoPrincipal]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
             <? } 
                         } ?>
           </div>
