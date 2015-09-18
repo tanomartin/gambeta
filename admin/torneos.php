@@ -404,7 +404,7 @@
 			<table style="width: 928px">
 				
 				<tr>
-					<th >Nombre</th>
+					<th>Nombre</th>
 					<th width="5%">Orden</th>                                        
 					<th width="5%">Activo</th>                    
 					<th width="10%">Opciones</th>
@@ -427,13 +427,13 @@
 
 
 					<tr>
-                     <td align="left"><?=$datos[$i]["nombre"]?></td>
+                     <td align="left" style="text-align: inherit;"><img align="middle" width="80px" height="80px" src="../logos/<?=$datos[$i]["logoPrincipal"]?>" /><b><?=$datos[$i]["nombre"]?></b></td>
                      <td>
                      <? if ( $i>0) { ?>
-                     	<div  style="float:left"><img border="0" src="images/icono-up.gif" alt="Subir" title="Subir" style="cursor:pointer" onclick="cambiarOrden('<?=$datos[$i]['orden']?>','-1')"/></div>                 
+                     	<div style="float:left"><img border="0" src="images/icono-up.gif" alt="Subir" title="Subir" style="cursor:pointer" onclick="cambiarOrden('<?=$datos[$i]['orden']?>','-1')"/></div>                 
 					<? } ?>
 					 <? if ( $i< $tt) { ?>
-	                     <div  style="float:right"><img border="0" src="images/icono-down.gif" alt="Bajar" title="Bajar" style="cursor:pointer" onclick="cambiarOrden('<?=$datos[$i]['orden']?>','1')"/></div>
+	                     <div style="float:right"><img border="0" src="images/icono-down.gif" alt="Bajar" title="Bajar" style="cursor:pointer" onclick="cambiarOrden('<?=$datos[$i]['orden']?>','1')"/></div>
                      <? } ?>
                      </td>
                      <td align="center">

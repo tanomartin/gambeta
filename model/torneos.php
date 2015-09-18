@@ -10,8 +10,6 @@ class Torneos {
 	var $fechaInicio;
 	var $fechaFin;
 	var $logoPrincipal;
-	var $logoMenu;
-	var $logoPagina;
 	var $orden;
 	var $activo;
 	var $color;
@@ -26,8 +24,6 @@ class Torneos {
 			$this->fechaInicio = $valores[0]["fechaInicio"]; 
 			$this->fechaFin = $valores[0]["fechaFin"];
 			$this->logoPrincipal = $valores[0]["logoPrincipal"]; 
-			$this->logoMenu = $valores[0]["logoMenu"];
-			$this->logoPagina = $valores[0]["logoPagina"];
 			$this->orden = $valores[0]["orden"]; 
 			$this->activo = ($valores[0]["activo"] == 'on')? 1: 0;
 			$this->color = $valores[0]["color"]; 
@@ -43,15 +39,12 @@ class Torneos {
 		$this->fechaInicio = $valores["fechaInicio"]; 
 		$this->fechaFin = $valores["fechaFin"];
 		$this->logoPrincipal = $valores["logoPrincipal"]; 
-		$this->logoMenu = $valores["logoMenu"];
-		$this->logoPagina = $valores["logoPagina"];
 		$this->orden = $valores["orden"]; 
 		$this->activo =  ($valores["activo"] == 'on')? 1: 0;
 		$this->color = $valores["color"]; 
 	}
 	
-	function _setById($id) {
-				
+	function _setById($id) {	
 		$aValores = $this->getById($id, ARRAY_A);	
 		$this->set($aValores);
 	}
@@ -98,35 +91,6 @@ class Torneos {
 			$db->query($query); 
 
 		}
-		
-		if(is_uploaded_file($_FILES['logoMenu']['tmp_name'])) {
-			// Logo Menu
-			$name1 = "men_".$this->id."_".$files['logoMenu']['name'];
-			$ruta= "../logos/".$name1;
-			
-			move_uploaded_file($_FILES['logoMenu']['tmp_name'], $ruta);
-		
-		// Actualizo en la tabla los nombres de las imagenes
-			$query = "update ga_torneos set logoMenu = '". $name1."'		  
-					  where id = ".$this->id ;
-				  
-			$db->query($query); 
-		}
-				  
-		if(is_uploaded_file($_FILES['logoPagina']['tmp_name'])) {
-			// Logo principal
-			$name2 = "pag_".$this->id."_".$files['logoPagina']['name'];
-			$ruta= "../logos/".$name2;
-			
-			move_uploaded_file($_FILES['logoPagina']['tmp_name'], $ruta);
-
-			$query = "update ga_torneos set  logoPagina = '". $name2."'
-					  where id = ".$this->id ;
-
-			$db->query($query); 
-
-		}
-
 
 		$db->close();
 
@@ -136,9 +100,7 @@ class Torneos {
 	function eliminar() {
 	
 		$db = new Db();
-			
 		$query = "delete from ga_torneos where id = ".$this->id ;
-	  
 		$db->query($query); 
 		$db->close();
 	
@@ -182,34 +144,6 @@ class Torneos {
 
 		}
 		
-		if(is_uploaded_file($_FILES['logoMenu']['tmp_name'])) {
-			// Logo Menu
-			$name1 = "men_".$this->id."_".$files['logoMenu']['name'];
-			$ruta= "../logos/".$name1;
-			
-			move_uploaded_file($_FILES['logoMenu']['tmp_name'], $ruta);
-		
-		// Actualizo en la tabla los nombres de las imagenes
-			$query = "update ga_torneos set logoMenu = '". $name1."'		  
-					  where id = ".$this->id ;
-				  
-			$db->query($query); 
-		}
-
-		if(is_uploaded_file($_FILES['logoPagina']['tmp_name'])) {
-			// Logo principal
-			$name2 = "pag_".$this->id."_".$files['logoPagina']['name'];
-			$ruta= "../logos/".$name2;
-			
-			move_uploaded_file($_FILES['logoPagina']['tmp_name'], $ruta);
-
-			$query = "update ga_torneos set  logoPagina = '". $name2."'
-					  where id = ".$this->id ;
-
-			$db->query($query); 
-
-		}
-
 		$db->close();
 	
 	}

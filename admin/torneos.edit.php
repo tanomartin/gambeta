@@ -169,15 +169,7 @@
       <tr class="even">
         <td class="col_0 col_first"><label for="nombre">Logo Principal</label><span class="mandatory">*</span></td>
         <td class="col_1 col_last"><input name="logoPrincipal" id="logoPrincipal" class="" type="file" <?= $disabled ?> /><? if ($datos[0]["logoPrincipal"] != "" ) { ?><a href="../logos/<?= $datos[0]["logoPrincipal"] ?>" target="_blank"> Imagen</a> <? } ?> </td>
-      </tr>  
-      <tr class="odd">
-        <td class="col_0 col_first"><label for="nombre">Logo para el menú</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"><input name="logoMenu" id="logoMenu" class="" maxlength="50" type="file" <?= $disabled ?> /><? if ($datos[0]["logoMenu"] != "" ) { ?><a href="../logos/<?= $datos[0]["logoMenu"] ?>" target="_blank"> Imagen</a> <? } ?> </td>
-      </tr>  
-      <tr class="odd">
-        <td class="col_0 col_first"><label for="nombre">Logo P&aacute;gina</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"><input name="logoPagina" id="logoPagina" class="" maxlength="50" type="file" <?= $disabled ?> /><? if ($datos[0]["logoPagina"] != "" ) { ?><a href="../logos/<?= $datos[0]["logoPagina"] ?>" target="_blank"> Imagen</a> <? } ?> </td>
-      </tr>        
+      </tr>      
       <tr class="even">
         <td class="col_0 col_first"><label for="nombre">Activo</label><span class="mandatory">*</span></td>
         <td class="col_1 col_last"><input type="checkbox"  <? if ($datos[0]["activo"] == "1" ) { ?> checked="checked" <? } ?> name="activo" id="activo" <?= $disabled ?> ></td>
