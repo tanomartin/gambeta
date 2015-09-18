@@ -405,6 +405,7 @@
 				
 				<tr>
 					<th>Nombre</th>
+					<th>Categoria [-SubCategoria]</th>
 					<th width="5%">Orden</th>                                        
 					<th width="5%">Activo</th>                    
 					<th width="10%">Opciones</th>
@@ -422,12 +423,23 @@
 				 	$total = count($datos);	
 					$tt = $total - 1;
 					for ( $i = 0; $i < $total; $i++ ) {
-        			
+						$oObj = new TorneoCat();
+						$aCategorias = $oObj->getByTorneoSub($datos[$i]["id"]);
 				?>
 
 
 					<tr>
                      <td align="left" style="text-align: inherit;"><img align="middle" width="80px" height="80px" src="../logos/<?=$datos[$i]["logoPrincipal"]?>" /><b><?=$datos[$i]["nombre"]?></b></td>
+                     <td align="left">
+                     <? foreach ($aCategorias as $categoria) {
+                     	   if ($categoria[nombreCatPagina] != "") { 	
+                     	   		echo $categoria[nombreCatPagina]." - ".$categoria[nombrePagina]."<br>";
+                     	   } else {
+								echo $categoria[nombrePagina]."<br>";
+						   }
+                     }
+                     ?>
+                     </td>
                      <td>
                      <? if ( $i>0) { ?>
                      	<div style="float:left"><img border="0" src="images/icono-up.gif" alt="Subir" title="Subir" style="cursor:pointer" onclick="cambiarOrden('<?=$datos[$i]['orden']?>','-1')"/></div>                 
