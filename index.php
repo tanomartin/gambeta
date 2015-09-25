@@ -168,9 +168,9 @@ print_r($grises);*/
 	#titulo_auspiciante {
 		background-image:url(img/home/titulo_auspiciante.jpg);
 		background-repeat:no-repeat;
-		width:185px;
+		width:168px;
 		height:44px;;
-		margin:0px 0px 0px 9px;
+		margin:0px 0px 0px 28px;
 		text-align:left;		
 	}
 
@@ -212,12 +212,12 @@ print_r($grises);*/
 	   display:block;
 	}
 	/* A continuación viene el verdadero truco, la posición de las imágenes de fondo es importante*/
-	span.top {
+	/*span.top {
 	   background:url(img/home/si.gif) top left no-repeat; 
 	}
 	span.bottom{
 	   background:url(img/home/ii.gif) bottom left no-repeat;
-	}
+	}*/
 	span.top span, span.bottom span{
 	   width:4px; /* De acuerdo al tamaño de la imagen GIF */
 	   height:4px;/* De acuerdo al tamaño de la imagen GIF */
@@ -290,10 +290,10 @@ $(document).ready(function() {
 	<div id="wrap">
 		<div id="encabezado">
 			<div id="cabezal">
-                 <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
+                 <div id="quienes_somos"  style="cursor:pointer" onClick="window.location = 'quienes_somos.php';"></div>
                  <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
-                 <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
-                 <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
+                 <div id="sedes" style="cursor:pointer" onClick="window.location = 'sedes.php';"></div>
+                 <div id="contacto"  style="cursor:pointer" onClick="window.location = 'contacto.php';"></div>
             </div> 
 		 </div>
         <div id="cabezal1">
@@ -356,35 +356,12 @@ $(document).ready(function() {
 					$categoria = $oObj ->getByTorneo($aTorneos[$i][id]);
 			   ?>
                <div id="categoria" style="clear:both; text-align: center;"><span class="tituloHome<?= $aTorneos[$i]['color'] ?>"><?= strtoupper ($aTorneos[$i]['nombre'] ) ?></span></div>
-               <div style="float:left; margin: 10px 10px 10px 20px"><img src="logos/<?= $aTorneos[$i]['logoPrincipal'] ?>"  width="85px" height="85px" /></div>  
-			   <div style="float:left;margin: 15px 10px 10px 0px" >
-                   <div class="categoria" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"><?= strtoupper ($categoria[0][nombreCorto]); ?></div>
-                   <hr class="linea" ></hr>
-                   <div class="categoria1" onclick="pagina('<?= $categoria[1][id]?>')" style="cursor: pointer"><?= strtoupper ($categoria[1][nombreCorto]); ?></div>
-                   <hr class="linea" ></hr>
-                   <div class="categoria2" onclick="pagina('<?= $categoria[2][id]?>')" style="cursor: pointer"><?= strtoupper ($categoria[2][nombreCorto]); ?></div>                         
-               </div>
+               <div style="float: center; margin: 10px 10px 10px 80px"><img style="cursor: pointer" onclick="pagina('<?= $categoria[0][id]?>')" src="logos/<?= $aTorneos[$i]['logoPrincipal'] ?>"  width="85px" height="85px" /></div>  
 				<? } ?>
                 
         </div>
-        <div id="auspiciantes" style="float:left"><? include('auspiciantes.php'); ?>
-			<div id="faceytweet" style="float:left; margin-top:20px">
-					<div id="campo_tiempo"><!-- www.TuTiempo.net - Ancho:120px - Alto:73px --><!-- www.TuTiempo.net - Ancho:118px - Alto:71px -->
-						<div id="TT_tBawbxtBddjcAQIA7fVzzDzzj6lAMdjlrtkd1sCoK1j"><h2><a href="http://www.tutiempo.net">Tutiempo.net</a></h2></div>
-						<script type="text/javascript" src="http://www.tutiempo.net/widget/eltiempo_tBawbxtBddjcAQIA7fVzzDzzj6lAMdjlrtkd1sCoK1j"></script>
-					</div>            
-					<div id="facebook">
-						<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fes-la.facebook.com%2Fpeople%2FGambeta-Femenina%2F100000148462698&amp;layout=box_count&amp;show_faces=false&amp;width=190&amp;action=like&amp;font&amp;colorscheme=light&amp;height=65" style="border:none; overflow:hidden; width:75px; height:65px;"></iframe>
-					</div>
-					<div id="twitter">                        
-						<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-					</div>
-					<div id="fecha" class="fecha">     
-						<?php setlocale(LC_ALL,"es_ES@euro","es_ES","esp");   echo utf8_encode(strftime("%A %d/%m/%Y")); ?>				
-					</div>        
-			</div>  
-		</div>   
-		<div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
+        <div id="auspiciantes" style="float:left"><? include('auspiciantes.php'); ?></div>   
+		<div id="gf" onClick="location.href='index.php'" style="cursor:pointer"></div>
         </div>           
 		<div id="pie_repetir" style="float:left">
 			<div id="pie"></div>
