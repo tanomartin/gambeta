@@ -8,17 +8,29 @@
 	}
 	
 	$menu = "Secciones";
-	
-	$oTorCat = new TorneoCat();
-	$torneo = $oTorCat->getByIdCompleto($_POST['id_torneo_categoria']);
-	
-	$oEquipo = new Equipos();
-	$equipos = $oEquipo->getTorneoCat($_POST['id_torneo_categoria']);
-	
-	if($equipos != NULL) { 
-		foreach ($equipos as $equipo) {
-			$id = $equipo['id'];
-			$equiposMail[$id] = array('id_equipo' => $id, 'nombre' => $equipo['nombre'], 'email' => $equipo['email']);
+
+	if($_POST['id_torneo_categoria'] != '-1') {
+		$oTorCat = new TorneoCat();
+		$torneo = $oTorCat->getByIdCompleto($_POST['id_torneo_categoria']);
+		
+		$oEquipo = new Equipos();
+		$equipos = $oEquipo->getTorneoCat($_POST['id_torneo_categoria']);
+		
+		if($equipos != NULL) { 
+			foreach ($equipos as $equipo) {
+				$id = $equipo['id'];
+				$equiposMail[$id] = array('id_equipo' => $id, 'nombre' => $equipo['nombre'], 'email' => $equipo['email']);
+			}
+		}
+	} else {
+		$oEquipo = new Equipos();
+		$equipos = $oEquipo->getEquiposSinTorneo();
+		
+		if($equipos != NULL) {
+			foreach ($equipos as $equipo) {
+				$id = $equipo['id'];
+				$equiposMail[$id] = array('id_equipo' => $id, 'nombre' => $equipo['nombre'], 'email' => $equipo['email']);
+			}
 		}
 	}
 	

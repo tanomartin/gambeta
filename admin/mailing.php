@@ -112,7 +112,12 @@
 							<th>Categor&iacute;a</th>     
 							<th width="40px"></th>
 						</tr>
-
+						<tr>
+							<td> SIN TORNEO </td>
+							<td> SIN CATEGORIA </td>
+							<td nowrap>
+								<a href="javascript:listado('-1');"> <img border="0" src="images/eml-icon.png" alt="Crear Correo" title="Crear Correo" width="40px" height="40px" /></a>
+							</td> 
 					<? if (count($torneosCategoria) == 0) { ?>
 						<tr>
 							<td colspan="3" align="center">No existen categor&iacute;as</td>
