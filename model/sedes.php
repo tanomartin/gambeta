@@ -105,7 +105,7 @@ class Sedes {
 	function getPaginado($filtros, $inicio, $cant, &$total) {
 
 		$db = new Db();
-		$query = "Select SQL_CALC_FOUND_ROWS  c.*n 
+		$query = "Select SQL_CALC_FOUND_ROWS  c.* 
 				   from ga_sedes c 
 				  where 1=1 ";
 	

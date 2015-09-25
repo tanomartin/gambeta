@@ -292,13 +292,13 @@ function paginar(id){
 									$aCategoriasMenu = $oObj->getByTorneo( $aTorneos[$i][id],"id_categoria");
 									
 								?>
-            <img title="<?= $aTorneos[$i][nombre_pagina]?>" width="50px" height="50px" src="logos/<?= $aTorneos[$i][logoPrincipal]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
+            <img title="<?= $aTorneos[$i][nombre]?>" width="50px" height="50px" src="logos/<?= $aTorneos[$i][logoPrincipal]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
             <? } 
                         } ?>
           </div>
         </div>
         <div class="titulo_pagina color_titulo_<?= $color ?>" >
-          <?=  strtoupper($oTorneo->nombre_pagina) ?>
+          <?=  strtoupper($oTorneo->nombre) ?>
         </div>
         <div id="categorias">
           <div class="titulo_categoria color_categoria" style="float:left;">CATEGORIA</div>

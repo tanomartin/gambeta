@@ -272,6 +272,21 @@ class Equipos {
 		return $res;
 	
 	}
+	
+	function getEquiposSinTorneo() {
+		$db = new Db();
+	
+		$query = "SELECT g.* 
+				FROM ga_equipos g 
+				where idTorneoCat not in(select id from ga_torneos_categorias) 
+				order by g.nombre";
+		
+		$res = $db->getResults($query, ARRAY_A);
+		
+		$db->close();
+		
+		return $res;
+	}
 
 	function getByIdEquipo($id="") {
 	

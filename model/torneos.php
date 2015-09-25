@@ -19,8 +19,7 @@ class Torneos {
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
-			$this->nombre = $valores[0]["nombre"];
-			$this->nombre_pagina = $valores[0]["nombre_pagina"];			
+			$this->nombre = $valores[0]["nombre"];	
 			$this->fechaInicio = $valores[0]["fechaInicio"]; 
 			$this->fechaFin = $valores[0]["fechaFin"];
 			$this->logoPrincipal = $valores[0]["logoPrincipal"]; 
@@ -34,8 +33,7 @@ class Torneos {
 	function set($valores){
 		
 		$this->id = $valores["id"]; 
-		$this->nombre = $valores["nombre"];
-		$this->nombre_pagina = $valores["nombre_pagina"];			
+		$this->nombre = $valores["nombre"];		
 		$this->fechaInicio = $valores["fechaInicio"]; 
 		$this->fechaFin = $valores["fechaFin"];
 		$this->logoPrincipal = $valores["logoPrincipal"]; 
@@ -66,10 +64,9 @@ class Torneos {
 
 
 		$query = "insert into ga_torneos(
-				nombre,nombre_pagina,fechaInicio,fechaFin,orden,color,activo
+				nombre,fechaInicio,fechaFin,orden,color,activo
 				) values (".
-				"'".$this->nombre."',".
-				"'".$this->nombre_pagina."',".				
+				"'".$this->nombre."',".			
 				"'".$this->fechaInicio."',".
 				"'".$this->fechaFin."',".
 				"'".$max_orden."',".
@@ -102,6 +99,9 @@ class Torneos {
 		$db = new Db();
 		$query = "delete from ga_torneos where id = ".$this->id ;
 		$db->query($query); 
+		
+		$query = "delete from ga_torneos_categorias where id_torneo = ".$this->id ;
+		$db->query($query);
 		$db->close();
 	
 	}
@@ -116,7 +116,6 @@ class Torneos {
 
 		$query = "update ga_torneos set 
 		          nombre = '". $this->nombre."',
-		          nombre_pagina = '". $this->nombre_pagina."',
 				  fechaInicio = '". $this->fechaInicio."',
 		          fechaFin = '". $this->fechaFin."',
 		          color = '". $this->color."',				  

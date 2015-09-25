@@ -145,10 +145,6 @@
         <td class="col_0 col_first"><label for="nombre">Nombre</label><span class="mandatory">*</span></td>
         <td class="col_1 col_last"><input name="nombre" id="nombre" class="required text" maxlength="50" type="text" value="<?=$datos[0]["nombre"]?>" size="50" <?= $disabled ?> ></td>
       </tr>  
-      <tr class="odd">
-        <td class="col_0 col_first"><label for="nombre">Nombre Página</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"><input name="nombre_pagina" id="nombre_pagina" class="required text" maxlength="150" type="text" value="<?=$datos[0]["nombre_pagina"]?>" size="50" <?= $disabled ?> ></td>
-      </tr>  
 
       <tr class="even">
         <td class="col_0 col_first"><label for="nombre">Fecha Inicio</label><span class="mandatory">*</span></td>
@@ -179,9 +175,9 @@
         <td class="col_1 col_last">
              <select name="color" id="color" class="validate-selection" <?= $disabled ?>>
 				<option value="-1" >Seleccione Color...</option>		
-				  <option  value="0" <? if( $datos[0]["color"] == 0) {?> selected="selected"<? } ?>>Rosa</option>						
-				  <option  value="1" <? if( $datos[0]["color"] == 1) {?> selected="selected"<? } ?>>Verde</option>														
-				  <option  value="2" <? if( $datos[0]["color"] == 2) {?> selected="selected"<? } ?>>Amarillo</option>														                  
+				  <option  value="0" <? if( $datos[0]["color"] == '0') {?> selected="selected"<? } ?>>Rosa</option>						
+				  <option  value="1" <? if( $datos[0]["color"] == '1') {?> selected="selected"<? } ?>>Verde</option>														
+				  <option  value="2" <? if( $datos[0]["color"] == '2') {?> selected="selected"<? } ?>>Amarillo</option>														                  
 			</select>      
         </td>                
 	  </tr>         

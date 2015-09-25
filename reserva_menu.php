@@ -447,7 +447,7 @@ function confirmarPartido(idPartido) {
 			<div id="imagen" style="float:left; vertical-align:top">
             	<div id="titulo_principal" class="titulo_pagina color_titulo_<?= $color ?>">
                     <div  style="float:left; bottom:0px; position:absolute;" >
-						<?=  strtoupper($oTorneo->nombre_pagina)." - ".$zona[0]["nombreLargo"]." - ".$categoria[0]["nombreLargo"] ?>
+						<?=  strtoupper($oTorneo->nombre)." - ".$zona[0]["nombreLargo"]." - ".$categoria[0]["nombreLargo"] ?>
 					</div>
                 </div>
 				<br/>

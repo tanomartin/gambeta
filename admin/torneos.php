@@ -431,13 +431,15 @@
 					<tr>
                      <td align="left" style="text-align: inherit;"><img align="middle" width="80px" height="80px" src="../logos/<?=$datos[$i]["logoPrincipal"]?>" /><b><?=$datos[$i]["nombre"]?></b></td>
                      <td align="left">
-                     <? foreach ($aCategorias as $categoria) {
-                     	   if ($categoria[nombreCatPagina] != "") { 	
-                     	   		echo $categoria[nombreCatPagina]." - ".$categoria[nombrePagina]."<br>";
-                     	   } else {
-								echo $categoria[nombrePagina]."<br>";
-						   }
-                     }
+                     <? if(sizeof($aCategorias) > 0) {
+	                     	foreach ($aCategorias as $categoria) {
+	                     	   if ($categoria[nombreCatPagina] != "") { 	
+	                     	   		echo $categoria[nombreCatPagina]." - ".$categoria[nombrePagina]."<br>";
+	                     	   } else {
+									echo $categoria[nombrePagina]."<br>";
+							   }
+						 	}
+                     	}
                      ?>
                      </td>
                      <td>
