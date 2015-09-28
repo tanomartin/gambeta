@@ -224,12 +224,12 @@ print_r($grises);*/
 	   float:right;
 	   font-size:4px; /* Esto es para IE6, que no respeta el height del span si el tamaño de letra es mayor a este  */
 	}
-	span.top span{
+	/*span.top span{
 	   background:url(img/home/sd.gif) top right no-repeat;
 	}
 	span.bottom span{
 	   background:url(img/home/id.gif) bottom right no-repeat;
-	}
+	}*/
 
 	#gf{ 
 		position: absolute;
@@ -356,7 +356,7 @@ $(document).ready(function() {
 					$categoria = $oObj ->getByTorneo($aTorneos[$i][id]);
 			   ?>
                <div id="categoria" style="clear:both; text-align: center;"><span class="tituloHome<?= $aTorneos[$i]['color'] ?>"><?= strtoupper ($aTorneos[$i]['nombre'] ) ?></span></div>
-               <div style="float: center; margin: 10px 10px 10px 80px"><img style="cursor: pointer" onclick="pagina('<?= $categoria[0][id]?>')" src="logos/<?= $aTorneos[$i]['logoPrincipal'] ?>"  width="85px" height="85px" /></div>  
+               <div style="float: center; margin: 10px 10px 10px 80px"><img style="cursor: pointer" onClick="pagina('<?= $categoria[0][id]?>')" src="logos/<?= $aTorneos[$i]['logoPrincipal'] ?>"  width="85px" height="85px" /></div>  
 				<? } ?>
                 
         </div>
