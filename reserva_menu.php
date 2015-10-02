@@ -74,71 +74,6 @@
 	<link rel="stylesheet" href="css/fixture.css" type="text/css"/>
 	
 <style type="text/css">
-	<!--
-
-	#wrap { margin:0 auto 0 auto; width:100%; height:100%  }
-	
-	#encabezado { margin:0 auto 0 auto; width:100%; height:242px;
-			background-image:url(img/home/costados1.jpg);
-			background-repeat:repeat-x;
-   }
-
-	#cabezal {
-		background-image:url(img/home/cabezal.jpg);
-		background-repeat:no-repeat;
-		width:999px;
-		height:242px;
-		margin:0 auto 0 auto;
-	}
-	
-	
-	#quienes_somos {
-		position: relative;
-		left: 790px;
-		top: 20px; /*442*/
-		width: 170px;
-		height: 25px;
-		/*background-color:#F00;*/
-	}	
-	
-	#reglamento { 
-		position: relative;
-		left: 790px;
-		top: 35px; /*442*/ 
-		width: 170px; 
-		height: 25px;
-		text-align:left;
-		/*background-color:#F00;*/
-	}	
-
-	#sedes { 
-		position: relative;
-		left: 790px;
-		top: 50px; /*442*/ 
-		width: 170px; 
-		height: 25px;
-		text-align:left;
-		/*background-color:#F00;*/
-	}	
-
-	#contacto { 
-		position: relative;
-		left: 790px;
-		top:  65px; /*442*/ 
-		width: 170px; 
-		height: 25px;
-		text-align:left;
-		/*background-color:#F00;*/
-	}		
-	
-	#menu { 
-		position: relative;
-		left: 50px; 
-		top: 90px; /*442*/ 
-		text-align:left;
-	/*	background-color:#F00*/
-	}	
-
 
 	#cabezal1 {
 		width:999px;
@@ -181,158 +116,7 @@
 		height:54px;
 		margin-left:50px
 	}
-		
-		
-	#faceytweet {
-		background-image:url(img/home/faceytweet.jpg);
-		background-repeat:no-repeat;
-		width:232px;
-/*		height:275px;*/
-		margin:0 auto 0 auto;
-	}
 
-
-	#campo_tiempo { 
-		position: relative;
-		left: 37px; 
-		top:  25px; /*442*/ 
-		width: 90px; 
-		height: 90px;
-		text-align:left;
-	}	
-	#facebook { 
-		position: relative;
-		left: 35px; 
-		top: 80px; /*442*/ 
-		width: 190px; 
-		height: 90px;
-		text-align:left;
-	}
-
-	#twitter { 
-		position: relative;
-		left: 110px; 
-		top: -10px; /*442*/ 
-		width: 190px; 
-		height: 90px;
-		text-align:left;
-	}
-
-	#fecha { 
-		position: relative;
-		left: 30px; 
-		top: -280px; /*442*/ 
-		width: 190px; 
-		height: 10px;
-		text-align:left;
-	}
-
-
-	#titulo_auspiciante {
-		width:190px;
-		height:45px;
-		position:relative;
-		text-align:left;		
-	}
-	
-	#auspiciantes {
-		clear:both;
-		position:relative;
-		width:210px;
-		margin:0 auto 0 auto;
-		border-left: 2px solid #CCC;
-		text-align:left;		
-	}
-
-	#gf{
-		position: relative;
-		left: 480px;
-		top: -230px;
-		width: 300px;
-		height: 200px;
-		text-align:left;
-		/*background-color: #000000;*/
-	}
-
-
-	#pie_repetir { margin:0 auto 0 auto; width:100%; height:44px;
-			background-image:url(img/home/pie1.jpg);
-			background-repeat:repeat-x;
-   }
-
-	#pie{
-		background-image:url(img/home/pie.jpg);
-		background-repeat:no-repeat;
-		width:999px;
-		height:44px;
-		margin:0 auto 0 auto;
-	}
-	
-
-	/* En este contenedor va todo lo que queremos mostrar. No le damos margen vertical puesto ese lo generarán los span del borde */
-	div.contenido{ 
-	   margin:10px;
-	}
-	/* Generamos los estilos de las span, los cuales contendrán las imágenes GIF */
-	span.top, span.bottom{
-	   width:100%;
-	   height:4px; /* El alto debe ser la mitad de alto de la imagen GIF */
-	   display:block;
-	}
-	/* A continuación viene el verdadero truco, la posición de las imágenes de fondo es importante*/
-	span.top {
-	   background:url(img/home/si.gif) top left no-repeat; 
-	}
-	span.bottom{
-	   background:url(img/home/ii.gif) bottom left no-repeat;
-	}
-	span.top span, span.bottom span{
-	   width:4px; /* De acuerdo al tamaño de la imagen GIF */
-	   height:4px;/* De acuerdo al tamaño de la imagen GIF */
-	   float:right;
-	   font-size:4px; /* Esto es para IE6, que no respeta el height del span si el tamaño de letra es mayor a este  */
-	}
-	span.top span{
-	   background:url(img/home/sd.gif) top right no-repeat;
-	}
-	span.bottom span{
-	   background:url(img/home/id.gif) bottom right no-repeat;
-	}
-	
-	.caja { 
-		width: 520px; 
-		background-image: url("img/home/centro.jpg"); 
-		background-repeat: repeat-y; 
-	} 
-
-	.cajaarriba { 
-		background-image: url("img/home/arriba.jpg"); 
-		background-position: top center; 
-		background-repeat: no-repeat; 
-	} 
-
-	.cajaabajo { 
-		background-image: url("img/home/abajo1.jpg"); 
-		background-position: bottom left; 
-		background-repeat: no-repeat;
-		padding-top:10px;
-		padding-bottom:5px;
-		margin-left:-1px	
-	
-	} 
-	
-  .boton{
-        font-size:10px;
-        font-family:Verdana,Helvetica;
-        font-weight:bold;
-        color:black;
-        background:#FF33CC;
-        border:0px;
-        width:80px;
-        height:19px;
-      }
-	
--->
 </style> 
 <script type="text/javascript" src="_js/funciones.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
@@ -433,15 +217,19 @@ function confirmarPartido(idPartido) {
 <body bgcolor="#FFFFFF" style=" width:100%; height:100%" >
 <form id="carga_reserva" name="carga_reserva" onsubmit="return validar(this)" action="reserva_guardar.php" method="post">
 	<div id="wrap">
-		 <div id="encabezado">
-			<div id="cabezal">
-				 <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
-				 <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
-				 <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
-				 <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
-            </div>
-		 </div>
-         
+		<div id="encabezado">	  
+		  <div id="cabezal">
+				 <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
+				 <div id="facebook" style="cursor:pointer" onclick="window.open('https://www.facebook.com/gambeta.femenina');"></div>
+		  		 <div id="twitter" style="cursor:pointer" onclick="window.open('https://twitter.com/GambetaFemenina');"></div>
+				 <div id="instagram" style="cursor:pointer" onclick="window.open('https://instagram.com/gambetafemenina');"></div> 
+				 <div id="youtube" style="cursor:pointer" onclick="window.open('https://www.youtube.com/user/gambetafemenina2012');"></div> 
+              	 <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
+                 <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
+                 <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
+                 <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
+            </div> 
+	 	</div>
 		 <div id="cabezal1">
   			<div id="menu_izq1" style="float:left"><img width="120px" height="120px" src="logos/<?= $oTorneo->logoPrincipal?>" /></div>
 			<div id="imagen" style="float:left; vertical-align:top">
@@ -570,8 +358,7 @@ function confirmarPartido(idPartido) {
 			    </div>
 			</div>
         </div>   
-        <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>      
-		<div id="pie_repetir" style="float:left">
+		<div id="pie_repetir" style="float:left; margin-top: 20px">
 			<div id="pie"></div>
     	</div> 
     </div>   
