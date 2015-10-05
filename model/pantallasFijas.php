@@ -209,7 +209,7 @@ class Pantallas {
 
 
 		$db = new Db();
-		$query = "Select SQL_CALC_FOUND_ROWS  e.*, t.nombre as torneo, c.nombreLargo as categoria
+		$query = "Select SQL_CALC_FOUND_ROWS  e.*, t.nombre as torneo, c.nombrePagina as categoria
 		          from ga_pantallas_fijas e, ga_torneos t, ga_torneos_categorias tc, ga_categorias c
 				  where e.idTorneoCat = tc.id and tc.id_torneo = t.id and tc.id_categoria = c.id ";
 	
@@ -221,7 +221,7 @@ class Pantallas {
 			$query.= " and  t.nombre  like '%".strtoupper($filtros["ftorneo"])."%'";		  
 
 		if (trim($filtros["fcategoria"]) != "")		 
-			$query.= " and  c.nombreLargo like '%".strtoupper($filtros["fcategoria"])."%'";		  
+			$query.= " and  c.nombrePagina like '%".strtoupper($filtros["fcategoria"])."%'";		  
 
 		$query.= " order by  $orden $dir LIMIT $inicio,$cant";
 

@@ -124,7 +124,7 @@
                     <!--     -->
                     
                  
-				<div style="float:left"> <h2>Torneo: <?= $datosTorneo[0]['nombre'] ?></h2>  Categoría:  <?= $datosCat[0]['nombreLargo'] ?></div>
+				<div style="float:left"> <h2>Torneo: <?= $datosTorneo[0]['nombre'] ?></h2>  Categoría:  <?= $datosCat[0]['nombrePagina'] ?></div>
 				<div style="margin-right:10px; margin-bottom:10px; float:right" >
             	<input class="button" onclick="javascript:nuevo()" type="button" value="Nueva Subcategor&iacute;a" />
             </div>
@@ -152,7 +152,7 @@
 
 
 					<tr style="vertical-align:middle" >
-						<td align="left"><?=$datos[$i]["nombreLargo"]?></td>
+						<td align="left"><?=$datos[$i]["nombrePagina"]?></td>
                       <td nowrap>
 						<a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
 	

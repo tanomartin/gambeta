@@ -199,7 +199,7 @@ function get($id="") {
 
 
 		$db = new Db();
-		$query = "Select SQL_CALC_FOUND_ROWS  x.*, f.nombre as fecha, e1.nombre as equipo1,e2.nombre as equipo2, t.nombre as torneo, c.nombreCorto as categoria
+		$query = "Select SQL_CALC_FOUND_ROWS  x.*, f.nombre as fecha, e1.nombre as equipo1,e2.nombre as equipo2, t.nombre as torneo, c.nombrePagina as categoria
 		          from ga_fixture x
 				  left join  ga_equipos e1 on x.idEquipo1 = e1.id 
 				  left join  ga_equipos e2  on x.idEquipo2 = e2.id 
@@ -217,7 +217,7 @@ function get($id="") {
 			$query.= " and  t.nombre  like '%".strtoupper($filtros["ftorneo"])."%'";		  
 
 		if (trim($filtros["fcategoria"]) != "")		 
-			$query.= " and  c.nombreCorto like '%".strtoupper($filtros["fcategoria"])."%'";		  
+			$query.= " and  c.nombrePagina like '%".strtoupper($filtros["fcategoria"])."%'";		  
 
 		$query.= " order by  $orden $dir LIMIT $inicio,$cant";
 

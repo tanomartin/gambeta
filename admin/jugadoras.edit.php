@@ -143,7 +143,6 @@
 	
 	<fieldset>
 	<legend>Datos del Equipo
-
 	</legend><table summary="Personal data">
   	<tbody>
       <tr class="even">
@@ -155,8 +154,9 @@
         <td class="col_1 col_last">
          <select name="idEquipo" id='idEquipo' <?= $disabled ?> class="validate-selection" >
             <option value="-1">Seleccione un Equipo...</option>
-		 	<?php for($i=0;$i<count($aEquipos);$i++) { ?>	
-				<option value="<?php echo $aEquipos[$i]['id'] ?>" <?php if ($datos[0]["idEquipo"] ==   $aEquipos[$i]['id'] ) echo "selected"; ?>><?php echo $aEquipos[$i]['nombre'] ?>
+		 	<?php 
+		 		for($i=0;$i<count($aEquipos);$i++) { ?>	
+				<option value="<?php echo $aEquipos[$i]['id'] ?>" <?php if ($datos[0]["idEquipo"] == $aEquipos[$i]['id'] ) echo "selected"; ?>><?php echo $aEquipos[$i]['nombre'] ?>
                 </option>
              <?php } ?>	   
          	</select>

@@ -185,7 +185,7 @@
 							for ($i=0;$i<count($aTorneoCat);$i++) 
 							{
 						?>	
-							 <option <? if($aTorneoCat[$i]["id"] == $datos[0]["idTorneoCat"]) echo "selected"; ?> value="<?=$aTorneoCat[$i]["id"]?>"><?=$aTorneoCat[$i]["nombreLargo"]?></option>
+							 <option <? if($aTorneoCat[$i]["id"] == $datos[0]["idTorneoCat"]) echo "selected"; ?> value="<?=$aTorneoCat[$i]["id"]?>"><?=$aTorneoCat[$i]["nombrePagina"]?></option>
 							
 						<?							
 							}

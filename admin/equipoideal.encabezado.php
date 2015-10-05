@@ -148,7 +148,7 @@
                  
 
 				<div style="margin-left:20px; float:left" >
-					<b>Torneo:</b> <?= $datos1 ->torneo ?> - <b>Categor&iacute;a:</b> <?= $datos1 ->nombreLargo ?> <? if ( $datos1 ->nombreCat != "") { echo " - ". $datos1 ->nombreCat; } ?>
+					<b>Torneo:</b> <?= $datos1 ->torneo ?> - <b>Categor&iacute;a:</b> <?= $datos1 ->nombrePagina ?> <? if ( $datos1 ->nombreCatPagina != "") { echo " - ". $datos1 ->nombreCatPagina; } ?>
 									  
 			</div>
 			

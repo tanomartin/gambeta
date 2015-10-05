@@ -19,7 +19,7 @@
 	for ($i=0;$i<count($aTorneoCat);$i++) 
 	{
 ?>		
-		<option value="<?=$aTorneoCat[$i]["id"]?>"><?=$aTorneoCat[$i]["nombreLargo"]?> <? if ( $aTorneoCat[$i]["nombreCat"] != "" ){ echo "- ". $aTorneoCat[$i]["nombreCat"]; } ?></option>
+		<option value="<?=$aTorneoCat[$i]["id"]?>"><?=$aTorneoCat[$i]["nombrePagina"]?> <? if ( $aTorneoCat[$i]["nombreCatPagina"] != "" ){ echo "- ". $aTorneoCat[$i]["nombreCatPagina"]; } ?></option>
 <?	
 	}
 ?>

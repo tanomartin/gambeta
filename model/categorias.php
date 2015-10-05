@@ -5,8 +5,6 @@ include_once "mysql.class.php";
 class Categorias {
 
 	var $id;
-	var $nombreLargo;
-	var $nombreCorto;	
 	var $nombrePagina;	
 		
 	function Categorias($id="") {
@@ -14,8 +12,6 @@ class Categorias {
 		if ($id != "") {
 			$categoria = $this->get($id);
 			$this->id = $categoria[0]["id"]; 
-			$this->nombreLargo = $categoria[0]["nombreLargo"];
-			$this->nombreCorto = $categoria[0]["nombreCorto"];
 			$this->nombrePagina = $categoria[0]["nombrePagina"];
 
 		}
@@ -25,8 +21,6 @@ class Categorias {
 	function set($valores){
 		
 		$this->id = ($valores["idreg"])?$valores["idreg"]:$valores["id"]; 
-		$this->nombreCorto = $valores["nombreCorto"];
-		$this->nombreLargo = $valores["nombreLargo"];
 		$this->nombrePagina = $valores["nombrePagina"];
 
 	}
@@ -42,13 +36,10 @@ class Categorias {
 		$db = new Db();
 				
 		$query = "insert into ga_categorias(
-				nombreCorto,
-				nombreLargo	,nombrePagina		
+				nombrePagina		
 				) values (".
-		"'".$this->nombreCorto."',".
-		"'".$this->nombreLargo."',".
-		"'".$this->nombrePagina."'".		
-		")" ;
+				"'".$this->nombrePagina."'".		
+				")" ;
 		$db->query($query); 
 		$db->close();
 			
@@ -76,8 +67,6 @@ $db->close();
 
 		$db = new Db();
 		$query = "update ga_categorias set 
-		          nombreCorto = '". $this->nombreCorto."',
-		          nombreLargo  = '". $this->nombreLargo."',
 		          nombrePagina 		= '". $this->nombrePagina."' 
 				  where id = ".$this->id ;
 				  
@@ -127,11 +116,8 @@ $db->close();
 				  where 1=1 ";
 	
 
-		if (trim($filtros["fnombreCorto"]) != "")		 
-			$query.= " and c.nombreCorto like '%".strtoupper($_REQUEST["fnombreCorto"])."%'";		  
-
-		if (trim($filtros["fnombreLargo"]) != "")		 
-			$query.= " and c.nombreLargo like '%".strtoupper($_REQUEST["fnombreLargo"])."%'";		  
+		if (trim($filtros["fnombrePagina"]) != "")		 
+			$query.= " and c.nombrePagina like '%".strtoupper($_REQUEST["fnombrePagina"])."%'";		    
 
 		$query.= " LIMIT $inicio,$cant";
 
@@ -154,9 +140,8 @@ $db->close();
 				  where id not in(
 					Select 	id_categoria
 				  	From ga_torneos_categorias								  
-					Where id_torneo = '".$id." and id_padre = -1'
-				 )";
-
+					Where id_torneo = '".$id." and id_padre = -1')";
+		print($query);
 		$aDatos = $db->getResults($query,ARRAY_A); 
 		
 		$db->close();

@@ -109,7 +109,7 @@
     <div class="inside">
 		<? include("path.php"); ?>
 			<div class="ce_text block">
-				<h1>Resultado Envio: <?=$torneo->torneo." - ".$torneo->nombreLargo ?> <? if ($torneo->nombreCat != "" ) { echo " - ".$torneo->nombreCat;}?>
+				<h1>Resultado Envio: <?=$torneo->torneo." - ".$torneo->nombrePagina ?> <? if ($torneo->nombreCatPagina != "" ) { echo " - ".$torneo->nombreCatPagina;}?>
 					<img width="75" border="0" alt="volver" title="volver" onclick="javascript:volver();" style="cursor:pointer;float: right;" src="images/back-icon.png"/>	
 				</h1>
 			</div>

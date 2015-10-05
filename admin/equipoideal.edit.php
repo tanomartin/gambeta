@@ -142,7 +142,7 @@
 
       <tr class="even">
         <td class="col_0 col_first"><label for="nombre">Categoría</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"> <?= $aTorneos[0]['nombreLargo'] ?><? if($aTorneos[0]['nombreCat'] != ""){ echo " - " .$aTorneos[0]['nombreCat'] ; } ?></td>    
+        <td class="col_1 col_last"> <?= $aTorneos[0]['nombrePagina'] ?><? if($aTorneos[0]['nombreCatPagina'] != ""){ echo " - " .$aTorneos[0]['nombreCatPagina'] ; } ?></td>    
       </tr>  
       <tr class="odd">
         <td class="col_0 col_first"><label for="nombre">Equipo</label><span class="mandatory">*</span></td>

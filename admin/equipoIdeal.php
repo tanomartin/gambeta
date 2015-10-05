@@ -242,7 +242,7 @@
 
 					<tr>
                      <td align="left"><?=$datos[$i]["nombreTorneo"]?></td>
-                     <td align="left"><?=$datos[$i]["nombreLargo"]?> <? if ($datos[$i]["nombreCat"] != "" ) { echo " - ". $datos[$i]["nombreCat"];} ?></td>
+                     <td align="left"><?=$datos[$i]["nombrePagina"]?> <? if ($datos[$i]["nombreCatPagina"] != "" ) { echo " - ". $datos[$i]["nombreCatPagina"];} ?></td>
                       <td nowrap>
                         <a href="javascript:ver(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/find-icon.png" alt="ver" title="ver" width="20px" height="20px" /></a>
                      </td>   

@@ -133,15 +133,7 @@
 
 	</legend><table summary="Personal data" >
   	<tbody>
-      <tr class="even">
-        <td class="col_0 col_first"><label for="id_opcion">Nombre Largo</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"><input name="nombreLargo" id="nombreLargo" class="required text" maxlength="100"  size="50" type="text" value="<?=$datos[0]["nombreLargo"]?>"></td>
-      </tr>
-      <tr class="odd">
-        <td class="col_0 col_first"><label for="nombre">Nombre Corto</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"><input name="nombreCorto" id="nombreCorto" class="required text" maxlength="20" size="20" type="text" value="<?=$datos[0]["nombreCorto"]?>"></td>
-      </tr>
-      <tr class="even">
+       <tr class="even">
         <td class="col_0 col_first"><label for="id_opcion">Nombre P&aacute;gina </label><span class="mandatory">*</span></td>
         <td class="col_1 col_last"><input name="nombrePagina" id="nombrePagina" class="required text" maxlength="20"  size="20" type="text" value="<?=$datos[0]["nombrePagina"]?>"></td>
       </tr>

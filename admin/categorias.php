@@ -190,10 +190,8 @@
                     <div >
                         <form name="frm_busqueda" id="frm_busqueda" action="<?=$_SERVER['PHP_SELF']?>" method="post">
                         <div class="formbody">
-                          Nombre Corto: 
-                            <input name="fnombreCorto" type="text" style="width:50px" value="<?=$_POST["fnombreCorto"]?>"  />
-                          Nombre Largo: 
-                            <input name="fnombreLargo" type="text" style="width:100px" value="<?=$_POST["fnombreLargo"]?>"  />
+                          Nombre Pagina: 
+                            <input name="fnombrePagina" type="text" style="width:100px" value="<?=$_POST["fnombrePagina"]?>"  />
                             
                             <!-- Parametros menu -->
                             <input type="hidden" name="menu" value="<?=$_POST["menu"]?>" />
@@ -269,8 +267,6 @@
 				
 				<tr>
 					<th width="5%">#</th>
-					<th width="35%">Nombre Largo</th>                    
-					<th width="30%">Nombre Corto</th>
 					<th width="20%">Nombre P&aacute;gina</th>
 					<th width="10%">Opciones</th>
 				</tr>
@@ -292,8 +288,6 @@
 
 					<tr style="vertical-align:middle" >
 						<td align="left"><?=$datos[$i]["id"]?></td>
-						<td align="left"><?=$datos[$i]["nombreLargo"]?></td>                        
-						<td align="left"><?=$datos[$i]["nombreCorto"]?></td>
 						<td align="left"><?=$datos[$i]["nombrePagina"]?></td>
                      <td nowrap>
 

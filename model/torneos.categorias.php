@@ -119,7 +119,7 @@ class TorneoCat {
 	function getByTorneo($id,$order ="") {
 		$db = new Db();
 
-		$query = "Select tc.*, c.nombreLargo,c.nombreCorto,c.nombrePagina
+		$query = "Select tc.*, c.nombrePagina
 				  From ga_torneos_categorias tc, ga_categorias c
 				  Where tc.id_categoria = c.id and id_torneo = '".$id."' and id_padre < 1";
 
@@ -139,7 +139,7 @@ class TorneoCat {
 	function getByTorneoSub($id) {
 		$db = new Db();
 
-		$query = "Select tc.*, c.nombreLargo,c.nombreCorto,c.nombrePagina,c1.nombreLargo as nombreCat, c1.nombrePagina as nombreCatPagina, IFNULL(c1.id,c.id) as idCat
+		$query = "Select tc.*,c.nombrePagina, c1.nombrePagina as nombreCatPagina, IFNULL(c1.id,c.id) as idCat
 				  From ga_torneos_categorias tc 
 				  left join ga_categorias c on tc.id_categoria = c.id
 				  left join ga_categorias c1 on tc.id_padre = c1.id				  
@@ -158,7 +158,7 @@ class TorneoCat {
 	function getByIdCompleto($id) {
 		$db = new Db();
 
-		$query = "Select tc.*, c.nombreLargo,c.nombreCorto,c.nombrePagina,c1.nombreLargo as nombreCat, c1.nombrePagina as nombreCatPagina, IFNULL(c1.id,c.id) as idCat, t.nombre as torneo
+		$query = "Select tc.*,c.nombrePagina,c1.nombrePagina as nombreCatPagina, IFNULL(c1.id,c.id) as idCat, t.nombre as torneo
 				  From ga_torneos_categorias tc 
 				  left join ga_categorias c on tc.id_categoria = c.id
 				  left join ga_categorias c1 on tc.id_padre = c1.id		
@@ -179,7 +179,7 @@ class TorneoCat {
 function getByTorneoFechas($id,$order ="") {
 		$db = new Db();
 
-		$query = "Select tc.*, c.nombreLargo,c.nombreCorto,c.nombrePagina,c1.nombreLargo as nombreCat
+		$query = "Select tc.*, c.nombrePagina,c1.nombrePagina as nombreCatPagina
 				  From ga_torneos_categorias tc left join ga_categorias c
 				  on tc.id_categoria = c.id 
 				  left join ga_categorias c1
@@ -202,7 +202,7 @@ function getByTorneoFechas($id,$order ="") {
 	function getBySubCategorias($id,$idCategoria) {
 		$db = new Db();
 
-		$query = "Select tc.*, c.nombreLargo,c.nombreCorto,c.nombrePagina
+		$query = "Select tc.*,c.nombrePagina
 				  From ga_torneos_categorias tc, ga_categorias c
 				  Where tc.id_categoria = c.id and id_torneo = '".$id."' and id_padre = ".$idCategoria;
 
@@ -264,7 +264,7 @@ function getByTorneoFechas($id,$order ="") {
 	function getCategoriasCompletas($id="") {
 		$db = new Db();
 
-		$query = "Select tc.*, c.nombreLargo,c.nombreCorto,c.nombrePagina,c1.nombreLargo as nombreCat, t.nombre as nombreTorneo
+		$query = "Select tc.*, c.nombrePagina,c1.nombrePagina as nombreCatPagina, t.nombre as nombreTorneo
 				  From ga_torneos_categorias tc left join ga_categorias c
 				  on tc.id_categoria = c.id 
 				  left join ga_categorias c1
@@ -276,7 +276,7 @@ function getByTorneoFechas($id,$order ="") {
 		if ($id != "")	
 		$query.= " and  tc.id = ". $id;
 			
-		$query.= " order by   t.nombre, c.nombreLargo ";
+		$query.= " order by   t.nombre, c.nombrePagina ";
 			
 		$aDatos = $db->getResults($query, ARRAY_A); 
 

@@ -143,7 +143,7 @@
 							{
 								
 							?>	
-							     <option  value="<?=$datosCat[$i]["id"]?>" ><?=$datosCat[$i]["nombreLargo"]?></option>						
+							     <option  value="<?=$datosCat[$i]["id"]?>" ><?=$datosCat[$i]["nombrePagina"]?></option>						
 								
 						<?
                         	}

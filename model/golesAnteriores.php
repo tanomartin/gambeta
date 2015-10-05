@@ -101,14 +101,14 @@ class GolesAnt {
 
 
 		$db = new Db();
-		$query = "Select SQL_CALC_FOUND_ROWS  x.*, e1.nombre as equipo1, t.nombre as torneo, c.nombreCorto as categoria
+		$query = "Select SQL_CALC_FOUND_ROWS  x.*, e1.nombre as equipo1, t.nombre as torneo, c.nombrePagina as categoria
 		          from ga_fixture x, ga_fechas f,ga_torneos_categorias tc, ga_torneos t, ga_categorias c, ga_equipos e1
 				  where x.idFecha = f.id and
 				  f.idTorneoCat = tc.id and
 				  tc.id_torneo = t.id and
 				  tc.id_categoria = c.id and
 				  x.idEquipo1 = e1.id ";
-	
+		
 
 		if (trim($filtros["fnombre"]) != "")		 
 			$query.= " and e1.nombre like '%".strtoupper($filtros["fnombre"])."%'";		  
@@ -117,7 +117,7 @@ class GolesAnt {
 			$query.= " and  t.nombre  like '%".strtoupper($filtros["ftorneo"])."%'";		  
 
 		if (trim($filtros["fcategoria"]) != "")		 
-			$query.= " and  c.nombreCorto like '%".strtoupper($filtros["fcategoria"])."%'";		  
+			$query.= " and  c.nombrePagina like '%".strtoupper($filtros["fcategoria"])."%'";		  
 
 		$query.= " order by  $orden $dir LIMIT $inicio,$cant";
 		

@@ -177,7 +177,7 @@
 							for ($i=0;$i<count($aTorneoCat);$i++) 
 							{
 						?>	
-							 <option <? if($aTorneoCat[$i]["id"] == $datos[0]["idTorneoCat"]) echo "selected"; ?> value="<?=$aTorneoCat[$i]["id"]?>"><?=$aTorneoCat[$i]["nombreLargo"]?> <? if ( $aTorneoCat[$i]["nombreCat"] != "" ){ echo "- ". $aTorneoCat[$i]["nombreCat"]; } ?></option>
+							 <option <? if($aTorneoCat[$i]["id"] == $datos[0]["idTorneoCat"]) echo "selected"; ?> value="<?=$aTorneoCat[$i]["id"]?>"><?=$aTorneoCat[$i]["nombrePagina"]?> <? if ( $aTorneoCat[$i]["nombrePagina"] != "" ){ echo "- ". $aTorneoCat[$i]["nombrePagina"]; } ?></option>
 							
 						<?							
 							}

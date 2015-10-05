@@ -127,7 +127,7 @@
     <div class="inside">
 		<? include("path.php"); ?>
 			<div class="ce_text block">
-				<h1>Mailing: <?=$torneo->torneo." - ".$torneo->nombreLargo ?> <? if ($torneo->nombreCat != "" ) { echo " - ".$torneo->nombreCat;}?>
+				<h1>Mailing: <?=$torneo->torneo." - ".$torneo->nombrePagina ?> <? if ($torneo->nombreCatPagina != "" ) { echo " - ".$torneo->nombreCatPagina;}?>
 					<img width="75" border="0" alt="enviar" title="Enviar" onclick="javascript:enviar();" style="cursor:pointer; float: right;" src="images/send_mail.png"/>
 					<img width="75" border="0" alt="volver" title="volver" onclick="javascript:volver();" style="cursor:pointer; float: right;" src="images/back-icon.png"/>	
 				</h1>

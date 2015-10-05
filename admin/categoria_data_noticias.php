@@ -21,7 +21,7 @@
         for ($i=0;$i<count($aTorneoCat);$i++) 
         {
     ?>		
-            <option value="<?=$aTorneoCat[$i]["id"]?>"><?=$aTorneoCat[$i]["nombreLargo"]?></option>
+            <option value="<?=$aTorneoCat[$i]["id"]?>"><?=$aTorneoCat[$i]["nombrePagina"]?></option>
     <?	
         }
     ?>

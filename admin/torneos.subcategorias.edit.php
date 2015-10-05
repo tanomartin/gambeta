@@ -108,7 +108,7 @@
 <div class="mod_article block" id="register">
 
 <div class="ce_text block">
-	<h1><?=$operacion?> de Subcategor&iacute;a - <?= $datosTorneo[0]['nombre'] ?> - <?= $datosCat[0]['nombreLargo'] ?></h1>
+	<h1><?=$operacion?> de Subcategor&iacute;a - <?= $datosTorneo[0]['nombre'] ?> - <?= $datosCat[0]['nombrePagina'] ?></h1>
 </div>
 
 <!-- indexer::stop -->
@@ -144,7 +144,7 @@
 							{
 								
 							?>	
-							     <option  value="<?=$datosSubCat[$i]["id"]?>" ><?=$datosSubCat[$i]["nombreLargo"]?></option>						
+							     <option  value="<?=$datosSubCat[$i]["id"]?>" ><?=$datosSubCat[$i]["nombrePagina"]?></option>						
 								
 						<?
                         	}

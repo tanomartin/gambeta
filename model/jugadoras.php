@@ -65,7 +65,6 @@ class Jugadoras {
 				"'".$this->goles."',".
 				"'".$this->idPosicion."',".
 				"'".$this->fechaNac."')";
-		echo $query;
 		$this->id = $db->query($query);
 
 		if(is_uploaded_file($_FILES['fotoPreview']['tmp_name'])) {
