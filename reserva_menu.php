@@ -314,7 +314,7 @@ function confirmarPartido(idPartido) {
 											</div>
 							 <?			} else {
 											if (!$puedeReservar) {
-												print("<font color=blue> CONCLUYO EL TIEMPO PARA PODER RESERVAR HORARIO.<BR>A LA BREVEDAD VERÁ EL PARTIDO PLANIFICADO.</font>");
+												print("<font color=blue><b> Ha concluido el tiempo para poder realizar la preferencia horaria.<BR> En breve, podras ver el partido publicado</b></font>");
 											} else {
 												print("<font color=red> ERROR AL GRABAR LA RESERVA.<BR>POR FAVOR COMUNIQUESE CON LA ORGANIZACION.</font>");
 											}
