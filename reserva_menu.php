@@ -234,8 +234,10 @@ function confirmarPartido(idPartido) {
   			<div id="menu_izq1" style="float:left"><img width="120px" height="120px" src="logos/<?= $oTorneo->logoPrincipal?>" /></div>
 			<div id="imagen" style="float:left; vertical-align:top">
             	<div id="titulo_principal" class="titulo_pagina color_titulo_<?= $color ?>">
-                    <div  style="float:left; bottom:0px; position:absolute;" >
-						<?=  strtoupper($oTorneo->nombre)." - ".$zona[0]["nombrePagina"]." - ".$categoria[0]["nombrePagina"] ?>
+                    <div style="float:left; bottom:0px; position:absolute;" >
+						<? echo strtoupper($oTorneo->nombre)." | ";
+						   if ($zona[0]["nombrePagina"] != "") { echo $zona[0]["nombrePagina"]." - "; } 
+						   echo $categoria[0]["nombrePagina"] ?>
 					</div>
                 </div>
 				<br/>
@@ -245,7 +247,7 @@ function confirmarPartido(idPartido) {
 					</div>
 					<a class="enlace" href="#" onclick="logout()"><img src="img/icon-logout.png" title="salir" width="40" height="40" border="0" alt="enviar" style="float:right" /></a><br />
 					<br />
-			     <? if ($fecha_activa != NULL && $idReserva == 0 && $partido == NULL) {	?>
+			     <? if ($fecha_activa != NULL && $idReserva == 0 && $partido == NULL && $fecha_activa['puedeReservar']) {	?>
 						<input type="text" id="id_fecha" name="id_fecha" value="<?= $fecha_activa["id"] ?>" style="visibility:hidden"/>
 					<?  if ($horas_fecha != NULL) { ?>
 							<div class="titulo_reserva" style="float:left;">Horarios Disponibles</div>
@@ -300,23 +302,28 @@ function confirmarPartido(idPartido) {
 											La organizacion otorgó Fecha Libre
 										</div>
 										<br />
-								  <? } else { ?>
-										<div class="titulo_reserva" style="float:left;">Horarios Pedidos</div><br /><br />
-									 <?	if (sizeof($detalleReserva) != 0) {
-									 		foreach ($detalleReserva as $horas) {
+								  <? } else { 
+									 	if (sizeof($detalleReserva) != 0) { ?>
+									 		<div class="titulo_reserva" style="float:left;">Horarios Pedidos</div><br /><br /> 		
+									 <? 	foreach ($detalleReserva as $horas) {
 												print("<li>".$horas["descripcion"]."</li>");
+											} ?>
+											<br />
+											<div class="titulo_reserva" style="float:left;">
+												Observación: <?= $reserva->observacion ?>
+											</div>
+							 <?			} else {
+											if (!$puedeReservar) {
+												print("<font color=blue> CONCLUYO EL TIEMPO PARA PODER RESERVAR HORARIO.<BR>A LA BREVEDAD VERÁ EL PARTIDO PLANIFICADO.</font>");
+											} else {
+												print("<font color=red> ERROR AL GRABAR LA RESERVA.<BR>POR FAVOR COMUNIQUESE CON LA ORGANIZACION.</font>");
 											}
-										} else {
-											print("<font color=red> ERROR AL GRABAR LA RESERVA.<BR>POR FAVOR COMUNIQUESE CON LA ORGANIZACION.</font>");
 										} 
 									} 
 								} 
 								?>
 								</div>
-								<br />
-								<div class="titulo_reserva" style="float:left;">
-									Observación: <?= $reserva->observacion ?>
-								</div>
+								
 						<? } else { ?>
 							 	<div class="titulo_reserva" style="float:left;">Confirmarción de Partido</div>
 							 <? for ($p=0; $p<count($partido); $p++) { ?>	
@@ -358,7 +365,7 @@ function confirmarPartido(idPartido) {
 			    </div>
 			</div>
         </div>   
-		<div id="pie_repetir" style="float:left; margin-top: 20px">
+		<div id="pie_repetir" style="float:left; margin-top: 150px">
 			<div id="pie"></div>
     	</div> 
     </div>   

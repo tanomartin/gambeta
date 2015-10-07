@@ -225,6 +225,10 @@ class Fechas {
 		
 		$db->close();
 		
+		if ($datos[0]!=NULL) {
+			$datos[0]['puedeReservar'] = $this->puedeReservar($datos[0]['fechaIni']);
+		}
+		
 		return $datos[0];
 	}
 	
@@ -249,6 +253,17 @@ class Fechas {
 		$db->query($query); 
 		
 		$db->close();
+		
+	}
+	
+	function puedeReservar($fechaIni) {
+		$today = date('Y-m-d');
+		$dias = (strtotime($today)-strtotime($fechaIni));
+		$dias = $dias/(60*60*24);
+		if ($dias > 2) {
+			return false;
+		}
+		return true;
 		
 	}
 	
