@@ -146,8 +146,6 @@ class TorneoCat {
 				  Where  id_torneo = '".$id."' and id_padre <> 0 ";
 
 		$query.= " order by idCat,id ";
-		
-		print($query);
 
 		$aDatos = $db->getResults($query, ARRAY_A); 
 
@@ -178,7 +176,7 @@ class TorneoCat {
 
 	}
 
-function getByTorneoFechas($id,$order ="") {
+	function getByTorneoFechas($id,$order ="") {
 		$db = new Db();
 
 		$query = "Select tc.*, c.nombrePagina,c1.nombrePagina as nombreCatPagina

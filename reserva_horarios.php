@@ -7,7 +7,7 @@
 	$oObj = new Torneos();
 	$aTorneos = $oObj->getByCant(CANT_TORNEOS); 
 	$oTorneo = $oObj->getByTorneoCat($_POST['id']);
-
+	
 	$oObj = new TorneoCat();
 	$id = $oObj->obtenerIdCat($_POST['id'],$oTorneo->id_torneo,$idCatPadre);
 

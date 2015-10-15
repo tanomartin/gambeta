@@ -87,7 +87,7 @@ class Equipos {
 		
 		$db->query($query);
 		
-		$query = "delete from ga_equipos_pass_reserva where idEquipo = ".$this->id;
+		$query = "delete from ga_equipos_password where idEquipo = ".$this->id;
 		
 		$db->query($query);
 		
@@ -184,6 +184,22 @@ class Equipos {
 				  where e.id = ". $id ." and e.id = et.idEquipo and et.idTorneoCat = tc.id and tc.id_torneo = t.id and tc.id_categoria = c.id";
 		
 		$query .= " order by e.nombre";
+			
+		$res = $db->getResults($query, ARRAY_A);
+		
+		$db->close();
+		
+		return $res;
+		
+	}
+	
+	function getEquipoTorneo($idEquipo="",$idTorneoCat="") {
+		
+		$db = new Db();
+		
+		$query = "Select * 
+				  from ga_equipos_torneos 
+				  where idEquipo = ". $idEquipo ." and idTorneoCat = ".$idTorneoCat;
 		
 		$res = $db->getResults($query, ARRAY_A);
 		
@@ -292,7 +308,7 @@ class Equipos {
 				  where e.id = t.idEquipo and t.idTorneoCat =  '$id'" ;
 		
 		$query .= " order by e.nombre";
-
+		
 		$res = $db->getResults($query, ARRAY_A); 
 	
 		$db->close();
@@ -322,7 +338,7 @@ class Equipos {
 		
 		$query = "Select e.*
 				  from ga_equipos e
-				  where e.id <>  '$id' and 
+				  where e.id <> '$id' and 
 				  e.idTorneoCat = (select idTorneoCat from ga_equipos  where id = '$id')";
 		
 		$res = $db->getResults($query, ARRAY_A); 
@@ -350,19 +366,20 @@ class Equipos {
 	
 	}
 	
-	function accesoCorrecto($id="",$pass="") {
+	function accesoCorrecto($id="", $idTorneo="", $pass="") {
 		$db = new Db();
 		
-		$query = "Select count(*) as cantidad from ga_equipos_pass_reserva e where id = '$id' and password = '".md5($pass)."'";
-		
+		$query = "Select count(*) as cantidad from ga_equipos_password e where id = '$idTorneo' and idEquipo = '$id' and password = '".md5($pass)."'";
+				
 		$res = $db->getRow($query); 
-	
+		
 		$db->close();
 		
 		if($res->cantidad == 0) {
 			return false;
 		} else {
 			return true;
+			
 		}
 	}
 
@@ -401,7 +418,7 @@ class Equipos {
 	function getPassword($idTorneoEquipo= "") {
 		$db = new Db();
 		
-		$query = "Select * from ga_equipos_pass_reserva where id = $idTorneoEquipo";
+		$query = "Select * from ga_equipos_password where id = $idTorneoEquipo";
 		
 		$res = $db->getResults($query, ARRAY_A); 
 	
@@ -413,11 +430,11 @@ class Equipos {
 	function setPassword($idTorneoEquipo= "",$idEquipo= "" , $pass="") {
 		$db = new Db();
 		
-		$query = "Delete from ga_equipos_pass_reserva where id = $idTorneoEquipo";
+		$query = "Delete from ga_equipos_password where id = $idTorneoEquipo";
 		
 		$db->query($query);
 		
-		$query = "Insert into ga_equipos_pass_reserva value ($idTorneoEquipo,$idEquipo,'".md5($pass)."')";
+		$query = "Insert into ga_equipos_password value ($idTorneoEquipo,$idEquipo,'".md5($pass)."')";
 
 		$db->query($query);
 	
