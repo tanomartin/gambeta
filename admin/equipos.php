@@ -12,25 +12,21 @@
 	switch ($_POST["accion"]) {
 	
 		case "password":
-		
 			include("equipos.password.php");
 			exit;
 			break;
 
 		case "editar":
-		
 			include("equipos.edit.php");
 			exit;
 			break;
 			
 		case "ver":
-		
 			include("equipos.edit.php");
 			exit;
 			break;
 			
 		case "guardarPassword":
-		
 			$oEquipo = new Equipos();
 			$oEquipo->setPassword($_POST['idTorneoEquipo'],$_POST['id'],$_POST['pass']);
 			include("equipos.torneos.php");
@@ -38,19 +34,16 @@
 			break;
 			
 		case "torneos":
-			
 			include("equipos.torneos.php");
 			exit;
 			break;
 		
-		case "relacionarTorneo":
-					
+		case "relacionarTorneo":	
 			include("equipos.relaciontorneos.php");
 			exit;
 			break;
 			
 		case "guardar":	
-		
 			$data =   $_POST;
 			$files = $_FILES;
 			$oObj = new Equipos();
@@ -60,11 +53,9 @@
 			} else {
 				$oObj->actualizar($files);
 			}
-		
 			break;
 
 		case "borrar":
-		
 			$data =   $_POST;
 			$oObj = new Equipos();
 			$oObj->set($data);
@@ -73,7 +64,6 @@
 			break;
 			
 		case "eliminarTorneo":
-			
 			$data = $_POST['idTorneoEquipo'];
 			$oObj = new Equipos();
 			$oObj->eliminarRelacionTorneo($data);
@@ -81,9 +71,7 @@
 			exit;
 			break;
 		
-
 		case "guardarTorneo":
-			
 			$oObj = new Equipos();
 			if($_POST["idTorneoEquipo"] == "-1") { 
 				$oObj->guardarRelacionTorneo($_POST);
