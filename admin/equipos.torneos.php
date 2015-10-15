@@ -5,66 +5,61 @@
 	include_once "../model/torneos.categorias.php";	
 	include_once "../model/equipos.php";	
     include_once "../model/fckeditor.class.php" ;
-	
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
 		exit;
 	}
-	
 	$oEquipo= new Equipos();
 	$datos = $oEquipo->get($_POST["id"]);
     $torneos = $oEquipo->getTorneos($_POST["id"]);	
-    
 	$disabled = "";
 	$oTorneo= new Torneos();
 	$aTorneos = $oTorneo->get();
-
 ?>
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
-<title>Panel de Control</title>
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="description" content="Panel de Control."/>
-<meta name="keywords" content=""/>
-<meta name="robots" content="index,follow"/>
-
-<? include("encabezado.php"); ?>
-
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script>
-		
-	function volver(){
-		document.form_alta.submit();
-	}
-
-	function borrarTorneo(idTorneo) {
-		document.form_alta.accion.value = "eliminarTorneo";
-		document.form_alta.idTorneoEquipo.value = idTorneo;
-		document.form_alta.submit();
-	}
-
-	function editarTorneo(idTorneo) {
-		document.form_alta.accion.value = "relacionarTorneo";
-		document.form_alta.idTorneoEquipo.value = idTorneo;
-		document.form_alta.submit();
-	}
-
-	function relacionarTorneo(idTorneo) {
-		document.form_alta.accion.value = "relacionarTorneo";
-		document.form_alta.idTorneoEquipo.value = -1;
-		document.form_alta.submit();
-	}
-
-	function password(idTorneo){
-		document.form_alta.accion.value = "password";
-		document.form_alta.idTorneoEquipo.value = idTorneo;
-		document.form_alta.submit();
-		
-	}
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<title>Panel de Control</title>
 	
-</script>
-
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="description" content="Panel de Control."/>
+	<meta name="keywords" content=""/>
+	<meta name="robots" content="index,follow"/>
+	
+	<? include("encabezado.php"); ?>
+	
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script>
+			
+		function volver(){
+			document.form_alta.submit();
+		}
+	
+		function borrarTorneo(idTorneo) {
+			document.form_alta.accion.value = "eliminarTorneo";
+			document.form_alta.idTorneoEquipo.value = idTorneo;
+			document.form_alta.submit();
+		}
+	
+		function editarTorneo(idTorneo) {
+			document.form_alta.accion.value = "relacionarTorneo";
+			document.form_alta.idTorneoEquipo.value = idTorneo;
+			document.form_alta.submit();
+		}
+	
+		function relacionarTorneo(idTorneo) {
+			document.form_alta.accion.value = "relacionarTorneo";
+			document.form_alta.idTorneoEquipo.value = -1;
+			document.form_alta.submit();
+		}
+	
+		function password(idTorneo){
+			document.form_alta.accion.value = "password";
+			document.form_alta.idTorneoEquipo.value = idTorneo;
+			document.form_alta.submit();
+			
+		}
+	</script>
 </head>
 
 <body id="top" class="home">

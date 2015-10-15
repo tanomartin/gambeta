@@ -28,7 +28,6 @@ class Torneos {
 		}
 	}
 
-	
 	function set($valores){	
 		$this->id = $valores["id"]; 
 		$this->nombre = $valores["nombre"];		
@@ -45,7 +44,6 @@ class Torneos {
 		$this->set($aValores);
 	}
 		
-
 	function insertar($files) {
 		$db = new Db();
 		$query = "select max( orden ) as orden from ga_torneos";
@@ -74,7 +72,6 @@ class Torneos {
 		$db->close();
 	}
 
-
 	function eliminar() {
 		$db = new Db();
 		$query = "select * from ga_torneos_categorias where id_torneo = ".$this->id." and id_padre != 0";
@@ -91,10 +88,8 @@ class Torneos {
 		}
 		$query = "delete from ga_torneos_categorias where id_torneo = ".$this->id;
 		$db->query($query);
-		
 		$query = "delete from ga_torneos where id = ".$this->id ;
 		$db->query($query);
-		
 		$db->close();
 	}
 	
@@ -133,7 +128,6 @@ class Torneos {
 		$res = $db->getResults($query, ARRAY_A); 
 		$db->close();	
 		return $res;
-	
 	}
 
 	function getPaginado($filtros, $inicio, $cant, &$total) {
@@ -151,7 +145,6 @@ class Torneos {
 		$total = ceil( $cant_reg[0]["cant"] / $cant );
 		$db->close();
 		return $datos;	
-
 	}
 
 	function mysql_fecha($fech)	{
@@ -187,34 +180,19 @@ class Torneos {
 
 
 	function getByCant($cant) {
-			
 		$db = new Db();
-
-		$query = "Select *
-					  From ga_torneos  where activo = 1";
-		
+		$query = "Select * From ga_torneos  where activo = 1";
 		$query .= " Order by orden LIMIT 0,$cant";
-
-		$aTorneo = $db->getResults($query, ARRAY_A); 
-			
+		$aTorneo = $db->getResults($query, ARRAY_A); 	
 		$db->close();
-
 		return $aTorneo;
-
 	}		
 
-	function getByTorneoCat($idTorneoCat) {
-			
+	function getByTorneoCat($idTorneoCat) {	
 		$db = new Db();
-
-		$query = "Select *
-					  From ga_torneos  t, ga_torneos_categorias tc where 
-					  tc.id_torneo 	= t.id and  tc.id = ".$idTorneoCat;
-
-		$oTorneo = $db->getRow($query);
-		
+		$query = "Select * From ga_torneos  t, ga_torneos_categorias tc where tc.id_torneo = t.id and  tc.id = ".$idTorneoCat;
+		$oTorneo = $db->getRow($query);	
 		$db->close();
-
 		return $oTorneo;
 	}
 
