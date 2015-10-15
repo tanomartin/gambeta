@@ -166,8 +166,8 @@
         </div>
         <? for ($i=0; $i<count($aEquipos); $i++ ) {?>
         <div style="float:left; margin-left:50px">
-          <? if($aEquipos[$i]['fotoPreview']) { ?>
-          <div  style=" float:left; margin-left:-18px"><img src="thumb/phpThumb.php?src=../fotos_equipos/<?= $aEquipos[$i]['fotoPreview']?>" width="165" height="129" border="0" hspace="8" vspace="8" /></div>
+          <? if($aEquipos[$i]['foto']) { ?>
+          <div  style=" float:left; margin-left:-18px"><img src="thumb/phpThumb.php?src=../fotos_equipos/<?= $aEquipos[$i]['foto']?>" width="165" height="129" border="0" hspace="8" vspace="8" /></div>
           <? } else  {?>
           <div  style=" float:left; margin-left:-18px"><img src="thumb/phpThumb.php?src=../fotos_equipos/default_<?= $color ?>.jpg" width="165" height="129" border="0" hspace="8" vspace="8" /></div>
           <? } ?>

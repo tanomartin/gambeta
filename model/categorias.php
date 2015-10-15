@@ -141,7 +141,7 @@ $db->close();
 					Select 	id_categoria
 				  	From ga_torneos_categorias								  
 					Where id_torneo = '".$id." and id_padre = -1')";
-		print($query);
+
 		$aDatos = $db->getResults($query,ARRAY_A); 
 		
 		$db->close();

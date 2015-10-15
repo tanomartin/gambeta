@@ -65,24 +65,9 @@
 
 <? include("top_menu.php"); ?>
 
-<!-- indexer::stop -->
-<!--
-<div id="search">
-<form action="search.html" method="get">
-<div class="formbody">
-  <label for="keywords" class="invisible">Search</label>
-  <input name="keywords" id="keywords" class="text" type="text"><input src="index_archivos/search.png" alt="Search" value="Search" class="submit" type="image">
-</div>
-</form>
-</div>
--->
-<!-- indexer::continue -->
-
-<!-- indexer::stop -->
 <div id="logo">
 	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 </div>
-<!-- indexer::continue -->
 
 <? include("menu.php");?>
 
@@ -90,9 +75,6 @@
 	</div>
 
 </div>
-
-<!-- Header -->
-
 
 <div id="container">
 

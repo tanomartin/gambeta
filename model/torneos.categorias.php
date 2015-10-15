@@ -145,7 +145,9 @@ class TorneoCat {
 				  left join ga_categorias c1 on tc.id_padre = c1.id				  
 				  Where  id_torneo = '".$id."' and id_padre <> 0 ";
 
-			$query.= " order by idCat,id ";
+		$query.= " order by idCat,id ";
+		
+		print($query);
 
 		$aDatos = $db->getResults($query, ARRAY_A); 
 

@@ -40,9 +40,6 @@
 	if( $_POST['accion'] == 'ver')
 		$disabled = "disabled";
 
-	$oTorneo= new Torneos();
-	$aTorneos = $oTorneo->get();
-
 ?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
@@ -71,51 +68,20 @@
 </head>
 
 <body id="top" class="home">
-
 <div id="wrapper">
-
-<!-- Header -->
-
 <div id="header">
 	<div class="inside">
-
-<? include("top_menu.php"); ?>
-
-<!-- indexer::stop -->
-<!--
-<div id="search">
-<form action="search.html" method="get">
-<div class="formbody">
-  <label for="keywords" class="invisible">Search</label>
-  <input name="keywords" id="keywords" class="text" type="text"><input src="index_archivos/search.png" alt="Search" value="Search" class="submit" type="image">
-</div>
-</form>
-</div>
--->
-<!-- indexer::continue -->
-
-<!-- indexer::stop -->
-<div id="logo">
-	<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
-</div>
-<!-- indexer::continue -->
-
-<? include("menu.php");?>
-
- 
+		<? include("top_menu.php"); ?>
+		<div id="logo">
+			<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
+		</div>
+		<? include("menu.php");?>
 	</div>
-
 </div>
-
-<!-- Header -->
-
 
 <div id="container">
-
     <div id="main">
-        
         <div class="inside">
-    
             <? include("path.php"); ?>
 
 
@@ -166,58 +132,9 @@
         <td class="col_0 col_first"><label for="email">Email</label></td>
         <td class="col_1 col_last"><input name="email" id="email" class="text" maxlength="200" type="text" value="<?=$datos[0]["email"]?>" size="70"  <?= $disabled ?>></td>
       </tr>      
-      <tr class="odd">
-        <td class="col_0 col_first"><label for="nombre">Torneo</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last">
-         <select name="idTorneo" id='idTorneo' <?= $disabled ?> class="validate-selection" onChange="clearCategoria('idTorneoCat');
-         	return listOnChange('idTorneo', '','categoriaList','categoria_data.php','advice1','idTorneoCat','idTorneoCat');" >
-            <option value="-1">Seleccione un Torneo...</option>
-		 	<?php for($i=0;$i<count($aTorneos);$i++) { ?>	
-				<option value="<?php echo $aTorneos[$i]['id'] ?>" <?php if ($datos[0]["id_torneo"] ==   $aTorneos[$i]['id'] ) echo "selected"; ?>><?php echo $aTorneos[$i]['nombre'] ?>
-                </option>
-             <?php } ?>	   
-         	</select>
-         </td>   
-      </tr>  
-
       <tr class="even">
-        <td class="col_0 col_first"><label for="nombre">Categoría</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"> 
-		<span id="categoriaList">
-				<select name="idTorneoCat" id="idTorneoCat" <?= $disabled ?> class="validate-selection" >
-					<option value="-1">Seleccione antes un Torneo...</option>
-						<?
-						 if($datos[0]["id_torneo"]) {
-							$oTorneoCat = new TorneoCat();
-							$aTorneoCat = $oTorneoCat->getByTorneoSub($datos[0]["id_torneo"]);
-
-							for ($i=0;$i<count($aTorneoCat);$i++) 
-							{
-						?>	
-							 <option <? if($aTorneoCat[$i]["id"] == $datos[0]["idTorneoCat"]) echo "selected"; ?> value="<?=$aTorneoCat[$i]["id"]?>"><?=$aTorneoCat[$i]["nombrePagina"]?> <? if ( $aTorneoCat[$i]["nombreCatPagina"] != "" ){ echo "- ". $aTorneoCat[$i]["nombreCatPagina"]; } ?></option>
-							
-						<?							
-							}
-						 }
-						?>
-						</select> 
-            <span id="advice1"> </span>
-			</span>	
-        </td>    
-      </tr>  
-      <tr class="odd">
-        <td class="col_0 col_first"><label for="nombre">Descuentos Puntos</label></td>
-        <td class="col_1 col_last"> 
-	       <input name="descuento_puntos" type="text" id="descuento_puntos" value="<?php echo $datos[0]["descuento_puntos"]; ?>" class="validate-digits" size="3"  <?= $disabled ?>/>
-         </td>
-       </tr>    
-      <tr class="even">
-        <td class="col_0 col_first"><label for="nombre">Foto Preview</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"><input name="fotoPreview" id="fotoPreview" class="" type="file"  <?= $disabled ?> /><? if ($datos[0]["fotoPreview"] != "" ) { ?><a href="../fotos_equipos/<?= $datos[0]["fotoPreview"] ?>" target="_blank"> Imagen</a> <? } ?></td>
-      </tr>  
-      <tr class="odd">
-        <td class="col_0 col_first"><label for="nombre">Foto Grande</label><span class="mandatory">*</span></td>
-        <td class="col_1 col_last"><input name="fotoGrande" id="fotoGrande" class="" maxlength="50" type="file"  <?= $disabled ?>/><? if ($datos[0]["fotoGrande"] != "" ) { ?><a href="../fotos_equipos/<?= $datos[0]["fotoGrande"] ?>" target="_blank"> Imagen</a> <? } ?> </td>
+        <td class="col_0 col_first"><label for="nombre">Foto</label><span class="mandatory">*</span></td>
+        <td class="col_1 col_last"><input name="foto" id="foto" class="" type="file"  <?= $disabled ?> /><? if ($datos[0]["foto"] != "" ) { ?><a href="../fotos_equipos/<?= $datos[0]["foto"] ?>" target="_blank"> Imagen</a> <? } ?></td>
       </tr>  
       <tr class="even">
         <td class="col_0 col_first"><label for="nombre">Descripción</label><span class="mandatory">*</span></td>
