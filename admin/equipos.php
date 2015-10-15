@@ -186,7 +186,6 @@
 			document.form_alta.idTorneoEquipo.value = idTorneo;
 			document.form_alta.submit();
 		}
-	
 	</script>
 </head>
 
@@ -201,7 +200,6 @@
 				<? include("menu.php");?>
 			</div>
 		</div>
-
 	<div id="container">
 		<div id="main">
    			<div class="inside">
@@ -271,9 +269,9 @@
 
 								<table style="width: 928px">
 									<tr>
-										<th >Nombre</th>
-										<th >Email</th>    
-										<th >Foto</th>            
+										<th>Nombre</th>
+										<th>Email</th>    
+										<th>Foto</th>            
 										<th width="10%">Opciones</th>
 									</tr>
 								 <? if (count($datos) == 0) { ?>

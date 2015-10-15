@@ -36,8 +36,14 @@
 		}
 	
 		function borrar(id){	
-			document.frm_listado.accion.value = "borrarCategoria";
-			document.frm_listado.id_torneo_categoria.value = id;
+			if (confirm('Confirma que quiere eliminar la Categoria y sus Sub-Categorias')) {
+				document.frm_listado.accion.value = "borrarCategoria";
+				document.frm_listado.id_torneo_categoria.value = id;
+				document.frm_listado.submit();
+			}
+		}
+
+		function volver(){
 			document.frm_listado.submit();
 		}
 	</script>
@@ -73,7 +79,10 @@
 				                    <input type="hidden" name="submenu" value="<?=$_POST["submenu"]?>" />
 				                    <input type="hidden" name="pag_submenu" value="<?=$_POST["pag_submenu"]?>" />
 				                    <!--     -->
-				                    
+				                    <!-- Filtros -->
+									<input type="hidden" name="fnombre" value="<?=$_POST["fnombre"]?>" />
+									<!-- Fin filtros -->
+									
 									<div style="float:left"> <h2>Torneo: <?= $datosTorneo[0]['nombre'] ?></h2></div>
 									<div style="margin-right:10px; margin-bottom:10px; float:right" >
 				            			<input class="button" onclick="javascript:nuevo()" type="button" value="Nueva Categor&iacute;a" />
@@ -97,6 +106,9 @@
 									 	 <? } 
 									    } ?>
 									</table>
+									<div class="submit_container">
+										<input class="submit" type="button" value="Volver" onclick="javascript:volver();" />
+									</div>
 								</form>
 							</div>
 						</div>
