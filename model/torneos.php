@@ -15,7 +15,6 @@ class Torneos {
 	var $color;
 		
 	function Torneos($id="") {
-
 		if ($id != "") {
 			$valores = $this->get($id);
 			$this->id = $valores[0]["id"]; 
@@ -30,8 +29,7 @@ class Torneos {
 	}
 
 	
-	function set($valores){
-		
+	function set($valores){	
 		$this->id = $valores["id"]; 
 		$this->nombre = $valores["nombre"];		
 		$this->fechaInicio = $valores["fechaInicio"]; 
@@ -49,20 +47,12 @@ class Torneos {
 		
 
 	function insertar($files) {
-	
 		$db = new Db();
-			
 		$query = "select max( orden ) as orden from ga_torneos";
-		
 		$max = $db->getRow($query); 
-		
 		$max_orden = $max->orden + 1;
-		
 		$this->fechaInicio = eregi_replace("/","-",$this->mysql_fecha($this->fechaInicio));
-
 		$this->fechaFin = eregi_replace("/","-",$this->mysql_fecha($this->fechaFin));
-
-
 		$query = "insert into ga_torneos(
 				nombre,fechaInicio,fechaFin,orden,color,activo
 				) values (".
@@ -71,49 +61,47 @@ class Torneos {
 				"'".$this->fechaFin."',".
 				"'".$max_orden."',".
 				"'".$this->color."',".
-				"'".$this->activo."')";
-			
+				"'".$this->activo."')";	
 		$this->id = $db->query($query); 
-
 		if(is_uploaded_file($_FILES['logoPrincipal']['tmp_name'])) {
-			// Logo principal
 			$name = "pri_".$this->id."_".$files['logoPrincipal']['name'];
-			$ruta= "../logos/".$name;
-			
+			$ruta= "../logos/".$name;	
 			move_uploaded_file($_FILES['logoPrincipal']['tmp_name'], $ruta);
-
 			$query = "update ga_torneos set  logoPrincipal = '". $name."'
 					  where id = ".$this->id ;
-
 			$db->query($query); 
-
 		}
-
 		$db->close();
-
 	}
 
 
 	function eliminar() {
-	
 		$db = new Db();
-		$query = "delete from ga_torneos where id = ".$this->id ;
-		$db->query($query); 
-		
-		$query = "delete from ga_torneos_categorias where id_torneo = ".$this->id ;
+		$query = "select * from ga_torneos_categorias where id_torneo = ".$this->id." and id_padre != 0";
+		$res = $db->getResults($query, ARRAY_A);
+		foreach($res as $torneo) {
+			$query = "select * from ga_equipos_torneos where idTorneoCat = ".$torneo['id'];
+			$respass = $db->getResults($query, ARRAY_A);
+			foreach($respass as $equipotorneo) {
+				$query = "delete from ga_equipos_password where id = ".$equipotorneo['id'] ;
+				$db->query($query);
+			}	
+			$query = "delete from ga_equipos_torneos where idTorneoCat = ".$torneo['id'] ;
+			$db->query($query);
+		}
+		$query = "delete from ga_torneos_categorias where id_torneo = ".$this->id;
 		$db->query($query);
+		
+		$query = "delete from ga_torneos where id = ".$this->id ;
+		$db->query($query);
+		
 		$db->close();
-	
 	}
 	
 	function actualizar($files) {
-
 		$db = new Db();
-
 		$this->fechaInicio = eregi_replace("/","-",$this->mysql_fecha($this->fechaInicio));
-
 		$this->fechaFin = eregi_replace("/","-",$this->mysql_fecha($this->fechaFin));
-
 		$query = "update ga_torneos set 
 		          nombre = '". $this->nombre."',
 				  fechaInicio = '". $this->fechaInicio."',
@@ -123,166 +111,112 @@ class Torneos {
 				  where id = ".$this->id ;
 				  
 		$db->query($query); 
-	
-
 		if(is_uploaded_file($_FILES['logoPrincipal']['tmp_name'])) {
-
-			// Logo principal	
 			$name = "pri_".$this->id."_".$_FILES['logoPrincipal']['name'];
 			$ruta= "../logos/".$name;
-			
-			/*if (!copy($_FILES['logoPrincipal']['name'], $ruta)) {
-			    echo "Error al copiar $archivo...\n";
-			}*/
 			move_uploaded_file($_FILES['logoPrincipal']['tmp_name'], $ruta);
-
 			$query = "update ga_torneos set  logoPrincipal = '". $name."'
 					  where id = ".$this->id ;
-
 			$db->query($query); 
 
 		}
-		
 		$db->close();
-	
 	}
 	
 	function get($id="") {
-	
 		$db = new Db();
 		$query = "Select * from ga_torneos" ;
-		
 		if ($id != "") {
-		
 			$query .= " where id = '$id' ";
 		}
-		
-		$query .= " order by orden";
-			  
+		$query .= " order by orden";  
 		$res = $db->getResults($query, ARRAY_A); 
-	
-		$db->close();
-		
+		$db->close();	
 		return $res;
 	
 	}
 
-
 	function getPaginado($filtros, $inicio, $cant, &$total) {
-
 		$orden = ($filtros["filter_order"])?$filtros["filter_order"]:"p.nombre";
 		$dir = ($filtros["filter_order_Dir"])?$filtros["filter_order_Dir"]:"asc"; 
-
-
 		$db = new Db();
 		$query = "Select SQL_CALC_FOUND_ROWS  p.*
 		          From ga_torneos p
 				  where  1 = 1";
-	
-
 		if (trim($filtros["fnombre"]) != "")		 
 			$query.= " and p.nombre like '%".strtoupper($filtros["fnombre"])."%'";		  
-
 		$query.= " order by orden, $orden $dir LIMIT $inicio,$cant";
-	
-
 		$datos = $db->getResults($query, ARRAY_A); 
-		
 		$cant_reg = $db->getResults("SELECT FOUND_ROWS() cant", ARRAY_A); 
-	
 		$total = ceil( $cant_reg[0]["cant"] / $cant );
-
 		$db->close();
-
 		return $datos;	
 
 	}
 
 	function mysql_fecha($fech)	{
-		
-		$fech1= explode("/",$fech);
-			
+		$fech1= explode("/",$fech);	
 		if(strlen(trim($fech1[1]))==1){
 			$fech1[1]="0".$fech1[1];
 		}
-
 		if(strlen(trim($fech1[0]))==1)	{
 			$fech1[0]="0".$fech1[0];
 		}
-		
 		return trim($fech1[2])."/".trim($fech1[1])."/".trim($fech1[0]);
 	}
 
 	function cambiarActivo($id,$valor)	{
-		
 		$db = new Db();
-
-		// Actualizo en la tabla los nombres de las imagenes
 		$query = "update ga_torneos set activo = '". $valor."'		  
-					  where id = ".$id ;
-				  
+					  where id = ".$id ;	  
 		$db->query($query); 
-		
 		$db->close();
-	
 	}
 
 	function cambiarOrden($pos,$orden)	{
-		
 		$db = new Db();
-
 		$nueva_pos = $pos+$orden;
-		
-		// Actualizo en la tabla los nombres de las imagenes
-		$query = "update ga_torneos set orden = -100  where orden = ".$nueva_pos ;
-				  
+		$query = "update ga_torneos set orden = -100  where orden = ".$nueva_pos ;	  
 		$db->query($query); 
-
-		$query = "update ga_torneos set orden = ". $nueva_pos."  where orden = ".$pos ;
-				  
+		$query = "update ga_torneos set orden = ". $nueva_pos."  where orden = ".$pos ;	  
 		$db->query($query); 
-
-
-		$query = "update ga_torneos set orden = ". $pos."  where orden = -100" ;
-				  
+		$query = "update ga_torneos set orden = ". $pos."  where orden = -100" ;	  
 		$db->query($query); 
-		
 		$db->close();
-	
 	}
 
 
-		function getByCant($cant) {
+	function getByCant($cant) {
 			
-			$db = new Db();
+		$db = new Db();
 
-			$query = "Select *
+		$query = "Select *
 					  From ga_torneos  where activo = 1";
+		
+		$query .= " Order by orden LIMIT 0,$cant";
 
-			$query .= " Order by orden LIMIT 0,$cant";
-
-			$aTorneo = $db->getResults($query, ARRAY_A); 
+		$aTorneo = $db->getResults($query, ARRAY_A); 
 			
-			$db->close();
+		$db->close();
 
-			return $aTorneo;
+		return $aTorneo;
 
-		}		
+	}		
 
-		function getByTorneoCat($idTorneoCat) {
+	function getByTorneoCat($idTorneoCat) {
 			
-			$db = new Db();
+		$db = new Db();
 
-			$query = "Select *
+		$query = "Select *
 					  From ga_torneos  t, ga_torneos_categorias tc where 
 					  tc.id_torneo 	= t.id and  tc.id = ".$idTorneoCat;
 
-			$oTorneo = $db->getRow($query);
-			
-			$db->close();
+		$oTorneo = $db->getRow($query);
+		
+		$db->close();
 
-			return $oTorneo;
-		}
+		return $oTorneo;
+	}
 
 }
 

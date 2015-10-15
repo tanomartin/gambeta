@@ -10,8 +10,6 @@
 
 	$menu = "Secciones";
 
-	//print_r($_POST);
-
 	switch ($_POST["accion"]) {
 	
 
@@ -29,21 +27,16 @@
 			break;
 			
 		case "guardar":	
-		
-//			$data =   decodeUTF8($_POST);
+
 			$data =   $_POST;
 			$files = $_FILES;
-
 			$oObj = new Torneos();
-
-			$oObj->set($data);
-	
+			$oObj->set($data);	
 			if($_POST["id"] == "-1") { // Tiene el valor de session_id()
 				$oObj->insertar($files);
 			} else {
 				$oObj->actualizar($files);
-			}
-		
+			}		
 			break;
 
 		case "info":
@@ -54,19 +47,12 @@
 		
 			
 		case "borrar":
-		
-			//$data =   decodeUTF8($_POST);
 			$data =   $_POST;
 			$oObj = new Torneos();
-
 			$oObj->set($data);
-	
 			$oObj->eliminar();
-	
 			$_POST["_pag"] = ($_POST["ult"] == "S") ? $_POST["_pag"] - 1 : $_POST["_pag"];
-
 			break;
-
 
 		case "editarCategoria":
 		
@@ -86,7 +72,6 @@
 			break;
 
 		case "guardarCategoria":	
-//			$data =   decodeUTF8($_POST);
 			$data =   $_POST;
 			$oObj = new TorneoCat();
 			$oObj->set($data);
@@ -102,8 +87,6 @@
 
 
 		case "guardarSubCategoria":	
-//			$data =   decodeUTF8($_POST);
-
 			$oObj = new TorneoCat();
 			$oObj -> id_torneo = $_POST['id_torneo'];
 			$oObj -> id_categoria = $_POST['id_subcategoria'];
@@ -120,12 +103,10 @@
 
 		case "guardarPagina":	
 
-//			$data =   decodeUTF8($_POST);
 			$files = $_FILES;
 			$data =   $_POST;
 			$oObj = new Pantallas();
 			$oObj->idTorneoCat = $_POST["id_torneo_categoria"];
-
 			$id_torneo_categoria = $_POST["id_torneo_categoria"];
 			if($_POST["idPagina"] == -1) {
 				 $oObj->insertar($files );
@@ -137,16 +118,11 @@
 			break;
 
 		case "borrarCategoria":	
-		
-//			$data =   decodeUTF8($_POST);
+			
 			$data =   $_POST;
-			
 			$oObj = new TorneoCat();
-
-			$oObj->id = $_POST['id_torneo_categoria'];
-			
+			$oObj->id = $_POST['id_torneo_categoria'];			
 			$oObj->eliminar();
-
 			include("torneos.categorias.php");
 			exit;
 
@@ -155,24 +131,17 @@
 		case "cambiarActivo":	
 
 			$oObj = new Torneos();
-
-			$oObj->cambiarActivo($_POST["id"],$_POST['activo']);
-			
+			$oObj->cambiarActivo($_POST["id"],$_POST['activo']);		
 			break;
 
 			
 		case "cambiarOrden":	
 
 			$oObj = new Torneos();
-
-			$oObj->cambiarOrden($_POST["pos"],$_POST['orden']);
-			
+			$oObj->cambiarOrden($_POST["pos"],$_POST['orden']);			
 			break;
-
 			
 	}
-	
-	
 	
 	//Paginacion
 	$cant   = 10;
@@ -241,11 +210,11 @@
 	}
 	
 	function borrar(id){
-		
-		document.frm_listado.accion.value = "borrar";
-		document.frm_listado.id.value = id;
-		document.frm_listado.submit();
-		
+		if (confirm('Confirma que quiere eliminar el torneo')) {
+			document.frm_listado.accion.value = "borrar";
+			document.frm_listado.id.value = id;
+			document.frm_listado.submit();
+		}
 	}
 
 	function info(id){

@@ -74,7 +74,6 @@
 			
 		case "eliminarTorneo":
 			
-			print("LLEGO");
 			$data = $_POST['idTorneoEquipo'];
 			$oObj = new Equipos();
 			$oObj->eliminarRelacionTorneo($data);
