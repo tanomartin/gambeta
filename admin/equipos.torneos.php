@@ -36,9 +36,11 @@
 		}
 	
 		function borrarTorneo(idTorneo) {
-			document.form_alta.accion.value = "eliminarTorneo";
-			document.form_alta.idTorneoEquipo.value = idTorneo;
-			document.form_alta.submit();
+			if (confirm('Confirma que quiere eliminar el torneo en el que juega')) {
+				document.form_alta.accion.value = "eliminarTorneo";
+				document.form_alta.idTorneoEquipo.value = idTorneo;
+				document.form_alta.submit();
+			}
 		}
 	
 		function editarTorneo(idTorneo) {

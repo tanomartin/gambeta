@@ -157,22 +157,12 @@ class Equipos {
 	}
 
 	function getByCategoria($id="") {
-	
 		$db = new Db();
-		
-		$query = "Select e.*
-				  from ga_equipos e, ga_equipos_torneos t
-				  where e.id = t.idEquipo and t.idTorneoCat = ". $id;
-		
+		$query = "Select e.*, t.id as idEquipoTorneo from ga_equipos e, ga_equipos_torneos t where e.id = t.idEquipo and t.idTorneoCat = ". $id;
 		$query .= " order by e.nombre";
-
-
 		$res = $db->getResults($query, ARRAY_A); 
-	
 		$db->close();
-		
 		return $res;
-	
 	}
 	
 	function getTorneos($id="") {

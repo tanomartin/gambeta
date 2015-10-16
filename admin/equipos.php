@@ -39,7 +39,7 @@
 			break;
 		
 		case "relacionarTorneo":	
-			include("equipos.relaciontorneos.php");
+			include("equipos.torneos.edit.php");
 			exit;
 			break;
 			

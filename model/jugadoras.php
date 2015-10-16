@@ -113,7 +113,97 @@ class Jugadoras {
 		return $datos;
 	}
 	
+	function getEquiposById($id="") {
+		$db = new Db();
+		$query = "Select je.id as idJugadoraEquipo,	 
+						 j.nombre as nombreJugadora,
+      					 e.nombre as nombreEquipo,
+       					 t.nombre as torneo,
+       					 c.nombrePagina as categoria,
+      					 p.nombre as posicion,
+      					 je.activa
+		        from ga_jugadoras j, 
+		        	 ga_jugadoras_equipo je, 
+		        	 ga_equipos_torneos et, 
+		        	 ga_equipos e, 
+		        	 ga_posiciones p, 
+		        	 ga_torneos_categorias tc,
+		        	 ga_torneos t,
+		        	 ga_categorias c
+				where j.id = $id and 
+					  j.id = je.idJugadora and 
+					  je.idPosicion = p.id and 
+		              je.idEquipoTorneo = et.id and 
+				      et.idEquipo = e.id and
+					  et.idTorneoCat = tc.id and
+					  tc.id_torneo = t.id and
+					  tc.id_categoria = c.id" ;
+		$res = $db->getResults($query, ARRAY_A);
+		$db->close();
+		return $res;
+	}
 	
+	function getJugadoraEquipo($idJugadoraEquipo="") {
+		$db = new Db();
+		$query = "Select je.id as idJugadoraEquipo,
+						 tc.id as idTorneoCat,
+						 j.id as idJugadora,
+						 e.id as idEquipo,
+						 t.id as idTorneo,
+						 c.id as idCategoria,
+						 p.id as idPosicion,
+						 je.activa
+				  from  ga_jugadoras j,
+						ga_jugadoras_equipo je,
+						ga_equipos_torneos et,
+						ga_equipos e,
+						ga_posiciones p,
+						ga_torneos_categorias tc,
+						ga_torneos t,
+						ga_categorias c
+				where 	je.id = $idJugadoraEquipo and
+						je.idJugadora = j.id and
+						je.idPosicion = p.id and
+						je.idEquipoTorneo = et.id and
+						et.idEquipo = e.id and
+						et.idTorneoCat = tc.id and
+						tc.id_torneo = t.id and
+						tc.id_categoria = c.id";
+		$res = $db->getResults($query, ARRAY_A);
+		$db->close();
+		return $res;
+	}
+	
+	function insertarequipo($datos){
+		$db = new Db();
+		if (isset($datos['activo'])) {
+			$activo = 1;
+		} else {
+			$activo = 0;
+		}
+		$query = "insert into ga_jugadoras_equipo values ('DEFAULT',".
+				"'".$datos['id']."',".
+				"'".$datos['idEquipoTorneo']."',".
+				"'".$datos['idPosicion']."',".
+				"'".$activo."')";
+		print($query);
+		$db->query($query);
+		$db->close();
+	}
+	
+	function actualizarequipo($datos){
+		$db = new Db();
+		if (isset($datos['activo'])) {
+			$activo = 1;
+		} else {
+			$activo = 0;
+		}
+		$query = "update ga_jugadoras_equipo 
+					set idEquipoTorneo = ".$datos['idEquipoTorneo'].", idPosicion = ".$datos['idPosicion'].", activa = ".$activo.
+					" where id = ".$datos['idJugadoraEquipo']." and idJugadora = ".$datos['id'];
+		$db->query($query);
+		$db->close();
+	}
 	
 	function getByEquipo($id="") {
 		$db = new Db();

@@ -1,13 +1,14 @@
 <?	include_once "include/config.inc.php";
 	include_once "include/fechas.php";
 	include_once "../model/jugadoras.php";
+	include_once "../model/equipos.php";
 	include_once "../model/torneos.categorias.php";
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
 		exit;
 	}
 	$menu = "Secciones";
-
+	
 	switch ($_POST["accion"]) {
 		
 		case "editar":
@@ -17,6 +18,35 @@
 			
 		case "ver":
 			include("jugadoras.edit.php");
+			exit;
+			break;
+						
+		case "equipos":
+			include("jugadoras.equipos.php");
+			exit;
+			break;
+		
+		case "verequipos":
+			include("jugadoras.equipos.edit.php");
+			exit;
+			break;
+			
+		case "editarequipos":
+			include("jugadoras.equipos.edit.php");
+			exit;
+			break;
+			
+		case "guardarequipo":
+			$oEquipos = new Equipos();
+			$arrayEquipoTorneo = $oEquipos->getByCategoria($_POST['idTorneoCat']); 
+			$_POST['idEquipoTorneo'] = $arrayEquipoTorneo[0]['idEquipoTorneo'];
+			$oObj = new Jugadoras();
+			if($_POST["idJugadoraEquipo"] == "-1") {
+				$oObj->insertarequipo($_POST);
+			} else {
+				$oObj->actualizarequipo($_POST);
+			}
+			include("jugadoras.equipos.php");
 			exit;
 			break;
 			
@@ -82,6 +112,12 @@
 		
 		function ver(id){
 			document.frm_listado.accion.value = "ver";
+			document.frm_listado.id.value = id;
+			document.frm_listado.submit();
+		}
+
+		function equipos(id) {
+			document.frm_listado.accion.value = "equipos";
 			document.frm_listado.id.value = id;
 			document.frm_listado.submit();
 		}

@@ -76,15 +76,19 @@ class Torneos {
 		$db = new Db();
 		$query = "select * from ga_torneos_categorias where id_torneo = ".$this->id." and id_padre != 0";
 		$res = $db->getResults($query, ARRAY_A);
-		foreach($res as $torneo) {
-			$query = "select * from ga_equipos_torneos where idTorneoCat = ".$torneo['id'];
-			$respass = $db->getResults($query, ARRAY_A);
-			foreach($respass as $equipotorneo) {
-				$query = "delete from ga_equipos_password where id = ".$equipotorneo['id'] ;
+		if (sizeof($res) > 0) {
+			foreach($res as $torneo) {
+				$query = "select * from ga_equipos_torneos where idTorneoCat = ".$torneo['id'];
+				$respass = $db->getResults($query, ARRAY_A);
+				if (sizeof($respass) > 0) {
+					foreach($respass as $equipotorneo) {
+						$query = "delete from ga_equipos_password where id = ".$equipotorneo['id'] ;
+						$db->query($query);
+					}
+				}	
+				$query = "delete from ga_equipos_torneos where idTorneoCat = ".$torneo['id'] ;
 				$db->query($query);
-			}	
-			$query = "delete from ga_equipos_torneos where idTorneoCat = ".$torneo['id'] ;
-			$db->query($query);
+			}
 		}
 		$query = "delete from ga_torneos_categorias where id_torneo = ".$this->id;
 		$db->query($query);

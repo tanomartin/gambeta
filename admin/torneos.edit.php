@@ -82,7 +82,7 @@
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="nombre">Fecha Inicio</label><span class="mandatory">*</span></td>
 											        <td class="col_1 col_last"> 
-												       <input name="fechaInicio" type="text" id="fechaInicio" value="<?php echo $fechaInicio; ?>" size="8" readonly="readonly" class="required"/>
+												       <input name="fechaInicio" type="text" id="fechaInicio" value="<?php echo $fechaInicio; ?>" size="8" readonly="readonly" class="required" <?= $disabled ?>/>
 											                <a href="javascript:show_calendar('document.form_alta.fechaInicio', document.form_alta.fechaInicio.value);" <?= $disabled ?> >
 											                        <img src="../_js/calendario2/cal.gif" width="16" height="16" border="0" />
 															</a>                        
@@ -90,14 +90,22 @@
 											      <tr class="odd">
 											        <td class="col_0 col_first"><label for="nombre">Fecha Fin</label><span class="mandatory">*</span></td>
 											        <td class="col_1 col_last"> 
-												       <input name="fechaFin" type="text" id="fechaFin" value="<?php echo $fechaFin; ?>" size="8" readonly="readonly" class="required"/>
+												       <input name="fechaFin" type="text" id="fechaFin" value="<?php echo $fechaFin; ?>" size="8" readonly="readonly" class="required" <?= $disabled ?>/>
 											                <a href="javascript:show_calendar('document.form_alta.fechaFin', document.form_alta.fechaFin.value);" <?= $disabled ?> >
-											                        <img src="../_js/calendario2/cal.gif" width="16" height="16" border="0" />
+											                    <img src="../_js/calendario2/cal.gif" width="16" height="16" border="0" />
 															</a>                        
 											      </tr>          
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="nombre">Logo Principal</label><span class="mandatory">*</span></td>
-											        <td class="col_1 col_last"><input name="logoPrincipal" id="logoPrincipal" class="" type="file" <?= $disabled ?> /><? if ($datos[0]["logoPrincipal"] != "" ) { ?><a href="../logos/<?= $datos[0]["logoPrincipal"] ?>" target="_blank"> Imagen</a> <? } ?> </td>
+											        
+											        <td class="col_1 col_last">
+											        	<? if ( $disabled  == "" ) { ?>
+											        		<input name="logoPrincipal" id="logoPrincipal" class="" type="file" <?= $disabled ?> />
+											        	<? } 
+											        	 if ($datos[0]["logoPrincipal"] != "") { ?>
+											        		<img style="margin-top: 10px" src="../thumb/phpThumb.php?src=../logos/<?= $datos[0]['logoPrincipal']?>" width="100" height="69"/>
+											        	<? } ?>  
+											        </td>
 											      </tr>      
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="nombre">Activo</label><span class="mandatory">*</span></td>
