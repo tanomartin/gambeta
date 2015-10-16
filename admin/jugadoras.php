@@ -21,7 +21,7 @@
 			break;
 			
 		case "guardar":	
-			$data =   $_POST;
+			$data = $_POST;
 			$files = $_FILES;
 			$oObj = new Jugadoras();
 			$oObj->set($data);
@@ -122,7 +122,7 @@
 				                    <!--     -->
 			                        <div class="formbody">
 				                        Nombre: <input name="fnombre" type="text" style="width:100px" value="<?=$_POST["fnombre"]?>"  />
-				                        Equipo: <input name="fequipo" type="text" style="width:100px" value="<?=$_POST["fequipo"]?>"  />
+				                        D.N.I.: <input name="fdni" type="text" style="width:100px" value="<?=$_POST["fdni"]?>"  />
 				                        <input class="submit" value="Buscar" type="submit" style="font-size:11px" />
 				                        <input class="submit" value="Limpiar" type="button" style="font-size:11px" onclick="javascript:limpiar('frm_busqueda'); document.frm_busqueda.submit();" />
 			                        </div>
@@ -140,9 +140,9 @@
 				                    <input type="hidden" name="pag_submenu" value="<?=$_POST["pag_submenu"]?>" />
 				                    <!--     -->
 				                    <!-- Filtros -->
-				                    <input type="hidden" name="fnombre" value="<?=$_POST["fnombre"]?>" />
-				                    <input name="fequipo" type="hidden" style="width:100px" value="<?=$_POST["fequipo"]?>"  />
-				                    <!-- Fin filtros -->
+									<input type="hidden" name="fnombre" value="<?=$_POST["fnombre"]?>" />
+									<input type="hidden" name="fdni" value="<?=$_POST["fdni"]?>"  />
+									<!-- Fin filtros -->
 									
 									<div style="margin-left:20px; float:left" >
 									<? 	if ($total != 0) {

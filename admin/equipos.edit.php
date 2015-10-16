@@ -17,7 +17,7 @@
     $oFCKeditor = new FCKeditor( "texto" ) ;
     $oFCKeditor -> BasePath = '../_js/FCKeditor/' ;
 	$oFCKeditor -> Height = 250 ;
-	$oFCKeditor -> Width = 450 ;
+	$oFCKeditor -> Width = 350 ;
 	$oFCKeditor -> ToolbarSet = "custom2" ;
     $oFCKeditor -> InstanceName = "descripcion" ;
     $oFCKeditor -> Value = $datos[0]['descripcion'] ;
@@ -89,15 +89,27 @@
 											      </tr>  
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="email">Email</label></td>
-											        <td class="col_1 col_last"><input name="email" id="email" class="text" maxlength="200" type="text" value="<?=$datos[0]["email"]?>" size="70"  <?= $disabled ?>></td>
+											        <td class="col_1 col_last"><input name="email" id="email" class="text" maxlength="100" type="text" value="<?=$datos[0]["email"]?>" size="50"  <?= $disabled ?>></td>
 											      </tr>      
 											      <tr class="even">
-											        <td class="col_0 col_first"><label for="nombre">Foto</label><span class="mandatory">*</span></td>
-											        <td class="col_1 col_last"><input name="foto" id="foto" class="" type="file"  <?= $disabled ?> /><? if ($datos[0]["foto"] != "" ) { ?><a href="../fotos_equipos/<?= $datos[0]["foto"] ?>" target="_blank"> Imagen</a> <? } ?></td>
+											        <td class="col_0 col_first"><label for="nombre">Foto</label></td>
+											        <td class="col_1 col_last">
+											        	<? if ( $disabled  == "" ) { ?>
+											        		<input name="foto" id="foto" class="" type="file"  <?= $disabled ?> />
+											        	<? } 
+											        	 if ($datos[0]["foto"] != "") { ?>
+											        		<img style="margin-top: 10px" src="../thumb/phpThumb.php?src=../fotos_equipos/<?= $datos[0]['foto']?>" width="100" height="69"/>
+											        	<? } ?>  
+											        </td>
 											      </tr>  
 											      <tr class="even">
-											        <td class="col_0 col_first"><label for="nombre">Descripción</label><span class="mandatory">*</span></td>
-											        <td class="col_1 col_last"><?= $oFCKeditor -> Create( ) ; ?></td>      </tr>   
+											        <td class="col_0 col_first"><label for="nombre">Descripción</label></td> 
+											         <? if ( $disabled  == "" ) { ?>
+											         	<td class="col_1 col_last"><?= $oFCKeditor -> Create( ) ; ?></td> 
+											         <? } else { ?>     
+											         	<td class="col_1 col_last"><textarea rows="4" cols="50" <?= $disabled ?>><?=$datos[0]["descripcion"] ?> </textarea></td> 
+											         <? } ?> 
+											      </tr>   
 												</tbody>
 											</table>
 										</fieldset>

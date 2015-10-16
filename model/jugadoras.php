@@ -33,7 +33,6 @@ class Jugadoras {
 		$this->fechaNac = ($valores["fechaNac"])?cambiaf_a_mysql($valores["fechaNac"]):'1980-01-01';
 		$this->foto = $valores["foto"];
 		$this->telefono =  $valores["telefono"];
-
 	}
 
 	function _setById($id) {
@@ -76,7 +75,6 @@ class Jugadoras {
 		          telefono = '". $this->telefono."',
 				  fechaNac = '". $this->fechaNac."'
 				  where id = ".$this->id ;
-
 		$db->query($query);
 		if(is_uploaded_file($_FILES['foto']['tmp_name'])) {
 			$name = "pre_".$this->id."_".$files['foto']['name'];
@@ -90,9 +88,7 @@ class Jugadoras {
 
 	function get($id="") {
 		$db = new Db();
-		$query = "Select j.*, e.nombre as equipo
-				  from ga_jugadoras j, ga_equipos e
-				  where j.idEquipo = e.id " ;
+		$query = "Select j.* from ga_jugadoras j where 1=1 " ;
 		if ($id != "") {
 			$query .= " and j.id = '$id' ";
 		}
@@ -101,12 +97,27 @@ class Jugadoras {
 		$db->close();
 		return $res;
 	}
-
+	
+	function getPaginado($filtros, $inicio, $cant, &$total) {
+		$db = new Db();
+		$query = "Select SQL_CALC_FOUND_ROWS j.* from ga_jugadoras j where 1=1";
+		if (trim($filtros["fnombre"]) != "")
+			$query.= " and j.nombre like '%".strtoupper($filtros["fnombre"])."%'";
+		if (trim($filtros["fdni"]) != "")
+			$query.= " and j.dni  like '%".strtoupper($filtros["fdni"])."%'";
+		$query.= " order by j.nombre LIMIT $inicio,$cant";
+		$datos = $db->getResults($query, ARRAY_A);
+		$cant_reg = $db->getResults("SELECT FOUND_ROWS() cant", ARRAY_A);
+		$total = ceil( $cant_reg[0]["cant"] / $cant );
+		$db->close();
+		return $datos;
+	}
+	
+	
+	
 	function getByEquipo($id="") {
 		$db = new Db();
-		$query = "Select j.*, e.nombre as equipo
-				  from ga_jugadoras j, ga_equipos e
-				  where j.idEquipo = e.id " ;
+		$query = "Select j.*, e.nombre as equipo from ga_jugadoras j, ga_equipos e where j.idEquipo = e.id " ;
 		if ($id != "") {
 			$query .= " and e.id = '$id' ";
 		}
@@ -130,26 +141,6 @@ class Jugadoras {
 		return $res;
 	}
 	
-	function getPaginado($filtros, $inicio, $cant, &$total) {
-		$orden = ($filtros["filter_order"])?$filtros["filter_order"]:"e.id";
-		$dir = ($filtros["filter_order_Dir"])?$filtros["filter_order_Dir"]:"asc";
-		$db = new Db();
-		$query = "Select SQL_CALC_FOUND_ROWS  j.*, e.nombre as equipo, p.nombre as posicion
-		          from ga_jugadoras j, ga_jugadoras_equipo je, ga_equipos e, ga_posiciones p
-				  where j.id = je.idJugadora and je.idEquipo = e.id and je.idPosicion = p.id ";
-		if (trim($filtros["fnombre"]) != "")
-			$query.= " and j.nombre like '%".strtoupper($filtros["fnombre"])."%'";
-		if (trim($filtros["fequipo"]) != "")
-			$query.= " and  e.nombre  like '%".strtoupper($filtros["fequipo"])."%'";
-		$query.= " order by  $orden $dir LIMIT $inicio,$cant";
-		$datos = $db->getResults($query, ARRAY_A);
-		$cant_reg = $db->getResults("SELECT FOUND_ROWS() cant", ARRAY_A);
-		$total = ceil( $cant_reg[0]["cant"] / $cant );
-		$db->close();
-		return $datos;
-	}
-
-
 	function updateTarjetas() {
 		$db = new Db();
 		$query = "update ga_jugadoras set
