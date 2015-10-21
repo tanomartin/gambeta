@@ -12,7 +12,6 @@
 	$oEquipo= new Equipos();
 	$datos = $oEquipo->get($_POST["id"]);
     $torneos = $oEquipo->getTorneos($_POST["id"]);	
-	$disabled = "";
 	$oTorneo= new Torneos();
 	$aTorneos = $oTorneo->get();
 ?>
@@ -54,7 +53,14 @@
 			document.form_alta.idTorneoEquipo.value = -1;
 			document.form_alta.submit();
 		}
-	
+
+		function jugadoras(idTorneo){
+			document.form_alta.accion.value = "jugadoras";
+			document.form_alta.idTorneoEquipo.value = idTorneo;
+			document.form_alta.submit();
+			
+		}
+		
 		function password(idTorneo){
 			document.form_alta.accion.value = "password";
 			document.form_alta.idTorneoEquipo.value = idTorneo;
@@ -134,8 +140,7 @@
 										<? } 
 										}?>
 			                    
-			                    </table>
-			                    
+			                    </table>  
 								<div class="submit_container">
 		    						<input class="submit" type="button" value="Volver" onclick="javascript:volver();" />
 		    					</div>

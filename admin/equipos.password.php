@@ -66,6 +66,10 @@
 								<input type="hidden" name="submenu" value="<?=$_POST["submenu"]?>" />
 								<input type="hidden" name="pag_submenu" value="<?=$_POST["pag_submenu"]?>" />
 								<!--     -->
+								<!-- Filtros -->
+				                <input type="hidden" name="fnombre" value="<?=$_POST["fnombre"]?>" />
+				                <input name="femail" type="hidden"  value="<?=$_POST["femail"]?>"  />                           
+				                <!-- Fin filtros -->
 				
 								<div class="formbody">
 									<div class="ce_table">

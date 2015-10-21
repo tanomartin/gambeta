@@ -27,7 +27,7 @@
 			$files = $_FILES;
 			$oObj = new Torneos();
 			$oObj->set($data);	
-			if($_POST["id"] == "-1") { // Tiene el valor de session_id()
+			if($_POST["id"] == "-1") {
 				$oObj->insertar($files);
 			} else {
 				$oObj->actualizar($files);

@@ -45,6 +45,13 @@
 			document.frm_listado.idJugadoraEquipo.value = idJugadoraEquipos;
 			document.frm_listado.submit();	
 		}
+
+		function cambiaractiva(idJugadoraEquipos, activa){
+			document.frm_listado.accion.value = "cambiaractiva";
+			document.frm_listado.activa.value = activa;
+			document.frm_listado.idJugadoraEquipo.value = idJugadoraEquipos;
+			document.frm_listado.submit();	
+		}
 	
 		function volver(){
 			document.frm_listado.accion.value = "volver";
@@ -78,9 +85,8 @@
                     				<input type="hidden" name="_pag" value="<?=$pag?>" />
 				                    <input type="hidden" name="id" value="<?=$_POST["id"]?>" />
 				                    <input type="hidden" name="idJugadoraEquipo" value="" />
-				                    <input type="hidden" name="activo" value="" />
+				                    <input type="hidden" name="activa" value="" />
 				                    <input type="hidden" name="pos" value="" />
-				                    <input type="hidden" name="orden" value="" /> 
 				                    <input type="hidden" name="accion" value="" />
 				        			<!-- Parametros menu -->
 				        			<input type="hidden" name="menu" value="<?=$_POST["menu"]?>" />
@@ -115,7 +121,11 @@
 							                     <td align="left"><?=$datos[$i]["categoria"]?></td>
 							                     <td align="left"><?=$datos[$i]["nombreEquipo"]?></td>
 							                     <td align="left"><?=$datos[$i]["posicion"]?></td>
-							                     <td align="left"><? if ($datos[$i]["activa"]) echo "Activa"; else echo "No Activa"; ?></td>
+							                     <? if($datos[$i]["activa"] == '1') {?>
+							                     		<td style="text-align: center;"><img border="0" src="../img/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="cambiaractiva('<?=$datos[$i]["idJugadoraEquipo"]?>','0')"/></td>
+							                     <? } else { ?>
+														<td style="text-align: center;"><img border="0" src="../img/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="cambiaractiva('<?=$datos[$i]["idJugadoraEquipo"]?>','1')"/></td>
+												 <? } ?>
 							                     <td nowrap>
 							                     	<a href="javascript:ver(<?=$_POST["id"]?>,<?=$datos[$i]["idJugadoraEquipo"]?>);"> <img border="0" src="images/find-icon.png" alt="ver" title="ver" width="20px" height="20px" /></a>
 							                        <a href="javascript:editar(<?=$_POST["id"]?>,<?=$datos[$i]["idJugadoraEquipo"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>

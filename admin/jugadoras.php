@@ -36,9 +36,16 @@
 			exit;
 			break;
 			
+		case "cambiaractiva":
+			$oObj = new Jugadoras();
+			$oObj->cambiarActiva($_POST["idJugadoraEquipo"],$_POST['activa']);
+			include("jugadoras.equipos.php");
+			exit;
+			break;
+					
 		case "guardarequipo":
 			$oEquipos = new Equipos();
-			$arrayEquipoTorneo = $oEquipos->getByCategoria($_POST['idTorneoCat']); 
+			$arrayEquipoTorneo = $oEquipos->getByCategoriaEquipos($_POST['idTorneoCat'], $_POST['idEquipo']); 
 			$_POST['idEquipoTorneo'] = $arrayEquipoTorneo[0]['idEquipoTorneo'];
 			$oObj = new Jugadoras();
 			if($_POST["idJugadoraEquipo"] == "-1") {

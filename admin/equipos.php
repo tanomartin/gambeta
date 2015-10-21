@@ -1,5 +1,6 @@
 <?	include_once "include/config.inc.php";
 	include_once "../model/equipos.php";
+	include_once "../model/jugadoras.php";
 	include_once "../model/torneos.categorias.php";
 
 	if(!session_is_registered("usuario")){
@@ -37,9 +38,28 @@
 			include("equipos.torneos.php");
 			exit;
 			break;
+			
+		case "jugadoras":
+			include("equipos.jugadoras.php");
+			exit;
+			break;
 		
 		case "relacionarTorneo":	
 			include("equipos.torneos.edit.php");
+			exit;
+			break;
+			
+		case "cambiaractiva":
+			$oObj = new Jugadoras();
+			$oObj->cambiarActiva($_POST["idJugadoraEquipo"],$_POST['activa']);
+			include("equipos.jugadoras.php");
+			exit;
+			break;
+
+		case "borrarjugadora":
+			$oObj = new Jugadoras();
+			$oObj->borrarEquipo($_POST["idJugadoraEquipo"]);
+			include("equipos.jugadoras.php");
 			exit;
 			break;
 			
@@ -144,35 +164,6 @@
 				document.frm_listado.id.value = id;
 				document.frm_listado.submit();
 			}
-		}
-	
-		function info(id){
-			document.frm_listado.accion.value = "info";
-			document.frm_listado.id.value = id;
-			document.frm_listado.submit();
-			
-		}
-	
-		function cambiarActivo(id,activo) {
-			document.frm_listado.activo.value=activo;
-			document.frm_listado.id.value = id;
-			document.frm_listado.accion.value = "cambiarActivo";
-			document.frm_listado.submit();
-		   
-		}
-		
-		function cambiarOrden(pos,orden) {
-			document.frm_listado.pos.value=pos;
-			document.frm_listado.orden.value =orden;
-			document.frm_listado.accion.value = "cambiarOrden";
-			document.frm_listado.submit();
-		   
-		}
-	
-		function borrarTorneo(idTorneo) {
-			document.frm_listado.accion.value = "eliminarTorneo";
-			document.form_alta.idTorneoEquipo.value = idTorneo;
-			document.form_alta.submit();
 		}
 	</script>
 </head>

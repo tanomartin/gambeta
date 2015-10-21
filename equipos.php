@@ -5,7 +5,7 @@
 	include_once "model/jugadoras.php";
 	
 	$modulo = "equipos";
-
+	
 	$oObj = new Torneos();
 	$aTorneos = $oObj->getByCant(CANT_TORNEOS); 
 	$oTorneo = $oObj->getByTorneoCat($_POST['id']);
@@ -164,7 +164,9 @@
           <? } 
 					}?>
         </div>
-        <? for ($i=0; $i<count($aEquipos); $i++ ) {?>
+        <? for ($i=0; $i<count($aEquipos); $i++ ) {
+        	$oObjEquipos = new Equipos();
+        	$equiposTorneo = $oObjEquipos->getEquipoTorneo($aEquipos[$i]['id'],$_POST['id']); ?>
         <div style="float:left; margin-left:50px">
           <? if($aEquipos[$i]['foto']) { ?>
           <div  style=" float:left; margin-left:-18px"><img src="thumb/phpThumb.php?src=../fotos_equipos/<?= $aEquipos[$i]['foto']?>" width="165" height="129" border="0" hspace="8" vspace="8" /></div>
@@ -178,7 +180,7 @@
             <? 
 					   		$oObj = new Jugadoras();
 							 
-							 $aJugadoras = $oObj->getByEquipo($aEquipos[$i]['id']);
+							 $aJugadoras = $oObj->getByEquipo($equiposTorneo[0]['id']);
 							 
 							 $j=0;
 							 

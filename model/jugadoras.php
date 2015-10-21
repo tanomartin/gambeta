@@ -61,6 +61,8 @@ class Jugadoras {
 
 	function eliminar() {
 		$db = new Db();
+		$query = "delete from ga_jugadoras_equipo where idJugadora = ".$this->id ;
+		$db->query($query);
 		$query = "delete from ga_jugadoras where id = ".$this->id ;
 		$db->query($query);
 		$db->close();
@@ -183,7 +185,7 @@ class Jugadoras {
 		}
 		$query = "insert into ga_jugadoras_equipo values ('DEFAULT',".
 				"'".$datos['id']."',".
-				"'".$datos['idEquipoTorneo']."',".
+				"'".$datos['idEquipoTorneo']."','0','0','0',".
 				"'".$datos['idPosicion']."',".
 				"'".$activo."')";
 		print($query);
@@ -207,14 +209,35 @@ class Jugadoras {
 	
 	function getByEquipo($id="") {
 		$db = new Db();
-		$query = "Select j.*, e.nombre as equipo from ga_jugadoras j, ga_equipos e where j.idEquipo = e.id " ;
+		$query = "Select 
+					j.*, e.nombre as equipo, je.id as idJugadoraEquipo, je.activa as activa, je.goles, je.amarillas, je.rojas
+				  From 
+					ga_jugadoras j, 
+					ga_jugadoras_equipo je, 
+					ga_equipos_torneos et,
+					ga_equipos e
+			      Where j.id = je.idJugadora and je.idEquipoTorneo = et.id and et.idEquipo = e.id" ;
 		if ($id != "") {
-			$query .= " and e.id = '$id' ";
+			$query .= " and je.idEquipoTorneo = '$id'";
 		}
-		$query .= " order by j.idPosicion";
+		$query .= " order by je.idPosicion";
 		$res = $db->getResults($query, ARRAY_A);
 		$db->close();
 		return $res;
+	}
+	
+	function cambiarActiva($idJugadorasEquipos, $activo) {
+		$db = new Db();
+		$query = "update ga_jugadoras_equipo set activa = ".$activo." where id = ".$idJugadorasEquipos;
+		$db->query($query);
+		$db->close();
+	}
+	
+	function borrarEquipo($idJugadorasEquipos) {
+		$db = new Db();
+		$query = "delete from ga_jugadoras_equipo where id = ".$idJugadorasEquipos;
+		$db->query($query);
+		$db->close();
 	}
 
 	function getByFixture($idFixture,$idEquipo) {
@@ -231,7 +254,7 @@ class Jugadoras {
 		return $res;
 	}
 	
-	function updateTarjetas() {
+	function updateTarjetasGoles() {
 		$db = new Db();
 		$query = "update ga_jugadoras set
 		          amarillas = amarillas + '". $this->amarillas."',

@@ -45,7 +45,7 @@
 				$oObj1->rojas = $rojas;
 				$oObj1->observaciones  = $observaciones ;
 			
-				$oObj1->updateTarjetas();
+				$oObj1->updateTarjetasGoles();
 
 			}
 		
