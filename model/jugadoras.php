@@ -207,7 +207,7 @@ class Jugadoras {
 		$db->close();
 	}
 	
-	function getByEquipo($id="") {
+	function getByEquipoTorneo($id="") {
 		$db = new Db();
 		$query = "Select 
 					j.*, e.nombre as equipo, je.id as idJugadoraEquipo, je.activa as activa, je.goles, je.amarillas, je.rojas

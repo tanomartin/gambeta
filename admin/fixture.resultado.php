@@ -25,8 +25,8 @@
 
 
 	$oJugadora = new Jugadoras();
-	$aJugadoras1 = $oJugadora->getByEquipo( $datos[0]["idEquipo1"]);
-	$aJugadoras2 = $oJugadora->getByEquipo( $datos[0]["idEquipo2"]);
+	$aJugadoras1 = $oJugadora->getByEquipoTorneo( $datos[0]["idEquipo1"]);
+	$aJugadoras2 = $oJugadora->getByEquipoTorneo( $datos[0]["idEquipo2"]);
 
 	$oResultado= new Resultados();
 	$resultados = $oResultado->get($_POST["id"]);

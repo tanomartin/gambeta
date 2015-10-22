@@ -5,7 +5,7 @@
 	header("Content-Type:text/html; charset=utf-8"); 
 
 	$oJugadoras = new Jugadoras();
-	$aJugadoras = $oJugadoras->getByEquipo($_REQUEST['id']);
+	$aJugadoras = $oJugadoras->getByEquipoTorneo($_REQUEST['id']);
 
 ?>
 	 <select name="<?=$_REQUEST["id_sublista"]?>" id="<?=$_REQUEST["id_sublista"]?>" >

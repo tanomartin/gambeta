@@ -27,7 +27,7 @@
 
 	for($j=0;$j<count($aEquipos);$j++) {
 
-		$aJugadoras1 = $oJugadora->getByEquipo( $aEquipos[$j]['id']);		
+		$aJugadoras1 = $oJugadora->getByEquipoTorneo( $aEquipos[$j]['id']);		
 	
 		for ($i=0; $i<count($aJugadoras1); $i++) {
 		

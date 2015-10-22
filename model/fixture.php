@@ -300,7 +300,7 @@ function get($id="") {
 
 	}
 
-	function getByEquipo($idTorneoCat,$idEquipo){
+	function getByEquipoTorneo($idTorneoCat,$idEquipo){
 
 		$db = new Db();
 

@@ -62,7 +62,7 @@
 
 			$oObj1 = new Jugadoras();
 
-			$aJugadoras = $oObj1->getByEquipo($_POST['idEquipo1']);
+			$aJugadoras = $oObj1->getByEquipoTorneo($_POST['idEquipo1']);
 
 			$oObj->idFixture = $_POST['idFixture'];
 			
@@ -103,7 +103,7 @@
 			$oFix -> modicarCampoValor("amonestadosEquipo1",$amarillasT,"id",$_POST['idFixture']);
 			$oFix -> modicarCampoValor("expulsadosEquipo1",$rojasT,"id",$_POST['idFixture']);
 
-			$aJugadoras = $oObj1->getByEquipo($_POST['idEquipo2']);
+			$aJugadoras = $oObj1->getByEquipoTorneo($_POST['idEquipo2']);
 	
 			$golesT = 0;
 			$amarillasT = 0;

@@ -26,7 +26,7 @@
 
 			$oObj1 = new Jugadoras();
 
-			$aJugadoras = $oObj1->getByEquipo($_POST['idEquipo1']);
+			$aJugadoras = $oObj1->getByEquipoTorneo($_POST['idEquipo1']);
 
 
 			for ($i=0;$i<count($aJugadoras);$i++) {

@@ -178,7 +178,7 @@ class TorneoCat {
 		return $id;
 	}
 
-	function getCategoriasCompletas($id="") {
+	function getCategoriasCompletas($id="", $filtros="") {
 		$db = new Db();
 		$query = "Select tc.*, c.nombrePagina,c1.nombrePagina as nombreCatPagina, t.nombre as nombreTorneo
 				  From ga_torneos_categorias tc left join ga_categorias c
@@ -189,7 +189,9 @@ class TorneoCat {
 				  on tc.id_torneo = t.id 
 				  where id_padre <> 0";
 		if ($id != "")	
-		$query.= " and  tc.id = ". $id;	
+			$query.= " and  tc.id = ". $id;	
+		if (trim($filtros["ftorneo"]) != "" ) 
+			$query.= " and t.nombre like '%".strtoupper($filtros["ftorneo"])."%'";	
 		$query.= " order by   t.nombre, c.nombrePagina ";	
 		$aDatos = $db->getResults($query, ARRAY_A); 
 		$db->close();	

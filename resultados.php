@@ -21,7 +21,7 @@
 	$oObj1 = new Fixture();
 
 	if ($aEquipos) 
-		$aFixture = $oObj1->getByEquipo($_POST['id'],$aEquipos[0]['id']);
+		$aFixture = $oObj1->getByEquipoTorneo($_POST['id'],$aEquipos[0]['id']);
 
 
 ?>

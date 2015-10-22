@@ -20,7 +20,7 @@
 
 
 	$oJugadora = new Jugadoras();
-	$aJugadoras1 = $oJugadora->getByEquipo( $_POST['id']);
+	$aJugadoras1 = $oJugadora->getByEquipoTorneo( $_POST['id']);
 
 	$oResultados = new Resultados();
 

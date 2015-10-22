@@ -19,7 +19,7 @@
 
 
 	$oJugadora = new Jugadoras();
-	$aJugadoras1 = $oJugadora->getByEquipo( $_POST['id']);
+	$aJugadoras1 = $oJugadora->getByEquipoTorneo( $_POST['id']);
 
 	$oGolesAnt= new GolesAnt();
 	$resultados = $oGolesAnt->get($aFechas[0]["id_torneo"],$aFechas[0]['id_categoria'],$_POST['id']);

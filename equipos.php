@@ -180,7 +180,7 @@
             <? 
 					   		$oObj = new Jugadoras();
 							 
-							 $aJugadoras = $oObj->getByEquipo($equiposTorneo[0]['id']);
+							 $aJugadoras = $oObj->getByEquipoTorneo($equiposTorneo[0]['id']);
 							 
 							 $j=0;
 							 

@@ -7,7 +7,7 @@
 
 	$oObj1 = new Fixture();
 
-	$aFixture = $oObj1->getByEquipo($_REQUEST['id'],$_REQUEST['idEquipo']);
+	$aFixture = $oObj1->getByEquipoTorneo($_REQUEST['id'],$_REQUEST['idEquipo']);
 
 
 ?>
