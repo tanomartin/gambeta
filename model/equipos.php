@@ -235,7 +235,7 @@ class Equipos {
 		$query = "Select e.*, et.id as idEquipoTorneo
 				  from ga_equipos e, ga_equipos_torneos et
 				  where e.id <> '$id' and e.id = et.idEquipo and
-				  et.idTorneoCat = (select idTorneoCat from ga_equipos_torneos where idEquipo = '$id')
+				  et.idTorneoCat = (select idTorneoCat from ga_equipos_torneos where id = '$idEquipoTorneo')
 				  order by e.nombre";	
 		$res = $db->getResults($query, ARRAY_A); 
 		$db->close();	

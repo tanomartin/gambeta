@@ -278,8 +278,8 @@
 												<tr>
 													<td align="left"><?=$datos[$i]["torneo"]?></td>
 													<td align="left"><?=$datos[$i]["categoria"]?></td>
-													<td align="left"><?=$datos[$i]["equipo1"]?></td>
-													<td align="left"><?=$datos[$i]["equipo2"]?></td>
+													<td align="left"><?=$datos[$i]["equipo1"]?><?=" ".$datos[$i]["idEquipoTorneo1"]?></td>
+													<td align="left"><?=$datos[$i]["equipo2"]?><?=" ".$datos[$i]["idEquipoTorneo2"]?></td>
 													<td align="left"><?=cambiaf_a_normal($datos[$i]["fechaPartido"])?></td>
 													<td align="left"><?=$datos[$i]["horaPartido"]?></td>
 													<td nowrap>

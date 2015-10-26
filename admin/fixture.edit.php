@@ -6,6 +6,7 @@
 	include_once "../model/fechas.php";
 	include_once "../model/equipos.php";
 	include_once "../model/sedes.php";
+	include_once "../model/arbitros.php";
 	include_once "../model/fckeditor.class.php";
 	if (! session_is_registered ( "usuario" )) {
 		header ( "Location: index.php" );
@@ -15,7 +16,7 @@
 	if ($_POST ["id"] != - 1) {
 		$operacion = "Modificaci&oacute;n";
 		$oFixture = new Fixture ();
-		$datos = $oFixture->get ( $_POST ["id"] );
+		$datos = $oFixture->get($_POST ["id"]);
 	}
 	$oFCKeditor = new FCKeditor ( "texto" );
 	$oFCKeditor->BasePath = '../_js/FCKeditor/';
@@ -31,6 +32,9 @@
 	$aTorneos = $oTorneo->get();
 	$oSede = new Sedes();
 	$aSedes = $oSede->get();
+	$oArbitro = new Arbitros();
+	$aArbitros = $oArbitro->get();
+	
 ?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -166,8 +170,8 @@
 														<select name="idSede" id='idSede' <?= $disabled ?> class="validate-selection">
 															<option value="-1">Seleccione una Sede...</option>
 													 	<?php for($i=0;$i<count($aSedes);$i++) { ?>	
-															<option value="<?php echo $aSedes[$i]['id'] ?>"
-																<?php if ($datos[0]["idSede"] ==   $aSedes[$i]['id'] ) echo "selected"; ?>><?php echo $aSedes[$i]['nombre']?>
+															<option value="<?php echo $aSedes[$i]['id'] ?>" <?php if ($datos[0]["idSede"] ==   $aSedes[$i]['id'] ) echo "selected"; ?>>
+																<?php echo $aSedes[$i]['nombre']?>
 											                </option>
 											             <?php } ?>	   
 											         	</select>
@@ -183,6 +187,11 @@
 													<td class="col_1 col_last">
 														<select name="idArbitro" id='idArbitro' <?= $disabled ?> class="validate-selection">
 															<option value="-1">Seleccione un Arbitro...</option>
+														<?php for($i=0;$i<count($aArbitros);$i++) { ?>	
+																<option value="<?php echo $aArbitros[$i]['id'] ?>" <?php if ($datos[0]["idArbitro"] == $aArbitros[$i]['id'] ) echo "selected"; ?>>
+																	<?php echo $aArbitros[$i]['nombre'] ?>
+											                	</option>
+											             <?php } ?>	   
 														</select>
 													</td>
 												</tr>
@@ -196,7 +205,7 @@
 																	$oEquipos = new Equipos ();
 																	$aEquipos = $oEquipos->getTorneoCat ( $datos [0] ["idTorneoCat"] );
 																	for($i = 0; $i < count ( $aEquipos ); $i ++) { ?>	
-							 									<option <? if($aEquipos[$i]["idEquipoTorneo"] == $datos[0]["idEquipoTorneo1"]) echo "selected"; ?> value="<?=$aEquipos[$i]["id"]?>"><?=$aEquipos[$i]["nombre"]?></option>
+							 									<option <? if($aEquipos[$i]["idEquipoTorneo"] == $datos[0]["idEquipoTorneo1"]) echo "selected"; ?> value="<?=$aEquipos[$i]["idEquipoTorneo"]?>"><?=$aEquipos[$i]["nombre"]?></option>
 																<? }
 																} ?>
 															</select> 
@@ -216,11 +225,11 @@
 														<span id="Equipo2List"> 
 															<select name="idEquipo2" id="idEquipo2" <?= $disabled?> class="validate-selection">
 																<option value="-1">Seleccione antes un Equipo #1...</option>
-								                                <? if ($datos [0] ["idEquipoTorneo2"]) {
+								                                <? if ($datos[0]["idEquipoTorneo2"]) {
 																		$oEquipos = new Equipos ();
-																		$aEquipos = $oEquipos->getByEquipoTorneo ( $datos [0] ["idEquipoTorneo1"] );
+																		$aEquipos = $oEquipos->getByEquipoTorneo($datos[0]["idEquipoTorneo1"]);
 																		for($i = 0; $i < count ( $aEquipos ); $i ++) { ?>	
-                                    							 <option <? if($aEquipos[$i]["idEquipoTorneo"] == $datos[0]["idEquipoTorneo2"]) echo "selected"; ?> value="<?=$aEquipos[$i]["id"]?>"><?=$aEquipos[$i]["nombre"]?></option>
+                                    							 <option <? if($aEquipos[$i]["idEquipoTorneo"] == $datos[0]["idEquipoTorneo2"]) echo "selected"; ?> value="<?=$aEquipos[$i]["idEquipoTorneo"]?>"><?=$aEquipos[$i]["nombre"]?></option>
 									                                <? }
 																	} ?>
                                								</select> 

@@ -11,7 +11,7 @@
 	<? } else {?>
 			<option value="-1">Seleccione un Equipo...</option>
 	<? } 
-	   for ($i=0;$i<count($aEquipos);$i++)  { ?>		
+	   for ($i=0;$i<count($aEquipos);$i++) { ?>		
 			<option value="<?=$aEquipos[$i]["idEquipoTorneo"]?>"><?=$aEquipos[$i]["nombre"]?></option>
 	<? } ?>
 	</select>
