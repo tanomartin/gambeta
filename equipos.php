@@ -131,13 +131,11 @@
         <div id="titulo_principal">
           <div  style="float:center;height:43px" align="center">
             <? for ($i = 0; $i <count( $aTorneos ); $i++) { 
-                            if ( $oTorneo->id_torneo != $aTorneos[$i][id] ) {
-									$aCategoriasMenu = $oObj->getByTorneo( $aTorneos[$i][id],"id_categoria");
-									
-								?>
-            <img title="<?= $aTorneos[$i][nombre]?>" width="50px" height="50px" src="logos/<?= $aTorneos[$i][logoPrincipal]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
-            <? } 
-                        } ?>
+                    if ( $oTorneo->id_torneo != $aTorneos[$i][id] ) {
+						$aCategoriasMenu = $oObj->getByTorneo( $aTorneos[$i][id],"id_categoria");?>
+           				<img title="<?= $aTorneos[$i][nombre]?>" width="50px" height="50px" src="logos/<?= $aTorneos[$i][logoPrincipal]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
+            	  <? } 
+              } ?>
           </div>
         </div>
         <div class="titulo_pagina color_titulo_<?= $color ?>" >
@@ -146,27 +144,26 @@
         <div id="categorias">
           <div class="titulo_categoria color_categoria" style="float:left;">CATEGORIA</div>
           <? for ($i=0; $i<count($aCategorias);$i++) {
-						 if($aCategorias[$i][id] == $_POST['id']) { 
-						?>
-          <div style="float:left" class="color_categoria_seleccionada_<?= $color ?>">
-            <? if ( $aCategorias[$i][nombreCatPagina] != "" ) { echo strtoupper($aCategorias[$i][nombreCatPagina]). "-";} ?>
-            <?= strtoupper($aCategorias[$i][nombrePagina]) ?>
-          </div>
-          <? } else { ?>
-          <div style="float:left; cursor:pointer" class="categoria_submenu" onclick="cambiar(<?= $aCategorias[$i][id]?>)">
-            <? if ( $aCategorias[$i][nombreCatPagina] != "" ) { echo strtoupper($aCategorias[$i][nombreCatPagina]). "-";} ?>
-            <?= strtoupper($aCategorias[$i][nombrePagina]) ?>
-          </div>
-          <? }
-						
-							if ($i+1 < count($aCategorias)) { ?>
-          <div style="float:left" class="categoria_linea_<?= $color ?>">|</div>
-          <? } 
-					}?>
+				 if($aCategorias[$i][id] == $_POST['id']) { ?>
+          			<div style="float:left" class="color_categoria_seleccionada_<?= $color ?>">
+            			<? if ( $aCategorias[$i][nombreCatPagina] != "" ) { echo strtoupper($aCategorias[$i][nombreCatPagina]). "-";} ?>
+            				<?= strtoupper($aCategorias[$i][nombrePagina]) ?>
+          			</div>
+         	 <? } else { ?>
+          			<div style="float:left; cursor:pointer" class="categoria_submenu" onclick="cambiar(<?= $aCategorias[$i][id]?>)">
+           		 <? if ( $aCategorias[$i][nombreCatPagina] != "" ) { echo strtoupper($aCategorias[$i][nombreCatPagina]). "-";} ?>
+            		<?= strtoupper($aCategorias[$i][nombrePagina]) ?>
+          			</div>
+         	 <? }
+				if ($i+1 < count($aCategorias)) { ?>
+          			<div style="float:left" class="categoria_linea_<?= $color ?>">|</div>
+         	 <? } 
+			}?>
         </div>
         <? for ($i=0; $i<count($aEquipos); $i++ ) {
         	$oObjEquipos = new Equipos();
-        	$equiposTorneo = $oObjEquipos->getEquipoTorneo($aEquipos[$i]['id'],$_POST['id']); ?>
+        	$equiposTorneo = $oObjEquipos->getEquipoTorneo($aEquipos[$i]['id'],$_POST['id']);
+        	 ?>
         <div style="float:left; margin-left:50px">
           <? if($aEquipos[$i]['foto']) { ?>
           <div  style=" float:left; margin-left:-18px"><img src="thumb/phpThumb.php?src=../fotos_equipos/<?= $aEquipos[$i]['foto']?>" width="165" height="129" border="0" hspace="8" vspace="8" /></div>
@@ -177,14 +174,10 @@
             <div class="titulo_equipos color_<?= $color ?>">
               <?= strtoupper ($aEquipos[$i]['nombre']) ?>
             </div>
-            <? 
-					   		$oObj = new Jugadoras();
-							 
-							 $aJugadoras = $oObj->getByEquipoTorneo($equiposTorneo[0]['id']);
-							 
-							 $j=0;
-							 
-							 while ($j < count($aJugadoras)) { ?>
+            <? $oObj = new Jugadoras();
+			   $aJugadoras = $oObj->getByEquipoTorneo($equiposTorneo[0]['idEquipo'],$equiposTorneo[0]['idTorneoCat']);
+			   $j=0;
+			   while ($j < count($aJugadoras)) { ?>
             <div class="jugadoras" style="width:165px; float:left">
               <?= $aJugadoras[$j]['nombre'] ?>
             </div>

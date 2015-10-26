@@ -188,7 +188,6 @@ class Jugadoras {
 				"'".$datos['idEquipoTorneo']."','0','0','0',".
 				"'".$datos['idPosicion']."',".
 				"'".$activo."')";
-		print($query);
 		$db->query($query);
 		$db->close();
 	}
@@ -207,19 +206,20 @@ class Jugadoras {
 		$db->close();
 	}
 	
-	function getByEquipoTorneo($id="") {
+	function getByEquipoTorneo($idEquipo="", $idTorneoCat="") {
 		$db = new Db();
 		$query = "Select 
 					j.*, e.nombre as equipo, je.id as idJugadoraEquipo, je.activa as activa, je.goles, je.amarillas, je.rojas
 				  From 
-					ga_jugadoras j, 
+				  	ga_equipos_torneos et,
 					ga_jugadoras_equipo je, 
-					ga_equipos_torneos et,
+					ga_jugadoras j,
 					ga_equipos e
-			      Where j.id = je.idJugadora and je.idEquipoTorneo = et.id and et.idEquipo = e.id" ;
-		if ($id != "") {
-			$query .= " and je.idEquipoTorneo = '$id'";
-		}
+			      Where 
+					et.idEquipo = $idEquipo and et.idTorneoCat = $idTorneoCat and
+					et.id = je.idEquipoTorneo and
+					je.idJugadora = j.id and 
+					et.idEquipo = e.id" ;
 		$query .= " order by je.idPosicion";
 		$res = $db->getResults($query, ARRAY_A);
 		$db->close();

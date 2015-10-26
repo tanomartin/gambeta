@@ -141,7 +141,7 @@
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="nombre">Posici&oacute;n</label><span class="mandatory">*</span></td>
 											        <td class="col_1 col_last">
-											         <select name="idPosicion" id='idPosicion' <?= $disabled ?>  >
+											         <select name="idPosicion" id='idPosicion' <?= $disabled ?> class="validate-selection" >
 											            <option value="-1">Seleccione una Posici&oacute;n...</option>
 													 	<?php for($i=0;$i<count($aPosicion);$i++) { ?>	
 															<option value="<?php echo $aPosicion[$i]['id'] ?>" <?php if ($datos[0]["idPosicion"] ==   $aPosicion[$i]['id'] ) echo "selected"; ?>><?php echo $aPosicion[$i]['nombre'] ?>

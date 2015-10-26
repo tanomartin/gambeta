@@ -9,11 +9,12 @@
 		header("Location: index.php");
 		exit;
 	}
+
 	$oEquipo= new Equipos();
 	$equipo = $oEquipo->get($_POST["id"]); 
 	$datosTorneo = $oEquipo->getRelacionTorneo($_POST["idTorneoEquipo"]);	
 	$oJugadora = new Jugadoras();
-	$jugadoras = $oJugadora->getByEquipoTorneo($_POST["idTorneoEquipo"]);	
+	$jugadoras = $oJugadora->getByEquipoTorneo($_POST["id"], $_POST["idTorneoCat"]);	
 ?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">

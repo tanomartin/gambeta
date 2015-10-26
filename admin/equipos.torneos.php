@@ -54,9 +54,10 @@
 			document.form_alta.submit();
 		}
 
-		function jugadoras(idTorneo){
+		function jugadoras(idTorneo, idTorneoCat){
 			document.form_alta.accion.value = "jugadoras";
 			document.form_alta.idTorneoEquipo.value = idTorneo;
+			document.form_alta.idTorneoCat.value = idTorneoCat;
 			document.form_alta.submit();
 			
 		}
@@ -96,6 +97,7 @@
 						<div class="mod_listing ce_table listing block" id="partnerlist">
 							<form name="form_alta" id="form_alta" action="<?=$_SERVER['PHP_SELF']?>" method="post">
 								<input type="hidden" name="idTorneoEquipo" value="" />
+								<input type="hidden" name="idTorneoCat" value="" />
 								<input type="hidden" name="accion" value="" />
 								<input type="hidden" name="id" value="<?=$_POST["id"]?>" />
 								<!-- Parametros menu -->
@@ -133,7 +135,7 @@
 							                     <td nowrap>
 							                        <a href="javascript:editarTorneo(<?=$torneos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>
 							                        <a href="javascript:borrarTorneo(<?=$torneos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
-													<a href="javascript:jugadoras(<?=$torneos[$i]["id"]?>);"><img border="0" width="22" height="22" src="images/Person-Female-Light-icon.png" alt="jugadoras" title="jugadoras" /></a>
+													<a href="javascript:jugadoras(<?=$torneos[$i]["id"]?>,<?=$torneos[$i]["idTorneoCat"]?>);"><img border="0" width="22" height="22" src="images/Person-Female-Light-icon.png" alt="jugadoras" title="jugadoras" /></a>
 												 	<a href="javascript:password(<?=$torneos[$i]["id"]?>);"><img border="0" src="images/icono-pass.png" alt="contraseÃ±a" title="contraseÃ±a" /></a>										 	
 												 </td>
 							 				    </tr>
