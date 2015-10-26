@@ -22,7 +22,6 @@ class Equipos {
 		}
 	}
 
-	
 	function set($valores){
 		$this->id = $valores["id"]; 
 		$this->nombre = $valores["nombre"];			
@@ -36,7 +35,6 @@ class Equipos {
 		$this->set($aValores);
 	}
 		
-
 	function insertar($files) {
 		$db = new Db();
 		$query = "insert into ga_equipos(
@@ -196,7 +194,6 @@ class Equipos {
 				  where 1=1 ";
 		if (trim($filtros["fnombre"]) != "")		 
 			$query.= " and e.nombre like '%".strtoupper($filtros["fnombre"])."%'";		  
-
 		if (trim($filtros["femail"]) != "")		 
 			$query.= " and e.email  like '%".strtoupper($filtros["femail"])."%'";		   
 		$query.= " order by  $orden $dir LIMIT $inicio,$cant";
@@ -210,7 +207,7 @@ class Equipos {
 
 	function getTorneoCat($id="") {
 		$db = new Db();	
-		$query = "Select e.*
+		$query = "Select e.*, t.id as idEquipoTorneo
 				  from ga_equipos e, ga_equipos_torneos t
 				  where e.id = t.idEquipo and t.idTorneoCat =  '$id'" ;		
 		$query .= " order by e.nombre";	
@@ -230,12 +227,16 @@ class Equipos {
 		return $res;
 	}
 
-	function getByIdEquipo($id="") {	
+	function getByEquipoTorneo($idEquipoTorneo="") {	
 		$db = new Db();	
-		$query = "Select e.*
-				  from ga_equipos e
-				  where e.id <> '$id' and 
-				  e.idTorneoCat = (select idTorneoCat from ga_equipos  where id = '$id')";		
+		$queryEquipo = "Select * from ga_equipos_torneos where id = ".$idEquipoTorneo;
+		$resEquipos = $db->getResults($queryEquipo, ARRAY_A);
+		$id = $resEquipos[0]['idEquipo'];
+		$query = "Select e.*, et.id as idEquipoTorneo
+				  from ga_equipos e, ga_equipos_torneos et
+				  where e.id <> '$id' and e.id = et.idEquipo and
+				  et.idTorneoCat = (select idTorneoCat from ga_equipos_torneos where idEquipo = '$id')
+				  order by e.nombre";	
 		$res = $db->getResults($query, ARRAY_A); 
 		$db->close();	
 		return $res;

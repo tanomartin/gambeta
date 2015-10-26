@@ -63,6 +63,9 @@
 		    <li>
 		      <a href="#" title="Sedes"  onclick="this.blur(); ir('Sedes', '', 'sedes.php', 'sedes.php')">Sedes</a>
 	        </li>
+	        <li>
+		      <a href="#" title="Arbitros"  onclick="this.blur(); ir('Arbitros', '', 'arbitros.php', 'arbitros.php')">Arbitros</a>
+	        </li>
 			<li>
 		      <a href="#" title="Noticias"    onclick="this.blur(); ir('Noticias', '', 'noticias.php', 'noticias.php')">Noticias</a>
 	        </li>
@@ -73,7 +76,7 @@
 		      <a href="#" title="Parametros"   onclick="this.blur(); ir('Par&aacute;metros', '', 'parametros.php', 'parametros.php')">Par&aacute;metros</a>
 	        </li>  
 			<li>
-		      <a href="#" title="Reglamento"  class="first"  onclick="this.blur(); ir('reglamento', '', 'reglamento.php', 'reglamento.php')">Reglamento</a>
+		      <a href="#" title="Reglamento"   onclick="this.blur(); ir('reglamento', '', 'reglamento.php', 'reglamento.php')">Reglamento</a>
 	        </li>                
 	      </ul>
 	    </li>
@@ -98,9 +101,6 @@
 		    <li class="first">
 		      <a href="#" title="Fixture"  class="first"  onclick="this.blur(); ir('Fixture', '', 'fixture.php', 'fixture.php')">Fixture</a>
 	        </li>
-		    <li >
-		      <a href="#" title="Goles Anteriores"  class="first"  onclick="this.blur(); ir('Goles Anteriores', '', 'golesAnteriores.php', 'golesAnteriores.php')">Goles Anteriores</a>
-	        </li>        
 		    <li >
 		      <a href="#" title="Tarjetas"  class="first"  onclick="this.blur(); ir('Tarjetas', '', 'tarjetas.php', 'tarjetas.php')">Tarjetas</a>
 	        </li>        
