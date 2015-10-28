@@ -101,7 +101,7 @@
 												<tr class="odd">
 													<td class="col_0 col_first"><label for="nombre">Torneo</label><span class="mandatory">*</span></td>
 													<td class="col_1 col_last">
-														<select name="idTorneo" id='idTorneo' <?= $disabled ?> class="validate-selection" onChange="clearCategoria('idTorneoCat');clearFecha('idFecha');clearEquipo1('idEquipo1');clearEquipo2('idEquipo2'); return listOnChange('idTorneo', '','categoriaList','categoria_data1.php','advice1','idTorneoCat','idTorneoCat');">
+														<select name="idTorneo" id='idTorneo' <?= $disabled ?> class="validate-selection" onChange="clearCategoria('idTorneoCat');clearFecha('idFecha');clearEquipo1('idEquipoTorneo1');clearEquipo2('idEquipoTorneo2'); return listOnChange('idTorneo', '','categoriaList','categoria_data1.php','advice1','idTorneoCat','idTorneoCat');">
 															<option value="-1">Seleccione un Torneo...</option>
 		 													<? for($i=0;$i<count($aTorneos);$i++) { ?>	
 																<option value="<?php echo $aTorneos[$i]['id'] ?>"
@@ -115,7 +115,7 @@
 													<td class="col_0 col_first"><label for="nombre">Categoría</label><span class="mandatory">*</span></td>
 													<td class="col_1 col_last">
 														<span id="categoriaList"> 
-															<select name="idTorneoCat" id="idTorneoCat" <?= $disabled?> class="validate-selection" onChange="clearFecha('idFecha');clearEquipo1('idEquipo1');clearEquipo2('idEquipo2'); listOnChange('idTorneoCat', '', 'fechaList','fecha_data.php','advice2','idFecha','idFecha');">
+															<select name="idTorneoCat" id="idTorneoCat" <?= $disabled?> class="validate-selection" onChange="clearFecha('idFecha');clearEquipo1('idEquipoTorneo1');clearEquipo2('idEquipoTorneo2'); listOnChange('idTorneoCat', '', 'fechaList','fecha_data.php','advice2','idFecha','idFecha');">
 																<option value="-1">Seleccione antes un Torneo...</option>
 																	<? if ($datos [0] ["id_torneo"]) {
 																			$oTorneoCat = new TorneoCat ();
@@ -135,7 +135,7 @@
 													<td class="col_0 col_first"><label for="nombre">Fecha</label><span class="mandatory">*</span></td>
 													<td class="col_1 col_last">
 														<span id="fechaList"> 
-															<select name="idFecha" id="idFecha" <?= $disabled?> class="validate-selection" onchange="clearEquipo1('idEquipo1');clearEquipo2('idEquipo2');listOnChange('idTorneoCat', '', 'Equipo1List','equipo1_data.php','advice3','idEquipo1','idEquipo1');">
+															<select name="idFecha" id="idFecha" <?= $disabled?> class="validate-selection" onchange="clearEquipo1('idEquipoTorneo1');clearEquipo2('idEquipoTorneo2');listOnChange('idTorneoCat', '', 'Equipo1List','equipo1_data.php','advice3','idEquipoTorneo1','idEquipoTorneo1');">
 																<option value="-1">Seleccione antes una Categor&iacute;a...</option>								
 																<?	if ($datos [0] ["idFecha"]) {
 																		$oFechas = new Fechas ();
@@ -199,7 +199,7 @@
 													<td class="col_0 col_first"><label for="nombre">Equipo #1 </label><span class="mandatory">*</span></td>
 													<td class="col_1 col_last">
 														<span id="Equipo1List"> 
-															<select name="idEquipo1" id="idEquipo1" <?= $disabled?> class="validate-selection" onChange="clearEquipo2('idEquipo2');return listOnChange('idEquipo1', '', 'Equipo2List','equipo2_data.php','advice4','idEquipo2','idEquipo2');">
+															<select name="idEquipoTorneo1" id="idEquipoTorneo1" <?= $disabled?> class="validate-selection" onChange="clearEquipo2('idEquipoTorneo2');return listOnChange('idEquipoTorneo1', '', 'Equipo2List','equipo2_data.php','advice4','idEquipoTorneo2','idEquipoTorneo2');">
 																<option value="-1">Seleccione antes una Fecha...</option>
 															 <? if ($datos [0] ["idEquipoTorneo1"]) {
 																	$oEquipos = new Equipos ();
@@ -223,7 +223,7 @@
 													<td class="col_0 col_first"><label for="nombre">Equipo #2 </label><span class="mandatory">*</span></td>
 													<td class="col_1 col_last">
 														<span id="Equipo2List"> 
-															<select name="idEquipo2" id="idEquipo2" <?= $disabled?> class="validate-selection">
+															<select name="idEquipoTorneo2" id="idEquipoTorneo2" <?= $disabled?> class="validate-selection">
 																<option value="-1">Seleccione antes un Equipo #1...</option>
 								                                <? if ($datos[0]["idEquipoTorneo2"]) {
 																		$oEquipos = new Equipos ();

@@ -209,7 +209,10 @@ class Jugadoras {
 	function getByEquipoTorneo($idEquipo="", $idTorneoCat="") {
 		$db = new Db();
 		$query = "Select 
-					j.*, e.nombre as equipo, je.id as idJugadoraEquipo, je.activa as activa, je.goles, je.amarillas, je.rojas
+					j.*, 
+					e.nombre as equipo, 
+					je.id as idJugadoraEquipo, 
+					je.activa as activa
 				  From 
 				  	ga_equipos_torneos et,
 					ga_jugadoras_equipo je, 
@@ -254,14 +257,15 @@ class Jugadoras {
 		return $res;
 	}
 	
-	function updateTarjetasGoles() {
+	function updateTarjetasGoles($idJugadora="", $idEquipoTorneo="") {
 		$db = new Db();
-		$query = "update ga_jugadoras set
+		$query = "update ga_jugadoras_equipo set
 		          amarillas = amarillas + '". $this->amarillas."',
 		          rojas = rojas + '". $this->rojas."',
 		          observaciones = '". $this->observaciones."'
-				  where id = ".$this->id ;
-		$db->query($query);
+				  where idJugadora = ".$idJugadora." and idEquipoTorneo = ".$idEquipoTorneo;
+		print($query);
+		//$db->query($query);
 		$db->close();
 	}
 }

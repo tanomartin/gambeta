@@ -40,70 +40,48 @@
 			break;
 		
 		case "guardarResultado" :
-			$oObj = new Resultados ();		
-			$oObj->borrarByIdFixture ( $_POST ['idFixture'] );		
-			$oObj1 = new Jugadoras ();		
-			$aJugadoras = $oObj1->getByEquipoTorneo ( $_POST ['idEquipo1'] );		
-			$oObj->idFixture = $_POST ['idFixture'];		
-			$golesT = 0;
-			$amarillasT = 0;
-			$rojasT = 0;	
-			for($i = 0; $i < count ( $aJugadoras ); $i ++) {	
-				$nombre = $aJugadoras [$i] ['id'] . "_goles";
-				$goles = ($_POST [$nombre]) ? $_POST [$nombre] : 0;	
-				$nombre = $aJugadoras [$i] ['id'] . "_amarillas";
-				$amarillas = ($_POST [$nombre]) ? $_POST [$nombre] : 0;
-				$nombre = $aJugadoras [$i] ['id'] . "_rojas";
-				$rojas = ($_POST [$nombre]) ? $_POST [$nombre] : 0;
-				$mejor_jugadora = ($aJugadoras [$i] ['id'] == $_POST ['mejor_jugadora']) ? 'S' : 'N';
-				$oObj->idJugadora = $aJugadoras [$i] ['id'];
-				$oObj->goles = $goles;
-				$oObj->tarjeta_amarilla = $amarillas;
-				$oObj->tarjeta_roja = $rojas;
-				$oObj->mejor_jugadora = $mejor_jugadora;
-				$oObj->insertar ();	
-				$golesT += ($goles > 0) ? $goles : 0;
-				$amarillasT += ($amarillas > 0) ? $amarillas : 0;
-				$rojasT += ($rojas > 0) ? $rojas : 0;
+			$i = 0;
+			foreach($_POST as $clave => $resul) {	
+				$pos = strpos($clave, '_id');
+				if ($pos !== false) {
+					$jugadoras[$i] = $resul;
+					$i++;
+				}
 			}
-			$oFix = new Fixture ();
-			$oFix->modicarCampoValor ( "golesEquipo1", $golesT, "id", $_POST ['idFixture'] );
-			$oFix->modicarCampoValor ( "amonestadosEquipo1", $amarillasT, "id", $_POST ['idFixture'] );
-			$oFix->modicarCampoValor ( "expulsadosEquipo1", $rojasT, "id", $_POST ['idFixture'] );
-			$aJugadoras = $oObj1->getByEquipoTorneo ( $_POST ['idEquipo2'] );
-			$golesT = 0;
-			$amarillasT = 0;
-			$rojasT = 0;
-			for($i = 0; $i < count ( $aJugadoras ); $i ++) {
-				$nombre = $aJugadoras [$i] ['id'] . "_goles";
-				$goles = ($_POST [$nombre]) ? $_POST [$nombre] : 0;
-				$nombre = $aJugadoras [$i] ['id'] . "_amarillas";
-				$amarillas = ($_POST [$nombre]) ? $_POST [$nombre] : 0;	
-				$nombre = $aJugadoras [$i] ['id'] . "_rojas";
-				$rojas = ($_POST [$nombre]) ? $_POST [$nombre] : 0;	
-				$mejor_jugadora = ($aJugadoras [$i] ['id'] == $_POST ['mejor_jugadora']) ? 'S' : 'N';		
-				$oObj->idJugadora = $aJugadoras [$i] ['id'];
-				$oObj->goles = $goles;
-				$oObj->tarjeta_amarilla = $amarillas;
-				$oObj->tarjeta_roja = $rojas;
-				$oObj->mejor_jugadora = $mejor_jugadora;	
-				$oObj->insertar ();	
-				$golesT += ($goles > 0) ? $goles : 0;
-				$amarillasT += ($amarillas > 0) ? $amarillas : 0;
-				$rojasT += ($rojas > 0) ? $rojas : 0;
+			foreach($jugadoras as $jugadoraEquipo) {
+				$idGoles = $jugadoraEquipo."_goles";		
+				$goles = ($_POST [$idGoles]) ? $_POST [$idGoles] : 0;
+				$idTarAma = $jugadoraEquipo."_amarillas";
+				$amarillas = ($_POST [$idTarAma]) ? $_POST [$idTarAma] : 0;
+				$idTarRoj = $jugadoraEquipo."_rojas";
+				$rojas = ($_POST [$idTarRoj]) ? $_POST [$idTarRoj] : 0;
+				$mejor_jugadora = ( $jugadoraEquipo == $_POST['mejor_jugadora'])? 'S' : 'N';
+				$valores[$jugadoraEquipo] = array('idFixture' => $_POST ['idFixture'], 
+												  'idJugadoraEquipo' => $jugadoraEquipo, 
+												  'goles' => (int)$goles,
+												  'tarjeta_amarilla' => (int)$amarillas,
+												  'tarjeta_roja' => (int)$rojas,
+												  'mejor_jugadora' => $mejor_jugadora);
 			}
+			$oObj = new Resultados();
+			$oObj->borrarByIdFixture($_POST ['idFixture']);
+			foreach ($valores as $valor) {
+				$oObj->set($valor);
+				$oObj->insertar();
+			}	
 			$oFix = new Fixture ();
-			$oFix->modicarCampoValor ( "golesEquipo2", $golesT, "id", $_POST ['idFixture'] );
-			$oFix->modicarCampoValor ( "amonestadosEquipo2", $amarillasT, "id", $_POST ['idFixture'] );
-			$oFix->modicarCampoValor ( "expulsadosEquipo2", $rojasT, "id", $_POST ['idFixture'] );
+			$oFix->modicarCampoValor ( "golesEquipo1", $_POST['golesEquipo1'], "id", $_POST['idFixture'] );
+			$oFix->modicarCampoValor ( "golesEquipo2", $_POST['golesEquipo2'], "id", $_POST['idFixture'] );
 			break;
 		
 		case "borrar" :
 			$data = $_POST;
-			$oObj = new Fixture ();		
-			$oObj->set ( $data );	
-			$oObj->eliminar ();	
-			$_POST ["_pag"] = ($_POST ["ult"] == "S") ? $_POST ["_pag"] - 1 : $_POST ["_pag"];	
+			$oObj = new Resultados();
+			$oObj->borrarByIdFixture($data['id']);
+			$oObj = new Fixture();		
+			$oObj->set($data);	
+			$oObj->eliminar();
+			$_POST ["_pag"] = ($_POST ["ult"] == "S") ? $_POST ["_pag"] - 1 : $_POST ["_pag"];
 			break;
 	}
 	
@@ -264,13 +242,14 @@
 											<th width="15%">Torneo</th>
 											<th width="15%">Categor&iacute;a</th>
 											<th width="15%">Equipo 1</th>
+											<th width="15%">Resultado</th>
 											<th width="15%">Equipo 2</th>
 											<th width="15%">Fecha</th>
 											<th width="15%">Hora</th>
 											<th width="10%">Opciones</th>
 										</tr>
 									 <? if (count($datos) == 0) { ?>
-										<tr><td colspan="7" align="center">No existen fixture</td></tr>
+										<tr><td colspan="8" align="center">No existen fixture</td></tr>
 									<? } else {
 											$total = count ( $datos );
 											$tt = $total - 1;
@@ -278,8 +257,13 @@
 												<tr>
 													<td align="left"><?=$datos[$i]["torneo"]?></td>
 													<td align="left"><?=$datos[$i]["categoria"]?></td>
-													<td align="left"><?=$datos[$i]["equipo1"]?><?=" ".$datos[$i]["idEquipoTorneo1"]?></td>
-													<td align="left"><?=$datos[$i]["equipo2"]?><?=" ".$datos[$i]["idEquipoTorneo2"]?></td>
+													<td align="left"><?=$datos[$i]["equipo1"]?></td>
+													<? if ($datos[$i]["golesEquipo1"] != -1 and $datos[$i]["golesEquipo2"] != -1) { ?>
+														<td style="text-align: center;"><?=$datos[$i]["golesEquipo1"]?> - <?=$datos[$i]["golesEquipo2"]?></td>
+													<? } else { ?>
+														<td style="text-align: center;">SR</td>
+													<? } ?>
+													<td align="left"><?=$datos[$i]["equipo2"]?></td>
 													<td align="left"><?=cambiaf_a_normal($datos[$i]["fechaPartido"])?></td>
 													<td align="left"><?=$datos[$i]["horaPartido"]?></td>
 													<td nowrap>

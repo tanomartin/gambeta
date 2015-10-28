@@ -5,7 +5,7 @@
 	$oEquipos = new Equipos();
 	$aEquipos = $oEquipos->getTorneoCat($_REQUEST['id']);
 ?>
-	<select name="<?=$_REQUEST["id_sublista"]?>" id="<?=$_REQUEST["id_sublista"]?>" class="validate-selection" onChange="clearEquipo2('idEquipo2');return listOnChange('<?=$_REQUEST["id_sublista"]?>', '', 'Equipo2List','equipo2_data.php','advice4','idEquipo2','idEquipo2');" >			
+	<select name="<?=$_REQUEST["id_sublista"]?>" id="<?=$_REQUEST["id_sublista"]?>" class="validate-selection" onChange="clearEquipo2('idEquipoTorneo2');return listOnChange('<?=$_REQUEST["id_sublista"]?>', '', 'Equipo2List','equipo2_data.php','advice4','idEquipoTorneo2','idEquipoTorneo2');" >			
 	<? if($_REQUEST["id"]==-1) { ?>
 			<option value="-1">Seleccione antes una Fecha...</option>
 	<? } else {?>

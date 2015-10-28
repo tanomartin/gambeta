@@ -124,6 +124,17 @@ class Equipos {
 		return $res;
 	}
 	
+	function getByIdEquipoTorneo($idEquipoTorneo="") {
+		$db = new Db();
+		$query = "Select e.*, t.id as idEquipoTorneo
+					from ga_equipos e, ga_equipos_torneos t
+					where t.id = ".$idEquipoTorneo." and e.id = t.idEquipo";
+		$query .= " order by e.nombre";
+		$res = $db->getResults($query, ARRAY_A);
+		$db->close();
+		return $res;
+	}
+	
 	function getTorneos($id="") {		
 		$db = new Db();
 		$query = "Select et.*, t.nombre as torneo, c.nombrePagina as categoria
