@@ -229,6 +229,24 @@ class Jugadoras {
 		return $res;
 	}
 	
+	function getByIdEquipoTorneo($idEquipoTorneo="") {
+		$db = new Db();
+		$query = "Select
+					j.*,
+					je.id as idJugadoraEquipo,
+					je.activa as activa
+				  From
+					ga_jugadoras_equipo je,
+					ga_jugadoras j
+				  Where
+					je.idEquipoTorneo = $idEquipoTorneo and
+					je.idJugadora = j.id" ;
+		$query .= " order by je.idPosicion";
+		$res = $db->getResults($query, ARRAY_A);
+		$db->close();
+		return $res;
+	}
+	
 	function cambiarActiva($idJugadorasEquipos, $activo) {
 		$db = new Db();
 		$query = "update ga_jugadoras_equipo set activa = ".$activo." where id = ".$idJugadorasEquipos;

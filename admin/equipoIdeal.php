@@ -27,7 +27,6 @@
 
 		case "guardar":	
 			$data =  $_POST;
-			var_dump($data);
 			$oObj = new Equipoideal();
 			$oObj->set($data);
 			$oObj->idTorneoCat = $data['id'];
