@@ -275,6 +275,20 @@ class Jugadoras {
 		return $res;
 	}
 	
+	function getEstadisticas($idJugadorasEquipos) {
+		$db = new Db();
+		$query = "Select 
+					sum(goles) as goles, 
+					sum(tarjeta_amarilla) as amarillas,
+					sum(tarjeta_roja) as rojas 
+				  from 
+					ga_resultados 
+			      where idJugadoraEquipo = ".$idJugadorasEquipos;
+		$res = $db->getResults($query, ARRAY_A);
+		$db->close();
+		return $res;
+	}
+	
 	function updateTarjetasGoles($idJugadora="", $idEquipoTorneo="") {
 		$db = new Db();
 		$query = "update ga_jugadoras_equipo set

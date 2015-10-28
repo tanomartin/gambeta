@@ -62,6 +62,13 @@ class Resultados {
 		$db->close();
 	}
 	
+	function borrarByIdJugadoraEquipo($idJugadoraEquipo) {
+		$db = new Db();
+		$query = "delete from ga_resultados where idJugadoraEquipo = ".$idJugadoraEquipo;
+		$db->query($query);
+		$db->close();
+	}
+	
 	function actualizar() {
 		$db = new Db();
 		if (($this->goles != 0) || ($this->tarjeta_amarilla != 0) || ($this->tarjeta_roja != 0 || ($this->mejor_jugadora != 'N')) ){

@@ -1,6 +1,7 @@
 <?	include_once "include/config.inc.php";
 	include_once "../model/equipos.php";
 	include_once "../model/jugadoras.php";
+	include_once "../model/resultados.php";
 	include_once "../model/torneos.categorias.php";
 
 	if(!session_is_registered("usuario")){
@@ -11,7 +12,7 @@
 	$menu = "Secciones";
 	
 	switch ($_POST["accion"]) {
-	
+		
 		case "password":
 			include("equipos.password.php");
 			exit;
@@ -57,6 +58,8 @@
 			break;
 
 		case "borrarjugadora":
+			$oObj = new Resultados();
+			$oObj->borrarByIdJugadoraEquipo($_POST["idJugadoraEquipo"]);
 			$oObj = new Jugadoras();
 			$oObj->borrarEquipo($_POST["idJugadoraEquipo"]);
 			include("equipos.jugadoras.php");

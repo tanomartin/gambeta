@@ -70,9 +70,6 @@
 		      <a href="#" title="Noticias"    onclick="this.blur(); ir('Noticias', '', 'noticias.php', 'noticias.php')">Noticias</a>
 	        </li>
 			<li>
-		      <a href="#" title="Beneficios"    onclick="this.blur(); ir('Beneficios', '', 'beneficios.php', 'beneficios.php')">Beneficios</a>
-	        </li>        
-			<li>
 		      <a href="#" title="Parametros"   onclick="this.blur(); ir('Par&aacute;metros', '', 'parametros.php', 'parametros.php')">Par&aacute;metros</a>
 	        </li>  
 			<li>

@@ -82,6 +82,7 @@
 						<div class="mod_listing ce_table listing block" id="partnerlist">
 							<form name="frm_listado" id="frm_listado" action="<?=$_SERVER['PHP_SELF']?>" method="post">
 								<input type="hidden" name="idTorneoEquipo" value="<?=$_POST["idTorneoEquipo"]?>" />
+								<input type="hidden" name="idTorneoCat" value="<?=$_POST["idTorneoCat"]?>" />
 								<input type="hidden" name="accion" value="" />
 								<input type="hidden" name="idJugadoraEquipo" value="" />
 				                <input type="hidden" name="activa" value="" />
@@ -112,7 +113,8 @@
 									<? } else { 
 										 	$total = count($jugadoras);	
 											$tt = $total - 1;
-											for ( $i = 0; $i < $total; $i++ ) {?>
+											for ( $i = 0; $i < $total; $i++ ) {
+												$estadisticasJugadora =  $oJugadora->getEstadisticas($jugadoras[$i]["idJugadoraEquipo"]);?>
 												<tr>
 							                     <td align="left"><?=$jugadoras[$i]["nombre"]?></td>
 												 <? if($jugadoras[$i]["activa"] == '1') {?>
@@ -120,9 +122,9 @@
 							                     <? } else { ?>
 														<td style="text-align: center;"><img border="0" src="../img/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/></td>
 												 <? } ?>
-												 <td style="text-align: center;"><?=$jugadoras[$i]["goles"]?></td>
-												 <td style="text-align: center;"><?=$jugadoras[$i]["amarillas"]?></td>
-							                     <td style="text-align: center;"><?=$jugadoras[$i]["rojas"]?></td>
+												 <td style="text-align: center;"><?=$estadisticasJugadora[0]["goles"]?></td>
+												 <td style="text-align: center;"><?=$estadisticasJugadora[0]["amarillas"]?></td>
+							                     <td style="text-align: center;"><?=$estadisticasJugadora[0]["rojas"]?></td>
 							                     <td nowrap>
 							                        <a href="javascript:borrarJugadora(<?=$jugadoras[$i]["idJugadoraEquipo"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
 												 </td>
