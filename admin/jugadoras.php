@@ -2,6 +2,7 @@
 	include_once "include/fechas.php";
 	include_once "../model/jugadoras.php";
 	include_once "../model/equipos.php";
+	include_once "../model/resultados.php";
 	include_once "../model/torneos.categorias.php";
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
@@ -53,6 +54,15 @@
 			} else {
 				$oObj->actualizarequipo($_POST);
 			}
+			include("jugadoras.equipos.php");
+			exit;
+			break;
+			
+		case "borrarerquipo":
+			$oObj = new Resultados();
+			$oObj->borrarByIdJugadoraEquipo($_POST["idJugadoraEquipo"]);
+			$oObj = new Jugadoras();
+			$oObj->borrarEquipo($_POST["idJugadoraEquipo"]);
 			include("jugadoras.equipos.php");
 			exit;
 			break;

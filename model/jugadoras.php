@@ -185,7 +185,7 @@ class Jugadoras {
 		}
 		$query = "insert into ga_jugadoras_equipo values ('DEFAULT',".
 				"'".$datos['id']."',".
-				"'".$datos['idEquipoTorneo']."','0','0','0',".
+				"'".$datos['idEquipoTorneo']."',".
 				"'".$datos['idPosicion']."',".
 				"'".$activo."')";
 		$db->query($query);

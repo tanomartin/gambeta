@@ -52,6 +52,14 @@
 			document.frm_listado.idJugadoraEquipo.value = idJugadoraEquipos;
 			document.frm_listado.submit();	
 		}
+
+		function borrar(idJugadoraEquipos){
+			if (confirm('Confirma que quiere eliminar la relacion con el equipo')) {
+				document.frm_listado.accion.value = "borrarerquipo";
+				document.frm_listado.idJugadoraEquipo.value = idJugadoraEquipos;
+				document.frm_listado.submit();
+			}
+		}
 	
 		function volver(){
 			document.frm_listado.accion.value = "volver";
