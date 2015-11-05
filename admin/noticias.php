@@ -75,9 +75,11 @@
 		}
 	
 		function borrar(id){
-			document.frm_listado.accion.value = "borrar";
-			document.frm_listado.id.value = id;
-			document.frm_listado.submit();
+			if (confirm('Confirma que quiere eliminar la noticia')) {
+				document.frm_listado.accion.value = "borrar";
+				document.frm_listado.id.value = id;
+				document.frm_listado.submit();
+			}
 		}
 	</script>
 </head>
