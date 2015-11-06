@@ -54,9 +54,9 @@
 	$cruce = array();
 	foreach ($equiposTorneo as $equipo1) {
 		foreach ($equiposTorneo as $equipo2) {
-			$jugaron = $oFixture -> jugaronEnContra($equipo1['id'], $equipo2['id'], $fecha[0]['idTorneoCat'], $_POST['id']);
-			$juegaEstaFecha = $oFixture -> juegaEstaFecha($equipo1['id'], $equipo2['id'], $fecha[0]['idTorneoCat'], $_POST['id']);
-			$id = $equipo1['id'].$equipo2['id'];
+			$jugaron = $oFixture -> jugaronEnContra($equipo1['idEquipoTorneo'], $equipo2['idEquipoTorneo'], $fecha[0]['idTorneoCat'], $_POST['id']);
+			$juegaEstaFecha = $oFixture -> juegaEstaFecha($equipo1['idEquipoTorneo'], $equipo2['idEquipoTorneo'], $fecha[0]['idTorneoCat'], $_POST['id']);
+			$id = $equipo1['idEquipoTorneo'].$equipo2['idEquipoTorneo'];
 			if ($jugaron) {
 				$cruce[$id] = "CCCCCC";
 			}
@@ -118,11 +118,11 @@
 			$c++;
 			$columna = chr($c); 
 			$celda = $columna.$i;
-			if ($equipo1['id'] == $equipo2['id']) {
+			if ($equipo1['idEquipoTorneo'] == $equipo2['idEquipoTorneo']) {
 				$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 				$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB('CE6C2B');
 			} else { 
-				$id = $equipo1['id'].$equipo2['id']; 
+				$id = $equipo1['idEquipoTorneo'].$equipo2['idEquipoTorneo']; 
 				if (array_key_exists($id,$cruce)) { 
 					$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 					$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB($cruce[$id]);

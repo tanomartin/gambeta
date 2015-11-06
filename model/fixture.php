@@ -170,9 +170,21 @@ class Fixture {
 	function getByFecha($fecha){
 		$db = new Db();
       	$query = "Select  
-      				x.*, e1.nombre as equipo1,e2.nombre as equipo2, s.nombre as sede, f.nombre as nombreFecha
+      				x.*, 
+      				e1.nombre as equipo1,
+      				e1.id as idEquipo1,
+      				e2.nombre as equipo2, 
+      				e2.id as idEquipo2,
+      				s.nombre as sede, 
+      				f.nombre as nombreFecha
 		          from 
-      				ga_fixture x, ga_fechas f,ga_sedes s, ga_equipos_torneos et1, ga_equipos_torneos et2, ga_equipos e1, ga_equipos e2 
+      				ga_fixture x, 
+      			    ga_fechas f,
+      				ga_sedes s, 
+      				ga_equipos_torneos et1, 
+      				ga_equipos_torneos et2, 
+      				ga_equipos e1, 
+      				ga_equipos e2 
 				  where 
       				x.idFecha = f.id and
 				  	x.idSede = s.id and
@@ -247,7 +259,7 @@ class Fixture {
 	
 	function partidoConfirmado($id_partido="", $id_equipo="") {
 		$db = new Db();
-		$query = "Select count(*) as cantidad from ga_partidos_confirmados where id_partido = $id_partido and id_equipo_torneo = $id_equipo";
+		$query = "Select count(*) as cantidad from ga_partidos_confirmados where id_partido = $id_partido and id_equipo = $id_equipo";
 		$res = $db->getRow($query); 
 		$db->close();
 		if($res->cantidad == 0) {

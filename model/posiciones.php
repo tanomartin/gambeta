@@ -88,9 +88,8 @@ class Posiciones {
 		$aFixture = $oObj1->getByidTorneoCat($idTorneoCat);
 		$oObj2 = new Equipos();
 		$aEquipos = $oObj2->getByCategoria($idTorneoCat);
-		$oObj3 = new Parametro();
-		$valorGanado = $oObj3->getByConstante('PARTIDO_GANADO');
-		$valorEmpatado = $oObj3->getByConstante('PARTIDO_EMPATADO');
+		$valorGanado = 3;
+		$valorEmpatado = 1;
 		if (sizeof($aEquipos) > 0) {
 			foreach($aEquipos as $key => $valor) {
 				$aEquipoR[$valor['id']]['nombre'] = $valor['nombre'];
