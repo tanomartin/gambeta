@@ -127,6 +127,7 @@ if ($resultados) {
 																<td>Goles</td>
 																<td>Amariila</td>
 																<td>Roja</td>
+																<td>M.J.</td>
 															</tr>
                     									 <? for($i=0;$i<count($aJugadoras1);$i++) { ?>
 	                   											<tr>
@@ -159,6 +160,7 @@ if ($resultados) {
 																<td>Goles</td>
 																<td>Amariila</td>
 																<td>Roja</td>
+																<td>M.J.</td>
 															</tr>
                     										<? for($i=0;$i<count($aJugadoras2);$i++) { ?>
 	                   											<tr>
@@ -166,7 +168,7 @@ if ($resultados) {
 																	<td><input name="<?= $aJugadoras2[$i][idJugadoraEquipo]?>_goles" type="text" size="5" value="<?= $aResultado[$aJugadoras2[$i][idJugadoraEquipo]][goles]  ?>" /></td>
 																	<td><input name="<?= $aJugadoras2[$i][idJugadoraEquipo]?>_amarillas" type="text" size="5" value="<?= $aResultado[$aJugadoras2[$i][idJugadoraEquipo]][amarilla]  ?>" /></td>
 																	<td><input name="<?= $aJugadoras2[$i][idJugadoraEquipo]?>_rojas" type="text" size="5" value="<?= $aResultado[$aJugadoras2[$i][idJugadoraEquipo]][roja]  ?>" /></td>
-																	 <td><input type="radio"  name="mejor_jugadora" value="<?= $aJugadoras2[$i][idJugadoraEquipo]?>" <? if ($aResultado[$aJugadoras2[$i][idJugadoraEquipo]][mejor] ==  'S') echo  'checked="checked"'; ?> ></td>                 
+																	<td><input type="radio"  name="mejor_jugadora" value="<?= $aJugadoras2[$i][idJugadoraEquipo]?>" <? if ($aResultado[$aJugadoras2[$i][idJugadoraEquipo]][mejor] ==  'S') echo  'checked="checked"'; ?> ></td>                 
 																</tr>
                     										<? } ?>   
                  										</table>

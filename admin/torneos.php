@@ -1,7 +1,6 @@
 <?	include_once "include/config.inc.php";
 	include_once "../model/torneos.php";
 	include_once "../model/torneos.categorias.php";
-	include_once "../model/pantallasFijas.php";
 	include_once "../model/categorias.php";
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
