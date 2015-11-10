@@ -95,7 +95,7 @@ class Equipoideal {
 		 		   	ei.idJugadora = je.idJugadora and
 		 		   	je.idJugadora = j.id and
 		 		   	ei.idPosicion = p.id
-		 		   order by je.idPosicion";
+		 		   order by ei.idPosicion";
 		$res = $db->getResults($query, ARRAY_A);	
 		$db->close();	
 		return $res;

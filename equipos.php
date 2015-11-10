@@ -174,21 +174,15 @@
             <div class="titulo_equipos color_<?= $color ?>">
               <?= strtoupper ($aEquipos[$i]['nombre']) ?>
             </div>
+            <div class="jugadoras" style="float:left">
             <? $oObj = new Jugadoras();
 			   $aJugadoras = $oObj->getByEquipoTorneo($equiposTorneo[0]['idEquipo'],$equiposTorneo[0]['idTorneoCat']);
-			   $j=0;
-			   while ($j < count($aJugadoras)) { ?>
-            <div class="jugadoras" style="width:165px; float:left">
-              <?= $aJugadoras[$j]['nombre'] ?>
-            </div>
-            <?  $j++;
-							  if ($j < count($aJugadoras)) { ?>
-            <div class="jugadoras" align="left"  style="float:right; width:165px;">
-              <?= $aJugadoras[$j]['nombre'] ?>
-            </div>
-            <? } $j++; ?>
-            <br />
-            <? }?>
+			   foreach($aJugadoras as $jugadora) {
+			   		if ($jugadora['activa'] == 1) { ?>
+            			<b><?= $jugadora['nombre'] ?></b>  [<?= $jugadora['posicion'] ?>]<br/>
+           	 	 <? } ?>
+       	   <?  } ?>
+       	  	</div>
           </div>
         </div>
         <? } ?>

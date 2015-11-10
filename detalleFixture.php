@@ -2,17 +2,10 @@
 	include_once "model/equipos.php";
 	include_once "model/torneos.php";
 	include_once "model/jugadoras.php";
-
 	$color = $_REQUEST["color"];
-
 	$oJugadoras = new Jugadoras();
-
-	$aJugadoras1 =  $oJugadoras->getByFixture($_REQUEST["id"], $_REQUEST["idEquipo1"] );
-
-//	print_r($aJugadoras1);
-
-	$aJugadoras2 =   $oJugadoras->getByFixture($_REQUEST["id"], $_REQUEST["idEquipo2"] );
-//print_r($aJugadoras1 );
+	$aJugadoras1 =  $oJugadoras->getByFixture($_REQUEST["id"], $_REQUEST["idEquipoTorneo1"] );
+	$aJugadoras2 =   $oJugadoras->getByFixture($_REQUEST["id"], $_REQUEST["idEquipoTorneo2"] );
 	$oEquipos = new Equipos();
 	$aEquipo1  = $oEquipos ->getById($_REQUEST["idEquipo1"]);
 	$aEquipo2  = $oEquipos ->getById($_REQUEST["idEquipo2"]);
@@ -110,13 +103,12 @@
 										   ?>
                                            <div id="fila" style="width:247px; height:30px; padding-top:10px; float:left;">
 									   			<div class="jugadoras1" style="height:30px;">
-													<?= $aJugadoras1[$i]['nombre'] ?></div>
+													<?= $aJugadoras1[$i]['nombre'] ?>
+													<? if($aJugadoras1[$i]['mejor_jugadora'] == 'S') { ?><img src="img/fixture_detalle/star.png" border="0" /><? } ?>
+												</div>
                                                 <div class="goles color_<?= $color ?>" style="height:30px; left:10px" ><?= $goles?></div>
                                                 <div class="tarjetas" style=" height:30px; left:40px"><?= $tarjeta_amarilla?></div>
-                                                <div class="tarjetas" style=" height:30px; left:65px"><?= $tarjeta_roja?></div>
-                                                <div class="tarjetas" style=" height:30px; left:70px">
-												<? if($aJugadoras1[$i]['mejor_jugadora'] == 'S') { ?><img src="img/fixture_detalle/star.png" border="0" /><? } ?>
-                                               </div>
+                                                <div class="tarjetas" style=" height:30px; left:65px; color: red"><?= $tarjeta_roja?></div>
                                            </div>
                                            <div class="detalle_desarrollo_linea1"  style="clear:both"></div>
 		                                 <? } ?>
@@ -130,13 +122,13 @@
 										   $tarjeta_roja = ($aJugadoras2[$i]['tarjeta_roja']>0)?$aJugadoras2[$i]['tarjeta_roja']:"";
 										   ?>
                                            <div id="fila" style="width:250px; height:30px; padding-left:10px;  padding-top:10px; float:left;">
-									   			<div class="jugadoras1" style="height:30px;"><?= $aJugadoras2[$i]['nombre'] ?></div>
+									   			<div class="jugadoras1" style="height:30px;">
+									   				<?= $aJugadoras2[$i]['nombre'] ?>
+									   				<? if($aJugadoras2[$i]['mejor_jugadora'] == 'S') { ?><img src="img/fixture_detalle/star.png" border="0" /><? } ?>
+									   			</div>
                                                 <div class="goles_1 color_<?= $color ?>" style="height:30px; left:5px"><?= $goles?></div>
-                                                <div class="tarjetas" style=" height:30px; left:30px"><?= $tarjeta_amarilla?></div>
-                                                <div class="tarjetas" style=" height:30px; left:55px"><?= $tarjeta_roja?></div>
-                                                <div class="tarjetas" style=" height:30px; left:60px">
-												<? if($aJugadoras2[$i]['mejor_jugadora'] == 'S') { ?><img src="img/fixture_detalle/star.png" border="0" /><? } ?>
-                                               </div>
+                                                <div class="tarjetas" style="height:30px; left:30px"><?= $tarjeta_amarilla?></div>
+                                                <div class="tarjetas" style="height:30px; left:55px; color: red"><?= $tarjeta_roja?></div>
                                            </div>
                                            <div class="detalle_desarrollo_linea"  style="clear:both"></div>
 		                                 <? } ?>

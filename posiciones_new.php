@@ -5,7 +5,6 @@
 	include_once "model/equipos.php";
 	include_once "model/fixture.php";
 	include_once "model/posiciones.php";
-	include_once "model/parametros.php";
 	
 	$modulo = "posiciones";
 

@@ -212,17 +212,20 @@ class Jugadoras {
 					j.*, 
 					e.nombre as equipo, 
 					je.id as idJugadoraEquipo, 
-					je.activa as activa
+					je.activa as activa,
+					p.nombre as posicion
 				  From 
 				  	ga_equipos_torneos et,
 					ga_jugadoras_equipo je, 
+					ga_posiciones p,
 					ga_jugadoras j,
 					ga_equipos e
 			      Where 
 					et.idEquipo = $idEquipo and et.idTorneoCat = $idTorneoCat and
 					et.id = je.idEquipoTorneo and
 					je.idJugadora = j.id and 
-					et.idEquipo = e.id" ;
+					et.idEquipo = e.id and
+					je.idPosicion = p.id";
 		$query .= " order by je.idPosicion";
 		$res = $db->getResults($query, ARRAY_A);
 		$db->close();
@@ -261,15 +264,13 @@ class Jugadoras {
 		$db->close();
 	}
 
-	function getByFixture($idFixture,$idEquipo) {
+	function getByFixture($idFixture,$idEquipoTorneo) {
 		$db = new Db();
-		$query = "Select j.*, r.*
-				  from ga_jugadoras j left join
-				  ga_resultados r
-				  on j.id = r.idJugadora
-				  where (idFixture = ". $idFixture. " or idFixture is null) and
-				 j.idEquipo = ".$idEquipo;
-		$query .= " order by j.idPosicion";
+		$query = "Select je.*, r.*, j.nombre
+				  from ga_jugadoras_equipo je left join ga_resultados r on je.id = r.idJugadoraEquipo, ga_jugadoras j
+				  where (idFixture = ". $idFixture. " or idFixture is null) 
+				  and je.idEquipoTorneo = ".$idEquipoTorneo." and je.idJugadora = j.id";
+		$query .= " order by je.idPosicion";
 		$res = $db->getResults($query, ARRAY_A);
 		$db->close();
 		return $res;

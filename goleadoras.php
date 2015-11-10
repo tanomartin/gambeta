@@ -3,8 +3,6 @@
 	include_once "model/torneos.php";
 	include_once "model/equipos.php";
 	include_once "model/resultados.php";	
-	include_once "model/pantallasFijas.php";
-	include_once "model/resultados.php";	
 	
 	$modulo = "goleadoras";
 

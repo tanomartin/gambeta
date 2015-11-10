@@ -17,26 +17,15 @@
 	$oObj = new TorneoCat();
 	$aCategorias = $oObj->getByTorneoSub($oTorneo->id_torneo);
 	$color = $oTorneo->color;
-
-	
 	
 	$oJugadora = new Jugadoras();
-
 	$oResultados = new Resultados();
-	
-
 	for($j=0;$j<count($aEquipos);$j++) {
-
-		$aJugadoras1 = $oJugadora->getByEquipoTorneo( $aEquipos[$j]['id']);		
-	
+		$aJugadoras1 = $oJugadora->getByEquipoTorneo( $aEquipos[$j]['id'], $_POST['id']);		
 		for ($i=0; $i<count($aJugadoras1); $i++) {
-		
-			$tarj =  $oResultados->getTarjetasByIdJugadora($aJugadoras1[$i][id]);
-			
+			$tarj =  $oResultados->getTarjetasByIdJugadoraEquipo($aJugadoras1[$i][idJugadoraEquipo]);
 			$arreglo[$aJugadoras1[$i][id]][amarillas] = ($tarj[0][amarillas])?$tarj[0][amarillas]:0;
-			
 			$arreglo[$aJugadoras1[$i][id]][rojas] = ($tarj[0][rojas])?$tarj[0][rojas]:0;		
-		
 		}
 	}
 

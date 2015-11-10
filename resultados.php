@@ -3,7 +3,6 @@
 	include_once "model/torneos.php";
 	include_once "model/equipos.php";
 	include_once "model/fixture.php";	
-	include_once "model/pantallasFijas.php";
 	
 	$modulo = "resultados";
 
@@ -21,9 +20,7 @@
 	$oObj1 = new Fixture();
 
 	if ($aEquipos) 
-		$aFixture = $oObj1->getByEquipoTorneo($_POST['id'],$aEquipos[0]['id']);
-
-
+		$aFixture = $oObj1->getByEquipoTorneo($_POST['id'],$aEquipos[0]['idEquipoTorneo']);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
@@ -118,14 +115,14 @@
 	}
 	
 	
-	function cambiarResultado(idEquipo){
+	function cambiarResultado(idEquipoTorneo){
 		var xhr;
 		xhr = createInstance();
 		xhr.open("POST","cargarResultado.php",false);
 		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 		var id = document.getElementById('id').value;
 		var color = document.getElementById('color').value;
-		xhr.send("id="+id+"&color="+color+"&idEquipo="+idEquipo);
+		xhr.send("id="+id+"&color="+color+"&idEquipoTorneo="+idEquipoTorneo);
 		window.document.getElementById("resultados").innerHTML = xhr.responseText;
 	}
 	
@@ -164,13 +161,11 @@
         <div id="titulo_principal">
           <div  style="float:center;height:43px" align="center">
             <? for ($i = 0; $i <count( $aTorneos ); $i++) { 
-                            if ( $oTorneo->id_torneo != $aTorneos[$i][id] ) {
-									$aCategoriasMenu = $oObj->getByTorneo( $aTorneos[$i][id],"id_categoria");
-									
-								?>
+                  if ( $oTorneo->id_torneo != $aTorneos[$i][id] ) {
+					$aCategoriasMenu = $oObj->getByTorneo( $aTorneos[$i][id],"id_categoria");?>
             <img title="<?= $aTorneos[$i][nombre]?>" width="50px" height="50px"  src="logos/<?= $aTorneos[$i][logoPrincipal]?>"  onclick="cambiar(<?= $aCategoriasMenu[0][id]?>)" style="cursor:pointer" />
-            <? } 
-                        } ?>
+            	<? } 
+                } ?>
           </div>
         </div>
         <div class="titulo_pagina color_titulo_<?= $color ?>" >
@@ -203,14 +198,13 @@
                             if ($i % 2 == 0 )
                             	$clase = "0";
                         ?>
-            <div id="linea" style="height:20px; width:125px; padding:7px; cursor:pointer" class="resultado_<?= $color ?>_<?= $clase?>" onclick="cambiarResultado(<?= $aEquipos[$i]['id'] ?>)" >
+            <div id="linea" style="height:20px; width:125px; padding:7px; cursor:pointer" class="resultado_<?= $color ?>_<?= $clase?>" onclick="cambiarResultado(<?= $aEquipos[$i]['idEquipoTorneo'] ?>)" >
               <?= $aEquipos[$i]['nombre'] ?>
             </div>
             <? } ?>
           </div>
           <div id="resultados" style="float:right; margin-left:10px" >
-            <? for ($i=0; $i<count($aFixture);$i++) { 
-                        ?>
+            <? for ($i=0; $i<count($aFixture);$i++) { ?>
             <div id="linea" style="height:19px; width:355px; padding:7px; border-top: #CCC 1px solid" >
               <? if ($aFixture[$i]['idEquipo1']  == $aEquipos[0]['id']) { ?>
               <div style="width:155px; text-align:left; float:left" class=" resultado_equipo resultado_color_<?=$color?>">

@@ -236,20 +236,21 @@ class Fixture {
 		return $datos;	
 	}
 
-	function getByEquipoTorneo($idTorneoCat,$idEquipo){
+	function getByEquipoTorneo($idTorneoCat,$idEquipoTorneo){
 		$db = new Db();
        	$query = "Select  
-       				x.* , e1.nombre as equipo1, e2.nombre as equipo2, ga_equipos_torneos et1, ga_equipos_torneos et2
+       				x.* , e1.nombre as equipo1, e2.nombre as equipo2
 		          from 
        				ga_fixture x, ga_fechas f,
-				  	ga_equipos e1, ga_equipos e2 
+				  	ga_equipos e1, ga_equipos e2,
+       				ga_equipos_torneos et1, ga_equipos_torneos et2
 				  where 
        				x.idFecha = f.id and
   				  	x.idEquipoTorneo1 = et1.id and
        				et1.idEquipo = e1.id and
 				  	x.idEquipoTorneo2 = et2.id and
        				et2.idEquipo = e2.id and 
-				  	(x.idEquipo1 = ".$idEquipo." or x.idEquipo2 = ".$idEquipo.") and 
+				  	(x.idEquipoTorneo1 = ".$idEquipoTorneo." or x.idEquipoTorneo2 = ".$idEquipoTorneo.") and 
 				 	f.idTorneoCat = ".$idTorneoCat."
 				  order by idFecha";
 		$datos = $db->getResults($query, ARRAY_A); 

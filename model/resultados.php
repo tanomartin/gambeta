@@ -102,17 +102,17 @@ class Resultados {
 	//TODO VER
 	function goleadoras($idTorneoCat) {
 		$db = new Db();
-		$query = "select r.idJugadora, j.nombre, eq.nombre as nombreEquipo, SUM(r.goles) + IFNULL(a.goles,0) as goles, count(*) as partidos  
-		          from ga_resultados r inner join ga_fixture fx on r.idFixture = fx.id 
-				  inner join ga_fechas f on fx.idFecha = f.id
-				  inner join ga_jugadoras j on r.idJugadora = j.id
-				  inner join ga_equipos eq on  j.idEquipo = eq.id
-				  inner join ga_torneos_categorias tc on f.idTorneoCat = tc.id
-				  left join  ga_goles_anteriores a
-				  on tc.id_torneo 	= a.id_torneo  and tc.id_categoria = a.id_categoria  and a.id_jugadora = j.id and a.id_equipo=  j.idEquipo
-				  where  f.idTorneoCat =  ".$idTorneoCat." 
-				  GROUP BY idJugadora, j.nombre,IFNULL(a.goles,0)
-				  order by 4 desc LIMIT 0,15";	  
+		$query = "select r.idJugadoraEquipo, j.nombre, e.nombre as nombreEquipo, SUM(r.goles) as goles, count(*) as partidos
+					from ga_resultados r
+					inner join ga_fixture fx on r.idFixture = fx.id
+					inner join ga_fechas f on fx.idFecha = f.id
+					inner join ga_jugadoras_equipo je on r.idJugadoraEquipo = je.id
+					inner join ga_jugadoras j on je.idJugadora = j.id
+					inner join ga_equipos_torneos et on je.idEquipoTorneo = et.id
+					inner join ga_equipos e on et.idEquipo = e.id
+					inner join ga_torneos_categorias tc on f.idTorneoCat = tc.id
+					where f.idTorneoCat = ".$idTorneoCat."
+					GROUP BY idJugadora, j.nombre order by 4 desc LIMIT 0,15";	  
 		$res = $db->getResults($query, ARRAY_A); 
 		$db->close();
 		return $res;	
@@ -120,9 +120,12 @@ class Resultados {
 	
 	function getTarjetasByIdJugadoraEquipo($idJugadoraEquipo="") {
 		$db = new Db();
-		$query = "Select sum(tarjeta_amarilla) amarillas, sum(tarjeta_roja) rojas
-				  from ga_resultados r, ga_fixture fx
-				  where r.idFixture = fx.id and idJugadoraEquipo = '$idJugadoraEquipo' ";
+		$query = "Select 
+					j.nombre, sum(tarjeta_amarilla) amarillas, sum(tarjeta_roja) rojas
+				  from 
+				  	ga_resultados r, ga_jugadoras_equipo je, ga_jugadoras j
+				  where 
+				  	je.id = '$idJugadoraEquipo' and je.id = r.idJugadoraEquipo and je.idJugadora = j.id";
 		$res = $db->getResults($query, ARRAY_A); 
 		$db->close();
 		return $res;

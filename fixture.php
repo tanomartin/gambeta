@@ -212,7 +212,7 @@
           </div>
         </div>
         <? for ($p=0; $p<count($aFixture); $p++) { ?>
-          <div title="Detalle del Partido" style="cursor: pointer;" id="partido_<?= $color ?>" onclick="detalle('detalleFixture.php?color=<?= $color ?>&idEquipo1=<?= $aFixture[$p][idEquipo1]?>&idEquipo2=<?= $aFixture[$p][idEquipo2]?>&id=<?= $aFixture[$p][id]?>&keepThis=true&TB_iframe=true&height=600&width=600')">
+          <div title="Detalle del Partido" style="cursor: pointer;" id="partido_<?= $color ?>" onclick="detalle('detalleFixture.php?color=<?= $color ?>&idEquipoTorneo1=<?= $aFixture[$p][idEquipoTorneo1]?>&idEquipo1=<?= $aFixture[$p][idEquipo1]?>&idEquipoTorneo2=<?= $aFixture[$p][idEquipoTorneo2]?>&idEquipo2=<?= $aFixture[$p][idEquipo2]?>&id=<?= $aFixture[$p][id]?>&keepThis=true&TB_iframe=true&height=600&width=600')">
 	          <div id="fixture_nro_partido"><? echo $p+1; ?></div>
 	          <div id="fixture_sede"><? echo strtoupper ($aFixture[$p]['sede']); ?></div>
 	          <div id="fixture_cancha"><? echo strtoupper ($aFixture[$p]['cancha']); ?></div>
