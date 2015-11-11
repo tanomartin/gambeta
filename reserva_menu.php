@@ -27,8 +27,8 @@
 
 	//OBTENGO EL EQUIPO
 	$oEquipo = new Equipos();
-	$equipo = $oEquipo->getEquipoTorneo($_SESSION['equipo'],$_SESSION['id']);
-
+	$equipo = $oEquipo->getByIdEquipoTorneo($_SESSION['equipoTorneo']);
+	
 	//OBTENGO LA FECHA ACTIVA
 	$oFechas = new Fechas();
 	$fecha_activa = $oFechas->getFechaActiva($_SESSION['id']);
