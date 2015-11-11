@@ -199,12 +199,12 @@ class Fixture {
 		return $datos;	
 	}
 	
-	function getByFechaEquipo($fecha, $equipo){
+	function getByFechaEquipo($fecha, $idEquipoTorneo){
 		$db = new Db();
        	$query = "Select  
-       				x.*, e1.nombre as equipo1, e2.nombre as equipo2, ga_equipos_torneos et1, ga_equipos_torneos et2, s.nombre as sede, f.nombre as nombreFecha
+       				x.*, e1.nombre as equipo1, e2.nombre as equipo2, s.nombre as sede, f.nombre as nombreFecha
 		          from 
-       				ga_fixture x, ga_fechas f,ga_sedes s, ga_equipos e1, ga_equipos e2 
+       				ga_fixture x, ga_fechas f,ga_sedes s, ga_equipos e1, ga_equipos e2, ga_equipos_torneos et1, ga_equipos_torneos et2
 				  where 
        				x.idFecha = f.id and
 				 	x.idSede = s.id and
@@ -214,7 +214,7 @@ class Fixture {
        				et2.idEquipo = e2.id and 
        				f.id=".$fecha." and 
        				x.horaPartido != '__:__' and 
-       				(x.idEquipo1 =".$equipo." || x.idEquipo2=".$equipo.")";
+       				(x.idEquipoTorneo1 =".$idEquipoTorneo." || x.idEquipoTorneo2=".$idEquipoTorneo.")";
 		$query.= " order by  horaPartido DESC";
 		$datos = $db->getResults($query, ARRAY_A); 
 		$db->close();

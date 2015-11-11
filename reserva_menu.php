@@ -13,7 +13,7 @@
 		header("Location: index.php");
 		exit;
 	}
-	
+		
 	//OBTENGO EL TORENO CON SU ZONA Y CATETEGORIA
 	$oObj = new Torneos();
 	$oTorneo = $oObj->getByTorneoCat($_SESSION['id']);
@@ -27,8 +27,8 @@
 
 	//OBTENGO EL EQUIPO
 	$oEquipo = new Equipos();
-	$equipo = $oEquipo->getById($_SESSION['equipo']);
-	
+	$equipo = $oEquipo->getEquipoTorneo($_SESSION['equipo'],$_SESSION['id']);
+
 	//OBTENGO LA FECHA ACTIVA
 	$oFechas = new Fechas();
 	$fecha_activa = $oFechas->getFechaActiva($_SESSION['id']);
@@ -37,7 +37,7 @@
 	if ($fecha_activa!=NULL) {
 		//VEO SI YA EXISTE PARTIDO
 		$oFixture = new Fixture();
-		$partido = $oFixture->getByFechaEquipo($fecha_activa["id"],$_SESSION['equipo']);
+		$partido = $oFixture->getByFechaEquipo($fecha_activa["id"],$equipo[0]['id']);
 		//VEO SI EXISTE UNA RESERVA PARA ESTE EQUIPO
 		if ($partido == NULL) {	
 			$idReserva = $oEquipo->tieneReserva($fecha_activa["id"],$_SESSION['equipo']);
@@ -243,7 +243,7 @@ function confirmarPartido(idPartido) {
 				<br/>
 			   	<div id="reserva">	
 					<div class="titulo_reserva color_titulo_reserva_<?= $color ?>" style="float:left;">
-						<font color="#000000"><?= strtoupper ($equipo->nombre) ?></font> | <? echo $fecha_activa["nombre"] ?>
+						<font color="#000000"><?= strtoupper ($equipo[0]['nombre']) ?></font> | <? echo $fecha_activa["nombre"] ?>
 					</div>
 					<a class="enlace" href="#" onclick="logout()"><img src="img/icon-logout.png" title="salir" width="40" height="40" border="0" alt="enviar" style="float:right" /></a><br />
 					<br />
@@ -333,7 +333,7 @@ function confirmarPartido(idPartido) {
 									<div id="fixture_cancha"><?= strtoupper ($partido[$p]['cancha']); ?></div>
 									<div id="fixture_equipo1"><?= strtoupper ($partido[$p]['equipo1']); ?></div>
 									<? 
-									if($partido[$p]['idEquipo1'] == $_SESSION['equipo']) {
+									if($partido[$p]['idEquipoTorneo1'] == $_SESSION['equipoTorneo']) {
 										$confirmado = $oFixture->partidoConfirmado($partido[$p]['id'],$_SESSION['equipo']);
 										if(!$confirmado) { ?>
 											<div id="fixture_resultado1" style="margin-left:-55px"> 
@@ -347,7 +347,7 @@ function confirmarPartido(idPartido) {
 									<div id="fixture_fechaPartido" class="fixture_color_<?= $color ?>"><?= cambiaf_a_normal($partido[$p]['fechaPartido']); ?></div>
 									<div id="fixture_equipo2"><?= strtoupper ($partido[$p]['equipo2']); ?></div>
 									<? 
-									if($partido[$p]['idEquipo2'] == $_SESSION['equipo']) {
+									if($partido[$p]['idEquipoTorneo2'] == $_SESSION['equipoTorneo']) {
 										$confirmado = $oFixture->partidoConfirmado($partido[$p]['id'],$_SESSION['equipo']);
 										if(!$confirmado) { ?>
 											<div id="fixture_resultado2" style="margin-left:-55px; margin-top:5px"> 

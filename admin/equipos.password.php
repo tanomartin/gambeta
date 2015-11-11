@@ -12,6 +12,7 @@
 	$oEquipo= new Equipos();
 	$datos = $oEquipo->get($_POST["id"]);
 	$datosTorneo = $oEquipo->getRelacionTorneo($_POST["idTorneoEquipo"]);
+	$datosPass = $oEquipo->getPassword($_POST["idTorneoEquipo"]);
 
 ?>
 
@@ -87,7 +88,7 @@
 											      </tr>  
 												   <tr class="odd">
 											        <td class="col_0 col_first"><label for="nombre">Contraseña</label><span class="mandatory">*</span></td>
-													<td class="col_1 col_last"><input type="text" name="pass" id="pass" class="required text"/></td>    
+													<td class="col_1 col_last"><input type="text" name="pass" id="pass" value="<?=$datosPass[0]['password']?>" class="required text"/></td>    
 											      </tr>  
 												</tbody>
 											</table>

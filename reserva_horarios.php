@@ -215,10 +215,10 @@
               <select name="equipo" id="equipo">
                 <option value="0" selected="selected">Seleccione Su Equipo</option>
                 <? if($aEquipos != NULL) {
-									 foreach ($aEquipos as $equipo) { ?>
-                <option value="<? echo $equipo['id']?>"><? echo $equipo['nombre']?> </option>
-                <?	}	
-							  }?>
+						foreach ($aEquipos as $equipo) { ?>
+                			<option value="<? echo $equipo['id']?>"><? echo $equipo['nombre']?> </option>
+                	<?	}	
+				 }?>
               </select>
             </p>
             <p>

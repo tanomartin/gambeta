@@ -8,6 +8,7 @@
 		if ($ingresa) {
 			$respuesta = 0;
 			session_start();
+			$_SESSION['equipoTorneo'] = $torneoEquipo[0]['id'];
 			$_SESSION['equipo'] = $_POST['equipo'];
 			$_SESSION['id'] = $_POST['id'];
 		} else { 

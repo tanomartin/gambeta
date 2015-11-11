@@ -148,9 +148,9 @@ class Equipos {
 	
 	function getEquipoTorneo($idEquipo="",$idTorneoCat="") {		
 		$db = new Db();
-		$query = "Select * 
-				  from ga_equipos_torneos 
-				  where idEquipo = ". $idEquipo ." and idTorneoCat = ".$idTorneoCat;		
+		$query = "Select et.*, e.nombre 
+				  from ga_equipos_torneos et, ga_equipos e
+				  where et.idEquipo = ". $idEquipo ." and et.idTorneoCat = ".$idTorneoCat." and et.idEquipo = e.id";		
 		$res = $db->getResults($query, ARRAY_A);		
 		$db->close();		
 		return $res;	
@@ -263,7 +263,7 @@ class Equipos {
 	
 	function accesoCorrecto($id="", $idTorneo="", $pass="") {
 		$db = new Db();	
-		$query = "Select count(*) as cantidad from ga_equipos_password e where id = '$idTorneo' and idEquipo = '$id' and password = '".md5($pass)."'";
+		$query = "Select count(*) as cantidad from ga_equipos_password e where id = '$idTorneo' and idEquipo = '$id' and password = '".$pass."'";
 		$res = $db->getRow($query); 
 		$db->close();
 		if($res->cantidad == 0) {
@@ -311,7 +311,7 @@ class Equipos {
 		$db = new Db();
 		$query = "Delete from ga_equipos_password where id = $idTorneoEquipo";	
 		$db->query($query);	
-		$query = "Insert into ga_equipos_password value ($idTorneoEquipo,$idEquipo,'".md5($pass)."')";
+		$query = "Insert into ga_equipos_password value ($idTorneoEquipo,$idEquipo,'".$pass."')";
 		$db->query($query);
 		$db->close();
 	}
