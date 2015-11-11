@@ -73,102 +73,117 @@
 	<link rel="stylesheet" href="css/equipos.css" type="text/css"/>
 	<link rel="stylesheet" href="css/fixture.css" type="text/css"/>
 	
-<style type="text/css">
-
-	#cabezal1 {
-		width:999px;
-		margin:0 auto 0 auto;
-	}
-
-	#menu_izq1 {
-		float:left;
-		width:166px;
-		margin-left: 55px;
-		clear: both;
-	}
-
-	#imagen {
-		float:left;		
-		width:570px;
-		margin-top:5px;
-		margin-left:-25px;
-	}
-
-	#categorias {
-		position:relative;		
-		width:520px;
-		height:54px;
-		margin-left:50px
+	<style type="text/css">
+	
+		#cabezal1 {
+			width:999px;
+			margin:0 auto 0 auto;
+		}
+	
+		#menu_izq1 {
+			float:left;
+			width:166px;
+			margin-left: 55px;
+			clear: both;
+		}
+	
+		#imagen {
+			float:left;		
+			width:570px;
+			margin-top:5px;
+			margin-left:-25px;
+		}
+	
+		#categorias {
+			position:relative;		
+			width:520px;
+			height:54px;
+			margin-left:50px
+			
+		}
 		
+		#reserva {
+			position:relative;		
+			width:520px;
+			height:54px;
+			margin-left:50px
+			
+		}
+	
+		#titulo_principal{
+			position:relative;
+			width:520px;
+			height:54px;
+			margin-left:50px
+		}
+	
+	</style> 
+	
+	<script type="text/javascript" src="_js/funciones.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script>
+	
+	function controlLibre() {
+	 	$('#error').html("");
+		var grupo = document.getElementById("carga_reserva").horas;
+		var controlCheck = 0;
+		for (var i = 0; lcheck = grupo[i]; i++) {
+	        if (lcheck.checked) {
+	            controlCheck = 1;
+	        }
+	    }
+		if (controlCheck == 1) {
+			document.getElementById("libre").disabled = true;
+		} else {
+			document.getElementById("libre").disabled = false;
+		}
 	}
 	
-	#reserva {
-		position:relative;		
-		width:520px;
-		height:54px;
-		margin-left:50px
-		
-	}
-
-	#titulo_principal{
-		position:relative;
-		width:520px;
-		height:54px;
-		margin-left:50px
-	}
-
-</style> 
-<script type="text/javascript" src="_js/funciones.js"></script>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script>
-
-function controlLibre() {
- 	$('#error').html("");
-	var grupo = document.getElementById("carga_reserva").horas;
-	var controlCheck = 0;
-	for (var i = 0; lcheck = grupo[i]; i++) {
-        if (lcheck.checked) {
-            controlCheck = 1;
-        }
-    }
-	if (controlCheck == 1) {
-		document.getElementById("libre").disabled = true;
-	} else {
-		document.getElementById("libre").disabled = false;
-	}
-}
-
-function controlHoras() {
-	$('#error').html("");
-	var libre = document.getElementById("libre");
-	var grupo = document.getElementById("carga_reserva").horas;
-	var total = grupo.length;
-	if (libre.checked) { 	
-		if (total == null) {
-			grupo.disabled = true;
-		} else {
-			for (var i = 0; lcheck = grupo[i]; i++) {
-				lcheck.disabled = true;
-			}
-		}
-	 } else {
-	 	if (total == null) {
-			grupo.disabled = false;
-		} else {
-			for (i = 0; lcheck = grupo[i]; i++) {
-				lcheck.disabled = false;
-			}
-		}
-	 }
-}
-
-function validar(formulario) {
-	$('#error').html("");
-	var libre = document.getElementById("libre");
-	var grupo = document.getElementById("carga_reserva").horas;
-	if (libre != null) {
+	function controlHoras() {
+		$('#error').html("");
+		var libre = document.getElementById("libre");
+		var grupo = document.getElementById("carga_reserva").horas;
+		var total = grupo.length;
 		if (libre.checked) { 	
-			return true;
+			if (total == null) {
+				grupo.disabled = true;
+			} else {
+				for (var i = 0; lcheck = grupo[i]; i++) {
+					lcheck.disabled = true;
+				}
+			}
+		 } else {
+		 	if (total == null) {
+				grupo.disabled = false;
+			} else {
+				for (i = 0; lcheck = grupo[i]; i++) {
+					lcheck.disabled = false;
+				}
+			}
+		 }
+	}
+	
+	function validar(formulario) {
+		$('#error').html("");
+		var libre = document.getElementById("libre");
+		var grupo = document.getElementById("carga_reserva").horas;
+		if (libre != null) {
+			if (libre.checked) { 	
+				return true;
+			} else {
+				var controlCheck = 0;
+				for (var i = 0; lcheck = grupo[i]; i++) {
+					if (lcheck.checked) {
+						controlCheck++;
+					}
+				}
+				if (controlCheck < 4) {
+					$('#error').html("* Debe seleccionar como mínimo 4 horas");
+					return false;
+				} else {
+					return true;
+				}
+			}	
 		} else {
 			var controlCheck = 0;
 			for (var i = 0; lcheck = grupo[i]; i++) {
@@ -182,36 +197,21 @@ function validar(formulario) {
 			} else {
 				return true;
 			}
-		}	
-	} else {
-		var controlCheck = 0;
-		for (var i = 0; lcheck = grupo[i]; i++) {
-			if (lcheck.checked) {
-				controlCheck++;
-			}
-		}
-		if (controlCheck < 4) {
-			$('#error').html("* Debe seleccionar como mínimo 4 horas");
-			return false;
-		} else {
-			return true;
 		}
 	}
-}
-
-function logout() {
-	var direccion = "logout.php";
-	location.href = direccion;
-}
-
-
-function confirmarPartido(idPartido) {
-	var direccion = "reserva_confirma_partido.php?idPartido="+idPartido;
-	location.href=direccion;
-}
-
-
-</script>
+	
+	function logout() {
+		var direccion = "logout.php";
+		location.href = direccion;
+	}
+	
+	
+	function confirmarPartido(idPartido) {
+		var direccion = "reserva_confirma_partido.php?idPartido="+idPartido;
+		location.href=direccion;
+	}
+	
+	</script>
 </head>
    
 <body bgcolor="#FFFFFF" style=" width:100%; height:100%" >
@@ -312,7 +312,7 @@ function confirmarPartido(idPartido) {
 											<div class="titulo_reserva" style="float:left;">
 												Observación: <?= $reserva->observacion ?>
 											</div>
-							 <?			} else {
+									 <?	} else {
 											if (!$puedeReservar) {
 												print("<font color=blue><b> Ha concluido el tiempo para poder realizar la preferencia horaria.<BR> En breve, podras ver el partido publicado</b></font>");
 											} else {
@@ -320,10 +320,8 @@ function confirmarPartido(idPartido) {
 											}
 										} 
 									} 
-								} 
-								?>
-								</div>
-								
+								} ?>
+								</div>	
 						<? } else { ?>
 							 	<div class="titulo_reserva" style="float:left;">Confirmarción de Partido</div>
 							 <? for ($p=0; $p<count($partido); $p++) { ?>	
