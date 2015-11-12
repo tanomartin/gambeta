@@ -165,8 +165,7 @@
 								<tr>
 									<th>Hora</th>
 									<th>Torneo</th>                                      
-									<th>Equipo 1</th>                                                           
-									<th>Equipo 2</th> 
+									<th style="text-align: center;">Equipo 1 vs Equipo 2</th>
 									<th width="5%">Cancha</th> 
 									<th>Juez</th>                                        
 									<th>Conf.</th>  
@@ -176,8 +175,7 @@
 									<tr>
 									 <td><?=$partido["horaPartido"]?></td>
 									 <td><?=$partido["torneo"]."-".$partido["categoria"].$partido["zona"]?></td>
-									 <td><?=$partido["equipo1"]?></td>
-									 <td><?=$partido["equipo2"]?></td>
+									 <td style="text-align: center;"><?=$partido["equipo1"]." vs ".$partido["equipo2"]?></td>
 									 <td style="text-align:center"><?=$partido["cancha"]?></td>
 									 <td></td>
 									 <td style="text-align:center">

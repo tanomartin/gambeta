@@ -183,9 +183,9 @@
 													</td>
 												</tr>
 												<tr class="odd">
-													<td class="col_0 col_first"><label for="nombre">Arbitro</label><span class="mandatory">*</span></td>
+													<td class="col_0 col_first"><label for="nombre">Arbitro</label></td>
 													<td class="col_1 col_last">
-														<select name="idArbitro" id='idArbitro' <?= $disabled ?> class="validate-selection">
+														<select name="idArbitro" id='idArbitro' <?= $disabled ?>>
 															<option value="-1">Seleccione un Arbitro...</option>
 														<?php for($i=0;$i<count($aArbitros);$i++) { ?>	
 																<option value="<?php echo $aArbitros[$i]['id'] ?>" <?php if ($datos[0]["idArbitro"] == $aArbitros[$i]['id'] ) echo "selected"; ?>>
@@ -244,10 +244,10 @@
 													</td>
 												</tr>
 												<tr class="even">
-													<td class="col_0 col_first"><label for="nombre">Suspendido</label></td>
+													<td class="col_0 col_first"><label for="nombre">Walkover</label></td>
 													<td class="col_1 col_last">
-														<input name="suspendido" id="suspendido" type="checkbox" <?= $disabled?>
-														<? if ($datos[0]['suspendido'] == 1 ){ ?> checked="checked" <? } ?>/> Si
+														<input name="walkover" id="walkover" type="checkbox" <?= $disabled?>
+														<? if ($datos[0]['walkover'] == 1 ){ ?> checked="checked" <? } ?>/> Si
 													</td>
 												</tr>
 												<tr class="odd">

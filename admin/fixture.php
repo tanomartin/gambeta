@@ -42,18 +42,26 @@
 		case "guardarResultado" :
 			$i = 0;
 			foreach($_POST as $clave => $resul) {	
-				$pos = strpos($clave, '_id');
+				$pos = strpos($clave, '_id1');
 				if ($pos !== false) {
-					$jugadoras[$i] = $resul;
+					$jugadoras1[$i] = $resul;
+					$i++;
+				}
+				$pos = strpos($clave, '_id2');
+				if ($pos !== false) {
+					$jugadoras2[$i] = $resul;
 					$i++;
 				}
 			}
-			foreach($jugadoras as $jugadoraEquipo) {
-				$idGoles = $jugadoraEquipo."_goles";		
+			
+			$golesT1 = 0;
+			$golesT2 = 0;
+			foreach($jugadoras1 as $jugadoraEquipo) {
+				$idGoles = $jugadoraEquipo."_goles1";		
 				$goles = ($_POST [$idGoles]) ? $_POST [$idGoles] : 0;
-				$idTarAma = $jugadoraEquipo."_amarillas";
+				$idTarAma = $jugadoraEquipo."_amarillas1";
 				$amarillas = ($_POST [$idTarAma]) ? $_POST [$idTarAma] : 0;
-				$idTarRoj = $jugadoraEquipo."_rojas";
+				$idTarRoj = $jugadoraEquipo."_rojas1";
 				$rojas = ($_POST [$idTarRoj]) ? $_POST [$idTarRoj] : 0;
 				$mejor_jugadora = ( $jugadoraEquipo == $_POST['mejor_jugadora'])? 'S' : 'N';
 				$valores[$jugadoraEquipo] = array('idFixture' => $_POST ['idFixture'], 
@@ -62,6 +70,25 @@
 												  'tarjeta_amarilla' => (int)$amarillas,
 												  'tarjeta_roja' => (int)$rojas,
 												  'mejor_jugadora' => $mejor_jugadora);
+			
+				$golesT1 += ($goles>0)?$goles:0;
+			}
+			foreach($jugadoras2 as $jugadoraEquipo) {	
+				$idGoles = $jugadoraEquipo."_goles2";
+				$goles = ($_POST [$idGoles]) ? $_POST [$idGoles] : 0;
+				$idTarAma = $jugadoraEquipo."_amarillas2";
+				$amarillas = ($_POST [$idTarAma]) ? $_POST [$idTarAma] : 0;
+				$idTarRoj = $jugadoraEquipo."_rojas2";
+				$rojas = ($_POST [$idTarRoj]) ? $_POST [$idTarRoj] : 0;
+				$mejor_jugadora = ( $jugadoraEquipo == $_POST['mejor_jugadora'])? 'S' : 'N';
+				$valores[$jugadoraEquipo] = array('idFixture' => $_POST ['idFixture'],
+						'idJugadoraEquipo' => $jugadoraEquipo,
+						'goles' => (int)$goles,
+						'tarjeta_amarilla' => (int)$amarillas,
+						'tarjeta_roja' => (int)$rojas,
+						'mejor_jugadora' => $mejor_jugadora);
+				
+				$golesT2 += ($goles>0)?$goles:0;
 			}
 			$oObj = new Resultados();
 			$oObj->borrarByIdFixture($_POST ['idFixture']);
@@ -70,8 +97,8 @@
 				$oObj->insertar();
 			}	
 			$oFix = new Fixture ();
-			$oFix->modicarCampoValor ( "golesEquipo1", $_POST['golesEquipo1'], "id", $_POST['idFixture'] );
-			$oFix->modicarCampoValor ( "golesEquipo2", $_POST['golesEquipo2'], "id", $_POST['idFixture'] );
+			$oFix->modicarCampoValor ( "golesEquipo1", $golesT1, "id", $_POST['idFixture'] );
+			$oFix->modicarCampoValor ( "golesEquipo2", $golesT2, "id", $_POST['idFixture'] );
 			break;
 		
 		case "borrar" :

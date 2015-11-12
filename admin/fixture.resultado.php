@@ -114,10 +114,6 @@ if ($resultados) {
 													<td class="col_0 col_first"><label for="nombre">Equipo #1 </label></td>
 													<td class="col_1 col_last"><?= $aEquipos1[0]["nombre"] ?></td>
 												</tr>
-												<tr class="even">
-													<td class="col_0 col_first"><label for="nombre">Goles Equipo #1 </label></td>
-													<td class="col_1 col_last"><input id="golesEquipo1" name="golesEquipo1" type="text" value="<?= $datos[0]["golesEquipo1"] ?>" size="5" /></td>
-												</tr>
 												<tr class="odd">
 													<td class="col_0 col_first"><label for="nombre">Detalle Por Jugadoras</label></td>
 													<td class="col_1 col_last">
@@ -131,10 +127,10 @@ if ($resultados) {
 															</tr>
                     									 <? for($i=0;$i<count($aJugadoras1);$i++) { ?>
 	                   											<tr>
-																	<td><?= $aJugadoras1[$i][nombre]?><input name="<?= $aJugadoras1[$i][idJugadoraEquipo]?>_id" style="visibility: hidden;" type="text" size="5" value="<?= $aJugadoras1[$i][idJugadoraEquipo] ?>"/></td>
-																	<td><input name="<?= $aJugadoras1[$i][idJugadoraEquipo]?>_goles" type="text" size="5" value="<?= $aResultado[$aJugadoras1[$i][idJugadoraEquipo]][goles]  ?>" /></td>
-																	<td><input name="<?= $aJugadoras1[$i][idJugadoraEquipo]?>_amarillas" type="text" size="5" value="<?= $aResultado[$aJugadoras1[$i][idJugadoraEquipo]][amarilla]  ?>" /></td>
-																	<td><input name="<?= $aJugadoras1[$i][idJugadoraEquipo]?>_rojas" type="text" size="5" value="<?= $aResultado[$aJugadoras1[$i][idJugadoraEquipo]][roja]  ?>" /></td>
+																	<td><?= $aJugadoras1[$i][nombre]?><input name="<?= $aJugadoras1[$i][idJugadoraEquipo]?>_id1" style="visibility: hidden;" type="text" size="5" value="<?= $aJugadoras1[$i][idJugadoraEquipo] ?>"/></td>
+																	<td><input name="<?= $aJugadoras1[$i][idJugadoraEquipo]?>_goles1" type="text" size="5" value="<?= $aResultado[$aJugadoras1[$i][idJugadoraEquipo]][goles]  ?>" /></td>
+																	<td><input name="<?= $aJugadoras1[$i][idJugadoraEquipo]?>_amarillas1" type="text" size="5" value="<?= $aResultado[$aJugadoras1[$i][idJugadoraEquipo]][amarilla]  ?>" /></td>
+																	<td><input name="<?= $aJugadoras1[$i][idJugadoraEquipo]?>_rojas1" type="text" size="5" value="<?= $aResultado[$aJugadoras1[$i][idJugadoraEquipo]][roja]  ?>" /></td>
 																	<td><input type="radio"  name="mejor_jugadora" value="<?= $aJugadoras1[$i][idJugadoraEquipo]?>" <? if ($aResultado[$aJugadoras1[$i][idJugadoraEquipo]][mejor] ==  'S') echo  'checked="checked"'; ?> ></td>
 																</tr>
                     									  <? } ?>   
@@ -144,12 +140,6 @@ if ($resultados) {
 												<tr class="even">
 													<td class="col_0 col_first"><label for="nombre">Equipo #2 </label><span class="mandatory">*</span></td>
 													<td class="col_1 col_last"><?= $aEquipos2[0]["nombre"]?> </td>
-												</tr>
-												<tr class="even">
-													<td class="col_0 col_first"><label for="nombre">Goles Equipo #2 </label></td>
-													<td class="col_1 col_last">
-														<input  type="text" id="golesEquipo2" name="golesEquipo2" value="<?= $datos[0]["golesEquipo2"] ?>" size="5" />
-													</td>
 												</tr>
 												<tr class="odd">
 													<td class="col_0 col_first"><label for="nombre">Detalle Por Jugadoras</label></td>
@@ -164,10 +154,10 @@ if ($resultados) {
 															</tr>
                     										<? for($i=0;$i<count($aJugadoras2);$i++) { ?>
 	                   											<tr>
-																	<td><?= $aJugadoras2[$i][nombre]?><input name="<?= $aJugadoras2[$i][idJugadoraEquipo]?>_id" style="visibility: hidden;" type="text" size="5" value="<?= $aJugadoras2[$i][idJugadoraEquipo] ?>"/></td>
-																	<td><input name="<?= $aJugadoras2[$i][idJugadoraEquipo]?>_goles" type="text" size="5" value="<?= $aResultado[$aJugadoras2[$i][idJugadoraEquipo]][goles]  ?>" /></td>
-																	<td><input name="<?= $aJugadoras2[$i][idJugadoraEquipo]?>_amarillas" type="text" size="5" value="<?= $aResultado[$aJugadoras2[$i][idJugadoraEquipo]][amarilla]  ?>" /></td>
-																	<td><input name="<?= $aJugadoras2[$i][idJugadoraEquipo]?>_rojas" type="text" size="5" value="<?= $aResultado[$aJugadoras2[$i][idJugadoraEquipo]][roja]  ?>" /></td>
+																	<td><?= $aJugadoras2[$i][nombre]?><input name="<?= $aJugadoras2[$i][idJugadoraEquipo]?>_id2" style="visibility: hidden;" type="text" size="5" value="<?= $aJugadoras2[$i][idJugadoraEquipo] ?>"/></td>
+																	<td><input name="<?= $aJugadoras2[$i][idJugadoraEquipo]?>_goles2" type="text" size="5" value="<?= $aResultado[$aJugadoras2[$i][idJugadoraEquipo]][goles]  ?>" /></td>
+																	<td><input name="<?= $aJugadoras2[$i][idJugadoraEquipo]?>_amarillas2" type="text" size="5" value="<?= $aResultado[$aJugadoras2[$i][idJugadoraEquipo]][amarilla]  ?>" /></td>
+																	<td><input name="<?= $aJugadoras2[$i][idJugadoraEquipo]?>_rojas2" type="text" size="5" value="<?= $aResultado[$aJugadoras2[$i][idJugadoraEquipo]][roja]  ?>" /></td>
 																	<td><input type="radio"  name="mejor_jugadora" value="<?= $aJugadoras2[$i][idJugadoraEquipo]?>" <? if ($aResultado[$aJugadoras2[$i][idJugadoraEquipo]][mejor] ==  'S') echo  'checked="checked"'; ?> ></td>                 
 																</tr>
                     										<? } ?>   
