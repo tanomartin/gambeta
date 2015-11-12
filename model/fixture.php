@@ -337,7 +337,8 @@ class Fixture {
 					x.cancha as cancha,
 					t.nombre as torneo, 
 					c.nombrePagina as categoria,
-					tc.id_padre as idzona
+					tc.id_padre as idzona,
+					a.nombre as arbitro
 		          from 
 				    ga_fixture x, 
 					ga_fechas f, 
@@ -347,7 +348,8 @@ class Fixture {
 					ga_equipos_torneos et1, 
 					ga_equipos e2, 
 					ga_equipos_torneos et2, 
-					ga_categorias c
+					ga_categorias c,
+					ga_arbitros a
 				  where 
 				    x.fechaPartido = '$fechaPartido' and 
 				    x.idSede = $idSede and
@@ -358,7 +360,8 @@ class Fixture {
 				    et2.idEquipo = e2.id and
 				    f.idTorneoCat = tc.id and
 				    tc.id_torneo = t.id and
-				    tc.id_categoria = c.id
+				    tc.id_categoria = c.id and
+				    x.idArbitro = a.id
 				  order 
 				    by x.horaPartido ASC";
 		$datos = $db->getResults($query, ARRAY_A); 
