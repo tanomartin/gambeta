@@ -97,17 +97,17 @@
                       <div id="left" style=" width:265px; border-right: 2px solid #CCCCCC; position:absolute; left:45px; top: 75px">
                                       	   <? for ($i=0; $i< count($aJugadoras1 ); $i++) {
 
-										 $goles = ($aJugadoras1[$i]['goles']>0)?$aJugadoras1[$i]['goles']:"";
-										   $tarjeta_amarilla = ($aJugadoras1[$i]['tarjeta_amarilla']>0)?$aJugadoras1[$i]['tarjeta_amarilla']:"";
-										   $tarjeta_roja = ($aJugadoras1[$i]['tarjeta_roja']>0)?$aJugadoras1[$i]['tarjeta_roja']:"";
+										 $goles = ($aJugadoras1[$i]['goles']>0)?$aJugadoras1[$i]['goles']:"-";
+										   $tarjeta_amarilla = ($aJugadoras1[$i]['tarjeta_amarilla']>0)?$aJugadoras1[$i]['tarjeta_amarilla']:"-";
+										   $tarjeta_roja = ($aJugadoras1[$i]['tarjeta_roja']>0)?$aJugadoras1[$i]['tarjeta_roja']:"-";
 										   ?>
                                            <div id="fila" style="width:247px; height:30px; padding-top:10px; float:left;">
 									   			<div class="jugadoras1" style="height:30px;">
 													<?= $aJugadoras1[$i]['nombre'] ?>
 													<? if($aJugadoras1[$i]['mejor_jugadora'] == 'S') { ?><img src="img/fixture_detalle/star.png" border="0" /><? } ?>
 												</div>
-                                                <div class="goles color_<?= $color ?>" style="height:30px; left:10px" ><?= $goles?></div>
-                                                <div class="tarjetas" style=" height:30px; left:40px"><?= $tarjeta_amarilla?></div>
+                                                <div class="goles color_<?= $color ?>" style="height:30px; left:5px" ><?= $goles?></div>
+                                                <div class="tarjetas" style=" height:30px; left:40px; color: #FFBF00"><?= $tarjeta_amarilla?></div>
                                                 <div class="tarjetas" style=" height:30px; left:65px; color: red"><?= $tarjeta_roja?></div>
                                            </div>
                                            <div class="detalle_desarrollo_linea1"  style="clear:both"></div>
@@ -116,18 +116,18 @@
                     					 <div id="left1" style="width:265px;   border-left: 2px solid #CCCCCC; position: absolute; left:310px; top:75px">
                                       	   <? 
 										   for ($i=0; $i< count($aJugadoras2 ); $i++) {
-										 	$goles = ($aJugadoras2[$i]['goles']>0)?$aJugadoras2[$i]['goles']:"";
+										 	$goles = ($aJugadoras2[$i]['goles']>0)?$aJugadoras2[$i]['goles']:"-";
 										
-										   $tarjeta_amarilla = ($aJugadoras2[$i]['tarjeta_amarilla']>0)?$aJugadoras2[$i]['tarjeta_amarilla']:"";
-										   $tarjeta_roja = ($aJugadoras2[$i]['tarjeta_roja']>0)?$aJugadoras2[$i]['tarjeta_roja']:"";
+										   $tarjeta_amarilla = ($aJugadoras2[$i]['tarjeta_amarilla']>0)?$aJugadoras2[$i]['tarjeta_amarilla']:"-";
+										   $tarjeta_roja = ($aJugadoras2[$i]['tarjeta_roja']>0)?$aJugadoras2[$i]['tarjeta_roja']:"-";
 										   ?>
                                            <div id="fila" style="width:250px; height:30px; padding-left:10px;  padding-top:10px; float:left;">
 									   			<div class="jugadoras1" style="height:30px;">
 									   				<?= $aJugadoras2[$i]['nombre'] ?>
 									   				<? if($aJugadoras2[$i]['mejor_jugadora'] == 'S') { ?><img src="img/fixture_detalle/star.png" border="0" /><? } ?>
 									   			</div>
-                                                <div class="goles_1 color_<?= $color ?>" style="height:30px; left:5px"><?= $goles?></div>
-                                                <div class="tarjetas" style="height:30px; left:30px"><?= $tarjeta_amarilla?></div>
+                                                <div class="goles_1 color_<?= $color ?>" style="height:30px; left:3px"><?= $goles?></div>
+                                                <div class="tarjetas" style="height:30px; left:30px; color: #FFBF00"><?= $tarjeta_amarilla?></div>
                                                 <div class="tarjetas" style="height:30px; left:55px; color: red"><?= $tarjeta_roja?></div>
                                            </div>
                                            <div class="detalle_desarrollo_linea"  style="clear:both"></div>

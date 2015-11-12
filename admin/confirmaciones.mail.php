@@ -141,7 +141,7 @@
 													<th width="8%"></th>
 												</tr>
 											<? if (sizeof($equiposMail) == 0) {
-													print("<tr><td colspan='3'>No hay equipos</td></tr>");
+													print("<tr><td colspan='4'>No hay equipos</td></tr>");
 												} else {
 													foreach($equiposMail as $equipo) { ?>
 													<tr>
@@ -176,7 +176,7 @@
 															<div align="left">
 																<h2>Asunto</h2>
 																<div id="errorasunto" style="color: #CC3300; font-weight: bold" align="left"></div>
-																<input type="text" id="asuntocorreo" name="asuntocorreo" size="63" />
+																<input type="text" id="asuntocorreo" name="asuntocorreo" size="50" />
 																<h2>Cuerpo</h2>
 																<div id="errorcuerpo" style="color: #CC3300; font-weight: bold" align="left"></div>
 																<textarea id="cuerpocorreo" name="cuerpocorreo" cols="50"></textarea>
