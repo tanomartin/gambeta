@@ -96,6 +96,7 @@
 	<div id="wrapper">
 		<div id="header">
 			<div class="inside">
+				<? include("top_menu.php"); ?>
 				<div id="logo">
 					<h1><a href="index.php" title="Volver al incio"> Panel de Control</a></h1>
 				</div>
