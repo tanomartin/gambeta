@@ -73,6 +73,10 @@
 												    	<td class="col_0 col_first"><label for="id_opcion">Nombre</label><span class="mandatory">*</span></td>
 												        <td class="col_1 col_last"><input name="nombre" id="nombre" class="required text" maxlength="100"  size="50" type="text" value="<?=$datos[0]["nombre"]?>"></td>
 												    </tr>
+												     <tr class="odd">
+												        <td class="col_0 col_first"><label for="id_opcion">Telefono</label></td>
+												        <td class="col_1 col_last"><input name="telefono" id="telefono" maxlength="100"  size="50" type="text" value="<?=$datos[0]["telefono"]?>"></td>
+												    </tr>
 												</tbody>
 											</table>
 										</fieldset>

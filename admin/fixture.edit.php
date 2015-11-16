@@ -245,8 +245,8 @@
 												<tr class="even">
 													<td class="col_0 col_first"><label for="nombre">Walkover</label></td>
 													<td class="col_1 col_last">
-														<input name="walkover" id="walkover" type="checkbox" <?= $disabled?>
-														<? if ($datos[0]['walkover'] == 1 ){ ?> checked="checked" <? } ?>/> Si
+														<input name="suspendido" id="walkover" type="checkbox" <?= $disabled?>
+														<? if ($datos[0]['suspendido'] == 1 ){ ?> checked="checked" <? } ?>/> Si
 													</td>
 												</tr>
 												<tr class="odd">

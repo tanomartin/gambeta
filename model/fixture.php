@@ -14,7 +14,9 @@ class Fixture {
 	var $cancha;
 	var $idArbitro;
 	var $golesEquipo1;
+	var $puntajeEquipo1;
     var $golesEquipo2;
+    var $puntajeEquipo2;
     var $suspendido;
    
 	function Equipos($id="") {
@@ -30,8 +32,10 @@ class Fixture {
 			$this->idSede = $valores[0]["idSede"];
 			$this->cancha = $valores[0]["cancha"];
 			$this->idArbitro = $valores[0]["idArbitro"];
-			$this->golesEquipo1 = ($valores[0]["golesEquipo1"])?$valores[0]["golesEquipo1"]:-1; 
+			$this->golesEquipo1 = ($valores[0]["golesEquipo1"])?$valores[0]["golesEquipo1"]:-1;
+			$this->puntajeEquipo1 = ($valores[0]["puntajeEquipo1"])?$valores[0]["puntajeEquipo1"]:0;
 			$this->golesEquipo2 = ($valores[0]["golesEquipo2"])?$valores[0]["golesEquipo2"]:-1; 
+			$this->puntajeEquipo2 = ($valores[0]["puntajeEquipo2"])?$valores[0]["puntajeEquipo2"]:0;
 			$this->suspendido = ($valores[0]["suspendido"]=='on')?1:0; 
 		}
 	}
@@ -48,7 +52,9 @@ class Fixture {
 		$this->cancha = $valores["cancha"];
 		$this->idArbitro = $valores["idArbitro"];
 		$this->golesEquipo1 = ($valores["golesEquipo1"])?$valores["golesEquipo1"]:-1; 
+		$this->puntajeEquipo1 = ($valores["puntajeEquipo1"])?$valores["puntajeEquipo1"]:0;
 		$this->golesEquipo2 = ($valores["golesEquipo2"])?$valores["golesEquipo2"]:-1; 
+		$this->puntajeEquipo2 = ($valores["puntajeEquipo2"])?$valores["puntajeEquipo2"]:0;
 		$this->suspendido = ($valores["suspendido"]=='on')?1:0; 
 	}
 	
@@ -60,7 +66,7 @@ class Fixture {
 	function insertar() {
 		$db = new Db();
 		$query = "insert into ga_fixture(
-					idEquipoTorneo1,idFecha,idEquipoTorneo2,observaciones,fechaPartido,horaPartido,idSede,cancha,idArbitro,golesEquipo1,golesEquipo2,suspendido
+					idEquipoTorneo1,idFecha,idEquipoTorneo2,observaciones,fechaPartido,horaPartido,idSede,cancha,idArbitro,golesEquipo1,puntajeEquipo1,golesEquipo2,puntajeEquipo2,suspendido
 				) values (".
 				"'".$this->idEquipoTorneo1."',".
 				"'".$this->idFecha."',".				
@@ -72,7 +78,9 @@ class Fixture {
 				"'".$this->cancha."',".	
 				"'".$this->idArbitro."',".
 				"'".$this->golesEquipo1."',".
+				"'".$this->puntajeEquipo1."',".
 				"'".$this->golesEquipo2."',".
+				"'".$this->puntajeEquipo2."',".
 				"'".$this->suspendido."')";
 		$this->id = $db->query($query); 
 		$db->close();
@@ -199,12 +207,30 @@ class Fixture {
 		return $datos;	
 	}
 	
+	function getPromedioGolFecha($fecha){
+		$db = new Db();
+		$query = "Select
+      				sum(ABS(x.golesEquipo1 - x.golesEquipo2)) / count(*) as promedio
+		          from
+      				ga_fixture x,
+      			    ga_fechas f
+				  where
+      				x.idFecha = f.id and
+      				f.id=".$fecha." and 
+      				x.golesEquipo1 != -1 and
+      				x.golesEquipo2 != -1";
+		$datos = $db->getResults($query, ARRAY_A);
+		$db->close();
+		return $datos;
+	}
+	
+	
 	function getByFechaEquipo($fecha, $idEquipoTorneo){
 		$db = new Db();
        	$query = "Select  
-       				x.*, e1.nombre as equipo1, e2.nombre as equipo2, s.nombre as sede, f.nombre as nombreFecha
+       				x.*, e1.nombre as equipo1, e2.nombre as equipo2, s.nombre as sede, f.nombre as nombreFecha, a.nombre as arbitro
 		          from 
-       				ga_fixture x, ga_fechas f,ga_sedes s, ga_equipos e1, ga_equipos e2, ga_equipos_torneos et1, ga_equipos_torneos et2
+       				ga_fixture x, ga_fechas f,ga_sedes s, ga_equipos e1, ga_equipos e2, ga_equipos_torneos et1, ga_equipos_torneos et2, ga_arbitros a
 				  where 
        				x.idFecha = f.id and
 				 	x.idSede = s.id and
@@ -213,6 +239,7 @@ class Fixture {
 				  	x.idEquipoTorneo2 = et2.id and 
        				et2.idEquipo = e2.id and 
        				f.id=".$fecha." and 
+       				x.idArbitro = a.id and
        				x.horaPartido != '__:__' and 
        				(x.idEquipoTorneo1 =".$idEquipoTorneo." || x.idEquipoTorneo2=".$idEquipoTorneo.")";
 		$query.= " order by  horaPartido DESC";

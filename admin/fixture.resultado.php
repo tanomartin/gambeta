@@ -115,6 +115,10 @@ if ($resultados) {
 													<td class="col_1 col_last"><?= $aEquipos1[0]["nombre"] ?></td>
 												</tr>
 												<tr class="odd">
+													<td class="col_0 col_first"><label for="nombre">Puntaje Juez Equipo #1 </label><span class="mandatory">*</span></td>
+													<td class="col_1 col_last"><input type="text" id="puntajeEquipo1" name="puntajeEquipo1" value="<?= $datos[0]["puntajeEquipo1"]?>" size="5" /></td>
+												</tr>
+												<tr class="even">
 													<td class="col_0 col_first"><label for="nombre">Detalle Por Jugadoras</label></td>
 													<td class="col_1 col_last">
 														<table style="width: 100%">
@@ -137,9 +141,13 @@ if ($resultados) {
                 										 </table>
 													</td>
 												</tr>
-												<tr class="even">
+												<tr class="odd">
 													<td class="col_0 col_first"><label for="nombre">Equipo #2 </label><span class="mandatory">*</span></td>
 													<td class="col_1 col_last"><?= $aEquipos2[0]["nombre"]?> </td>
+												</tr>
+												<tr class="even">
+													<td class="col_0 col_first"><label for="nombre">Puntaje Juez Equipo #2 </label><span class="mandatory">*</span></td>
+													<td class="col_1 col_last"><input type="text" id="puntajeEquipo2" name="puntajeEquipo2" value="<?= $datos[0]["puntajeEquipo2"]?>" size="5"/> </td>
 												</tr>
 												<tr class="odd">
 													<td class="col_0 col_first"><label for="nombre">Detalle Por Jugadoras</label></td>

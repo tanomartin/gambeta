@@ -98,7 +98,9 @@
 			}	
 			$oFix = new Fixture ();
 			$oFix->modicarCampoValor ( "golesEquipo1", $golesT1, "id", $_POST['idFixture'] );
+			$oFix->modicarCampoValor ( "puntajeEquipo1", $_POST ['puntajeEquipo1'], "id", $_POST['idFixture'] );
 			$oFix->modicarCampoValor ( "golesEquipo2", $golesT2, "id", $_POST['idFixture'] );
+			$oFix->modicarCampoValor ( "puntajeEquipo2", $_POST['puntajeEquipo2'], "id", $_POST['idFixture'] );
 			break;
 		
 		case "borrar" :

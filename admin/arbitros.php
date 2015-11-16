@@ -13,7 +13,7 @@
 			break;
 			
 		case "guardar":	
-			$data =   $_POST;
+			$data = $_POST;
 			$oObj = new Arbitros();
 			$oObj->set($data);
 			if($_POST["id"] == "-1") { 
@@ -160,7 +160,8 @@
 									<table style="width: 928px">
 										<tr>
 											<th width="5%">#</th>
-											<th >Nombre</th>                    
+											<th >Nombre</th>   
+											<th >Telefono</th>                  
 											<th width="10%">Opciones</th>
 										</tr>
 										<? if (count($datos) == 0) { ?>
@@ -169,7 +170,8 @@
 												for ( $i = 0; $i < count($datos); $i++ ) { ?>
 											 <tr style="vertical-align:middle" >
 												<td align="left"><?=$datos[$i]["id"]?></td>
-												<td align="left"><?=$datos[$i]["nombre"]?></td>                        
+												<td align="left"><?=$datos[$i]["nombre"]?></td>     
+												<td align="left"><?=$datos[$i]["telefono"]?></td>                        
 						                     	<td nowrap>
 													<a href="javascript:editar(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>
 													<a href="javascript:borrar(<?=$datos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>

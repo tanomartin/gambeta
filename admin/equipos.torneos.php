@@ -58,15 +58,20 @@
 			document.form_alta.accion.value = "jugadoras";
 			document.form_alta.idTorneoEquipo.value = idTorneo;
 			document.form_alta.idTorneoCat.value = idTorneoCat;
-			document.form_alta.submit();
-			
+			document.form_alta.submit();	
 		}
 		
 		function password(idTorneo){
 			document.form_alta.accion.value = "password";
 			document.form_alta.idTorneoEquipo.value = idTorneo;
-			document.form_alta.submit();
-			
+			document.form_alta.submit();	
+		}
+
+		function historial(idTorneo, idTorneoCat){
+			document.form_alta.accion.value = "historial";
+			document.form_alta.idTorneoEquipo.value = idTorneo;
+			document.form_alta.idTorneoCat.value = idTorneoCat;
+			document.form_alta.submit();	
 		}
 	</script>
 </head>
@@ -136,7 +141,8 @@
 							                        <a href="javascript:editarTorneo(<?=$torneos[$i]["id"]?>);"> <img border="0" src="images/icono-editar.gif" alt="editar" title="editar" /></a>
 							                        <a href="javascript:borrarTorneo(<?=$torneos[$i]["id"]?>);"><img border="0" src="images/icono-eliminar.gif" alt="eliminar" title="eliminar" /></a>
 													<a href="javascript:jugadoras(<?=$torneos[$i]["id"]?>,<?=$torneos[$i]["idTorneoCat"]?>);"><img border="0" width="22" height="22" src="images/Person-Female-Light-icon.png" alt="jugadoras" title="jugadoras" /></a>
-												 	<a href="javascript:password(<?=$torneos[$i]["id"]?>);"><img border="0" src="images/icono-pass.png" alt="contraseÃ±a" title="contraseÃ±a" /></a>										 	
+												 	<a href="javascript:password(<?=$torneos[$i]["id"]?>);"><img border="0" src="images/icono-pass.png" alt="contraseÃ±a" title="contraseÃ±a" /></a>	
+												 	<a href="javascript:historial(<?=$torneos[$i]["id"]?>,<?=$torneos[$i]["idTorneoCat"]?>);"><img border="0" src="images/History-icon.png"  width="23" height="23" alt="historial" title="historial" /></a>									 	
 												 </td>
 							 				    </tr>
 										<? } 

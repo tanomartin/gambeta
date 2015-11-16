@@ -1,6 +1,7 @@
 <?	include_once "include/config.inc.php";
 	include_once "include/fechas.php";
 	include_once "../model/fechas.php";
+	include_once "../model/fixture.php";
 	include_once "../model/torneos.categorias.php";
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
@@ -68,6 +69,8 @@
 	$oObj = new Fechas();
 	$datos = $oObj->getPaginado($_REQUEST, $inicio, $cant, $total);
 	$esultimo = (count($datos) == 1)? "S" : "N" ;
+	
+	$oFixture = new Fixture();
 ?>
     
 <!DOCTYPE HTML>
@@ -208,6 +211,7 @@
 									<table style="width: 928px">
 										<tr>
 											<th >Nombre</th>
+											<th >P. Gol.</th>
 											<th >Fecha I.</th>
 											<th >Fecha F.</th>                                        
 											<th width="15%">Torneo</th>                                        
@@ -215,13 +219,15 @@
 											<th width="10%">Opciones</th>
 										</tr>
 									 <? if (count($datos) == 0) { ?>
-											<tr><td colspan="6" align="center">No existen fechas</td></tr>
+											<tr><td colspan="7" align="center">No existen fechas</td></tr>
 									<? } else { 
 										 	$total = count($datos);	
 											$tt = $total - 1;
-											for ( $i = 0; $i < $total; $i++ ) { ?>
+											for ( $i = 0; $i < $total; $i++ ) { 
+												$promedioGol = $oFixture->getPromedioGolFecha($datos[$i]["id"])?>
 												<tr>
 								                     <td align="left"><?=$datos[$i]["nombre"]?></td>
+								                     <td align="left"><?=$promedioGol[0]["promedio"]?></td>
 								                     <td align="left"><?=cambiaf_a_normal($datos[$i]["fechaIni"])?></td>
 								                     <td align="left"><?=cambiaf_a_normal($datos[$i]["fechaFin"])?></td>
 								                     <td align="left"><?=$datos[$i]["torneo"]?></td>

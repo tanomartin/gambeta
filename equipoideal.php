@@ -173,19 +173,19 @@
         </div>
         <div style="float:left; margin-left:40px;height: 780px" > <img src="img/cancha/cancha.jpg" />
           <div id="posicion1" align="center">
-            <?=$aEquipoIdeal[0]['jugadora']?><br /><?=$aEquipoIdeal[0]['equipo']?>
+            "<?=$aEquipoIdeal[0]['jugadora']?>"<br />(<?=$aEquipoIdeal[0]['equipo']?>)
           </div>
           <div id="posicion2" align="center">
-            <?=$aEquipoIdeal[1]['jugadora']?><br /><?=$aEquipoIdeal[1]['equipo']?>
+            "<?=$aEquipoIdeal[1]['jugadora']?>"<br />(<?=$aEquipoIdeal[1]['equipo']?>)
           </div>
           <div id="posicion3" align="center">
-            <?=$aEquipoIdeal[2]['jugadora']?><br /><?=$aEquipoIdeal[2]['equipo']?>
+            "<?=$aEquipoIdeal[2]['jugadora']?>"<br />(<?=$aEquipoIdeal[2]['equipo']?>)
           </div>
           <div id="posicion4" align="center">
-            <?=$aEquipoIdeal[3]['jugadora']?><br /><?=$aEquipoIdeal[3]['equipo']?>
+            "<?=$aEquipoIdeal[3]['jugadora']?>"<br />(<?=$aEquipoIdeal[3]['equipo']?>)
           </div>
           <div id="posicion5" align="center">
-            <?=$aEquipoIdeal[4]['jugadora']?><br /><?=$aEquipoIdeal[4]['equipo']?>
+            "<?=$aEquipoIdeal[4]['jugadora']?>"<br />(<?=$aEquipoIdeal[4]['equipo']?>)
           </div>
         </div>
       </div>

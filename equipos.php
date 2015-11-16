@@ -181,8 +181,8 @@
 				   foreach($aJugadoras as $jugadora) {
 				   		if ($jugadora['activa'] == 1) { ?>
 	            			<tr>
-	            				<td width="80%"><b><?= $jugadora['nombre'] ?></b></td>  
-	            				<td width="20%"><?= $jugadora['posicion'] ?></td>
+	            				<td width="70%"><b><?= $jugadora['nombre'] ?></b></td>  
+	            				<td width="30%"><?= $jugadora['posicion'] ?></td>
 	            			</tr>
 	           	 	 <? } ?>
 	       	   <?  } ?>

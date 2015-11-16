@@ -6,12 +6,14 @@ class Arbitros {
 
 	var $id;
 	var $nombre;
+	var $telefono;
 		
 	function Arbitros($id="") {
 		if ($id != "") {
 			$arbitro = $this->get($id);
 			$this->id = $arbitro[0]["id"]; 
 			$this->nombre = $arbitro[0]["nombre"];
+			$this->telefono = $arbitro[0]["telefono"];
 		}
 	}
 
@@ -19,7 +21,7 @@ class Arbitros {
 	function set($valores){
 		$this->id = ($valores["idreg"])?$valores["idreg"]:$valores["id"]; 
 		$this->nombre = $valores["nombre"];
-
+		$this->telefono = $valores["telefono"];
 	}
 	
 	function _setById($id) {
@@ -30,7 +32,7 @@ class Arbitros {
 
 	function agregar() {
 		$db = new Db();	
-		$query = "insert into ga_arbitros(nombre) values ("."'".$this->nombre."'".")" ;
+		$query = "insert into ga_arbitros(nombre, telefono) values ("."'".$this->nombre."'".","."'".$this->telefono."'".")" ;
 		$db->query($query); 
 		$db->close();	
 	}
@@ -45,7 +47,7 @@ class Arbitros {
 	
 	function modificar() {
 		$db = new Db();
-		$query = "update ga_arbitros set nombre = '". $this->nombre."' where id = ".$this->id ;		  
+		$query = "update ga_arbitros set nombre = '". $this->nombre."', telefono = '". $this->telefono."' where id = ".$this->id ;		  
 		$db->query($query); 
 		$db->close();
 	
@@ -60,14 +62,6 @@ class Arbitros {
 		$res = $db->getResults($query, ARRAY_A); 
 		$db->close();
 		return $res;
-	}
-
-	function getById($id, $output = OBJECT) {
-		$db = new Db();
-		$query = "Select c.* From ga_arbitros c WHERE  c.id = '".$id."'";
-		$oCat = $db->getRow($query,"",$output); 
-		$db->close();
-		return $oCat;
 	}
 	
 	function getPaginado($filtros, $inicio, $cant, &$total) {

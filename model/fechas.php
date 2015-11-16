@@ -94,9 +94,11 @@ class Fechas {
 		if ($id != "") {	
 			$query .= " and e.idTorneoCat = '$id' ";
 		}	
-		$order = " order by e.nombre";
-		if ( $orden != "")
-			$order = " order by e.".$orden;		
+		if ( $orden != "") {
+			$order = " order by e.".$orden;	
+		} else {
+			$order = " order by e.nombre";
+		}
 		$query .= $order;	
 		$res = $db->getResults($query, ARRAY_A); 	
 		$db->close();		

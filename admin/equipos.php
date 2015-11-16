@@ -14,7 +14,7 @@
 	switch ($_POST["accion"]) {
 		
 		case "password":
-			include("equipos.password.php");
+			include("equipos.torneos.password.php");
 			exit;
 			break;
 
@@ -41,12 +41,17 @@
 			break;
 			
 		case "jugadoras":
-			include("equipos.jugadoras.php");
+			include("equipos.torneos.jugadoras.php");
 			exit;
 			break;
 		
 		case "relacionarTorneo":	
 			include("equipos.torneos.edit.php");
+			exit;
+			break;
+			
+		case "historial":
+			include("equipos.torneos.historial.php");
 			exit;
 			break;
 			
