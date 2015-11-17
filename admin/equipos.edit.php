@@ -88,10 +88,6 @@
 											        <td class="col_1 col_last"><input name="nombre" id="nombre" class="required text" maxlength="50" type="text" value="<?=$datos[0]["nombre"]?>" size="50"  <?= $disabled ?>></td>
 											      </tr>  
 											      <tr class="even">
-											        <td class="col_0 col_first"><label for="email">Email</label></td>
-											        <td class="col_1 col_last"><input name="email" id="email" class="text" maxlength="100" type="text" value="<?=$datos[0]["email"]?>" size="50"  <?= $disabled ?>></td>
-											      </tr>      
-											      <tr class="even">
 											        <td class="col_0 col_first"><label for="nombre">Foto</label></td>
 											        <td class="col_1 col_last">
 											        	<? if ( $disabled  == "" ) { ?>

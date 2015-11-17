@@ -8,7 +8,6 @@ class Equipos {
 	var $id;
 	var $nombre;
 	var $foto;
-	var $email;
 	var $descripcion;
 	
 	function Equipos($id="") {
@@ -17,7 +16,6 @@ class Equipos {
 			$this->id = $valores[0]["id"]; 
 			$this->nombre = $valores[0]["nombre"];			
 			$this->foto = $valores[0]["foto"]; 
-			$this->email = $valores[0]["email"];
 			$this->descripcion = $valores[0]["descripcion"];
 		}
 	}
@@ -27,7 +25,6 @@ class Equipos {
 		$this->nombre = $valores["nombre"];			
 		$this->descripcion = $valores["descripcion"];
 		$this->foto = $valores["foto"]; 
-		$this->email = $valores["email"];
 	}
 	
 	function _setById($id) {		
@@ -40,8 +37,7 @@ class Equipos {
 		$query = "insert into ga_equipos(
 				nombre,email,descripcion
 				) values (".
-				"'".$this->nombre."',".				
-				"'".$this->email."',".				
+				"'".$this->nombre."',".								
 				"'".$this->descripcion."')";
 		$this->id = $db->query($query); 
 		if(is_uploaded_file($_FILES['foto']['tmp_name'])) {
@@ -71,8 +67,7 @@ class Equipos {
 	function actualizar($files) {
 		$db = new Db();
 		$query = "update ga_equipos set 
-		          nombre = '". $this->nombre."',		
-				  email = '". $this->email."',
+		          nombre = '". $this->nombre."',
 		          descripcion = '". $this->descripcion."'
 				  where id = ".$this->id ;				  
 		$db->query($query); 
@@ -344,6 +339,15 @@ class Equipos {
 		}
 		$db->query($query);
 		$db->close();
+	}
+	
+	function getCorreos($idEquipoTorneo) {
+		$db = new Db();
+		$query = "select j.email from ga_jugadoras_equipo je, ga_jugadoras j
+					where je.idEquipoTorneo = $idEquipoTorneo and je.envioMail = 1 and je.idJugadora = j.id and j.email != ''";
+		$res = $db->getResults($query, ARRAY_A);
+		$db->close();
+		return $res;
 	}
 
 }

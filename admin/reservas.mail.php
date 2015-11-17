@@ -34,18 +34,25 @@ foreach ( $equiposTorneo as $equipo ) {
 		$s = $equipo ['id'];
 		$equipoOb = new Equipos ( $equipo ['id'] );
 		$seEnvio = $equipoOb->seEnvioCorreo ( $equipo ['id'], $_POST ['id'], 'r' );
+		$correos = $equipoOb->getCorreos($equipo ['idEquipoTorneo']);
+		$i = 0;
+		$arrayCorreos = array();
+		if ($correos != NULL) {
+			foreach ($correos as $correo) {
+				$arrayCorreos[$i] = $correo[email];
+				$i++;
+			}
+		}
 		$equiposSinReserva [$s] = array (
 				'id_equipo' => $equipo ['id'],
 				'nombre' => $equipo ['nombre'],
-				'email' => $equipoOb->email,
+				'email' => $arrayCorreos,
 				'seenvio' => $seEnvio 
 		);
+		
 	}
 }
 
-/*
- * print("<br><br> EQUIPO SIN RESERVA <br><br>"); var_dump($equiposSinReserva);
- */
 ?>
 
 <!DOCTYPE HTML>
@@ -142,7 +149,7 @@ foreach ( $equiposTorneo as $equipo ) {
 											<tr>
 												<th><img width="15" border="0" alt="reserva" title="Con Reserva" src="../img/forbidden.ico" /> Equipos</th>
 												<th>Email</th>
-												<th>Sacar</th>
+												<th>S</th>
 												<th width="8%"></th>
 											</tr>
 										<? if (sizeof ( $equiposSinReserva ) == 0) { ?>
@@ -151,9 +158,14 @@ foreach ( $equiposTorneo as $equipo ) {
 												foreach ( $equiposSinReserva as $equipo ) { ?>
 												<tr>
 													<td style="font-family: Geneva, Arial, Helvetica, sans-serif; font-size: 17px"><?=$equipo['nombre'] ?></td>
-													<td><?=$equipo['email'] ?></td>
+													<td><? if (sizeof($equipo['email']) != 0) {
+																foreach ($equipo['email'] as $correo) {
+																	echo "- ".$correo."<br>";
+																}
+														   }  ?>
+													</td>
 													<td style="text-align: center">
-														<? if ($equipo['email'] != "" && !$equipo['seenvio']) { ?> 
+														<? if (sizeof($equipo['email']) != 0 && !$equipo['seenvio']) { ?> 
 															<input type="checkbox" id="<?=$equipo['id_equipo'] ?>" name="<?=$equipo['id_equipo'] ?>" value="<?=$equipo['id_equipo'] ?>" /> 
 														<? } ?>
 													</td>

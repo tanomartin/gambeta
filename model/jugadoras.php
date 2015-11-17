@@ -213,6 +213,7 @@ class Jugadoras {
 					e.nombre as equipo, 
 					je.id as idJugadoraEquipo, 
 					je.activa as activa,
+					je.envioMail as envioMail,
 					p.nombre as posicion
 				  From 
 				  	ga_equipos_torneos et,
@@ -252,7 +253,11 @@ class Jugadoras {
 	
 	function cambiarActiva($idJugadorasEquipos, $activo) {
 		$db = new Db();
-		$query = "update ga_jugadoras_equipo set activa = ".$activo." where id = ".$idJugadorasEquipos;
+		if ($activo == 0) {
+			$query = "update ga_jugadoras_equipo set activa = ".$activo.", envioMail = ".$activo." where id = ".$idJugadorasEquipos;
+		} else {
+			$query = "update ga_jugadoras_equipo set activa = ".$activo." where id = ".$idJugadorasEquipos;
+		}
 		$db->query($query);
 		$db->close();
 	}
@@ -298,7 +303,13 @@ class Jugadoras {
 		          observaciones = '". $this->observaciones."'
 				  where idJugadora = ".$idJugadora." and idEquipoTorneo = ".$idEquipoTorneo;
 		print($query);
-		//$db->query($query);
+		$db->close();
+	}
+	
+	function activarEnvioMail($idJugadorasEquipos, $envio) {
+		$db = new Db();
+		$query = "update ga_jugadoras_equipo set envioMail = ".$envio." where id = ".$idJugadorasEquipos;
+		$db->query($query);
 		$db->close();
 	}
 }

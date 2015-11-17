@@ -21,35 +21,19 @@ foreach ( $equiposMail as $equipo ) {
 	$idEquipo = $equipo ['id_equipo'];
 	$email = $equipo ['email'];
 	$nombre = $equipo ['nombre'];
-	if ($email != "" && ! array_key_exists ( $idEquipo, $_POST )) {
-		$valores = array (
-				'correo' => $email,
-				'cuerpo' => $cuerpo,
-				'equipoId' => $idEquipo,
-				'equipoNombre' => $nombre,
-				'asunto' => $asunto 
-		);
-		$emailOb = new Correos ( $valores );
-		$seEnvio = $emailOb->enviar ();
-		if ($seEnvio) {
-			$correosEnviados [$idEquipo] = array (
-					'email' => $email,
-					'nombre' => $nombre,
-					'correcto' => 1 
-			);
+	if ((sizeof($equipo['email']) != 0) && ! array_key_exists ( $idEquipo, $_POST )) {
+		foreach ($equipo['email'] as $email) {
+			$valores = array ('correo' => $email,'cuerpo' => $cuerpo,'equipoId' => $idEquipo,'equipoNombre' => $nombre,'asunto' => $asunto );
+			$emailOb = new Correos ( $valores );
+			$seEnvio += $emailOb->enviar ();
+		}
+		if ($seEnvio > 0) {
+			$correosEnviados [$idEquipo] = array ('email' => $equipo['email'],'nombre' => $nombre,'correcto' => 1 );
 		} else {
-			$correosEnviados [$idEquipo] = array (
-					'email' => $email,
-					'nombre' => $nombre,
-					'correcto' => 0 
-			);
+			$correosEnviados [$idEquipo] = array ('email' => $equipo['email'],'nombre' => $nombre,'correcto' => 0 );
 		}
 	} else {
-		$correosEnviados [$idEquipo] = array (
-				'email' => $email,
-				'nombre' => $nombre,
-				'correcto' => 0 
-		);
+		$correosEnviados [$idEquipo] = array ('email' => $equipo['email'],'nombre' => $nombre,'correcto' => 0 );
 	}
 }
 
@@ -120,7 +104,13 @@ foreach ( $equiposMail as $equipo ) {
 										foreach ( $correosEnviados as $correos ) { ?>
 											<tr>
 												<td style="font-family: Geneva, Arial, Helvetica, sans-serif; font-size: 17px"><?=$correos['nombre'] ?></td>
-												<td><?=$correos['email'] ?></td>	
+												<td>
+												<? if (sizeof($correos['email']) != 0) {
+														foreach ($correos['email'] as $correo) {
+															echo "- ".$correo."<br>";
+														}
+													   }  ?>
+												</td>	
 												<? if ($correos['correcto'] == 1) { ?>
 														<td><img width="17" border="0" alt="reserva" title="Con Reserva" src="../img/check.ico" /></td>
 												<? } else { ?>

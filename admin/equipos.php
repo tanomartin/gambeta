@@ -58,7 +58,14 @@
 		case "cambiaractiva":
 			$oObj = new Jugadoras();
 			$oObj->cambiarActiva($_POST["idJugadoraEquipo"],$_POST['activa']);
-			include("equipos.jugadoras.php");
+			include("equipos.torneos.jugadoras.php");
+			exit;
+			break;
+			
+		case "activarenvio":
+			$oObj = new Jugadoras();
+			$oObj->activarEnvioMail($_POST["idJugadoraEquipo"],$_POST['envio']);
+			include("equipos.torneos.jugadoras.php");
 			exit;
 			break;
 
@@ -67,7 +74,7 @@
 			$oObj->borrarByIdJugadoraEquipo($_POST["idJugadoraEquipo"]);
 			$oObj = new Jugadoras();
 			$oObj->borrarEquipo($_POST["idJugadoraEquipo"]);
-			include("equipos.jugadoras.php");
+			include("equipos.torneos.jugadoras.php");
 			exit;
 			break;
 			
@@ -256,8 +263,7 @@
 
 								<table style="width: 928px">
 									<tr>
-										<th>Nombre</th>
-										<th>Email</th>    
+										<th>Nombre</th>    
 										<th>Foto</th>            
 										<th width="10%">Opciones</th>
 									</tr>
@@ -269,7 +275,6 @@
 										for ( $i = 0; $i < $total; $i++ ) { ?>
 									<tr>
 					                     <td align="left"><?=$datos[$i]["nombre"]?></td>
-										 <td align="left"><?=$datos[$i]["email"]?></td>
 										 <td width="100">
 										  <? if($datos[$i]['foto']) { ?>
 								          	<img src="../thumb/phpThumb.php?src=../fotos_equipos/<?= $datos[$i]['foto']?>" width="100" height="69"/>

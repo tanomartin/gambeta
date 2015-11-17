@@ -43,6 +43,13 @@
 			document.frm_listado.submit();	
 		}
 
+		function activarenvio(idJugadoraEquipos, envio){
+			document.frm_listado.accion.value = "activarenvio";
+			document.frm_listado.envio.value = envio;
+			document.frm_listado.idJugadoraEquipo.value = idJugadoraEquipos;
+			document.frm_listado.submit();	
+		}
+
 		function borrarJugadora(idJugadoraEquipos){
 			if (confirm('Confirma que quiere eliminar la relacion de esta jugadora con el equipo')) {
 				document.frm_listado.accion.value = "borrarjugadora";
@@ -86,6 +93,7 @@
 								<input type="hidden" name="accion" value="" />
 								<input type="hidden" name="idJugadoraEquipo" value="" />
 				                <input type="hidden" name="activa" value="" />
+				                <input type="hidden" name="envio" value="" />
 								<input type="hidden" name="id" value="<?=$_POST["id"]?>" />
 								<!-- Parametros menu -->
 			        			<input type="hidden" name="menu" value="<?=$_POST["menu"]?>" />
@@ -100,7 +108,9 @@
 			                    <table style="width: 928px">
 			                    	<tr>
 										<th>Nombre</th>
+										<th>Mail</th>
 										<th>Activa</th>
+										<th>Envio Mail</th>
 										<th>Goles</th> 
 										<th>Amarillas</th>   
 										<th>Rojas</th>        
@@ -117,11 +127,21 @@
 												$estadisticasJugadora =  $oJugadora->getEstadisticas($jugadoras[$i]["idJugadoraEquipo"]);?>
 												<tr>
 							                     <td align="left"><?=$jugadoras[$i]["nombre"]?></td>
+							                     <td align="left"><?=$jugadoras[$i]["email"]?></td>
 												 <? if($jugadoras[$i]["activa"] == '1') {?>
 							                     		<td style="text-align: center;"><img border="0" src="../img/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','0')"/></td>
 							                     <? } else { ?>
 														<td style="text-align: center;"><img border="0" src="../img/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="cambiaractiva('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/></td>
 												 <? } ?>
+												 <td style="text-align: center;">
+												 <? if($jugadoras[$i]["activa"] == '1') {
+													 	if($jugadoras[$i]["envioMail"] == '1') {?>
+								                     		<img border="0" src="../img/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="activarenvio('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','0')"/>
+								                     <? } else { ?>
+															<img border="0" src="../img/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="activarenvio('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/>
+													 <? } 
+													}?>
+												 </td>	
 												 <td style="text-align: center;"><?=$estadisticasJugadora[0]["goles"]?></td>
 												 <td style="text-align: center;"><?=$estadisticasJugadora[0]["amarillas"]?></td>
 							                     <td style="text-align: center;"><?=$estadisticasJugadora[0]["rojas"]?></td>

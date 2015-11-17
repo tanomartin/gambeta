@@ -21,24 +21,41 @@ if ($_POST ['id_torneo_categoria'] != '-1') {
 	if ($equipos != NULL) {
 		foreach ( $equipos as $equipo ) {
 			$id = $equipo ['id'];
+			$i = 0;
+			$arrayCorreos = array();
+			$correos = $oEquipo->getCorreos($equipo ['idEquipoTorneo']);
+			if ($correos != NULL) {
+				foreach ($correos as $correo) {
+					$arrayCorreos[$i] = $correo[email];
+					$i++;
+				}
+			}
 			$equiposMail [$id] = array (
 					'id_equipo' => $id,
 					'nombre' => $equipo ['nombre'],
-					'email' => $equipo ['email'] 
+					'email' => $arrayCorreos
 			);
 		}
 	}
 } else {
 	$oEquipo = new Equipos ();
 	$equipos = $oEquipo->getEquiposSinTorneo ();
-	
 	if ($equipos != NULL) {
 		foreach ( $equipos as $equipo ) {
 			$id = $equipo ['id'];
+			$i = 0;
+			$arrayCorreos = array();
+			$correos = $oEquipo->getCorreos($equipo ['idEquipoTorneo']);
+			if ($correos != NULL) {
+				foreach ($correos as $correo) {
+					$arrayCorreos[$i] = $correo[email];
+					$i++;
+				}
+			}
 			$equiposMail [$id] = array (
 					'id_equipo' => $id,
 					'nombre' => $equipo ['nombre'],
-					'email' => $equipo ['email'] 
+					'email' => $arrayCorreos 
 			);
 		}
 	}
@@ -130,8 +147,13 @@ if ($_POST ['id_torneo_categoria'] != '-1') {
 										foreach ( $equiposMail as $equipo ) { ?>
 											<tr>
 												<td style="font-family: Geneva, Arial, Helvetica, sans-serif; font-size: 17px"><?=$equipo['nombre'] ?></td>
-												<td><?=$equipo['email'] ?></td>
-												<td><? if ($equipo['email'] != "") { ?> 
+												<td><? if (sizeof($equipo['email']) != 0) {
+														foreach ($equipo['email'] as $correo) {
+															echo "- ".$correo."<br>";
+														}
+													   }  ?>
+												</td>
+												<td><? if (sizeof($equipo['email']) != 0) { ?> 
 													<input type="checkbox" id="<?=$equipo['id_equipo'] ?>" name="<?=$equipo['id_equipo'] ?>" value="<?=$equipo['id_equipo'] ?>" /> <? } ?>
 												</td>
 											</tr>	

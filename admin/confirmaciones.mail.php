@@ -27,9 +27,18 @@
 				if ($id == $partido['idEquipo1'] || $id == $partido['idEquipo2']) {
 					$equipoOb = new Equipos($id);
 					$seEnvio = $equipoOb->seEnvioCorreo($id, $_POST['id'], 'c');
+					$correos = $equipoOb->getCorreos($equipo ['idEquipoTorneo']);
 					$confirmado = $oFixture -> partidoConfirmado($partido['id'],$id);
 					if (!$confirmado) {
-						$equiposMail[$id] = array('id_equipo' => $id, 'nombre' => $equipoOb->nombre, 'email' => $equipoOb->email, 'seenvio' => $seEnvio);
+						$i = 0;
+						$arrayCorreos = array();
+						if ($correos != NULL) {
+							foreach ($correos as $correo) {
+								$arrayCorreos[$i] = $correo[email];
+								$i++;
+							}
+						}
+						$equiposMail[$id] = array('id_equipo' => $id, 'nombre' => $equipoOb->nombre, 'email' => $arrayCorreos, 'seenvio' => $seEnvio);
 					}
 				}
 			}
@@ -137,7 +146,7 @@
 													<th><img width="15" border="0" alt="reserva"
 														title="Con Reserva" src="../img/forbidden.ico" /> Equipos</th>
 													<th>Email</th>
-													<th>Sacar</th>
+													<th>S</th>
 													<th width="8%"></th>
 												</tr>
 											<? if (sizeof($equiposMail) == 0) {
@@ -146,9 +155,14 @@
 													foreach($equiposMail as $equipo) { ?>
 													<tr>
 													<td style="font-family: Geneva, Arial, Helvetica, sans-serif; font-size: 17px"><?=$equipo['nombre'] ?></td>
-													<td><?=$equipo['email'] ?></td>
+													<td><? if (sizeof($equipo['email']) != 0) {
+																foreach ($equipo['email'] as $correo) {
+																	echo "- ".$correo."<br>";
+																}
+														 	}  ?>
+													</td>
 													<td style="text-align: center">
-														<? if ($equipo['email'] != "" && !$equipo['seenvio']) { ?> 
+														<? if (sizeof($equipo['email']) != 0 && !$equipo['seenvio']) { ?> 
 															<input type="checkbox" id="<?=$equipo['id_equipo'] ?>" name="<?=$equipo['id_equipo'] ?>" value="<?=$equipo['id_equipo'] ?>" /> 
 														<? } ?>
 													</td>
