@@ -183,11 +183,17 @@ class Jugadoras {
 		} else {
 			$activo = 0;
 		}
+		if (isset($datos['email'])) {
+			$envioMail = 1;
+		} else {
+			$envioMail = 0;
+		}
 		$query = "insert into ga_jugadoras_equipo values ('DEFAULT',".
 				"'".$datos['id']."',".
 				"'".$datos['idEquipoTorneo']."',".
 				"'".$datos['idPosicion']."',".
-				"'".$activo."')";
+				"'".$activo."',".
+				"'".$envioMail."')";
 		$db->query($query);
 		$db->close();
 	}
@@ -199,9 +205,14 @@ class Jugadoras {
 		} else {
 			$activo = 0;
 		}
+		if (isset($datos['email'])) {
+			$envioMail = 1;
+		} else {
+			$envioMail = 0;
+		}
 		$query = "update ga_jugadoras_equipo 
-					set idEquipoTorneo = ".$datos['idEquipoTorneo'].", idPosicion = ".$datos['idPosicion'].", activa = ".$activo.
-					" where id = ".$datos['idJugadoraEquipo']." and idJugadora = ".$datos['id'];
+					set idEquipoTorneo = ".$datos['idEquipoTorneo'].", idPosicion = ".$datos['idPosicion'].", activa = ".$activo.", envioMail = ".$envioMail." 
+							where id = ".$datos['idJugadoraEquipo']." and idJugadora = ".$datos['id'];
 		$db->query($query);
 		$db->close();
 	}
