@@ -35,7 +35,7 @@ class Equipos {
 	function insertar($files) {
 		$db = new Db();
 		$query = "insert into ga_equipos(
-				nombre,email,descripcion
+				nombre,descripcion
 				) values (".
 				"'".$this->nombre."',".								
 				"'".$this->descripcion."')";
