@@ -167,7 +167,10 @@ print_r($grises);*/
 			overlayColor: "#000", 
 			overlayOpacity: "0.6", 
 		});   
-		
+
+		$(function(){
+		     $("#encabezado").load("include/cabezal.html"); 
+		});
 		
 	</script>
 
@@ -177,19 +180,7 @@ print_r($grises);*/
   <input name="id" id="id"  value="-1" type="hidden" />
   <input name="accion" id="accion"  value="registro" type="hidden" />
   <div id="wrap">
-    <div id="encabezado">	  
-		  <div id="cabezal">
-				 <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
-				 <div id="facebook" style="cursor:pointer" onclick="window.open('https://www.facebook.com/gambeta.femenina');"></div>
-		  		 <div id="twitter" style="cursor:pointer" onclick="window.open('https://twitter.com/GambetaFemenina');"></div>
-				 <div id="instagram" style="cursor:pointer" onclick="window.open('https://instagram.com/gambetafemenina');"></div> 
-				 <div id="youtube" style="cursor:pointer" onclick="window.open('https://www.youtube.com/user/gambetafemenina2012');"></div> 
-				 <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
-                 <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
-                 <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
-                 <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
-            </div> 
-		 </div>
+    <div id="encabezado"></div>
     <div id="cabezal1" style="margin-top:5px" align="center">
     <? for ($i=0; $i<count( $aTorneos ); $i++) {   
 	   		$oObj = new TorneoCat();

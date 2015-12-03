@@ -210,6 +210,10 @@
 		var direccion = "reserva_confirma_partido.php?idPartido="+idPartido;
 		location.href=direccion;
 	}
+
+	$(function(){
+	     $("#encabezado").load("include/cabezal.html"); 
+	});
 	
 	</script>
 </head>
@@ -217,19 +221,7 @@
 <body bgcolor="#FFFFFF" style=" width:100%; height:100%" >
 <form id="carga_reserva" name="carga_reserva" onsubmit="return validar(this)" action="reserva_guardar.php" method="post">
 	<div id="wrap">
-		<div id="encabezado">	  
-		  <div id="cabezal">
-				 <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
-				 <div id="facebook" style="cursor:pointer" onclick="window.open('https://www.facebook.com/gambeta.femenina');"></div>
-		  		 <div id="twitter" style="cursor:pointer" onclick="window.open('https://twitter.com/GambetaFemenina');"></div>
-				 <div id="instagram" style="cursor:pointer" onclick="window.open('https://instagram.com/gambetafemenina');"></div> 
-				 <div id="youtube" style="cursor:pointer" onclick="window.open('https://www.youtube.com/user/gambetafemenina2012');"></div> 
-              	 <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
-                 <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
-                 <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
-                 <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
-            </div> 
-	 	</div>
+		<div id="encabezado"></div>
 		 <div id="cabezal1">
   			<div id="menu_izq1" style="float:left"><img width="120px" height="120px" src="logos/<?= $oTorneo->logoPrincipal?>" /></div>
 			<div id="imagen" style="float:left; vertical-align:top">

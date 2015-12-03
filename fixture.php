@@ -134,7 +134,9 @@
 		overlayColor: "#000", 
 		overlayOpacity: "0.6", 
 	});  
-	
+	$(function(){
+	     $("#encabezado").load("include/cabezal.html"); 
+	});
 	</script>
 
 </head>
@@ -145,19 +147,7 @@
   <input name="fecha" id="fecha"  value="<?= $fecha ?>" type="hidden" />
   <input name="idActual" id="idActual"  value="<?= $_POST['id'] ?>" type="hidden" />
   <div id="wrap">
-    <div id="encabezado">	  
-		  <div id="cabezal">
-				 <div id="gf" onclick="location.href='index.php'" style="cursor:pointer"></div>
-				 <div id="facebook" style="cursor:pointer" onclick="window.open('https://www.facebook.com/gambeta.femenina');"></div>
-		  		 <div id="twitter" style="cursor:pointer" onclick="window.open('https://twitter.com/GambetaFemenina');"></div>
-				 <div id="instagram" style="cursor:pointer" onclick="window.open('https://instagram.com/gambetafemenina');"></div> 
-				 <div id="youtube" style="cursor:pointer" onclick="window.open('https://www.youtube.com/user/gambetafemenina2012');"></div> 
-				 <div id="quienes_somos"  style="cursor:pointer" onclick="window.location = 'quienes_somos.php';"></div>
-                 <div id="reglamento" style="cursor:pointer"  onclick="window.location = 'reglamento.php';"></div>
-                 <div id="sedes" style="cursor:pointer" onclick="window.location = 'sedes.php';"></div>
-                 <div id="contacto"  style="cursor:pointer" onclick="window.location = 'contacto.php';"></div>
-            </div> 
-	 </div>
+    <div id="encabezado"></div>
     <div id="cabezal1">
       <div id="menu_izq1" style="float:left">
       	<div align="center"><img width="120px" height="120px"  src="logos/<?= $oTorneo->logoPrincipal?>" /></div>
