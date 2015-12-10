@@ -87,8 +87,7 @@ print_r($grises);*/
 	  			$oObj = new TorneoCat();
 				$categoria = $oObj ->getByTorneo($aTorneos[$i][id]); ?>
                 <img src="logos/<?= $aTorneos[$i]['logoPrincipal'] ?>" title="<?= $aTorneos[$i]['nombre']?>"  border="0" width="50px" height="50px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
-         <? } ?>	
-         	<div id="menu"></div>    
+         <? } ?>	  
 			<div id="imagen" style="float:left; vertical-align:top">
 	          	  <div style="float:left; margin-left:48px; height:750px">
 					  <img src="img/sedes/sedes.jpg" />
@@ -97,11 +96,11 @@ print_r($grises);*/
 					</div>
 		        </div> 
 	          	  <div style="float:left; top:-100px; margin-left:48px">
-					  <img src="img/sedes/sedes2.jpg" />
+					  <img src="img/sedes/sedes3.jpg" />
 					  <div style="position:relative; top:-195px; left:115px; border: 3px solid #DD2C8D; border-radius:4px; width:530px">
-							<iframe width="530" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.08547560721!2d-58.525181099999976!3d-34.57670369999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb709859f3abf%3A0xfa738d5bdc53a50c!2sGral.+N.+Manuel+Savio+2930%2C+Villa+Maip%C3%BA%2C+Buenos+Aires!5e0!3m2!1ses-419!2sar!4v1437065848740"></iframe>
+							<iframe width="530" height="180" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5536.485459706896!2d-58.68211444615104!3d-34.40099133651545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bca1129356b343%3A0x3177b9c3445095f2!2sAv.+Benavidez+2400%2C+B1621HZV+Benavidez%2C+Buenos+Aires!5e0!3m2!1ses-419!2sar!4v1449769476829"></iframe>
 					  </div>
-		        </div>                 
+		        </div>             
 			</div>
         	            
 			<div id="auspiciantes" style="float:left">     
