@@ -83,15 +83,9 @@ print_r($grises);*/
 	<input name="id" id="id"  value="<?= $_POST['id'] ?>" type="hidden" />
     <input name="color" id="color"  value="<?= $color ?>" type="hidden" />
 	<div id="wrap">
-		<div id="encabezado">	  
-		  <div id="cabezal"></div> 
-		 </div>
+		<div id="encabezado"></div>
+		 <? include_once("include/torneos.php") ?>
 		<div id="cabezal1" style="margin-top:5px" align="center">
-		 <? for ($i=0; $i<count( $aTorneos ); $i++) {   
-				$oObj = new TorneoCat();
-				$categoria = $oObj ->getByTorneo($aTorneos[$i][id]); ?>
-				<img src="logos/<?= $aTorneos[$i]['logoPrincipal'] ?>" title="<?= $aTorneos[$i]['nombre']?>"  border="0" width="50px" height="50px" onclick="pagina('<?= $categoria[0][id]?>')" style="cursor: pointer"/>
-	     <? } ?>
 			<div id="imagen" style="float:left; vertical-align:top">
 				<div style="float:left; margin-left:48px">
 					<img src="img/quienes_somos/quienes_somos.jpg" />
