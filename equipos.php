@@ -170,14 +170,16 @@
             	<table style="width: 320px">
 	            <? $oObj = new Jugadoras();
 				   $aJugadoras = $oObj->getByEquipoTorneo($equiposTorneo[0]['idEquipo'],$equiposTorneo[0]['idTorneoCat']);
-				   foreach($aJugadoras as $jugadora) {
-				   		if ($jugadora['activa'] == 1) { ?>
-	            			<tr>
-	            				<td width="70%"><b><?= $jugadora['nombre'] ?></b></td>  
-	            				<td width="30%"><?= $jugadora['posicion'] ?></td>
-	            			</tr>
-	           	 	 <? } ?>
-	       	   <?  } ?>
+				   if (sizeof($aJugadoras) != 0) {
+				   		foreach($aJugadoras as $jugadora) {
+				   			if ($jugadora['activa'] == 1) { ?>
+	            				<tr>
+	            					<td width="70%"><b><?= $jugadora['nombre'] ?></b></td>  
+	            					<td width="30%"><?= $jugadora['posicion'] ?></td>
+	            				</tr>
+	           	 	 	 <? }
+	       	     		}
+	       	   	   } ?>
        	   		</table>
        	  	</div>
           </div>

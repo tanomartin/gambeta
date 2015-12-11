@@ -122,21 +122,10 @@
 			break;
 			
 	}
-	
-	//Paginacion
-	$cant   = 10;
-  	$pag    = ($_POST['_pag']>0) ? $_POST['_pag'] : 1;
-	$inicio = ($pag - 1) * $cant;
-    $fin    = $inicio + $cant;
-	// fin Paginacion
 
 	$total = 0;
 	$oObj = new Torneos();
-	$datos = $oObj->getPaginado($_REQUEST, $inicio, $cant, $total);
-
-	$esultimo = (count($datos) == 1)? "S" : "N" ;
-	
-
+	$datos = $oObj->getPaginado($_REQUEST);
 	?>
     
 <!DOCTYPE HTML>
@@ -252,28 +241,6 @@
 				                    <input type="hidden" name="fnombre" value="<?=$_POST["fnombre"]?>" />
 				                    <!-- Fin filtros -->
 									
-									<div style="margin-left:20px; float:left" >
-									  <? if ($total != 0) {
-										   	 if ( $pag > 1 ) {?>
-											 	<a href="javascript: document.frm_listado._pag.value=<?=$pag-1?>;  document.frm_listado.submit();"><img src="images/icono-anterior-on.gif" alt="anterior" title="anterior" /></a>
-										  <? } else {?>
-											 	<img src="images/icono-anterior-off.gif" alt="anterior" title="anterior" />
-										<? }
-										   if ( $pag < $total ) {?>						 
-											 <a href="javascript: document.frm_listado._pag.value=<?=$pag+1?>;  document.frm_listado.submit();"><img src="images/icono-siguiente-on.gif" alt="siguiente" title="siguiente" /></a>
-										<? } else {?>
-											 <img src="images/icono-siguiente-off.gif" alt="siguiente" title="siguiente" />
-										<? }?>							 									  
-	               						<span>
-	               							P&aacute;gina <? echo $pag; ?> de <? echo $total; ?>&nbsp;&nbsp;N&uacute;mero de p&aacute;gina 
-					   					    <select style="width:40px"  name="nro_pag" id="nro_pag" onchange="document.frm_listado._pag.value=this.value;  document.frm_listado.submit();" >
-										 <? for($p=1; $p<=$total; $p++) { ?>
-												<option <? if ($p == $pag) echo "selected"; ?> value="<?=$p?>"><?=$p?></option>
-									     <? } ?>
-					 						</select>
-	                    				 </span>
-									  <? } ?>							  
-									</div>
 									<div align="right" style="margin-right:10px; margin-bottom:10px" >
 						            	<input class="button" onclick="javascript:nuevo()" type="button" value="Nuevo Torneo" />
 						            </div>
@@ -286,7 +253,7 @@
 											<th width="10%">Opciones</th>
 										</tr>
 									 <? if (count($datos) == 0) { ?>
-											<tr><td colspan="4" align="center">No existen torneos</td></tr>
+											<tr><td colspan="5" align="center">No existen torneos</td></tr>
 									 <? } else { 
 										 	$total = count($datos);	
 											$tt = $total - 1;

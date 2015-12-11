@@ -134,19 +134,15 @@ class Torneos {
 		return $res;
 	}
 
-	function getPaginado($filtros, $inicio, $cant, &$total) {
-		$orden = ($filtros["filter_order"])?$filtros["filter_order"]:"p.nombre";
-		$dir = ($filtros["filter_order_Dir"])?$filtros["filter_order_Dir"]:"asc"; 
+	function getPaginado($filtros) {
 		$db = new Db();
 		$query = "Select SQL_CALC_FOUND_ROWS  p.*
 		          From ga_torneos p
 				  where  1 = 1";
 		if (trim($filtros["fnombre"]) != "")		 
 			$query.= " and p.nombre like '%".strtoupper($filtros["fnombre"])."%'";		  
-		$query.= " order by orden, $orden $dir LIMIT $inicio,$cant";
+		$query.= " order by orden";
 		$datos = $db->getResults($query, ARRAY_A); 
-		$cant_reg = $db->getResults("SELECT FOUND_ROWS() cant", ARRAY_A); 
-		$total = ceil( $cant_reg[0]["cant"] / $cant );
 		$db->close();
 		return $datos;	
 	}
