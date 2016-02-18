@@ -56,8 +56,12 @@
 				document.frm_listado.idJugadoraEquipo.value = idJugadoraEquipos;
 				document.frm_listado.submit();	
 			}
-		}
-		
+		}	
+
+		function importarJugadoras(){
+			document.frm_listado.accion.value = "importarJugadoras";
+			document.frm_listado.submit();	
+		}	
 
 	</script>
 </head>

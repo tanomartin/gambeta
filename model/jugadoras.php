@@ -1,5 +1,6 @@
 <?PHP
 include_once "mysql.class.php";
+include_once "include/fechas.php";
 
 class Jugadoras {
 
@@ -94,6 +95,15 @@ class Jugadoras {
 		if ($id != "") {
 			$query .= " and j.id = '$id' ";
 		}
+		$query .= " order by j.nombre";
+		$res = $db->getResults($query, ARRAY_A);
+		$db->close();
+		return $res;
+	}
+	
+	function getBYDocumento($documento="") {
+		$db = new Db();
+		$query = "Select j.* from ga_jugadoras j where dni= ".$documento;
 		$query .= " order by j.nombre";
 		$res = $db->getResults($query, ARRAY_A);
 		$db->close();

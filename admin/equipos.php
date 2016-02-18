@@ -117,6 +117,21 @@
 			exit;
 			break;
 			
+		case "importarJugadoras":
+			include("equipos.torneos.importar.php");
+			exit;
+			break;	
+			
+		case "importar":
+			include("equipos.torneos.seleccionarImp.php");
+			exit;
+			break;
+			
+		case "guardarImportar":
+			var_dump($_POST);
+			include("equipos.torneos.guardarImp.php");
+			exit;
+			break;
 	}
 	
 	//Paginacion
