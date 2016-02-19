@@ -120,7 +120,8 @@ for($i = 0; $i < sizeof ( $listadoPartidos ); $i ++) {
 								$sede = $oSede->get ( $id_sede ); ?>
 						 		<div class="ce_text block">
 									<h1>Listado de Partidos del <?=$fechaPartidos?> - Sede <?=$sede[0]['nombre']?></h1>
-									<img width="75" border="0" alt="reserva" title="Exportar Excel" onclick="javascript:migrar();" style="cursor: pointer; float: right;" src="images/xls-icon.png" />
+									<img width="75" border="0" alt="exportar" title="Exportar Excel" onclick="javascript:migrar();" style="cursor: pointer; float: right;" src="images/xls-icon.png" />
+									<img width="75" border="0" alt="fichas" title="Obtener Fichas" onclick="javascript:fichaPartidos();" style="cursor: pointer; float: right;" src="images/pdf-icon.png" />
 								</div>
 								<div class="mod_listing ce_table listing block" id="partnerlist">
 									<form name="frm_listado" id="frm_listado" action="<?=$_SERVER['PHP_SELF']?>" method="post">
