@@ -40,41 +40,34 @@
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColor);
 	$columna = "C";
 	$celda = "C1";
-	$objPHPExcel->getActiveSheet()->getColumnDimension($columna)->setWidth(30);
-	$objPHPExcel->getActiveSheet()->setCellValue($celda,  "Equipo 1");
+	$objPHPExcel->getActiveSheet()->getColumnDimension($columna)->setWidth(50);
+	$objPHPExcel->getActiveSheet()->setCellValue($celda,  "Equipo 1 vs Equipo 2");
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB('CE6C2B');
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColor);
 	$columna = "D";
 	$celda = "D1";
 	$objPHPExcel->getActiveSheet()->getColumnDimension($columna)->setWidth(30);
-	$objPHPExcel->getActiveSheet()->setCellValue($celda,  "Equipo 2");
+	$objPHPExcel->getActiveSheet()->setCellValue($celda,  "Cancha");
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB('CE6C2B');
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColor);
 	$columna = "E";
 	$celda = "E1";
-	$objPHPExcel->getActiveSheet()->getColumnDimension($columna)->setWidth(10);
-	$objPHPExcel->getActiveSheet()->setCellValue($celda,  "Cancha");
-	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB('CE6C2B');
-	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColor);
-	$columna = "F";
-	$celda = "F1";
 	$objPHPExcel->getActiveSheet()->getColumnDimension($columna)->setWidth(15);
 	$objPHPExcel->getActiveSheet()->setCellValue($celda,  "Juez");
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB('CE6C2B');
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColor);
-	$columna = "G";
-	$celda = "G1";
+	$columna = "F";
+	$celda = "F1";
 	$objPHPExcel->getActiveSheet()->getColumnDimension($columna)->setWidth(30);
 	$objPHPExcel->getActiveSheet()->setCellValue($celda,  "Confirmacion");
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFill()->getStartColor()->setRGB('CE6C2B');
 	$objPHPExcel->getActiveSheet()->getStyle($celda)->getFont()->setColor($phpColor);
 
-	$objPHPExcel->getActiveSheet()->getStyle("A1:G1")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+	$objPHPExcel->getActiveSheet()->getStyle("A1:F1")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 	//**********************************/
 	
 	$listadoPartidos = unserialize(urldecode($_POST['listadoPartidos']));
@@ -89,30 +82,30 @@
 		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $partido["torneo"]."-".$partido["categoria"].$partido["zona"]);
 		$columna = "C";
 		$celda = $columna.$i;
-		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $partido["equipo1"]);
+		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $partido["equipo1"]." <VS> ".$partido["equipo2"]);
 		$columna = "D";
-		$celda = $columna.$i;
-		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $partido["equipo2"]);
-		$columna = "E";
 		$celda = $columna.$i;
 		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $partido["cancha"]);
 		$objPHPExcel->getActiveSheet()->getStyle($celda)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-		$columna = "F";
+		$columna = "E";
 		$celda = $columna.$i;
 		$objPHPExcel->getActiveSheet()->setCellValue($celda,  "");
-		$columna = "G";
+		$columna = "F";
 		$celda = $columna.$i;
 		$objPHPExcel->getActiveSheet()->setCellValue($celda,  $partido["confirmacion"]);
 		$objPHPExcel->getActiveSheet()->getStyle($celda)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 		$i++;
 	}
 
-	$columnaFinal = "G"; 
+	$columnaFinal = "F"; 
 	$filaFinal = sizeof($listadoPartidos)+1;
 	$celdaFinal = $columnaFinal.$filaFinal;
 	
 	$objPHPExcel->getActiveSheet()->getStyle("A1:$celdaFinal")->getBorders()->getAllBorders()->setBorderStyle(PHPExcel_Style_Border::BORDER_THIN);
-
+	
+	$celdaFinalpartido = "C".$filaFinal;
+	$objPHPExcel->getActiveSheet()->getStyle("C1:$celdaFinalpartido")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+	
 	// Se manda el archivo al navegador web, con el nombre que se indica (Excel2007)
 	header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 	header("Content-Disposition: attachment;filename=$excelName");

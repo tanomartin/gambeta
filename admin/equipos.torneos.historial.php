@@ -126,7 +126,7 @@
 														} else {
 															echo ("<b>".$partido[0]['equipo1'] ."</b> (".$partido[0]['golesEquipo1'].") vs <b>".$partido[0]['equipo2']."</b> (".$partido[0]['golesEquipo2'].")");
 															echo ("<br>");
-															echo (cambiaf_a_normal($partido[0]['fechaPartido'])." | ".$partido[0]['horaPartido']. " | ".$partido[0]['arbitro']);
+															echo (cambiaf_a_normal($partido[0]['fechaPartido'])." | ".$partido[0]['horaPartido']. " | ".$partido[0]['arbitro']." | C: ".$partido[0]['cancha']);
 														} ?></td>
 												 <td><? if ($partido[0]['suspendido'] == 1) { echo "SI"; } else { echo "NO"; } ?></td>
 												 <td><? $confirmado = $oFixture->partidoConfirmado($partido[0]['id'],$_POST["id"]);

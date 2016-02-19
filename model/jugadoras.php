@@ -41,7 +41,7 @@ class Jugadoras {
 		$this->set($aValores);
 	}
 
-	function insertar($files) {
+	function insertar() {
 		$db = new Db();
 		$query = "insert into ga_jugadoras(nombre,dni,email,fechaNac,telefono) values (".
 				"'".$this->nombre."',".
@@ -50,13 +50,6 @@ class Jugadoras {
 				"'".$this->fechaNac."',".
 				"'".$this->telefono."')";
 		$this->id = $db->query($query);
-		if(is_uploaded_file($_FILES['foto']['tmp_name'])) {
-			$name = "pre_".$this->id."_".$files['foto']['name'];
-			$ruta= "../fotos_jugadoras/".$name;
-			move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
-			$query = "update ga_jugadoras set foto = '". $name."' where id = ".$this->id ;
-			$db->query($query);
-		}
 		$db->close();
 	}
 
@@ -69,7 +62,7 @@ class Jugadoras {
 		$db->close();
 	}
 
-	function actualizar($files) {
+	function actualizar() {
 		$db = new Db();
 		$query = "update ga_jugadoras set
 		          nombre = '". $this->nombre."',
@@ -79,13 +72,6 @@ class Jugadoras {
 				  fechaNac = '". $this->fechaNac."'
 				  where id = ".$this->id ;
 		$db->query($query);
-		if(is_uploaded_file($_FILES['foto']['tmp_name'])) {
-			$name = "pre_".$this->id."_".$files['foto']['name'];
-			$ruta= "../fotos_jugadoras/".$name;
-			move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
-			$query = "update ga_jugadoras set foto = '". $name."' where id = ".$this->id ;
-			$db->query($query);
-		}
 		$db->close();
 	}
 

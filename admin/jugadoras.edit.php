@@ -103,18 +103,7 @@
 											      <tr class="even">
 											        <td class="col_0 col_first"><label for="telefono">Telefono</label></td>
 											        <td class="col_1 col_last"><input name="telefono" id="telefono" maxlength="50" type="text" value="<?=$datos[0]["telefono"]?>" size="50"  <?= $disabled ?>></td>
-											      </tr> 
-											      <tr class="even">
-											        <td class="col_0 col_first"><label for="foto">Foto</label></td>
-											        <td class="col_1 col_last">
-											        	<? if ( $disabled  == "" ) { ?>
-											        		<input name="foto" id="foto" class="" type="file"  <?= $disabled ?> />
-											        	<? } 
-											        	 if ($datos[0]["foto"] != "") { ?>
-											        		<img style="margin-top: 10px" src="../thumb/phpThumb.php?src=../fotos_jugadoras/<?= $datos[0]['foto']?>" width="100" height="69"/>
-											        	<? } ?>  
-											        </td>
-											      </tr>       
+											      </tr>    
 												</tbody>
 											</table>
 										</fieldset>

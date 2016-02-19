@@ -238,7 +238,7 @@
 												 <tr>
 							                     <td align="left"><?=$datos[$i]["nombre"]?></td>
 							                     <td align="left"><?=$datos[$i]["dni"]?></td>
-							                     <td align="left"><?=$datos[$i]["email"]?></td>
+							                     <td align="left"><a href="mailto:<?=$datos[$i]["email"]?>" target="_top"><?=$datos[$i]["email"]?></a></td>
 							                     <td align="left"><?=$datos[$i]["telefono"]?></td>
 							                     <td nowrap>
 							                     	<a href="javascript:ver(<?=$datos[$i]["id"]?>);"> <img border="0" src="images/find-icon.png" alt="ver" title="ver" width="20px" height="20px" /></a>
