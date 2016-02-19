@@ -1,14 +1,15 @@
 <?	include_once "include/fechas.php";
-	include_once "../model/torneos.php";
-	include_once "../model/torneos.categorias.php";	
-	include_once "../model/equipos.php";	
-    include_once "../model/fckeditor.class.php" ;
+    include_once "../model/jugadoras.php";	
 	
 	if(!session_is_registered("usuario")){
 		header("Location: index.php");
 		exit;
 	}
 	$operacion = "Importar";
+	
+	$oEquipo= new Equipos();
+	$equipo = $oEquipo->get($_POST["id"]);
+	$datosTorneo = $oEquipo->getRelacionTorneo($_POST["idTorneoEquipo"]);
 ?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -46,7 +47,10 @@
         		<div class="inside">
            	 		<? include("path.php"); ?>
 					<div class="mod_article block" id="register">
-						<div class="ce_text block"><h1><?=$operacion?> Jugadoras del Equipo</h1></div>
+						<div class="ce_text block">
+						<h1>Importacion de Jugadoras de
+							 <font color="#e4790f"><?=$equipo[0]['nombre']." [".$datosTorneo[0]['torneo'] ." - ".$datosTorneo[0]['categoria']."]" ?></font></h1>
+						</div>
 						<div class="mod_registration g8 tableform block">
 							<form name="form_alta" id="form_alta" action="<?=$_SERVER['PHP_SELF']?>" method="post"  enctype="multipart/form-data"> 
 								<input name="id" id="id"  value="<?=$_POST["id"]?>" type="hidden" />
@@ -54,8 +58,10 @@
 								<input type="hidden" name="accion" value="importar" />
 								<input type="hidden" name="idTorneoEquipo" value="<?=$_POST["idTorneoEquipo"]?>" />
 								<input type="hidden" name="idTorneoCat" value="<?=$_POST["idTorneoCat"]?>" />
-								<input type="hidden" name="fnombre" value="<?=$_POST["fnombre"]?>" />
-								<!-- Fin filtros -->
+								<!-- Filtros -->
+				                <input type="hidden" name="fnombre" value="<?=$_POST["fnombre"]?>" />
+				                <input type="hidden"  name="femail" value="<?=$_POST["femail"]?>"  />                           
+				                <!-- Fin filtros -->
 								<!-- Parametros menu -->
 								<input type="hidden" name="menu" value="<?=$_POST["menu"]?>" />
 								<input type="hidden" name="submenu" value="<?=$_POST["submenu"]?>" />

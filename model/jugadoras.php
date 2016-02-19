@@ -101,9 +101,18 @@ class Jugadoras {
 		return $res;
 	}
 	
-	function getBYDocumento($documento="") {
+	function getByDocumento($documento="") {
 		$db = new Db();
 		$query = "Select j.* from ga_jugadoras j where dni= ".$documento;
+		$query .= " order by j.nombre";
+		$res = $db->getResults($query, ARRAY_A);
+		$db->close();
+		return $res;
+	}
+	
+	function getByApellido($apellido="", $nombre="") {
+		$db = new Db();
+		$query = "Select j.* from ga_jugadoras j where nombre like '%".$apellido."%' and nombre like '%".$nombre."%'";
 		$query .= " order by j.nombre";
 		$res = $db->getResults($query, ARRAY_A);
 		$db->close();

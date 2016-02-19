@@ -128,8 +128,8 @@
 			break;
 			
 		case "guardarImportar":
-			var_dump($_POST);
 			include("equipos.torneos.guardarImp.php");
+			include("equipos.torneos.jugadoras.php");
 			exit;
 			break;
 	}

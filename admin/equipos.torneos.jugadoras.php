@@ -106,7 +106,7 @@
 			                    <!--     -->
 			                    <!-- Filtros -->
 				                <input type="hidden" name="fnombre" value="<?=$_POST["fnombre"]?>" />
-				                <input name="femail" type="hidden"  value="<?=$_POST["femail"]?>"  />                           
+				                <input type="hidden" name="femail"  value="<?=$_POST["femail"]?>"  />                           
 				                <!-- Fin filtros -->
 			                    
 			                    <table style="width: 928px">
@@ -122,7 +122,7 @@
 									</tr>
 			                    	<? if (count($jugadoras) == 0) { ?>
 									<tr>
-											<td colspan="6" align="center">Este equipo no tiene jugadoras asignadas</td>
+											<td colspan="8" align="center">Este equipo no tiene jugadoras asignadas</td>
 								    </tr>
 									<? } else { 
 										 	$total = count($jugadoras);	
@@ -141,9 +141,11 @@
 												 <? if($jugadoras[$i]["activa"] == '1') {
 													 	if($jugadoras[$i]["envioMail"] == '1') {?>
 								                     		<img border="0" src="../img/check.ico" alt="activa" title="activa" style="cursor:pointer" onclick="activarenvio('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','0')"/>
-								                     <? } else { ?>
-															<img border="0" src="../img/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="activarenvio('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/>
-													 <? } 
+								                     <? } else {
+								                     		if($jugadoras[$i]["email"] != '') {?>
+																<img border="0" src="../img/forbidden.ico" alt="No activa" title="No activa" style="cursor:pointer" onclick="activarenvio('<?=$jugadoras[$i]["idJugadoraEquipo"]?>','1')"/>
+													 	<? }
+								                     	} 
 													}?>
 												 </td>	
 												 <td style="text-align: center;"><?=$estadisticasJugadora[0]["goles"]?></td>
