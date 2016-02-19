@@ -7,13 +7,13 @@ foreach ( $_POST as $key => $value ) {
 	if ($posNu !== false) {
 		$nombre = "nombreyapellidon" . $value;
 		$dni = "dnin" . $value;
-		$facnac = "fecnan" . $value;
+		$fecnac = "fecnacn" . $value;
 		$email = "emailn" . $value;
 		$telefono = "telefonon" . $value;
 		$jugadorasNuevas [$value] = array (
 				'nombre' => $_POST [$nombre],
 				'dni' => $_POST [$dni],
-				'fecnac' => $_POST [$fecnac],
+				'fechaNac' => $_POST [$fecnac],
 				'email' => $_POST [$email],
 				'telefono' => $_POST [$telefono] 
 		);
@@ -22,14 +22,14 @@ foreach ( $_POST as $key => $value ) {
 	if ($posEx !== false) {
 		$nombre = "nombreyapellido" . $value;
 		$dni = "dni" . $value;
-		$facnac = "fecnac" . $value;
+		$fecnac = "fecnac" . $value;
 		$email = "email" . $value;
 		$telefono = "telefono" . $value;
 		$jugadorasExistentes [$value] = array (
 				'id' => $value,
 				'nombre' => $_POST [$nombre],
 				'dni' => $_POST [$dni],
-				'fecnac' => $_POST [$fecnac],
+				'fechaNac' => $_POST [$fecnac],
 				'email' => $_POST [$email],
 				'telefono' => $_POST [$telefono] 
 		);
@@ -39,7 +39,7 @@ foreach ( $_POST as $key => $value ) {
 foreach ( $jugadorasNuevas as $jugadora ) {
 	$oJugadora = new Jugadoras ();
 	$oJugadora->set($jugadora);
-	$oJugadora->insertar(NULL);	
+	$oJugadora->insertar();	
 	$asocEquipo = array (
 			'id' => $oJugadora->id,
 			'idEquipoTorneo' => $_POST ['idTorneoEquipo'],
@@ -52,7 +52,7 @@ foreach ( $jugadorasNuevas as $jugadora ) {
 foreach ( $jugadorasExistentes as $jugadora ) {
 	$oJugadora = new Jugadoras ();
 	$oJugadora->set($jugadora);
-	$oJugadora->actualizar(NULL);
+	$oJugadora->actualizar();
 	$asocEquipo = array (
 			'id' => $oJugadora->id,
 			'idEquipoTorneo' => $_POST ['idTorneoEquipo'],

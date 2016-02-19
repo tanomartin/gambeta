@@ -91,7 +91,7 @@ for($fila = 18; $fila < 31; $fila ++) {
 			var idname = "idn"+id;
 			var name = "nombreyapellidon"+id;
 			var dni = "dnin"+id;
-			var fecnac = "fecnan"+id;
+			var fecnac = "fecnacn"+id;
 			var email = "emailn"+id;
 			var telefono = "telefonon"+id;
 		} else {
@@ -99,7 +99,7 @@ for($fila = 18; $fila < 31; $fila ++) {
 			var idname = "ide"+id;
 			var name = "nombreyapellido"+id;
 			var dni = "dni"+id;
-			var fecnac = "fecna"+id;
+			var fecnac = "fecnac"+id;
 			var email = "email"+id;
 			var telefono = "telefono"+id;
 		}
@@ -186,7 +186,7 @@ for($fila = 18; $fila < 31; $fila ++) {
 												<td>X<input size=3 type="hidden" disabled="disabled" name="idn<? echo $jugadora['id']?>" id="idn<? echo $jugadora['id']?>" value="<?=$jugadora['id']?>"/></td>
 												<td align="left"><?=$jugadora['nombre']?><input type="hidden" disabled="disabled" name="nombreyapellidon<? echo $jugadora['id']?>" id="nombreyapellidon<? echo $jugadora['id']?>" value="<?=$jugadora['nombre']?>"/> </td>
 												<td align="left"><?=$jugadora['dni']?><input size=1  type="hidden" disabled="disabled" name="dnin<? echo $jugadora['id']?>" id="dnin<? echo $jugadora['id']?>" value="<?=$jugadora['dni'] ?>"/> </td>
-												<td align="left"><?=$jugadora['fecnac']?><input type="hidden" disabled="disabled" name="fecnan<? echo $jugadora['id']?>" id="fecnan<? echo $jugadora['id']?>" value="<?=$jugadora['fecnac']?>"/> </td>
+												<td align="left"><?=$jugadora['fecnac']?><input type="hidden" disabled="disabled" name="fecnacn<? echo $jugadora['id']?>" id="fecnacn<? echo $jugadora['id']?>" value="<?=$jugadora['fecnac']?>"/> </td>
 												<td align="left"><?=$jugadora['email']?><input type="hidden" disabled="disabled" name="emailn<? echo $jugadora['id']?>" id="emailn<? echo $jugadora['id']?>" value="<?=$jugadora['email']?>"/> </td>
 												<td align="left"><?=$jugadora['telefono']?><input type="hidden" disabled="disabled" name="telefonon<? echo $jugadora['id']?>" id="telefonon<? echo $jugadora['id']?>" value="<?=$jugadora['telefono']?>"/> </td>
 												<td style="text-align: center"><input type="checkbox" name="accionn<? echo $jugadora['id']?>" id="accionn<? echo $jugadora['id']?>" onclick="actioninput(<? echo $jugadora['id']?>,'n')"/></td>	
@@ -213,7 +213,7 @@ for($fila = 18; $fila < 31; $fila ++) {
 												<td><?=$jugadora['id']?><input size=1 type="hidden" disabled="disabled" name="ide<? echo $jugadora['id']?>" id="ide<? echo $jugadora['id']?>" value="<?=$jugadora['id']?>"/></td>
 												<td align="left"><?=$jugadora['nombre']?><input type="hidden" disabled="disabled" name="nombreyapellido<? echo $jugadora['id']?>" id="nombreyapellido<? echo $jugadora['id']?>" value="<?=$jugadora['nombre']?>"/> </td>
 												<td align="left"><?=$jugadora['dni']?><input size=1 type="hidden" disabled="disabled" name="dni<? echo $jugadora['id']?>" id="dni<? echo $jugadora['id']?>" value="<?=$jugadora['dni'] ?>"/> </td>
-												<td align="left"><?=$jugadora['fecnac']?><input type="hidden" disabled="disabled" name="fecna<? echo $jugadora['id']?>" id="fecna<? echo $jugadora['id']?>" value="<?=$jugadora['fecnac']?>"/> </td>
+												<td align="left"><?=$jugadora['fecnac']?><input type="hidden" disabled="disabled" name="fecnac<? echo $jugadora['id']?>" id="fecnac<? echo $jugadora['id']?>" value="<?=$jugadora['fecnac']?>"/> </td>
 												<td align="left"><?=$jugadora['email']?><input type="hidden" disabled="disabled" name="email<? echo $jugadora['id']?>" id="email<? echo $jugadora['id']?>" value="<?=$jugadora['email']?>"/> </td>
 												<td align="left"><?=$jugadora['telefono']?><input type="hidden" disabled="disabled" name="telefono<? echo $jugadora['id']?>" id="telefono<? echo $jugadora['id']?>" value="<?=$jugadora['telefono']?>"/> </td>
 												<?php if (!$juega) { ?>
@@ -245,7 +245,7 @@ for($fila = 18; $fila < 31; $fila ++) {
 												<td><?=$jugadora['id']; ?><input size=1 type="hidden" disabled="disabled" name="ide<? echo $jugadora['id']?>" id="ide<? echo $jugadora['id']?>" value="<?=$jugadora['id']?>"/></td>
 												<td align="left"><?=$jugadora['nombre']?><input type="hidden" disabled="disabled" name="nombreyapellido<? echo $jugadora['id']?>" id="nombreyapellido<? echo $jugadora['id']?>" value="<?=$jugadora['nombre']?>"/> </td>
 												<td align="left"><?=$jugadora['dni']?><input size=1 type="hidden" disabled="disabled" name="dni<? echo $jugadora['id']?>" id="dni<? echo $jugadora['id']?>" value="<?=$jugadora['dni'] ?>"/> </td>
-												<td align="left"><?=$jugadora['fecnac']?><input type="hidden" disabled="disabled" name="fecna<? echo $jugadora['id']?>" id="fecna<? echo $jugadora['id']?>" value="<?=$jugadora['fecnac']?>"/> </td>
+												<td align="left"><?=$jugadora['fecnac']?><input type="hidden" disabled="disabled" name="fecnac<? echo $jugadora['id']?>" id="fecnac<? echo $jugadora['id']?>" value="<?=$jugadora['fecnac']?>"/> </td>
 												<td align="left"><?=$jugadora['email']?><input type="hidden" disabled="disabled" name="email<? echo $jugadora['id']?>" id="email<? echo $jugadora['id']?>" value="<?=$jugadora['email']?>"/> </td>
 												<td align="left"><?=$jugadora['telefono']?><input type="hidden" disabled="disabled" name="telefono<? echo $jugadora['id']?>" id="telefono<? echo $jugadora['id']?>" value="<?=$jugadora['telefono']?>"/> </td>
 												<?php if (!$juega) { ?>
