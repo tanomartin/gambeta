@@ -7,7 +7,6 @@ $objPHPExcel = PHPExcel_IOFactory::load ( $inputFileName );
 $oEquipo = new Equipos ();
 $equipo = $oEquipo->get ( $_POST ["id"] );
 $datosTorneo = $oEquipo->getRelacionTorneo ( $_POST ["idTorneoEquipo"] );
-
 for($fila = 18; $fila < 31; $fila ++) {
 	$nombre = $objPHPExcel->getActiveSheet ()->getCell ( 'A' . $fila )->getValue ();
 	$nombre = trim($nombre);
@@ -207,7 +206,9 @@ for($fila = 18; $fila < 31; $fila ++) {
 												<th>Telefono</th>
 												<th width="5%"></th>
 											</tr>
-										<? 	foreach($jugadorasExisteDni as $jugadora) { ?>
+										<? 	foreach($jugadorasExisteDni as $jugadora) { 
+											$objJugadora = new Jugadoras();
+											$juega = $objJugadora->jugadoraEnEquipo($jugadora['id'],$_POST['idTorneoEquipo']);?>
 											<tr>
 												<td><?=$jugadora['id']?><input size=1 type="hidden" disabled="disabled" name="ide<? echo $jugadora['id']?>" id="ide<? echo $jugadora['id']?>" value="<?=$jugadora['id']?>"/></td>
 												<td align="left"><?=$jugadora['nombre']?><input type="hidden" disabled="disabled" name="nombreyapellido<? echo $jugadora['id']?>" id="nombreyapellido<? echo $jugadora['id']?>" value="<?=$jugadora['nombre']?>"/> </td>
@@ -215,8 +216,12 @@ for($fila = 18; $fila < 31; $fila ++) {
 												<td align="left"><?=$jugadora['fecnac']?><input type="hidden" disabled="disabled" name="fecna<? echo $jugadora['id']?>" id="fecna<? echo $jugadora['id']?>" value="<?=$jugadora['fecnac']?>"/> </td>
 												<td align="left"><?=$jugadora['email']?><input type="hidden" disabled="disabled" name="email<? echo $jugadora['id']?>" id="email<? echo $jugadora['id']?>" value="<?=$jugadora['email']?>"/> </td>
 												<td align="left"><?=$jugadora['telefono']?><input type="hidden" disabled="disabled" name="telefono<? echo $jugadora['id']?>" id="telefono<? echo $jugadora['id']?>" value="<?=$jugadora['telefono']?>"/> </td>
-												<td style="text-align: center"><input type="checkbox" id="accion<? echo $jugadora['id']?>" name="accion<? echo $jugadora['id']?>" id="accion<? echo $jugadora['id']?>" onclick="actioninput(<? echo $jugadora['id']?>,'e')"/></td>	
-										 <?	} ?>
+												<?php if (!$juega) { ?>
+													<td style="text-align: center"><input type="checkbox" id="accion<? echo $jugadora['id']?>" name="accion<? echo $jugadora['id']?>" id="accion<? echo $jugadora['id']?>" onclick="actioninput(<? echo $jugadora['id']?>,'e')"/></td>	
+										 	<?	} else { ?>
+										 			<td></td>
+										 	<?	}
+											} ?>
 											</tr>
 									</table>	
 									<? } 
@@ -232,16 +237,23 @@ for($fila = 18; $fila < 31; $fila ++) {
 												<th>Telefono</th>
 												<th width="5%"></th>
 											</tr>
-										<? 	foreach($jugadorasExisteNombre as $jugadora) { ?>
+										<? 	foreach($jugadorasExisteNombre as $jugadora) {
+												$objJugadora = new Jugadoras();
+												$juega = $objJugadora->jugadoraEnEquipo($jugadora['id'],$_POST['idTorneoEquipo']);
+												?>
 											<tr>
-												<td><?=$jugadora['id']?><input size=1 type="hidden" disabled="disabled" name="ide<? echo $jugadora['id']?>" id="ide<? echo $jugadora['id']?>" value="<?=$jugadora['id']?>"/></td>
+												<td><?=$jugadora['id']; ?><input size=1 type="hidden" disabled="disabled" name="ide<? echo $jugadora['id']?>" id="ide<? echo $jugadora['id']?>" value="<?=$jugadora['id']?>"/></td>
 												<td align="left"><?=$jugadora['nombre']?><input type="hidden" disabled="disabled" name="nombreyapellido<? echo $jugadora['id']?>" id="nombreyapellido<? echo $jugadora['id']?>" value="<?=$jugadora['nombre']?>"/> </td>
 												<td align="left"><?=$jugadora['dni']?><input size=1 type="hidden" disabled="disabled" name="dni<? echo $jugadora['id']?>" id="dni<? echo $jugadora['id']?>" value="<?=$jugadora['dni'] ?>"/> </td>
 												<td align="left"><?=$jugadora['fecnac']?><input type="hidden" disabled="disabled" name="fecna<? echo $jugadora['id']?>" id="fecna<? echo $jugadora['id']?>" value="<?=$jugadora['fecnac']?>"/> </td>
 												<td align="left"><?=$jugadora['email']?><input type="hidden" disabled="disabled" name="email<? echo $jugadora['id']?>" id="email<? echo $jugadora['id']?>" value="<?=$jugadora['email']?>"/> </td>
 												<td align="left"><?=$jugadora['telefono']?><input type="hidden" disabled="disabled" name="telefono<? echo $jugadora['id']?>" id="telefono<? echo $jugadora['id']?>" value="<?=$jugadora['telefono']?>"/> </td>
-												<td style="text-align: center"><input type="checkbox" id="accion<? echo $jugadora['id']?>" name="accion<? echo $jugadora['id']?>" id="accion<? echo $jugadora['id']?>" onclick="actioninput(<? echo $jugadora['id']?>,'e')"/></td>	
-										 <?	} ?>
+												<?php if (!$juega) { ?>
+													<td style="text-align: center"><input type="checkbox" id="accion<? echo $jugadora['id']?>" name="accion<? echo $jugadora['id']?>" id="accion<? echo $jugadora['id']?>" onclick="actioninput(<? echo $jugadora['id']?>,'e')"/></td>	
+										 	<?	} else { ?>
+										 			<td></td>
+										 	<?	}
+										 	} ?>
 											</tr>
 									</table>	
 									<? } ?>

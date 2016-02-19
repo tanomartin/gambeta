@@ -342,6 +342,18 @@ class Jugadoras {
 		$db->query($query);
 		$db->close();
 	}
+	
+	function jugadoraEnEquipo($idJugadora="", $idEquipoTorneo="") {
+		$db = new Db();
+		$query = "Select count(*) as cantidad from ga_jugadoras_equipo where idJugadora = '$idJugadora' and idEquipoTorneo = '$idEquipoTorneo'";
+		$res = $db->getRow($query);
+		$db->close();
+		if($res->cantidad == 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }
 
 ?>
